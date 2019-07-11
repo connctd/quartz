@@ -17,6 +17,7 @@
     "@storybook/addon-links": "^5.1.9",
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/jest": "^24.0.15",
     "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
@@ -35,6 +36,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "deploy": "storybook-to-ghpages"
   }
 }
