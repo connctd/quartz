@@ -7,6 +7,8 @@ const req = require.context('../components', true, /\.stories\.tsx$/)
 addParameters({
   options: {
     theme: connctdTheme,
+    panelPosition: 'right',
+    storySort: (a, b) => a[1].id.localeCompare(b[1].id) // sort alphabetically
   },
 })
 

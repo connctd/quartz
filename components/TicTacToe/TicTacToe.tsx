@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './TicTacToe.css'
+import React, { Component } from "react"
+import "./TicTacToe.css"
 
 export interface TicTacToeCellProps {
   /**
@@ -7,13 +7,13 @@ export interface TicTacToeCellProps {
    *
    * @default " "
    * */
-  value?: ' ' | 'X' | 'O';
+  value?: " " | "X" | "O"
 
   /** Cell position on game board. */
-  position: { x: number; y: number };
+  position: { x: number, y: number, }
 
   /** Called when an empty cell is clicked. */
-  onClick?: (x: number, y: number) => void;
+  onClick?: (x: number, y: number) => void
 }
 
 /**
@@ -32,9 +32,9 @@ export class TicTacToe extends Component<TicTacToeCellProps> {
   };
 
   render() {
-    const { value = ' ' } = this.props
-    const disabled = value !== ' '
-    const classes = `ttt-cell ${disabled ? 'ttt-cell--hidden' : ''}`
+    const { value = " " } = this.props
+    const disabled = value !== " "
+    const classes = `ttt-cell ${disabled ? "ttt-cell--hidden" : ""}`
 
     return (
       <button
