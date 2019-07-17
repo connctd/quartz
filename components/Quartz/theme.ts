@@ -30,7 +30,7 @@ export interface QuartzTheme {
 
 
 export const defaultTheme: QuartzTheme = {
-    primary: "",
+    primary: "#D4550A",
     secondary: "",
     tertiary: "",
     light30: "",
