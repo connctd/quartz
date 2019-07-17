@@ -26,6 +26,7 @@ export interface QuartzTheme {
     light: string
     dark: string
     green: string
+    error: string
     gradient: Gradients
 }
 
@@ -39,6 +40,7 @@ export const defaultTheme: QuartzTheme = {
     light: "white",
     dark: "",
     green: "#19A287",
+    error: "#D0021B",
     gradient: {
         primary: {
             start: "#FFE9E7",
