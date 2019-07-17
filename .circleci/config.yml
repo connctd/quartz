@@ -18,3 +18,8 @@ jobs:
       - run:
           name: lint
           command: yarn lint
+workflows:
+  version: 2
+  test_and_lint:
+    jobs:
+      - lint
