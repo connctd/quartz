@@ -30,7 +30,7 @@ storybook so it's recommended to familiarise yourself with JSDoc syntax
 To start the watch server
 
 ```sh
-yarn storybook
+yarn start
 ```
 
 This should start a server on [localhost:6006](http://localhost:6006/)
