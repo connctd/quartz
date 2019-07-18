@@ -22,7 +22,7 @@ stories.add("Input Error", () => {
 })
 
 const CheckBoxStory = () => {
-  const [checked, check] = useState(false)
+  const [checked, check] = useState(true)
   return (
   <Checkbox checked={checked} onChange={() => { check(!checked); action("Checked")(checked) }} id="terms_of_service">
     <span>I agree to the Terms of Service</span>

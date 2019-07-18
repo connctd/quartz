@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { defaultTheme, QuartzTheme } from "../Quartz"
 
 
@@ -74,11 +74,27 @@ const CheckboxContainer = styled.label`
     align-items: center;
 `
 
+const tickedAnimation = keyframes`
+    from {
+        stroke-dashoffset: -50;
+    }
+    to {
+        stroke-dashoffset: 50;
+    }
+`
+
 const Tick = styled.svg`
     position: absolute;
-    display: ${props => (props.checked ? "block" : "none")};
     top: -6px;
-    stroke: ${props => props.theme.secondary};
+    .checkboxTick {
+        &--checked {
+            stroke: ${props => props.theme.secondary};
+            animation: ${tickedAnimation} 1 0.4s ease-in;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 50;
+        }
+        stroke: none;
+    }
 `
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -86,9 +102,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 }) => (
     <CheckboxContainer htmlFor={id}>
             <StyledCheckbox theme={theme} onClick={() => { onChange() }}>
-                <Tick width="18" height="20" viewBox="0 0 18 20" fill="none" checked={checked}>
-                   <path className="checkboxTick" d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                </Tick>
+                {checked && (
+                    <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
+                        <path className={`checkboxTick${checked ? "--checked" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                    </Tick>
+                )}
             </StyledCheckbox>
             <InvisibleCheckbox checked={checked} id={id} />
             {children}
