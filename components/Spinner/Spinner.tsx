@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
-import { defaultTheme, QuartzTheme } from "../Quartz/theme"
+import { defaultTheme, QuartzTheme } from "../Quartz"
 
 const loadingAnimation = keyframes`
     from {

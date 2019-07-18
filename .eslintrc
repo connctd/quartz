@@ -29,6 +29,8 @@
 					"requireLast": true
 				}
 			}
-		]
+		],
+		"jsx-a11y/label-has-associated-control": 0, // Does not work correctly with component inputs
+		"jsx-a11y/label-has-for": 0
 	}
 }

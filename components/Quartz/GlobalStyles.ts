@@ -7,7 +7,11 @@ const GlobalStyle: React.FC = createGlobalStyle`
     font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif;
   }
 
-  input, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; }
+  input, select, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; outline: none; }
+  :focus { /* https://stackoverflow.com/questions/935559/remove-safari-chrome-textinput-textarea-glow */
+    outline-color: transparent;
+    outline-style: none;
+  }
 `
 
 export default GlobalStyle
