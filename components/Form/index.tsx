@@ -76,7 +76,7 @@ const CheckboxContainer = styled.label`
 
 const Tick = styled.svg`
     position: absolute;
-    display: ${props => (props.checked ? "none" : "block")};
+    display: ${props => (props.checked ? "block" : "none")};
     top: -6px;
     stroke: ${props => props.theme.secondary};
 `
