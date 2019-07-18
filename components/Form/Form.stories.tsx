@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withKnobs, text, boolean } from "@storybook/addon-knobs"
-import { Input } from "./index"
+import { Input, Checkbox } from "./index"
 
 const stories = storiesOf("Form", module)
 stories.addDecorator(withKnobs)
@@ -20,3 +20,14 @@ stories.add("Input Error", () => {
   const errored: boolean = boolean("Error", true)
   return <Input error={errored} placeholder={placeholder} onChange={action("onChange")} />
 })
+
+const CheckBoxStory = () => {
+  const [checked, check] = useState(false)
+  return (
+  <Checkbox checked={checked} onChange={() => { check(!checked); action("Checked")(checked) }} id="terms_of_service">
+    <span>I agree to the Terms of Service</span>
+  </Checkbox>
+    )
+}
+
+stories.add("Checkbox", () => <CheckBoxStory />)
