@@ -18,7 +18,7 @@ const StyledInput = styled.input`
     font-size: 14px;
 
     :focus {
-        border-color: ${props => props.theme.green}
+        border: 1px solid ${props => props.theme.green}
     }
 `
 
