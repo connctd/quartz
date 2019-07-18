@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
-import { Button, ButtonAppearance } from "./Button"
+import { Button, ButtonAppearance } from "./index"
 
 const stories = storiesOf("Button", module)
 stories.addDecorator(withKnobs)

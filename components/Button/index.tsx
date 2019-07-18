@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import { defaultTheme, QuartzTheme } from "../Quartz"
+import { defaultTheme, QuartzTheme } from "../theme"
 
 const StyledButtonText = styled.span`
     position: relative;

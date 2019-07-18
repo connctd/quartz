@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import styled from "styled-components"
 import { withKnobs, number } from "@storybook/addon-knobs"
-import { SpiNNer } from "./Spinner"
+import { SpiNNer } from "./index"
 
 const stories = storiesOf("Spinner", module)
 stories.addDecorator(withInfo)
