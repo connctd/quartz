@@ -8,6 +8,9 @@
     <a href="https://circleci.com/gh/connctd/workflows/quartz"><img src="https://circleci.com/gh/connctd/quartz.svg?style=svg&circle-token=634095e3b786634dd94eed4b9b6512b0a59cb12e" alt="Circle CI"/></a>
 </p>
 
+## Why?
+[Design Systems Part I: Foundations](https://medium.com/swlh/design-systems-b07e5ec6e310)
+
 ## Pre-requisites
 
 - Yarn
