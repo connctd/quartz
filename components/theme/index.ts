@@ -32,8 +32,8 @@ export interface QuartzTheme {
 
 
 export const defaultTheme: QuartzTheme = {
-    primary: "#D4550A",
-    secondary: "#19A287",
+    primary: "#D4550A", // red?
+    secondary: "#19A287", // green
     tertiary: "",
     light30: "#F3F3F3",
     light50: "#D8D8D8",
