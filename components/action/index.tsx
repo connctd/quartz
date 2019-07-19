@@ -22,7 +22,7 @@ const PlusButton = styled.div`
         position: absolute;
         content: "+";
         top: -2px;
-        lefT: 9px;
+        left: 9px;
     }
 `
 
