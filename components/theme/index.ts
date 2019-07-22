@@ -64,3 +64,5 @@ export const defaultTheme: QuartzTheme = {
         },
     },
 }
+
+export { default as GlobalStyle } from "./GlobalStyles"
