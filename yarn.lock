@@ -953,6 +953,18 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@connctd/eslint-config-typescript@^1.0.1":
+  version "1.0.1"
+  resolved "https://npm.build.connctd.io/@connctd%2feslint-config-typescript/-/eslint-config-typescript-1.0.1.tgz#ff7a338fcf1534bd83b16bbd2dba6c561e601bb1"
+  integrity sha512-R93EUn6Fn0a8cLmDFFkQAKQkGGc4GuaIUT/Ip9KYMZouaP2O4+SOP5exv0MED6//GTc/ArV0eVAZGIWU1UZH8g==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^1.11.0"
+    "@typescript-eslint/parser" "^1.11.0"
+    eslint-config-airbnb "^17.1.1"
+    eslint-plugin-import "^2.18.0"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-react "^7.14.2"
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
