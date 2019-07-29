@@ -1,12 +1,11 @@
 {
   "name": "@connctd/quartz",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "connctd design system",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.js",
   "author": "Pandelis Zembashis <pandelis.zembashis@connctd.com>",
   "license": "UNLICENSED",
-  "private": true,
   "engines": {
     "node": "10.x",
     "yarn": "^1.15.0"
@@ -14,8 +13,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-components": "^4.3.2",
-    "webpack": "^4.0.0"
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -43,13 +41,14 @@
     "jest": "^24.8.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "webpack": "^4.0.0"
   },
   "scripts": {
+    "prepublish": "tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006",
-    "deploy": "storybook-to-ghpages",
     "build": "build-storybook -o dist",
     "lint": "eslint ./components --ext ts,tsx,js,jsx"
   }
