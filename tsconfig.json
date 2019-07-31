@@ -10,7 +10,7 @@
       "moduleResolution": "node",
       "rootDirs": ["src", "stories"],
       "baseUrl": "src",
-      "forceConsistentCasingInFileNames": true,
+      "forceConsistentCasingInFileNames": false,
       "noImplicitReturns": true,
       "noImplicitThis": true,
       "noImplicitAny": false,
