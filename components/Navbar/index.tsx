@@ -6,7 +6,7 @@ const MainNavbar = styled.div`
     background: #302C70;
     height: 60px;
     font-size: 14px;
-    position: fixed;
+    position: sticky;
     width: 100%;
 `
 
@@ -45,6 +45,7 @@ const MenuCategory = styled.li`
         display: none;
         list-style: none;
         padding-inline-start: 0px;
+        position: absolute;
     }
 
     ul a {
@@ -96,6 +97,7 @@ const MenuStaple = styled.li`
             display: none;
             list-style: none;
             padding-inline-start: 0px;
+            position: absolute;
         }
 
         :hover ul{
