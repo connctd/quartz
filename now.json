@@ -1,11 +1,13 @@
 {
   "name": "quartz",
   "version": 2,
-  "builds": [
+  "build":
     {
       "src": "package.json",
       "use": "@now/static-build",
-      "config": { "distDir": "dist" }
+      "config": { "distDir": "dist" },
+      "env": {
+        "CNCTD_NPM_TOKEN": "@npm_token"
+      }
     }
-  ]
 }
