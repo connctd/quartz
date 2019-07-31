@@ -67,7 +67,6 @@ const MenuCategory = styled.li`
     }
 
     .current {
-        -webkit-box-shadow: 0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0); 
         box-shadow: 0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0);        
     }
 
@@ -126,7 +125,6 @@ const ArrowDown = styled.div`
     padding: 3px;
     margin: -3px 10px 0px;
     transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
 `
 
 interface NavbarProps {
