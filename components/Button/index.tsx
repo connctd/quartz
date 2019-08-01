@@ -74,6 +74,7 @@ interface ButtonProps {
     href?: string
     theme?: QuartzTheme
     style?: React.CSSProperties
+    className?: string
 }
 
 /**
@@ -81,11 +82,12 @@ interface ButtonProps {
  *
  */
 export const Button: React.FC<ButtonProps> = ({
-    text, appearance, type, onClick, theme = defaultTheme, href, style,
+    text, appearance, type, onClick, theme = defaultTheme, href, style, className
 }) => {
     if (href) {
         return (
             <StyledAnchorButton
+              className={className}
               style={style}
               appearance={appearance}
               theme={theme}
@@ -97,6 +99,7 @@ export const Button: React.FC<ButtonProps> = ({
     }
     return (
         <StyledButton
+          className={className}
           style={style}
           appearance={appearance}
           theme={theme}

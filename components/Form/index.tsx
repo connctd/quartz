@@ -11,12 +11,13 @@ export interface InputProps
 
 const StyledInput = styled.input`
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 0 0 12px 0;
     display: inline-block;
     border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
-    box-sizing: content-box;
+    box-sizing: border-box;
     font-size: 14px;
+    width: 100%;
 
     :focus {
         border: 1px solid ${props => props.theme.green}

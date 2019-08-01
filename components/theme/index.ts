@@ -1,5 +1,4 @@
 
-
 interface Gradient {
     start: string
     end: string

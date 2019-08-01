@@ -12,6 +12,15 @@ const GlobalStyle: React.FC = createGlobalStyle`
     outline-color: transparent;
     outline-style: none;
   }
+
+  body,html {
+    margin: 0;
+    padding: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
 `
 
 export default GlobalStyle
