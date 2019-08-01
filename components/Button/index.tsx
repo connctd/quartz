@@ -82,7 +82,7 @@ interface ButtonProps {
  *
  */
 export const Button: React.FC<ButtonProps> = ({
-    text, appearance, type, onClick, theme = defaultTheme, href, style, className
+    text, appearance, type, onClick, theme = defaultTheme, href, style, className,
 }) => {
     if (href) {
         return (
