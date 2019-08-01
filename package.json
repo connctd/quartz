@@ -46,7 +46,7 @@
     "webpack": "^4.0.0"
   },
   "scripts": {
-    "prepublish": "tsc",
+    "prepublishOnly": "tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006",
