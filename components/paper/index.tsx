@@ -5,12 +5,13 @@ import { Themeable } from "../theme"
 export interface PaperProps extends Themeable {
     children: React.ReactNode
     narrow?: boolean
+    light?: boolean
 }
 
 const StyledPaper = styled.div`
     width: auto;
     background: #FFFFFF;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: ${props => (props.light ? "0px 5px 15px rgba(0, 0, 0, 0.1)" : "0px 0px 8px rgba(0, 0, 0, 0.25)")};
     padding: ${props => (props.narrow ? "15px 24px" : "20px 70px")};
 `
 
