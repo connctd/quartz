@@ -5,13 +5,16 @@ import { defaultTheme, QuartzTheme } from "../theme"
 interface LogoProps {
     width?: number
     theme?: QuartzTheme
+    className?: string
     dots?: boolean
 }
 
 const StyledLogo = styled.svg`
 `
 
-export const Logo: React.FC<LogoProps> = ({ width = 100, theme, dots = false }) => {
+export const Logo: React.FC<LogoProps> = ({
+    width = 100, dots = false, ...rest
+}) => {
     let scale = 4.8
     let viewHeight = 192
     if (dots) {
@@ -19,7 +22,7 @@ export const Logo: React.FC<LogoProps> = ({ width = 100, theme, dots = false }) 
         viewHeight = 513
     }
     return (
-        <StyledLogo width={width} height={Math.floor(width / scale)} viewBox={`0 0 928 ${viewHeight}`} fill="none" theme={theme}>
+        <StyledLogo width={width} height={Math.floor(width / scale)} viewBox={`0 0 928 ${viewHeight}`} fill="none" {...rest}>
             <path
               d="M831.79 191.504a1.5 1.5 0 01-1.5-1.5v-2.834a1.5 1.5 0 011.5-1.5c49.58 0 89.916-40.336 89.916-89.917S881.37 5.835 831.79 5.835a1.5 1.5 0 01-1.5-1.5V1.501a1.5 1.5 0 011.5-1.5c52.798 0 95.752 42.954 95.752 95.752 0 52.798-42.954 95.751-95.752 95.751zM723.869 191.504h-2.834a1.5 1.5 0 01-1.5-1.5V1.5a1.5 1.5 0 011.5-1.5h93.543a1.5 1.5 0 011.5 1.5v2.834a1.5 1.5 0 01-1.5 1.5h-89.209v184.169a1.5 1.5 0 01-1.5 1.501zM703.869 191.504c-52.798 0-95.752-42.954-95.752-95.752C608.117 42.954 651.071 0 703.869 0a1.5 1.5 0 011.5 1.5v2.834a1.5 1.5 0 01-1.5 1.5c-49.58 0-89.916 40.337-89.916 89.918s40.336 89.917 89.916 89.917a1.5 1.5 0 011.5 1.5v2.834a1.5 1.5 0 01-1.5 1.501z"
               fill="#302C70"

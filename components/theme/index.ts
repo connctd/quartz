@@ -29,6 +29,16 @@ export interface QuartzTheme {
     gradient: Gradients
 }
 
+/**
+ * Props required for a component that can be themed.
+ * ClassName is required to be passed down to a styled component so that it can be
+ * styled by a parent.
+ */
+export interface Themeable {
+    theme?: QuartzTheme
+    className?: string
+    style?: React.CSSProperties
+}
 
 export const defaultTheme: QuartzTheme = {
     primary: "#D4550A", // red?
@@ -37,7 +47,7 @@ export const defaultTheme: QuartzTheme = {
     light30: "#F3F3F3",
     light50: "#D8D8D8",
     light: "white",
-    dark: "",
+    dark: "#4A4A4A",
     green: "#19A287",
     error: "#D0021B",
     gradient: {
