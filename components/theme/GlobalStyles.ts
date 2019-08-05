@@ -2,8 +2,12 @@ import * as React from "react"
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle: React.FC = createGlobalStyle`
-  body {
-    @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
+
+  body,html,#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif;
   }
 
@@ -13,11 +17,7 @@ const GlobalStyle: React.FC = createGlobalStyle`
     outline-style: none;
   }
 
-  body,html,#root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
+
   * {
     box-sizing: border-box;
   }
