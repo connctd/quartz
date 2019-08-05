@@ -24,6 +24,7 @@ export interface QuartzTheme {
     light50: string
     light: string
     dark: string
+    dark70: string
     green: string
     error: string
     gradient: Gradients
@@ -48,6 +49,7 @@ export const defaultTheme: QuartzTheme = {
     light50: "#D8D8D8",
     light: "white",
     dark: "#4A4A4A",
+    dark70: "#6B6B6B",
     green: "#19A287",
     error: "#D0021B",
     gradient: {
@@ -64,7 +66,7 @@ export const defaultTheme: QuartzTheme = {
         light: {
             start: "#FFFFFF",
             end: "#D8D8D8",
-            text: "black",
+            text: "#6B6B6B",
         },
         dark: {
             start: "",
