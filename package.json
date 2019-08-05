@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "1.0.3",
+  "version": "0.0.0-alpha",
   "description": "connctd design system",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.js",
@@ -16,8 +16,8 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "@connctd/eslint-config-typescript": "^1.0.1",
     "@babel/core": "^7.5.4",
+    "@connctd/eslint-config-typescript": "^1.0.1",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",
