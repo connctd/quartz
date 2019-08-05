@@ -7,9 +7,11 @@ interface LogoProps {
     theme?: QuartzTheme
     className?: string
     dots?: boolean
+    center?: boolean
 }
 
 const StyledLogo = styled.svg`
+  ${props => (props.center ? "margin: auto; display: block;" : "")}
 `
 
 export const Logo: React.FC<LogoProps> = ({
