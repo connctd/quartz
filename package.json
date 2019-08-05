@@ -11,12 +11,12 @@
     "yarn": "^1.15.0"
   },
   "dependencies": {
-    "@connctd/eslint-config-typescript": "^1.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@connctd/eslint-config-typescript": "^1.0.1",
     "@babel/core": "^7.5.4",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",

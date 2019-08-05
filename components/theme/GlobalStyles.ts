@@ -13,9 +13,10 @@ const GlobalStyle: React.FC = createGlobalStyle`
     outline-style: none;
   }
 
-  body,html {
+  body,html,#root {
     margin: 0;
     padding: 0;
+    height: 100%;
   }
   * {
     box-sizing: border-box;
