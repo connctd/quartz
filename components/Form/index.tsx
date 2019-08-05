@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
-import { defaultTheme, QuartzTheme } from "../theme"
+import { defaultTheme, QuartzTheme, Themeable } from "../theme"
 
 
 export interface InputProps
@@ -33,12 +33,11 @@ Input.defaultProps = {
     theme: defaultTheme,
 }
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Themeable {
     id: string
     children: React.ReactNode
     checked: boolean
     onChange: Function
-    theme?: QuartzTheme
 }
 
 // Hide checkbox visually but remain accessible to screen readers.
@@ -99,9 +98,9 @@ const Tick = styled.svg`
 `
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-    id, children, checked, onChange, theme = defaultTheme,
+    id, children, checked, onChange, theme = defaultTheme, className,
 }) => (
-    <CheckboxContainer htmlFor={id}>
+    <CheckboxContainer className={className} htmlFor={id}>
             <StyledCheckbox theme={theme} onClick={() => { onChange() }}>
                 {checked && (
                     <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
