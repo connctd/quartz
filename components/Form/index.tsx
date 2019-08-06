@@ -1,3 +1,4 @@
+/*eslint-disable react/jsx-one-expression-per-line */
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
 import { defaultTheme, QuartzTheme, Themeable } from "../theme"
@@ -7,11 +8,14 @@ export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
     error?: boolean
+    label?: string
+    id?: string
+    className?: string
 }
 
 const StyledInput = styled.input`
     padding: 12px 20px;
-    margin: 0 0 12px 0;
+    margin: 6px 0 12px 0;
     display: inline-block;
     border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
@@ -24,9 +28,18 @@ const StyledInput = styled.input`
     }
 `
 
-export const Input: React.FC<InputProps> = props => (
-    <StyledInput {...props} />
-)
+export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
+    if (label) {
+        return (
+            <label htmlFor={id}>
+                &nbsp; {label}
+                <StyledInput id={id} name={id} {...rest} />
+            </label>
+        )
+    }
+
+    return <StyledInput {...rest} />
+}
 
 Input.defaultProps = {
     type: "text",
@@ -70,8 +83,10 @@ const StyledCheckbox = styled.div`
 `
 
 const CheckboxContainer = styled.label`
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 22px auto;
+    grid-column-gap: 5px;
+    padding: 10px 0;
 `
 
 const tickedAnimation = keyframes`
