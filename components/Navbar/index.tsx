@@ -8,22 +8,72 @@ const MainNavbar = styled.div`
     font-size: 14px;
     position: sticky;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .Items {
+        order: 0;
+        align-self: flex-start;
+        display: flex;
+    }
+
+    .Staples {
+        order:1;
+        align-self: flex-end;
+        margin-left: auto;
+        display: flex;
+    }
+
+    .menuName {
+        color: white;
+        margin: 20px;
+    }
+
+    .ul {
+        list-style: none;
+    }
+
+    .test {
+        color: white;
+        margin: 20px;
+        
+    }
+
+    a {
+        width: 150px;
+        color: white;
+        text-decoration: none;
+        margin: 20px;
+    }
+
+    .navgroup {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 150px;
+        background: blue;
+    }
+    
+    .navgroup div {
+        display: none;
+        margin: 20px;
+        
+    }
+
+    .navgroup:hover div{
+        display:block;
+    }
+
+    .navgroup div:first-child {
+        display:block;
+    }
 `
 
-const MenuName = styled.div`
-    color: white;
-    float: left;
-    display: inline; 
-    margin: 20px;
-`
 
 
-const MenuList = styled.ul`
-    list-style: none;
-    margin: 0px;
-`
 
-const MenuCategory = styled.li`
+/* const MenuCategory = styled.li`
     float:left;
 
     div {
@@ -117,6 +167,7 @@ const MenuStaple = styled.li`
             color:white;
         }
 `
+*/
 
 export const ArrowDown = styled.div`
     border: solid white;
@@ -131,22 +182,16 @@ interface NavbarProps {
     text?: string,
     theme?: QuartzTheme,
     children?: React.ReactNode,
-    menuContent?: { categorys: Array<{ id: number, categoryName: string, default: boolean, menuLinks: Array<{ name: string, target: string, }> }>, staples: Array<{ id: number, stapleName: string, stapleLinks: Array<{ name: string, target: string, }> }> },
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
     text,
     theme,
-    menuContent,
+    children,
 }) => {
-    const mContent = menuContent;
     return (
         <MainNavbar>
-            <MenuName>{text}</MenuName>
-            <MenuList>
-                {mContent!.categorys.map((value, index) => <MenuCategory key={value}> <div className={value.default ? "current" : undefined}> {value.categoryName}</div> <ul> {value.menuLinks.map((value, index) => <li key={value.name}><a href={value.target}>{value.name}</a></li>)} </ul> </MenuCategory>)}
-                {mContent!.staples.map((value, index) => <MenuStaple key={value}> <span> {value.stapleName}<ArrowDown /> </span> <ul> {value.stapleLinks.map((value, index) => <li key={value.name}><Navlink target={value.target} text={value.name}/></li>)} </ul> </MenuStaple>)}
-            </MenuList>
+            {children}
         </MainNavbar>
     )
 }
@@ -174,5 +219,28 @@ export const Navlink: React.FC<NavlinkProps> = ({
 }
 
 Navlink.defaultProps = {
+    theme: defaultTheme,
+};
+
+interface NavgroupProps {
+    theme? : QuartzTheme,
+    children?: React.ReactNode,
+};
+
+export const Navgroup: React.FC<NavgroupProps> = ({
+    theme,
+    children,
+}) => {
+
+    return (
+        <div className="navgroup">
+            {React.Children.map(children, (child, i) => {
+                return <div>{child}</div>
+            })}
+        </div>
+    )
+}
+
+Navgroup.defaultProps = {
     theme: defaultTheme,
 };
