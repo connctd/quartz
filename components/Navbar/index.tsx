@@ -20,7 +20,7 @@ const MainNavbar = styled.div`
 
     .Staples {
         order:1;
-        align-self: flex-end;
+        align-self: flex-start;
         margin-left: auto;
         display: flex;
     }
@@ -28,16 +28,6 @@ const MainNavbar = styled.div`
     .menuName {
         color: white;
         margin: 20px;
-    }
-
-    .ul {
-        list-style: none;
-    }
-
-    .test {
-        color: white;
-        margin: 20px;
-        
     }
 
     a {
@@ -50,24 +40,49 @@ const MainNavbar = styled.div`
     .navgroup {
         display: flex;
         flex-direction: column;
-        position: absolute;
+        justify-content: flex-start;
+        
         width: 150px;
-        background: blue;
+        margin: 0px;
+        padding: 0px;
+        height: 63px;
+        text-align: center;
     }
     
     .navgroup div {
-        display: none;
         margin: 20px;
+        color: white;
+    }
+    
+    .navgroup ul {
+        visibility: hidden;
+        list-style: none;
+        margin-top: auto;
+        background: blue;
+        padding: 0px;
+    }
+
+    .navgroup:hover {
+        background: blue;
+    }
+
+    .navgroup:hover ul{
+        visibility: visible;
         
     }
 
-    .navgroup:hover div{
-        display:block;
+    .navgroup ul:hover{
+        visibility: visible;
     }
 
-    .navgroup div:first-child {
-        display:block;
+    .navgroup ul li:hover {
+        visibility: visible;
     }
+
+    .navgroup ul li {
+        padding: 10px 0px 10px;
+    }
+
 `
 
 
@@ -234,13 +249,33 @@ export const Navgroup: React.FC<NavgroupProps> = ({
 
     return (
         <div className="navgroup">
-            {React.Children.map(children, (child, i) => {
-                return <div>{child}</div>
-            })}
+            {children}
         </div>
     )
 }
 
 Navgroup.defaultProps = {
     theme: defaultTheme,
+};
+
+interface MenugrpupProps {
+    theme? : QuartzTheme,
+    children? : React.ReactNode,
+}
+
+export const Menugroup: React.FC<MenugrpupProps> = ({
+    theme,
+    children,
+}) => {
+    return (
+        <ul>
+            {React.Children.map(children, (child, i) => {
+                return <li>{child}</li>
+            })}
+        </ul>
+    )
+}
+
+Menugroup.defaultProps = {
+    theme: defaultTheme
 };
