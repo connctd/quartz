@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 //import { action } from "@storybook/addon-actions"
 import { withKnobs, } from "@storybook/addon-knobs"
-import { Navbar, Navlink, Navgroup } from "./index"
+import { Navbar, Navlink, Navgroup, Menugroup } from "./index"
 //import styled from "styled-components"
 
 const stories = storiesOf("Navbar", module)
@@ -23,9 +23,13 @@ stories.add("Navbar", () => {
                 <div className="menuName">Connctd</div>
                 <div className="menuName">Connctd</div>
                 <Navgroup>
-                    <Navlink target="http://example.com" text="Test123" />
-                    <Navlink target="http://example.com" text="Test456" />
-                    <Navlink target="http://example.com" text="Test789" />
+                    <div>Title</div>
+                    <Menugroup>
+                        <Navlink target="http://example.com" text="Test123" />
+                        <Navlink target="http://example.com" text="Test456" />
+                        <Navlink target="http://example.com" text="Test789" />
+                    </Menugroup>
+                    
                 </Navgroup>
             </div>
         </Navbar>
