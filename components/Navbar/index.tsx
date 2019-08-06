@@ -4,7 +4,6 @@ import { defaultTheme, QuartzTheme } from "../theme"
 
 const MainNavbar = styled.div`
     background: #302C70;
-    height: 60px;
     font-size: 14px;
     position: sticky;
     width: 100%;
@@ -16,6 +15,7 @@ const MainNavbar = styled.div`
         order: 0;
         align-self: flex-start;
         display: flex;
+        background: #201E50;
     }
 
     .Staples {
@@ -23,6 +23,7 @@ const MainNavbar = styled.div`
         align-self: flex-start;
         margin-left: auto;
         display: flex;
+        background: #201E50;
     }
 
     .menuName {
@@ -34,27 +35,34 @@ const MainNavbar = styled.div`
         width: 150px;
         color: white;
         text-decoration: none;
-        margin: 20px;
+        padding: 20px 0px 20px;
+        text-align: center;
+        box-shadow: ${props => props.focus ? "0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0)" : "none"};
     }
 
-    .navgroup {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        
-        width: 150px;
-        margin: 0px;
-        padding: 0px;
-        height: 63px;
-        text-align: center;
-    }
+`
+
+const MainNavgroup = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     
-    .navgroup div {
-        margin: 20px;
-        color: white;
+    width: 150px;
+    margin: 0px;
+    padding: 0px;
+    height: 63px;
+    text-align: center;
+
+    box-shadow: ${props => props.focus ? "0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0)" : "none"};
+
+
+    div {
+    margin: 20px;
+    color: white;
     }
-    
-    .navgroup ul {
+
+    ul {
         visibility: hidden;
         list-style: none;
         margin-top: auto;
@@ -62,28 +70,29 @@ const MainNavbar = styled.div`
         padding: 0px;
     }
 
-    .navgroup:hover {
+    :hover {
         background: blue;
     }
 
-    .navgroup:hover ul{
+    :hover ul{
         visibility: visible;
         
     }
 
-    .navgroup ul:hover{
+    ul:hover{
         visibility: visible;
     }
 
-    .navgroup ul li:hover {
+    ul li:hover {
         visibility: visible;
     }
 
-    .navgroup ul li {
+    ul li {
         padding: 10px 0px 10px;
     }
 
 `
+
 
 
 
@@ -94,7 +103,7 @@ const MainNavbar = styled.div`
     div {
         width: 150px;
         height: 60px;
-        background: #201E50;
+        
         color: white;
         display: flex;
         text-decoration: none;
@@ -221,15 +230,17 @@ interface NavlinkProps {
     text?: string,
     theme? : QuartzTheme,
     target?: string,
+    focus?: Boolean,
 };
 
 export const Navlink: React.FC<NavlinkProps> = ({
     text,
     theme,
     target,
+    focus,
 }) => {
     return (
-        <a href={target}>{text}</a>
+        <a className={focus? "focus" : ""} href={target}>{text}</a>
     )
 }
 
@@ -240,17 +251,19 @@ Navlink.defaultProps = {
 interface NavgroupProps {
     theme? : QuartzTheme,
     children?: React.ReactNode,
+    focus?: Boolean,
 };
 
 export const Navgroup: React.FC<NavgroupProps> = ({
     theme,
     children,
+    focus,
 }) => {
 
     return (
-        <div className="navgroup">
+        <MainNavgroup focus={focus}>
             {children}
-        </div>
+        </MainNavgroup>
     )
 }
 

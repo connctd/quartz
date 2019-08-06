@@ -17,12 +17,12 @@ stories.add("Navbar", () => {
             <div className="Items">
                 <div className="menuName">Connctd</div>
                 <div className="menuName">Connctd</div>
-                <Navlink target="http://example.com" text="Test123" />
+                <Navgroup>
+                    <Navlink target="http://example.com" text="Test123" />
+                </Navgroup>
             </div>
             <div className="Staples">
-                <div className="menuName">Connctd</div>
-                <div className="menuName">Connctd</div>
-                <Navgroup>
+                <Navgroup focus={true}>
                     <div>Title</div>
                     <Menugroup>
                         <Navlink target="http://example.com" text="Test123" />
