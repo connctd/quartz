@@ -3,7 +3,8 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 //import { action } from "@storybook/addon-actions"
 import { withKnobs, } from "@storybook/addon-knobs"
-import { Navbar } from "./index"
+import { Navbar, Navlink } from "./index"
+//import styled from "styled-components"
 
 const stories = storiesOf("Navbar", module)
 stories.addDecorator(withKnobs)
@@ -66,5 +67,19 @@ stories.add("Navbar", () => {
     ],
 }
 
-    return <Navbar text="Connctd" menuContent={menuContent} />
+    return <div><Navbar text="Connctd" menuContent={menuContent} /><Navlink target="http://example.com" text="Test123"/></div>
   })
+
+
+/*
+stories.add("component navbar", () => {
+    const NavLink = (props) => styled.a`
+    `
+    return (
+    <Navbar text="Connctd">
+        <NavLink>Apps</NavLink>
+        <NavLink>Whatever</NavLink>
+        <NavLink right></NavLink>
+    </Navbar>
+    )
+})*/
