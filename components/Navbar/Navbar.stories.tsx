@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 //import { action } from "@storybook/addon-actions"
 import { withKnobs, } from "@storybook/addon-knobs"
+
 import { Navbar, Navlink, Navgroup, Menugroup, Menuarrow } from "./index"
 //import styled from "styled-components"
 
@@ -24,6 +25,7 @@ stories.add("Navbar", () => {
             <div className="Staples">
                 <Navgroup focus>
                     <div><p>Title<Menuarrow down /></p></div> 
+
                     <Menugroup>
                         <Navlink target="http://example.com" text="Test123" />
                         <Navlink target="http://example.com" text="Test456" />
@@ -35,7 +37,6 @@ stories.add("Navbar", () => {
         </Navbar>
     )
   })
-
 
   stories.add("MenuArrow", () => {
       return (

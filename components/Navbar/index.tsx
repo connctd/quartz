@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 const MainNavbar = styled.div`
+
     background: ${props => props.theme.gradient.secondary.end};
     font-size: 14px;
     position: sticky;
@@ -10,12 +11,12 @@ const MainNavbar = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    
 
     .Items {
         order: 0;
         align-self: flex-start;
         display: flex;
+
         background: ${props => props.theme.tertiary};
     }
 
@@ -25,6 +26,7 @@ const MainNavbar = styled.div`
         margin-left: auto;
         display: flex;
         background: ${props => props.theme.tertiary};
+
     }
 
     .menuName {
@@ -39,9 +41,6 @@ const MainNavbar = styled.div`
         padding: 20px 0px 20px;
         text-align: center;
     }
-    
-    
-
 `
 
 const MainNavgroup = styled.div`
@@ -55,10 +54,8 @@ const MainNavgroup = styled.div`
     padding: 0px;
     height: 63px;
     text-align: center;
-    
 
     box-shadow: ${props => {const shadow = "0px 3px 0px 0px " + props.theme.secondary; if (props.focus === true) {return shadow;} else {return "none"} }};
-
 
     div {
     margin: 20px;
@@ -116,7 +113,6 @@ const MainNavgroup = styled.div`
     }
 
     
-
     ul {
         visibility: hidden;
         list-style: none;
@@ -248,7 +244,13 @@ const MenuStaple = styled.li`
 */
 
 export const ArrowDown = styled.div`
-    
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin: -3px 10px 0px;
+    transform: rotate(45deg);
+
 `
 
 interface NavbarProps {
@@ -311,6 +313,7 @@ export const Navgroup: React.FC<NavgroupProps> = ({
 
     return (
         <MainNavgroup focus={focus} theme={theme}>
+
             {children}
         </MainNavgroup>
     )
