@@ -5,7 +5,7 @@ import { Themeable, defaultTheme } from "../theme"
 interface AnchorProps extends Themeable {
     href: string
     children: React.ReactNode
-    primary?: boolean,
+    primary?: boolean
     target?: string
 }
 
