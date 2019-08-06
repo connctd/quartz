@@ -42,19 +42,19 @@ stories.add("Navbar", () => {
       return (
           <Navbar>
             <div className="Items">
-            <Navgroup focus>
+            <Navgroup>
                     <div><p>Pfeil unten<Menuarrow down /></p></div> 
             </Navgroup>
 
-            <Navgroup focus>
+            <Navgroup>
                     <div><p>Pfeil oben<Menuarrow up /></p></div> 
             </Navgroup>
 
-            <Navgroup focus>
+            <Navgroup>
                     <div><p>Pfeil links<Menuarrow left /></p></div> 
             </Navgroup>
 
-            <Navgroup focus>
+            <Navgroup>
                     <div><p>Pfeil rechts<Menuarrow right /></p></div> 
             </Navgroup>
             </div>
