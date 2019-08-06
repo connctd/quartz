@@ -112,13 +112,13 @@ const MenuStaple = styled.li`
             padding: 10px 10px 10px;
         }
         
-        ul a: hover {
+        ul a:hover {
             background: #302C70;
             color:white;
         }
 `
 
-const ArrowDown = styled.div`
+export const ArrowDown = styled.div`
     border: solid white;
     border-width: 0 2px 2px 0;
     display: inline-block;
@@ -130,6 +130,7 @@ const ArrowDown = styled.div`
 interface NavbarProps {
     text?: string,
     theme?: QuartzTheme,
+    children?: React.ReactNode,
     menuContent?: { categorys: Array<{ id: number, categoryName: string, default: boolean, menuLinks: Array<{ name: string, target: string, }> }>, staples: Array<{ id: number, stapleName: string, stapleLinks: Array<{ name: string, target: string, }> }> },
 }
 
@@ -144,12 +145,34 @@ export const Navbar: React.FC<NavbarProps> = ({
             <MenuName>{text}</MenuName>
             <MenuList>
                 {mContent!.categorys.map((value, index) => <MenuCategory key={value}> <div className={value.default ? "current" : undefined}> {value.categoryName}</div> <ul> {value.menuLinks.map((value, index) => <li key={value.name}><a href={value.target}>{value.name}</a></li>)} </ul> </MenuCategory>)}
-                {mContent!.staples.map((value, index) => <MenuStaple key={value}> <span> {value.stapleName}<ArrowDown /> </span> <ul> {value.stapleLinks.map((value, index) => <li key={value.name}><a href={value.target}>{value.name}</a></li>)} </ul> </MenuStaple>)}
+                {mContent!.staples.map((value, index) => <MenuStaple key={value}> <span> {value.stapleName}<ArrowDown /> </span> <ul> {value.stapleLinks.map((value, index) => <li key={value.name}><Navlink target={value.target} text={value.name}/></li>)} </ul> </MenuStaple>)}
             </MenuList>
         </MainNavbar>
     )
 }
 
 Navbar.defaultProps = {
+    theme: defaultTheme,
+};
+
+// Navlink
+
+interface NavlinkProps {
+    text?: string,
+    theme? : QuartzTheme,
+    target?: string,
+};
+
+export const Navlink: React.FC<NavlinkProps> = ({
+    text,
+    theme,
+    target,
+}) => {
+    return (
+        <a href={target}>{text}</a>
+    )
+}
+
+Navlink.defaultProps = {
     theme: defaultTheme,
 };
