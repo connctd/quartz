@@ -5,7 +5,7 @@ const GlobalStyle: React.FC = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
 
   body,html,#root {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     height: 100%;
     font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif;
