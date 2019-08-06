@@ -3,19 +3,20 @@ import styled from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 const MainNavbar = styled.div`
-    background: #302C70;
+    background: ${props => props.theme.gradient.secondary.end};
     font-size: 14px;
     position: sticky;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    
 
     .Items {
         order: 0;
         align-self: flex-start;
         display: flex;
-        background: #201E50;
+        background: ${props => props.theme.tertiary};
     }
 
     .Staples {
@@ -23,7 +24,7 @@ const MainNavbar = styled.div`
         align-self: flex-start;
         margin-left: auto;
         display: flex;
-        background: #201E50;
+        background: ${props => props.theme.tertiary};
     }
 
     .menuName {
@@ -37,8 +38,9 @@ const MainNavbar = styled.div`
         text-decoration: none;
         padding: 20px 0px 20px;
         text-align: center;
-        box-shadow: ${props => props.focus ? "0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0)" : "none"};
     }
+    
+    
 
 `
 
@@ -53,30 +55,81 @@ const MainNavgroup = styled.div`
     padding: 0px;
     height: 63px;
     text-align: center;
+    
 
-    box-shadow: ${props => props.focus ? "0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0)" : "none"};
+    box-shadow: ${props => {const shadow = "0px 3px 0px 0px " + props.theme.secondary; if (props.focus === true) {return shadow;} else {return "none"} }};
 
 
     div {
     margin: 20px;
     color: white;
+    display: inline-block;
+    transition: transform 0.25s;
+    
     }
+
+    :hover .down {
+        transform: rotate(-135deg);
+    }
+
+    :hover .up {
+        transform: rotate(45deg);
+    }
+
+    :hover .left {
+        transform: rotate(-45deg);
+    }
+
+    :hover .right {
+        transform: rotate(135deg);
+    }
+    
+    div p {
+        margin: 0px;
+    }
+
+    .menuArrow {
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        margin: -3px 10px 0px;
+        
+    }
+
+    
+
+    .down{
+        transform: rotate(45deg);
+    }
+
+    .up {
+        transform: rotate(-135deg);
+    }
+
+    .left {
+        transform: rotate(135deg);
+    }
+
+    .right {
+        transform: rotate(-45deg);
+    }
+
+    
 
     ul {
         visibility: hidden;
         list-style: none;
         margin-top: auto;
-        background: blue;
+        background: ${props => props.theme.tertiary};
         padding: 0px;
-    }
-
-    :hover {
-        background: blue;
+        opacity: 0.0;
+        transition: opacity 0.25s;
     }
 
     :hover ul{
         visibility: visible;
-        
+        opacity: 1.0;
     }
 
     ul:hover{
@@ -85,10 +138,11 @@ const MainNavgroup = styled.div`
 
     ul li:hover {
         visibility: visible;
+        background: ${props => props.theme.gradient.secondary.end};
     }
 
     ul li {
-        padding: 10px 0px 10px;
+        padding: 12px 0px 12px;
     }
 
 `
@@ -194,12 +248,7 @@ const MenuStaple = styled.li`
 */
 
 export const ArrowDown = styled.div`
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin: -3px 10px 0px;
-    transform: rotate(45deg);
+    
 `
 
 interface NavbarProps {
@@ -214,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     children,
 }) => {
     return (
-        <MainNavbar>
+        <MainNavbar theme={theme}>
             {children}
         </MainNavbar>
     )
@@ -261,7 +310,7 @@ export const Navgroup: React.FC<NavgroupProps> = ({
 }) => {
 
     return (
-        <MainNavgroup focus={focus}>
+        <MainNavgroup focus={focus} theme={theme}>
             {children}
         </MainNavgroup>
     )
@@ -290,5 +339,41 @@ export const Menugroup: React.FC<MenugrpupProps> = ({
 }
 
 Menugroup.defaultProps = {
-    theme: defaultTheme
+    theme: defaultTheme,
+};
+
+interface MenuarrowProps {
+    theme? : QuartzTheme,
+    up? : Boolean,
+    down? : Boolean,
+    left? : Boolean,
+    right? : Boolean,
+}
+
+export const Menuarrow: React.FC<MenuarrowProps> = ({
+    theme,
+    up,
+    down,
+    left,
+    right,
+}) => {
+    var arrowName: string = "";
+
+    if (up === true) {
+        arrowName = "menuArrow up";
+    } else if (down === true) {
+        arrowName = "menuArrow down";
+    } else if (left === true) {
+        arrowName = "menuArrow left";
+    } else if (right === true) {
+        arrowName = "menuArrow right";
+    }
+
+    return (
+        <div className={arrowName}></div>
+    )
+}
+
+Menuarrow.defaultProps = {
+    theme: defaultTheme,
 };
