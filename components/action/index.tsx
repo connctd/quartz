@@ -1,10 +1,9 @@
 import * as React from "react"
 import styled from "styled-components"
-import { defaultTheme, QuartzTheme } from "../theme"
+import { defaultTheme, Themeable } from "../theme"
 
-export interface ActionProps {
+export interface ActionProps extends Themeable {
     label: string
-    theme?: QuartzTheme
     onClick: (e: React.MouseEvent) => void
 }
 
@@ -35,8 +34,10 @@ const ActionContainer = styled.a`
 `
 
 
-export const Action: React.FC<ActionProps> = ({ label, theme = defaultTheme, onClick }) => (
-    <ActionContainer onClick={onClick}>
+export const Action: React.FC<ActionProps> = ({
+    label, theme = defaultTheme, onClick, className,
+}) => (
+    <ActionContainer className={className} onClick={onClick}>
         <span>{label}</span>
         <PlusButton theme={theme} />
     </ActionContainer>

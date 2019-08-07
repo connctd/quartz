@@ -23,6 +23,11 @@ const GlobalStyle: React.FC = createGlobalStyle`
     outline-style: none;
   }
 
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+
 
   * {
     box-sizing: border-box;

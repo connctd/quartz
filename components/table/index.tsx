@@ -43,10 +43,10 @@ export const Table: React.FC<TableProps> = React.memo(({ headings, data, theme }
     return (
         <TableContainer>
             <TableHeader theme={theme} columns={headings.length}>
-                {headings.map(h => <div>{h}</div>)}
+                {headings.map(h => <div key={h}>{h}</div>)}
             </TableHeader>
             <TableBody theme={theme} columns={headings.length}>
-                {flatData.map(d => <div>{d}</div>)}
+                {flatData.map(d => <div key={Math.random()}>{d}</div>)}
             </TableBody>
         </TableContainer>
     )
