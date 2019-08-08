@@ -50,7 +50,7 @@ const MainNavgroup = styled.div`
     height: 63px;
     text-align: center;
 
-    box-shadow: ${props => props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : "none" };
+    box-shadow: ${props => (props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : "none")};
 
     div {
         margin: 20px;
@@ -142,124 +142,108 @@ const MainNavgroup = styled.div`
 `
 
 interface NavbarProps extends Themeable {
-    text?: string,
-    children?: React.ReactNode,
+    children?: React.ReactNode
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-    text,
     theme,
     children,
-}) => {
-    return (
+}) => (
         <MainNavbar theme={theme}>
             {children}
         </MainNavbar>
     )
-}
 
 Navbar.defaultProps = {
     theme: defaultTheme,
-};
+}
 
 // Navlink
 
 interface NavlinkProps extends Themeable{
-    text?: string,
-    target?: string,
-    focus?: boolean,
-};
+    text?: string
+    target?: string
+    focus?: boolean
+}
 
 export const Navlink: React.FC<NavlinkProps> = ({
     text,
-    theme,
     target,
     focus,
-}) => {
-    return (
-        <a className={focus? "focus" : ""} href={target}>{text}</a>
+}) => (
+        <a className={focus ? "focus" : ""} href={target}>{text}</a>
     )
-}
 
 Navlink.defaultProps = {
     theme: defaultTheme,
-};
+}
 
 interface NavgroupProps extends Themeable {
-    children?: React.ReactNode,
-    focus?: boolean,
-};
+    children?: React.ReactNode
+    focus?: boolean
+}
 
 export const Navgroup: React.FC<NavgroupProps> = ({
     theme,
     children,
     focus,
-}) => {
-
-    return (
+}) => (
         <MainNavgroup focus={focus} theme={theme}>
 
             {children}
         </MainNavgroup>
     )
-}
 
 Navgroup.defaultProps = {
     theme: defaultTheme,
-};
+}
 
 interface MenugroupProps extends Themeable {
-    children? : React.ReactNode,
+    children? : React.ReactNode
 }
 
 export const Menugroup: React.FC<MenugroupProps> = ({
-    theme,
     children,
-}) => {
-    return (
+}) => (
         <ul>
-            {React.Children.map(children, (child, i) => {
-                return <li>{child}</li>
-            })}
+            {React.Children.map(children, child => <li>{child}</li>)}
         </ul>
     )
-}
 
 Menugroup.defaultProps = {
     theme: defaultTheme,
-};
+}
 
 interface MenuarrowProps extends Themeable {
-    up? : boolean,
-    down? : boolean,
-    left? : boolean,
-    right? : boolean,
+    up? : boolean
+    down? : boolean
+    left? : boolean
+    right? : boolean
 }
 
 export const Menuarrow: React.FC<MenuarrowProps> = ({
-    theme,
     up,
     down,
     left,
     right,
 }) => {
-    let arrowName: string = "";
+    let arrowName = ""
 
     if (up === true) {
-        arrowName = "menuArrow up";
+        arrowName = "menuArrow up"
     } else if (down === true) {
-        arrowName = "menuArrow down";
+        arrowName = "menuArrow down"
     } else if (left === true) {
-        arrowName = "menuArrow left";
+        arrowName = "menuArrow left"
     } else if (right === true) {
-        arrowName = "menuArrow right";
+        arrowName = "menuArrow right"
     }
 
     return (
-        <div className={arrowName}></div>
+        <div className={arrowName} />
     )
 }
 
 Menuarrow.defaultProps = {
     theme: defaultTheme,
-};
+}

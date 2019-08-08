@@ -2,9 +2,11 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 //import { action } from "@storybook/addon-actions"
-import { withKnobs, } from "@storybook/addon-knobs"
+import { withKnobs } from "@storybook/addon-knobs"
 
-import { Navbar, Navlink, Navgroup, Menugroup, Menuarrow } from "./index"
+import {
+ Navbar, Navlink, Navgroup, Menugroup, Menuarrow,
+} from "./index"
 //import styled from "styled-components"
 
 const stories = storiesOf("Navbar", module)
@@ -12,8 +14,7 @@ stories.addDecorator(withKnobs)
 stories.addDecorator(withInfo)
 stories.addParameters({ info: { inline: true } })
 
-stories.add("Navbar", () => {
-    return (
+stories.add("Navbar", () => (
         <Navbar>
             <div className="Items">
                 <div className="menuName">Connctd</div>
@@ -23,44 +24,66 @@ stories.add("Navbar", () => {
             </div>
             <div className="Staples">
                 <Navgroup focus>
-                    <div><p>Title<Menuarrow down /></p></div> 
+                    <div>
+<p>
+Title
+<Menuarrow down />
+</p>
+                    </div>
 
                     <Menugroup>
                         <Navlink target="http://example.com" text="Test123" />
                         <Navlink target="http://example.com" text="Test456" />
                         <Navlink target="http://example.com" text="Test789" />
                     </Menugroup>
-                    
+
                 </Navgroup>
             </div>
         </Navbar>
-    )
-  })
+    ))
 
-  stories.add("MenuArrow", () => {
-      return (
+  stories.add("MenuArrow", () => (
           <Navbar>
             <div className="Items">
             <Navgroup>
-                    <div><p>Pfeil unten<Menuarrow down /></p></div> 
+                    <div>
+<p>
+Pfeil unten
+<Menuarrow down />
+</p>
+                    </div>
             </Navgroup>
 
             <Navgroup>
-                    <div><p>Pfeil oben<Menuarrow up /></p></div> 
+                    <div>
+<p>
+Pfeil oben
+<Menuarrow up />
+</p>
+                    </div>
             </Navgroup>
 
             <Navgroup>
-                    <div><p>Pfeil links<Menuarrow left /></p></div> 
+                    <div>
+<p>
+Pfeil links
+<Menuarrow left />
+</p>
+                    </div>
             </Navgroup>
 
             <Navgroup>
-                    <div><p>Pfeil rechts<Menuarrow right /></p></div> 
+                    <div>
+<p>
+Pfeil rechts
+<Menuarrow right />
+</p>
+                    </div>
             </Navgroup>
             </div>
           </Navbar>
-          
-      )
-  })
+
+      ))
 /*
 stories.add("component navbar", () => {
     const NavLink = (props) => styled.a`
