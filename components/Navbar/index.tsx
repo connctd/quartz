@@ -169,7 +169,7 @@ interface NavlinkProps {
     text?: string,
     theme? : QuartzTheme,
     target?: string,
-    focus?: Boolean,
+    focus?: boolean,
 };
 
 export const Navlink: React.FC<NavlinkProps> = ({
@@ -190,7 +190,7 @@ Navlink.defaultProps = {
 interface NavgroupProps {
     theme? : QuartzTheme,
     children?: React.ReactNode,
-    focus?: Boolean,
+    focus?: boolean,
 };
 
 export const Navgroup: React.FC<NavgroupProps> = ({
@@ -235,10 +235,10 @@ Menugroup.defaultProps = {
 
 interface MenuarrowProps {
     theme? : QuartzTheme,
-    up? : Boolean,
-    down? : Boolean,
-    left? : Boolean,
-    right? : Boolean,
+    up? : boolean,
+    down? : boolean,
+    left? : boolean,
+    right? : boolean,
 }
 
 export const Menuarrow: React.FC<MenuarrowProps> = ({
