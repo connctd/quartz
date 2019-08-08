@@ -50,7 +50,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook -o dist",
+    "build": "build-storybook -o public",
     "watch": "tsc --watch",
     "lint": "eslint ./components --ext ts,tsx,js,jsx"
   }
