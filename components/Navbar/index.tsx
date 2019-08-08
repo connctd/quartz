@@ -3,8 +3,7 @@ import styled from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 const MainNavbar = styled.div`
-
-    background: ${props => props.theme.gradient.secondary.end};
+    background: ${props => props.theme.blue};
     font-size: 14px;
     position: sticky;
     width: 100%;
@@ -16,8 +15,6 @@ const MainNavbar = styled.div`
         order: 0;
         align-self: flex-start;
         display: flex;
-
-        background: ${props => props.theme.tertiary};
     }
 
     .Staples {
@@ -25,8 +22,6 @@ const MainNavbar = styled.div`
         align-self: flex-start;
         margin-left: auto;
         display: flex;
-        background: ${props => props.theme.tertiary};
-
     }
 
     .menuName {
@@ -55,14 +50,17 @@ const MainNavgroup = styled.div`
     height: 63px;
     text-align: center;
 
-    box-shadow: ${props => {const shadow = "0px 3px 0px 0px " + props.theme.secondary; if (props.focus === true) {return shadow;} else {return "none"} }};
+    box-shadow: ${props => props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : "none" };
 
     div {
-    margin: 20px;
-    color: white;
-    display: inline-block;
-    transition: transform 0.25s;
-    
+        margin: 20px;
+        color: white;
+        display: inline-block;
+        transition: transform 0.25s;
+    }
+
+    :hover {
+        background: ${props => props.theme.tertiary};
     }
 
     :hover .down {
@@ -134,122 +132,12 @@ const MainNavgroup = styled.div`
 
     ul li:hover {
         visibility: visible;
-        background: ${props => props.theme.gradient.secondary.end};
+        background: ${props => props.theme.blue};
     }
 
     ul li {
         padding: 12px 0px 12px;
     }
-
-`
-
-
-
-
-
-/* const MenuCategory = styled.li`
-    float:left;
-
-    div {
-        width: 150px;
-        height: 60px;
-        
-        color: white;
-        display: flex;
-        text-decoration: none;
-        padding: 0px 10px 0px;
-        
-        justify-content:center;
-        align-items:center
-    }
-
-    ul {
-        background: #201E50;
-        color:white;
-        display: none;
-        list-style: none;
-        padding-inline-start: 0px;
-        position: absolute;
-    }
-
-    ul a {
-        width: 150px;
-        color: white;
-        display: block;
-        text-decoration: none;
-        text-align: left;
-        padding: 10px 10px 10px;
-    }
-    
-    ul a: hover {
-        background: #302C70;
-        color:white;
-    }
-
-    :hover ul{
-        display: block;
-    }
-
-    .current {
-        box-shadow: 0px 2px 0px 0px #B1938B, 0px 2px 0px 0px rgba(25,162,135,0);        
-    }
-
-    .right {
-        float:right !important;
-    }
-`
-const MenuStaple = styled.li`
-    float:right;
-
-        span {
-            width: 150px;
-            height: 60px;
-            background: #201E50;
-            color: white;
-            display: flex;
-            text-decoration: none;
-            
-            justify-content:center;
-            align-items:center;
-            padding: 0px 10px 0px;
-        }
-
-        ul {
-            background: #201E50;
-            color:white;
-            display: none;
-            list-style: none;
-            padding-inline-start: 0px;
-            position: absolute;
-        }
-
-        :hover ul{
-            display: block;
-        }
-
-        ul a {
-            width: 150px;
-            color: white;
-            display: block;
-            text-decoration: none;
-            text-align: left;
-            padding: 10px 10px 10px;
-        }
-        
-        ul a:hover {
-            background: #302C70;
-            color:white;
-        }
-`
-*/
-
-export const ArrowDown = styled.div`
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    margin: -3px 10px 0px;
-    transform: rotate(45deg);
 
 `
 
@@ -323,12 +211,12 @@ Navgroup.defaultProps = {
     theme: defaultTheme,
 };
 
-interface MenugrpupProps {
+interface MenugroupProps {
     theme? : QuartzTheme,
     children? : React.ReactNode,
 }
 
-export const Menugroup: React.FC<MenugrpupProps> = ({
+export const Menugroup: React.FC<MenugroupProps> = ({
     theme,
     children,
 }) => {

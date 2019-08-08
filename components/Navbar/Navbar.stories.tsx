@@ -17,7 +17,6 @@ stories.add("Navbar", () => {
         <Navbar>
             <div className="Items">
                 <div className="menuName">Connctd</div>
-                <div className="menuName">Connctd</div>
                 <Navgroup>
                     <Navlink target="http://example.com" text="Test123" />
                 </Navgroup>
