@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import { defaultTheme, QuartzTheme } from "../theme"
+import { defaultTheme, Themeable } from "../theme"
 
 const MainNavbar = styled.div`
     background: ${props => props.theme.blue};
@@ -141,9 +141,8 @@ const MainNavgroup = styled.div`
 
 `
 
-interface NavbarProps {
+interface NavbarProps extends Themeable {
     text?: string,
-    theme?: QuartzTheme,
     children?: React.ReactNode,
 }
 
@@ -165,9 +164,8 @@ Navbar.defaultProps = {
 
 // Navlink
 
-interface NavlinkProps {
+interface NavlinkProps extends Themeable{
     text?: string,
-    theme? : QuartzTheme,
     target?: string,
     focus?: boolean,
 };
@@ -187,8 +185,7 @@ Navlink.defaultProps = {
     theme: defaultTheme,
 };
 
-interface NavgroupProps {
-    theme? : QuartzTheme,
+interface NavgroupProps extends Themeable {
     children?: React.ReactNode,
     focus?: boolean,
 };
@@ -211,8 +208,7 @@ Navgroup.defaultProps = {
     theme: defaultTheme,
 };
 
-interface MenugroupProps {
-    theme? : QuartzTheme,
+interface MenugroupProps extends Themeable {
     children? : React.ReactNode,
 }
 
@@ -233,8 +229,7 @@ Menugroup.defaultProps = {
     theme: defaultTheme,
 };
 
-interface MenuarrowProps {
-    theme? : QuartzTheme,
+interface MenuarrowProps extends Themeable {
     up? : boolean,
     down? : boolean,
     left? : boolean,
@@ -248,7 +243,7 @@ export const Menuarrow: React.FC<MenuarrowProps> = ({
     left,
     right,
 }) => {
-    var arrowName: string = "";
+    let arrowName: string = "";
 
     if (up === true) {
         arrowName = "menuArrow up";
