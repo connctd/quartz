@@ -48,7 +48,7 @@ Input.defaultProps = {
 
 export interface CheckboxProps extends Themeable {
     id: string
-    children: React.ReactNode
+    children?: React.ReactNode
     checked: boolean
     onChange: Function
 }
