@@ -87,6 +87,12 @@ const CheckboxContainer = styled.label`
     grid-template-columns: 22px auto;
     grid-column-gap: 5px;
     padding: 10px 0;
+
+    &:focus-within {
+        ${StyledCheckbox} {
+            border: 1px solid ${props => props.theme.green};
+        }
+    }
 `
 
 const tickedAnimation = keyframes`
@@ -129,5 +135,36 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 )
 
 Checkbox.defaultProps = {
+    theme: defaultTheme,
+}
+
+
+const StyledTextArea = styled.textarea`
+    padding: 12px 20px;
+    margin: 6px 0 12px 0;
+    display: inline-block;
+    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+    overflow: auto;
+    height: ${props => (props.height ? props.height : "120px")};
+
+    :focus {
+        border: 1px solid ${props => props.theme.green}
+    }
+`
+
+interface TextAreaProps extends Themeable {
+    height?: number
+}
+
+export const TextArea: React.FC<TextAreaProps> = props => (
+    <StyledTextArea {...props} />
+)
+
+TextArea.defaultProps = {
     theme: defaultTheme,
 }
