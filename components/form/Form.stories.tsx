@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withKnobs, text, boolean } from "@storybook/addon-knobs"
-import { Input, Checkbox } from "./index"
+import { Input, Checkbox, TextArea } from "./index"
 
 const stories = storiesOf("Form", module)
 stories.addDecorator(withKnobs)
@@ -36,3 +36,5 @@ const CheckBoxStory = () => {
 }
 
 stories.add("Checkbox", () => <CheckBoxStory />)
+
+stories.add("Textarea", () => <TextArea />)
