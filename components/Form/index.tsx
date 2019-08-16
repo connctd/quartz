@@ -14,9 +14,7 @@ export interface InputProps
 const StyledInput = styled.input`
     padding: 12px 20px;
     display: inline-block;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
-    border-radius: 3px;
-    box-sizing: border-box;
+    
     font-size: 14px;
     width: 100%;
 
@@ -29,6 +27,10 @@ const StyledInputContainer = styled.div`
     display: flex;
     width: 100%;
     margin: 0 0 12px 0;
+    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border-radius: 3px;
+    box-sizing: border-box;
+    overflow:hidden;
 `
 
 const StyledIconContainer = styled.div`
@@ -43,7 +45,7 @@ const StyledIconContainer = styled.div`
 
 
 export const Input: React.FC<InputProps> = props => (
-    <StyledInputContainer>
+    <StyledInputContainer {...props}>
         <StyledInput {...props} />
         {props.icon ? <StyledIconContainer{...props} > </StyledIconContainer> : ""}
     </StyledInputContainer>
