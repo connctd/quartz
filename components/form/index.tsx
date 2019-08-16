@@ -1,6 +1,7 @@
+/*eslint-disable react/jsx-one-expression-per-line */
 import * as React from "react"
 import styled, { keyframes } from "styled-components"
-import { defaultTheme, QuartzTheme } from "../theme"
+import { defaultTheme, QuartzTheme, Themeable } from "../theme"
 
 
 export interface InputProps
@@ -8,6 +9,10 @@ export interface InputProps
     theme?: QuartzTheme
     error?: boolean
     icon? : string
+    label?: string
+    id?: string
+    className?: string
+
 }
 
 const StyledInput = styled.input`
@@ -42,25 +47,33 @@ const StyledIconContainer = styled.div`
     display: ${props => (props.icon ? "inline-block" : "none")};
 `
 
+export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
+    if (label) {
+        return (
+            <label htmlFor={id}>
+                &nbsp; {label}
+                
+                <StyledInputContainer {...rest}>
+                    <StyledInput id={id} {...rest} />
+                    <StyledIconContainer {...rest} />
+                </StyledInputContainer>
+            </label>
+        )
+    }
 
-export const Input: React.FC<InputProps> = props => (
-    <StyledInputContainer {...props}>
-        <StyledInput {...props} />
-        <StyledIconContainer {...props} />
-    </StyledInputContainer>
-)
+    return <StyledInput {...rest} />
+}
 
 Input.defaultProps = {
     type: "text",
     theme: defaultTheme,
 }
 
-export interface CheckboxProps {
+export interface CheckboxProps extends Themeable {
     id: string
     children: React.ReactNode
     checked: boolean
     onChange: Function
-    theme?: QuartzTheme
 }
 
 // Hide checkbox visually but remain accessible to screen readers.
@@ -93,8 +106,10 @@ const StyledCheckbox = styled.div`
 `
 
 const CheckboxContainer = styled.label`
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 22px auto;
+    grid-column-gap: 5px;
+    padding: 10px 0;
 `
 
 const tickedAnimation = keyframes`
@@ -121,9 +136,9 @@ const Tick = styled.svg`
 `
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-    id, children, checked, onChange, theme = defaultTheme,
+    id, children, checked, onChange, theme = defaultTheme, className,
 }) => (
-    <CheckboxContainer htmlFor={id}>
+    <CheckboxContainer className={className} htmlFor={id}>
             <StyledCheckbox theme={theme} onClick={() => { onChange() }}>
                 {checked && (
                     <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">

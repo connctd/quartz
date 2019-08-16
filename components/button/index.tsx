@@ -30,16 +30,16 @@ const StyledButton = styled.button`
     }
 `
 
-const StyledAnchorButton = styled.a`
+export const StyledAnchorButton = styled.a`
     background: linear-gradient(180deg, ${props => props.theme.gradient[props.appearance].start} -76.56%, ${props => props.theme.gradient[props.appearance].end} 150%);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px ${props => (props.small ? "1px 3px" : "3px 10px")} rgba(0, 0, 0, 0.2);
     color: ${props => props.theme.gradient[props.appearance].text};
-    border-radius: 12px;
+    border-radius: ${props => (props.small ? 5 : 12)}px;
     border: none;
-    padding: 10px 20px;
+    padding: ${props => (props.small ? "5px 10px" : "10px 20px")};
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: ${props => (props.small ? 12 : 18)}px;
     text-decoration: none;
     cursor: pointer;
 
@@ -62,9 +62,10 @@ export enum ButtonAppearance {
 }
 
 
-interface ButtonProps {
+export interface ButtonProps {
     text: string
     appearance?: ButtonAppearance
+    small?: boolean
     type?: "button" | "submit" | "reset"
     onClick?: Function
     /**
@@ -82,7 +83,7 @@ interface ButtonProps {
  *
  */
 export const Button: React.FC<ButtonProps> = ({
-    text, appearance, type, onClick, theme = defaultTheme, href, style, className,
+    text, appearance, type, onClick, theme = defaultTheme, href, style, className, small,
 }) => {
     if (href) {
         return (
@@ -92,6 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
               appearance={appearance}
               theme={theme}
               href={href}
+              small={small}
             >
                 <StyledButtonText>{text}</StyledButtonText>
             </StyledAnchorButton>

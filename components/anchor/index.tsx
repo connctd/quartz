@@ -6,10 +6,12 @@ interface AnchorProps extends Themeable {
     href: string
     children: React.ReactNode
     primary?: boolean
+    target?: string
 }
 
 export const StyledAnchor = styled.a`
     color: ${props => (props.primary ? props.theme.primary : props.theme.dark)};
+    text-decoration: underline;
 `
 
 export const Anchor: React.FC<AnchorProps> = ({ children, ...rest }) => (

@@ -31,9 +31,18 @@ stories.add("Anchor Link", () => {
   const spacing = number("Spacing", 15)
   return (
     <div>
-      <Button style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
-      <Button appearance={ButtonAppearance.primary} style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
-      <Button appearance={ButtonAppearance.secondary} href={link} onClick={action("onClick")} text={btnText} />
+      <div style={{ height: 30 }}>
+        <Button style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
+        <Button appearance={ButtonAppearance.primary} style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
+        <Button appearance={ButtonAppearance.secondary} href={link} onClick={action("onClick")} text={btnText} />
+      </div>
+      <div>
+        <h2>Small:</h2>
+        <Button small style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
+        <Button small appearance={ButtonAppearance.primary} style={{ marginRight: spacing }} href={link} onClick={action("onClick")} text={btnText} />
+        <Button small appearance={ButtonAppearance.secondary} href={link} onClick={action("onClick")} text={btnText} />
+      </div>
     </div>
+
   )
 })

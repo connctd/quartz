@@ -17,6 +17,11 @@ stories.add("Input", () => {
   return <Input placeholder={placeholder} onChange={action("onChange")} />
 })
 
+stories.add("Input with label", () => {
+  const placeholder: string = text("Label", "Email")
+  return <Input label={placeholder} onChange={action("onChange")} />
+})
+
 stories.add("Input Error", () => {
   const placeholder: string = text("Placeholder", "Email")
   const errored: boolean = boolean("Error", true)
