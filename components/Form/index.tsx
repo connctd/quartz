@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 
-
 export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
@@ -40,14 +39,14 @@ const StyledIconContainer = styled.div`
     background-repeat:no-repeat;
     background-size:contain;
     background-position: center; 
+    display: ${props => (props.icon ? "inline-block" : "none")};
 `
-
 
 
 export const Input: React.FC<InputProps> = props => (
     <StyledInputContainer {...props}>
         <StyledInput {...props} />
-        {props.icon ? <StyledIconContainer{...props} > </StyledIconContainer> : ""}
+        <StyledIconContainer {...props} />
     </StyledInputContainer>
 )
 
@@ -159,11 +158,10 @@ const StyledTextarea = styled.textarea`
 
 
 export interface TextareaProps {
-    theme?: QuartzTheme,
-    text? : string,
-    placeholder? : string,
-    error?: boolean,
-    readonly?: boolean
+    theme?: QuartzTheme
+    text? : string
+    placeholder? : string
+    error?: boolean
 }
 
 export const Textarea: React.FC<TextareaProps> = ({
@@ -171,30 +169,29 @@ export const Textarea: React.FC<TextareaProps> = ({
     text,
     placeholder,
     error,
-    readonly,
 }) => (
-    <StyledTextarea placeholder={placeholder} theme={theme} error={error} readonly>{text}</StyledTextarea>
+    <StyledTextarea placeholder={placeholder} theme={theme} error={error}>{text}</StyledTextarea>
 )
 
-Textarea.defaultProps = {
+Textarea.defaultProps = {
     theme: defaultTheme,
-};
+}
 
 // Pill Component
 
 const StyledPill = styled.div`
-    border: 1px solid ${ props => props.theme.light50};
+    border: 1px solid ${props => props.theme.light50};
     display: inline-block;
     border-radius: 5px;
-    background: ${ props => props.theme.light30};
+    background: ${props => props.theme.light30};
     padding: 5px 7px 5px 5px;
     margin: 0px 0px 0px 10px;
-    color: ${ props => props.theme.dark};
+    color: ${props => props.theme.dark};
 `
 
 export interface PillProps {
-    theme? : QuartzTheme,
-    children? :  React.ReactNode
+    theme? : QuartzTheme
+    children? : React.ReactNode
 
 }
 
@@ -206,5 +203,5 @@ export const Pill: React.FC<PillProps> = ({
 )
 
 Pill.defaultProps = {
-    theme : defaultTheme,
-};
+    theme: defaultTheme,
+}
