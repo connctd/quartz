@@ -21,10 +21,6 @@ const StyledInput = styled.input`
     border: 0;
     font-size: 14px;
     width: 100%;
-
-    :focus {
-        border: 1px solid ${props => props.theme.green}
-    }
 `
 
 const StyledInputContainer = styled.div`
@@ -35,6 +31,10 @@ const StyledInputContainer = styled.div`
     border-radius: 3px;
     box-sizing: border-box;
     overflow:hidden;
+
+    focus {
+        border: 1px solid ${props => props.theme.green}
+    }
 `
 
 const StyledIconContainer = styled.div`
@@ -52,16 +52,22 @@ export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
         return (
             <label htmlFor={id}>
                 &nbsp; {label}
-                
+
                 <StyledInputContainer {...rest}>
                     <StyledInput id={id} {...rest} />
                     <StyledIconContainer {...rest} />
                 </StyledInputContainer>
+
             </label>
         )
     }
 
-    return <StyledInput {...rest} />
+        return (
+            <StyledInputContainer {...rest}>
+                <StyledInput id={id} {...rest} />
+                <StyledIconContainer {...rest} />
+            </StyledInputContainer>
+        )
 }
 
 Input.defaultProps = {
@@ -152,43 +158,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 )
 
 Checkbox.defaultProps = {
-    theme: defaultTheme,
-}
-
-// Textarea
-
-const StyledTextarea = styled.textarea`
-    display: inline-block;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 14px;
-    width: 100%;
-    resize: none;
-
-    :focus {
-        border: 1px solid ${props => props.theme.green}
-    }
-`
-
-
-export interface TextareaProps {
-    theme?: QuartzTheme
-    text? : string
-    placeholder? : string
-    error?: boolean
-}
-
-export const Textarea: React.FC<TextareaProps> = ({
-    theme = defaultTheme,
-    text,
-    placeholder,
-    error,
-}) => (
-    <StyledTextarea placeholder={placeholder} theme={theme} error={error}>{text}</StyledTextarea>
-)
-
-Textarea.defaultProps = {
     theme: defaultTheme,
 }
 
