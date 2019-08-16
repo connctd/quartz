@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withKnobs, text, boolean } from "@storybook/addon-knobs"
-import { Input, Checkbox, Textarea } from "./index"
+import { Input, Checkbox, Textarea, Pill } from "./index"
 
 const stories = storiesOf("Form", module)
 stories.addDecorator(withKnobs)
@@ -32,7 +32,20 @@ stories.add("Input disabled", () => {
 })
 
 stories.add("Textarea", () => {
-  return <Textarea />
+  return <Textarea placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."/>
+})
+
+stories.add("Textarea Error", () => {
+  const errored: boolean = boolean("Error", true)
+  return <Textarea error={errored} placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."/>
+})
+
+stories.add("Pill", () => {
+  return (
+    <div>
+    <Pill>Testpillcomponent</Pill><Pill>Testpillcomponent</Pill>
+  </div>
+  )
 })
 
 const CheckBoxStory = () => {
@@ -45,3 +58,4 @@ const CheckBoxStory = () => {
 }
 
 stories.add("Checkbox", () => <CheckBoxStory />)
+

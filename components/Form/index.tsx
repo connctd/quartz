@@ -139,16 +139,68 @@ Checkbox.defaultProps = {
     theme: defaultTheme,
 }
 
+// Textarea
+
+const StyledTextarea = styled.textarea`
+    display: inline-block;
+    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 100%;
+    resize: none;
+
+    :focus {
+        border: 1px solid ${props => props.theme.green}
+    }
+`
+
+
 export interface TextareaProps {
-    theme?: QuartzTheme
+    theme?: QuartzTheme,
+    text? : string,
+    placeholder? : string,
+    error?: boolean
 }
 
 export const Textarea: React.FC<TextareaProps> = ({
     theme = defaultTheme,
+    text,
+    placeholder,
+    error,
 }) => (
-    <textarea>Test</textarea>
+    <StyledTextarea placeholder={placeholder} theme={theme} error={error}>{text}</StyledTextarea>
 )
 
 Textarea.defaultProps = {
     theme: defaultTheme,
+};
+
+// Pill Component
+
+const StyledPill = styled.div`
+    border: 1px solid ${ props => props.theme.light50};
+    display: inline-block;
+    border-radius: 5px;
+    background: ${ props => props.theme.light30};
+    padding: 2px 7px 5px 5px;
+    margin: 0px 0px 0px 10px;
+    color: ${ props => props.theme.dark};
+`
+
+export interface PillProps {
+    theme? : QuartzTheme,
+    children? :  React.ReactNode
+
+}
+
+export const Pill: React.FC<PillProps> = ({
+    theme = defaultTheme,
+    children,
+}) => (
+    <StyledPill theme={theme}>{children}</StyledPill>
+)
+
+Pill.defaultProps = {
+    theme : defaultTheme,
 };
