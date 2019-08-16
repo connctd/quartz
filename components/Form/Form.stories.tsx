@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
 import { action } from "@storybook/addon-actions"
 import { withKnobs, text, boolean } from "@storybook/addon-knobs"
-import { Input, Checkbox } from "./index"
+import { Input, Checkbox, Textarea } from "./index"
 
 const stories = storiesOf("Form", module)
 stories.addDecorator(withKnobs)
@@ -29,6 +29,10 @@ stories.add("Input with Icon", () => {
 stories.add("Input disabled", () => {
   const placeholder: string = text("Placeholder", "Email")
   return <Input placeholder={placeholder} onChange={action("onChange")} disabled/>
+})
+
+stories.add("Textarea", () => {
+  return <Textarea />
 })
 
 const CheckBoxStory = () => {

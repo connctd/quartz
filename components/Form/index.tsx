@@ -138,3 +138,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 Checkbox.defaultProps = {
     theme: defaultTheme,
 }
+
+export interface TextareaProps {
+    theme?: QuartzTheme
+}
+
+export const Textarea: React.FC<TextareaProps> = ({
+    theme = defaultTheme,
+}) => (
+    <textarea>Test</textarea>
+)
+
+Textarea.defaultProps = {
+    theme: defaultTheme,
+};
