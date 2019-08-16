@@ -3,15 +3,16 @@ import styled, { keyframes } from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 
+
 export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
     error?: boolean
+    icon? : string
 }
 
 const StyledInput = styled.input`
     padding: 12px 20px;
-    margin: 0 0 12px 0;
     display: inline-block;
     border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
@@ -24,8 +25,28 @@ const StyledInput = styled.input`
     }
 `
 
+const StyledInputContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 0 0 12px 0;
+`
+
+const StyledIconContainer = styled.div`
+    background: ${props => props.theme.blue}
+    background-image: url('${props => props.icon}');
+    width: 50px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center; 
+`
+
+
+
 export const Input: React.FC<InputProps> = props => (
-    <StyledInput {...props} />
+    <StyledInputContainer>
+        <StyledInput {...props} />
+        {props.icon ? <StyledIconContainer{...props} > </StyledIconContainer> : ""}
+    </StyledInputContainer>
 )
 
 Input.defaultProps = {

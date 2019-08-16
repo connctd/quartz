@@ -21,6 +21,11 @@ stories.add("Input Error", () => {
   return <Input error={errored} placeholder={placeholder} onChange={action("onChange")} />
 })
 
+stories.add("Input with Icon", () => {
+  const placeholder: string = text("Placeholder", "Email")
+  return <Input placeholder={placeholder} onChange={action("onChange")} icon="http://amas-gmbh.de/wp-content/uploads/2017/01/Icon-Placeholder.png"/>
+})
+
 const CheckBoxStory = () => {
   const [checked, check] = useState(true)
   return (
