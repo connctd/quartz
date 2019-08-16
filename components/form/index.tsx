@@ -7,7 +7,8 @@ import { defaultTheme, QuartzTheme, Themeable } from "../theme"
 export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
-    error?: boolean
+    hasError?: boolean
+    error?: string
     label?: string
     id?: string
     className?: string
@@ -17,7 +18,7 @@ const StyledInput = styled.input`
     padding: 12px 20px;
     margin: 6px 0 12px 0;
     display: inline-block;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border: ${props => (props.hasError ? 2 : 1)}px solid ${props => (props.hasError ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
     box-sizing: border-box;
     font-size: 14px;
@@ -28,18 +29,22 @@ const StyledInput = styled.input`
     }
 `
 
-export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
-    if (label) {
-        return (
-            <label htmlFor={id}>
-                &nbsp; {label}
-                <StyledInput id={id} name={id} {...rest} />
-            </label>
-        )
-    }
+const FieldError = styled.div`
+    color: ${props => props.theme.error};
+    margin: -10px 0 12px 0;
+`
 
-    return <StyledInput {...rest} />
-}
+export const Input: React.FC<InputProps> = ({
+ label, id, error, ...rest
+}) => (
+    <label htmlFor={id}>
+        {label}
+        <StyledInput id={id} name={id} {...rest} />
+        <FieldError>
+            {error}
+        </FieldError>
+    </label>
+)
 
 Input.defaultProps = {
     type: "text",
@@ -49,8 +54,8 @@ Input.defaultProps = {
 export interface CheckboxProps extends Themeable {
     id: string
     children?: React.ReactNode
-    checked: boolean
-    onChange: Function
+    checked?: boolean
+    onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void)
 }
 
 // Hide checkbox visually but remain accessible to screen readers.
@@ -122,14 +127,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     id, children, checked, onChange, theme = defaultTheme, className,
 }) => (
     <CheckboxContainer className={className} htmlFor={id}>
-            <StyledCheckbox theme={theme} onClick={() => { onChange() }}>
+            <StyledCheckbox theme={theme} onClick={(e) => { onChange(e) }}>
                 {checked && (
                     <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
                         <path className={`checkboxTick${checked ? "--checked" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                     </Tick>
                 )}
             </StyledCheckbox>
-            <InvisibleCheckbox checked={checked} id={id} />
+            <InvisibleCheckbox checked={checked} onChange={onChange} id={id} />
             {children}
     </CheckboxContainer>
 )
@@ -159,6 +164,8 @@ const StyledTextArea = styled.textarea`
 
 interface TextAreaProps extends Themeable {
     height?: number
+    onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void)
+    value?: string
 }
 
 export const TextArea: React.FC<TextAreaProps> = props => (

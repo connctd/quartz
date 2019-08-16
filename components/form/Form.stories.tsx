@@ -23,7 +23,7 @@ stories.add("Input with label", () => {
 stories.add("Input Error", () => {
   const placeholder: string = text("Placeholder", "Email")
   const errored: boolean = boolean("Error", true)
-  return <Input error={errored} placeholder={placeholder} onChange={action("onChange")} />
+  return <Input hasError={errored} placeholder={placeholder} onChange={action("onChange")} />
 })
 
 const CheckBoxStory = () => {
