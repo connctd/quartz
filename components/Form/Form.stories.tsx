@@ -35,15 +35,21 @@ stories.add("Textarea", () => {
   return <Textarea placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."/>
 })
 
+stories.add("Textarea Disabled", () => {
+  return <Textarea placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit." readonly/>
+})
+
 stories.add("Textarea Error", () => {
   const errored: boolean = boolean("Error", true)
   return <Textarea error={errored} placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit."/>
 })
 
+
+
 stories.add("Pill", () => {
   return (
     <div>
-    <Pill>Testpillcomponent</Pill><Pill>Testpillcomponent</Pill>
+    <Pill>Testpillcomponent One</Pill><Pill>Testpillcomponent Two</Pill>
   </div>
   )
 })

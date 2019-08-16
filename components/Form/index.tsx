@@ -14,7 +14,7 @@ export interface InputProps
 const StyledInput = styled.input`
     padding: 12px 20px;
     display: inline-block;
-    
+    border: 0;
     font-size: 14px;
     width: 100%;
 
@@ -162,7 +162,8 @@ export interface TextareaProps {
     theme?: QuartzTheme,
     text? : string,
     placeholder? : string,
-    error?: boolean
+    error?: boolean,
+    readonly?: boolean
 }
 
 export const Textarea: React.FC<TextareaProps> = ({
@@ -170,8 +171,9 @@ export const Textarea: React.FC<TextareaProps> = ({
     text,
     placeholder,
     error,
+    readonly,
 }) => (
-    <StyledTextarea placeholder={placeholder} theme={theme} error={error}>{text}</StyledTextarea>
+    <StyledTextarea placeholder={placeholder} theme={theme} error={error} readonly>{text}</StyledTextarea>
 )
 
 Textarea.defaultProps = {
@@ -185,7 +187,7 @@ const StyledPill = styled.div`
     display: inline-block;
     border-radius: 5px;
     background: ${ props => props.theme.light30};
-    padding: 2px 7px 5px 5px;
+    padding: 5px 7px 5px 5px;
     margin: 0px 0px 0px 10px;
     color: ${ props => props.theme.dark};
 `
