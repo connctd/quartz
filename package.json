@@ -47,9 +47,9 @@
   },
   "scripts": {
     "prepublishOnly": "tsc",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public",
     "watch": "tsc --watch",
     "lint": "eslint ./components --ext ts,tsx,js,jsx"

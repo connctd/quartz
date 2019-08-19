@@ -1,6 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
-import { defaultTheme, Themeable } from "../theme"
+import { defaultTheme, Themeable } from "../theme/index"
 
 const MainNavbar = styled.div`
     background: ${props => props.theme.blue};
@@ -43,7 +43,7 @@ const MainNavgroup = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    
+
     width: 150px;
     margin: 0px;
     padding: 0px;
@@ -78,7 +78,7 @@ const MainNavgroup = styled.div`
     :hover .right {
         transform: rotate(135deg);
     }
-    
+
     div p {
         margin: 0px;
     }
@@ -89,10 +89,10 @@ const MainNavgroup = styled.div`
         display: inline-block;
         padding: 3px;
         margin: -3px 10px 0px;
-        
+
     }
 
-    
+
 
     .down{
         transform: rotate(45deg);
@@ -110,7 +110,7 @@ const MainNavgroup = styled.div`
         transform: rotate(-45deg);
     }
 
-    
+
     ul {
         visibility: hidden;
         list-style: none;

@@ -8,7 +8,7 @@ export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
     error?: boolean
-    icon? : string
+    icon? : React.ReactNode
     label?: string
     id?: string
     className?: string
@@ -21,41 +21,44 @@ const StyledInput = styled.input`
     border: 0;
     font-size: 14px;
     width: 100%;
+    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border-radius: ${props => (props.icon ? "3px 0 0 3px" : "3px")};
+    :focus {
+        border: 1px solid ${props => props.theme.green}
+    }
 `
 
 const StyledInputContainer = styled.div`
     display: flex;
     width: 100%;
     margin: 0 0 12px 0;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
-    border-radius: 3px;
     box-sizing: border-box;
-    overflow:hidden;
-
-    focus {
-        border: 1px solid ${props => props.theme.green}
-    }
+    overflow: hidden;
 `
 
 const StyledIconContainer = styled.div`
-    background: ${props => props.theme.blue}
-    background-image: url('${props => props.icon}');
-    width: 50px;
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position: center;
-    display: ${props => (props.icon ? "inline-block" : "none")};
+    height: 43px;
+    width: 43px;
+    background-color: ${props => props.theme.green};
+    border-radius: 0 3px 3px 0;
+`
+const IconSpacing = styled.div`
+    padding: 8px;
 `
 
-export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
+export const Input: React.FC<InputProps> = ({
+ label, id, icon, theme, ...rest
+}) => {
     if (label) {
         return (
             <label htmlFor={id}>
                 &nbsp; {label}
 
-                <StyledInputContainer {...rest}>
-                    <StyledInput id={id} {...rest} />
-                    <StyledIconContainer {...rest} />
+                <StyledInputContainer>
+                    <StyledInput id={id} icon={icon} theme={theme} {...rest} />
+                    <StyledIconContainer theme={theme}>
+                        <IconSpacing>{icon}</IconSpacing>
+                    </StyledIconContainer>
                 </StyledInputContainer>
 
             </label>
@@ -63,9 +66,13 @@ export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
     }
 
         return (
-            <StyledInputContainer {...rest}>
-                <StyledInput id={id} {...rest} />
-                <StyledIconContainer {...rest} />
+            <StyledInputContainer>
+                    <StyledInput id={id} icon={icon} theme={theme} {...rest} />
+                    {icon && (
+                    <StyledIconContainer theme={theme}>
+                        <IconSpacing>{icon}</IconSpacing>
+                    </StyledIconContainer>
+                    )}
             </StyledInputContainer>
         )
 }

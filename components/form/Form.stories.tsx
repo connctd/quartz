@@ -7,7 +7,6 @@ import {
  Input, Checkbox, Pill,
 } from "./index"
 
-
 const stories = storiesOf("Form", module)
 stories.addDecorator(withKnobs)
 stories.addDecorator(withInfo)
@@ -31,7 +30,12 @@ stories.add("Input Error", () => {
 
 stories.add("Input with Icon", () => {
   const placeholder: string = text("Placeholder", "Email")
-  return <Input placeholder={placeholder} onChange={action("onChange")} icon="http://amas-gmbh.de/wp-content/uploads/2017/01/Icon-Placeholder.png" />
+  return (
+    <div>
+      <Input placeholder={placeholder} onChange={action("onChange")} icon={<img width="100%" src="/copy.svg" alt="copy" />} />
+      <Input placeholder={placeholder} error onChange={action("onChange")} icon={<img width="100%" src="/copy.svg" alt="copy" />} />
+    </div>
+  )
 })
 
 stories.add("Input disabled", () => {
