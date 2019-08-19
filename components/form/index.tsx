@@ -96,6 +96,7 @@ const CheckboxContainer = styled.label`
     &:focus-within {
         ${StyledCheckbox} {
             border: 1px solid ${props => props.theme.green};
+            box-shadow: 0px 0px 3px 0px ${props => props.theme.green};
         }
     }
 `
@@ -144,11 +145,11 @@ Checkbox.defaultProps = {
 }
 
 
-const StyledTextArea = styled.textarea`
+const StyledTextArea = styled.textarea<TextAreaProps>`
     padding: 12px 20px;
     margin: 6px 0 12px 0;
     display: inline-block;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
+    border: ${props => (props.hasError ? 2 : 1)}px solid ${props => (props.hasError ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
     box-sizing: border-box;
     font-size: 14px;
@@ -159,17 +160,25 @@ const StyledTextArea = styled.textarea`
 
     :focus {
         border: 1px solid ${props => props.theme.green}
+
     }
 `
 
 interface TextAreaProps extends Themeable {
     height?: number
-    onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void)
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     value?: string
+    hasError?: boolean
+    error?: string
 }
 
-export const TextArea: React.FC<TextAreaProps> = props => (
-    <StyledTextArea {...props} />
+export const TextArea: React.FC<TextAreaProps> = ({ error, ...rest }) => (
+    <div>
+        <StyledTextArea {...rest} />
+        <FieldError>
+                {error}
+        </FieldError>
+    </div>
 )
 
 TextArea.defaultProps = {
