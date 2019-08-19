@@ -38,7 +38,12 @@ stories.add("Input with Icon", () => {
     )
 })
 
-stories.add("Input disabled", () => <Input value="f06ccfd4-d5ba-4767-b69a-d3eec758e6d4" onChange={action("onChange")} disabled />)
+stories.add("Input disabled", () => (
+    <div>
+        <Input value="f06ccfd4-d5ba-4767-b69a-d3eec758e6d4" onChange={action("onChange")} disabled />
+        <Input value="readonly" onChange={action("onChange")} readOnly />
+    </div>
+))
 
 
 stories.add("Pill", () => (
