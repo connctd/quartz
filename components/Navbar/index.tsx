@@ -149,10 +149,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     theme,
     children,
 }) => (
-        <MainNavbar theme={theme}>
-            {children}
-        </MainNavbar>
-    )
+    <MainNavbar theme={theme}>
+        {children}
+    </MainNavbar>
+)
 
 Navbar.defaultProps = {
     theme: defaultTheme,
@@ -171,8 +171,8 @@ export const Navlink: React.FC<NavlinkProps> = ({
     target,
     focus,
 }) => (
-        <a className={focus ? "focus" : ""} href={target}>{text}</a>
-    )
+    <a className={focus ? "focus" : ""} href={target}>{text}</a>
+)
 
 Navlink.defaultProps = {
     theme: defaultTheme,
@@ -188,11 +188,11 @@ export const Navgroup: React.FC<NavgroupProps> = ({
     children,
     focus,
 }) => (
-        <MainNavgroup focus={focus} theme={theme}>
+    <MainNavgroup focus={focus} theme={theme}>
 
-            {children}
-        </MainNavgroup>
-    )
+        {children}
+    </MainNavgroup>
+)
 
 Navgroup.defaultProps = {
     theme: defaultTheme,
@@ -205,10 +205,10 @@ interface MenugroupProps extends Themeable {
 export const Menugroup: React.FC<MenugroupProps> = ({
     children,
 }) => (
-        <ul>
-            {React.Children.map(children, child => <li>{child}</li>)}
-        </ul>
-    )
+    <ul>
+        {React.Children.map(children, child => <li>{child}</li>)}
+    </ul>
+)
 
 Menugroup.defaultProps = {
     theme: defaultTheme,

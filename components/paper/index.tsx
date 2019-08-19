@@ -20,7 +20,7 @@ export const Paper: React.FC<PaperProps> = ({ children, ...rest }) => (
     <StyledPaper {...rest}>
         {children}
     </StyledPaper>
-  )
+)
 
 
 export default Paper

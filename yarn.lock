@@ -953,10 +953,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@connctd/eslint-config-typescript@^1.0.1":
-  version "1.0.1"
-  resolved "https://npm.build.connctd.io/@connctd%2feslint-config-typescript/-/eslint-config-typescript-1.0.1.tgz#ff7a338fcf1534bd83b16bbd2dba6c561e601bb1"
-  integrity sha512-R93EUn6Fn0a8cLmDFFkQAKQkGGc4GuaIUT/Ip9KYMZouaP2O4+SOP5exv0MED6//GTc/ArV0eVAZGIWU1UZH8g==
+"@connctd/eslint-config-typescript@^1.0.3":
+  version "1.0.3"
+  resolved "https://npm.build.connctd.io/@connctd%2feslint-config-typescript/-/eslint-config-typescript-1.0.3.tgz#dc34ea0b435901f5a313db93ee95efd77948393c"
+  integrity sha512-W4BziddshLvb44zhOXolzKofshETYdJhn+O6t1EAOmkD4uonaevLJJs6tL1Y9pL0ue2ldm5jTfAv8vCjoo3K6A==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^1.11.0"
     "@typescript-eslint/parser" "^1.11.0"

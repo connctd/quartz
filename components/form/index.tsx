@@ -52,16 +52,16 @@ const FieldError = styled.div`
 `
 
 export const Input: React.FC<InputProps> = ({
- label, id, hasError, error, theme, icon, ...rest
+    label, id, hasError, error, theme, icon, ...rest
 }) => (
     <label htmlFor={id}>
         {label}
         <StyledInputContainer>
             <StyledInput id={id} hasError={hasError} icon={icon} theme={theme} {...rest} />
             {icon && (
-            <StyledIconContainer theme={theme} hasError={hasError}>
-                <IconSpacing>{icon}</IconSpacing>
-            </StyledIconContainer>
+                <StyledIconContainer theme={theme} hasError={hasError}>
+                    <IconSpacing>{icon}</IconSpacing>
+                </StyledIconContainer>
             )}
         </StyledInputContainer>
         <FieldError>
@@ -152,15 +152,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     id, children, checked, onChange, theme = defaultTheme, className,
 }) => (
     <CheckboxContainer className={className} htmlFor={id}>
-            <StyledCheckbox theme={theme} onClick={(e) => { onChange(e) }}>
-                {checked && (
-                    <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
-                        <path className={`checkboxTick${checked ? "--checked" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                    </Tick>
-                )}
-            </StyledCheckbox>
-            <InvisibleCheckbox checked={checked} onChange={onChange} id={id} />
-            {children}
+        <StyledCheckbox theme={theme} onClick={(e) => { onChange(e) }}>
+            {checked && (
+                <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
+                    <path className={`checkboxTick${checked ? "--checked" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                </Tick>
+            )}
+        </StyledCheckbox>
+        <InvisibleCheckbox checked={checked} onChange={onChange} id={id} />
+        {children}
     </CheckboxContainer>
 )
 
@@ -228,7 +228,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ error, ...rest }) => (
     <div>
         <StyledTextArea {...rest} />
         <FieldError>
-                {error}
+            {error}
         </FieldError>
     </div>
 )

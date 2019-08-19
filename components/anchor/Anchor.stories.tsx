@@ -11,11 +11,11 @@ stories.addParameters({ info: { inline: true } })
 
 stories.add("Anchor Link", () => {
     const anchorText = text("Text", "Sign Up")
-  const spacing = number("Spacing", 15)
-  return (
-    <div>
-        <Anchor style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
-        <Anchor primary style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
-    </div>
-  )
+    const spacing = number("Spacing", 15)
+    return (
+        <div>
+            <Anchor style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
+            <Anchor primary style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
+        </div>
+    )
 })

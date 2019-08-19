@@ -5,7 +5,7 @@ import { withInfo } from "@storybook/addon-info"
 import { withKnobs } from "@storybook/addon-knobs"
 
 import {
- Navbar, Navlink, Navgroup, Menugroup, Menuarrow,
+    Navbar, Navlink, Navgroup, Menugroup, Menuarrow,
 } from "./index"
 //import styled from "styled-components"
 
@@ -15,75 +15,75 @@ stories.addDecorator(withInfo)
 stories.addParameters({ info: { inline: true } })
 
 stories.add("Navbar", () => (
-        <Navbar>
-            <div className="Items">
-                <div className="menuName">Connctd</div>
-                <Navgroup>
-                    <Navlink target="http://example.com" text="Test123" />
-                </Navgroup>
-            </div>
-            <div className="Staples">
-                <Navgroup focus>
-                    <div>
-<p>
+    <Navbar>
+        <div className="Items">
+            <div className="menuName">Connctd</div>
+            <Navgroup>
+                <Navlink target="http://example.com" text="Test123" />
+            </Navgroup>
+        </div>
+        <div className="Staples">
+            <Navgroup focus>
+                <div>
+                    <p>
 Title
-<Menuarrow down />
-</p>
-                    </div>
+                        <Menuarrow down />
+                    </p>
+                </div>
 
-                    <Menugroup>
-                        <Navlink target="http://example.com" text="Test123" />
-                        <Navlink target="http://example.com" text="Test456" />
-                        <Navlink target="http://example.com" text="Test789" />
-                    </Menugroup>
+                <Menugroup>
+                    <Navlink target="http://example.com" text="Test123" />
+                    <Navlink target="http://example.com" text="Test456" />
+                    <Navlink target="http://example.com" text="Test789" />
+                </Menugroup>
 
-                </Navgroup>
-            </div>
-        </Navbar>
-    ))
+            </Navgroup>
+        </div>
+    </Navbar>
+))
 
-  stories.add("MenuArrow", () => (
-          <Navbar>
-            <div className="Items">
+stories.add("MenuArrow", () => (
+    <Navbar>
+        <div className="Items">
             <Navgroup>
-                    <div>
-<p>
+                <div>
+                    <p>
 Pfeil unten
-<Menuarrow down />
-</p>
-                    </div>
+                        <Menuarrow down />
+                    </p>
+                </div>
             </Navgroup>
 
             <Navgroup>
-                    <div>
-<p>
+                <div>
+                    <p>
 Pfeil oben
-<Menuarrow up />
-</p>
-                    </div>
+                        <Menuarrow up />
+                    </p>
+                </div>
             </Navgroup>
 
             <Navgroup>
-                    <div>
-<p>
+                <div>
+                    <p>
 Pfeil links
-<Menuarrow left />
-</p>
-                    </div>
+                        <Menuarrow left />
+                    </p>
+                </div>
             </Navgroup>
 
             <Navgroup>
-                    <div>
-<p>
+                <div>
+                    <p>
 Pfeil rechts
-<Menuarrow right />
-</p>
-                    </div>
+                        <Menuarrow right />
+                    </p>
+                </div>
             </Navgroup>
-            </div>
-          </Navbar>
+        </div>
+    </Navbar>
 
-      ))
+))
 /*
 stories.add("component navbar", () => {
     const NavLink = (props) => styled.a`

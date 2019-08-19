@@ -8,9 +8,9 @@ stories.addDecorator(withInfo)
 stories.addParameters({ info: { inline: true }, options: { theme: { appContentBg: "#FAFAFA" } } })
 
 stories.add("Default", () => (
-        <Paper>
-            <h1>Lorem ipsum dolor sit amet</h1>
-            <p>
+    <Paper>
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>
                 Nam nec purus id sapien sodales lobortis. Phasellus maximus lacus quis
                 molestie pulvinar. Curabitur dictum nunc non justo tristique laoreet.
                 Vivamus ullamcorper, nulla a viverra sagittis, velit dolor varius odio,
@@ -18,8 +18,8 @@ stories.add("Default", () => (
                  tincidunt metus consectetur. Pellentesque viverra et tortor ut luctus.
                  Donec imperdiet libero nec lacinia congue. In vitae volutpat metus,
                  sit amet fermentum urna. Sed viverra id metus a scelerisque.
-            </p>
-        </Paper>
+        </p>
+    </Paper>
 ))
 
 stories.add("Light", () => (

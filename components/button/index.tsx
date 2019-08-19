@@ -88,12 +88,12 @@ export const Button: React.FC<ButtonProps> = ({
     if (href) {
         return (
             <StyledAnchorButton
-              className={className}
-              style={style}
-              appearance={appearance}
-              theme={theme}
-              href={href}
-              small={small}
+                className={className}
+                style={style}
+                appearance={appearance}
+                theme={theme}
+                href={href}
+                small={small}
             >
                 <StyledButtonText>{text}</StyledButtonText>
             </StyledAnchorButton>
@@ -101,12 +101,12 @@ export const Button: React.FC<ButtonProps> = ({
     }
     return (
         <StyledButton
-          className={className}
-          style={style}
-          appearance={appearance}
-          theme={theme}
-          onClick={onClick}
-          type={type}
+            className={className}
+            style={style}
+            appearance={appearance}
+            theme={theme}
+            onClick={onClick}
+            type={type}
         >
             <StyledButtonText>{text}</StyledButtonText>
         </StyledButton>
