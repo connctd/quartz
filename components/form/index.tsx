@@ -8,24 +8,43 @@ export interface InputProps
     extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
     theme?: QuartzTheme
     error?: boolean
+    icon? : string
     label?: string
     id?: string
     className?: string
+
 }
 
 const StyledInput = styled.input`
     padding: 12px 20px;
-    margin: 6px 0 12px 0;
     display: inline-block;
+    border: 0;
+    font-size: 14px;
+    width: 100%;
+`
+
+const StyledInputContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 0 0 12px 0;
     border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
     border-radius: 3px;
     box-sizing: border-box;
-    font-size: 14px;
-    width: 100%;
+    overflow:hidden;
 
-    :focus {
+    focus {
         border: 1px solid ${props => props.theme.green}
     }
+`
+
+const StyledIconContainer = styled.div`
+    background: ${props => props.theme.blue}
+    background-image: url('${props => props.icon}');
+    width: 50px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+    display: ${props => (props.icon ? "inline-block" : "none")};
 `
 
 export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
@@ -33,12 +52,22 @@ export const Input: React.FC<InputProps> = ({ label, id, ...rest }) => {
         return (
             <label htmlFor={id}>
                 &nbsp; {label}
-                <StyledInput id={id} name={id} {...rest} />
+
+                <StyledInputContainer {...rest}>
+                    <StyledInput id={id} {...rest} />
+                    <StyledIconContainer {...rest} />
+                </StyledInputContainer>
+
             </label>
         )
     }
 
-    return <StyledInput {...rest} />
+        return (
+            <StyledInputContainer {...rest}>
+                <StyledInput id={id} {...rest} />
+                <StyledIconContainer {...rest} />
+            </StyledInputContainer>
+        )
 }
 
 Input.defaultProps = {
@@ -139,32 +168,29 @@ Checkbox.defaultProps = {
 }
 
 
-const StyledTextArea = styled.textarea`
-    padding: 12px 20px;
-    margin: 6px 0 12px 0;
+const StyledPill = styled.div`
+    border: 1px solid ${props => props.theme.light50};
     display: inline-block;
-    border: ${props => (props.error ? 2 : 1)}px solid ${props => (props.error ? props.theme.error : props.theme.light50)};
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 14px;
-    width: 100%;
-    resize: none;
-    overflow: auto;
-    height: ${props => (props.height ? props.height : "120px")};
-
-    :focus {
-        border: 1px solid ${props => props.theme.green}
-    }
+    border-radius: 5px;
+    background: ${props => props.theme.light30};
+    padding: 5px 7px 5px 5px;
+    margin: 0px 0px 0px 10px;
+    color: ${props => props.theme.dark};
 `
 
-interface TextAreaProps extends Themeable {
-    height?: number
+export interface PillProps {
+    theme? : QuartzTheme
+    children? : React.ReactNode
+
 }
 
-export const TextArea: React.FC<TextAreaProps> = props => (
-    <StyledTextArea {...props} />
+export const Pill: React.FC<PillProps> = ({
+    theme = defaultTheme,
+    children,
+}) => (
+    <StyledPill theme={theme}>{children}</StyledPill>
 )
 
-TextArea.defaultProps = {
+Pill.defaultProps = {
     theme: defaultTheme,
 }

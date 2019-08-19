@@ -1,5 +1,3 @@
-
-
 export * from "./action"
 export * from "./button"
 export * from "./form"
@@ -8,4 +6,5 @@ export * from "./spinner"
 export * from "./theme"
 export * from "./logo"
 export * from "./anchor"
+export * from "./navbar"
 export * from "./table"

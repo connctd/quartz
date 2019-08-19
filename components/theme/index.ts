@@ -20,6 +20,7 @@ export interface QuartzTheme {
     primary: string
     secondary: string
     tertiary: string
+    blue: string
     light30: string
     light50: string
     light: string
@@ -44,7 +45,9 @@ export interface Themeable {
 export const defaultTheme: QuartzTheme = {
     primary: "#D4550A", // red?
     secondary: "#19A287", // green
-    tertiary: "",
+
+    tertiary: "#201E50", // dark purple?
+    blue: "#302C70",
     light30: "#F3F3F3",
     light50: "#D8D8D8",
     light: "white",
