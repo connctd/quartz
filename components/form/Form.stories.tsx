@@ -25,7 +25,7 @@ stories.add("Input with label", () => {
 stories.add("Input Error", () => {
   const placeholder: string = text("Placeholder", "Email")
   const errored: boolean = boolean("Error", true)
-  return <Input error={errored} placeholder={placeholder} onChange={action("onChange")} />
+  return <Input hasError={errored} placeholder={placeholder} onChange={action("onChange")} />
 })
 
 stories.add("Input with Icon", () => {
@@ -33,15 +33,12 @@ stories.add("Input with Icon", () => {
   return (
     <div>
       <Input placeholder={placeholder} onChange={action("onChange")} icon={<img width="100%" src="/copy.svg" alt="copy" />} />
-      <Input placeholder={placeholder} error onChange={action("onChange")} icon={<img width="100%" src="/copy.svg" alt="copy" />} />
+      <Input placeholder={placeholder} hasError onChange={action("onChange")} icon={<img width="100%" src="/copy.svg" alt="copy" />} />
     </div>
   )
 })
 
-stories.add("Input disabled", () => {
-  const placeholder: string = text("Placeholder", "Email")
-  return <Input placeholder={placeholder} onChange={action("onChange")} disabled />
-})
+stories.add("Input disabled", () => <Input value="f06ccfd4-d5ba-4767-b69a-d3eec758e6d4" onChange={action("onChange")} disabled />)
 
 
 stories.add("Pill", () => (
