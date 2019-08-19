@@ -23,6 +23,7 @@ const StyledInput = styled.input`
     font-size: 14px;
     width: 100%;
     border-radius: ${props => (props.icon ? "3px 0 0 3px" : "3px")};
+    ${props => (props.disabled ? `background-color: ${props.theme.light30}` : "")}
     :focus {
         border: 1px solid ${props => props.theme.green}
     }
