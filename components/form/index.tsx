@@ -18,10 +18,10 @@ export interface InputProps
 
 const StyledInput = styled.input`
     padding: 12px 20px;
-    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
     border: ${props => (props.hasError ? 2 : 1)}px solid ${props => (props.hasError ? props.theme.error : props.theme.light50)};
     font-size: 14px;
-    width: 100%;
     border-radius: ${props => (props.icon ? "3px 0 0 3px" : "3px")};
     ${props => (props.disabled || props.readOnly ? `background-color: ${props.theme.light30}` : "")}
     :focus {
@@ -30,11 +30,9 @@ const StyledInput = styled.input`
 `
 
 const StyledInputContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     width: 100%;
-    margin: 0 0 12px 0;
-    box-sizing: border-box;
-    overflow: hidden;
+    margin-bottom: 8px;
 `
 
 const StyledIconContainer = styled.div`
