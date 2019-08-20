@@ -7,6 +7,7 @@ const MainNavbar = styled.div`
     font-size: 14px;
     position: sticky;
     width: 100%;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -30,10 +31,13 @@ const MainNavbar = styled.div`
     }
 
     a {
+        padding: 14px;
+        font-size: 14px;
+        font-weight: 500;
         width: 150px;
         color: white;
         text-decoration: none;
-        padding: 20px 0px 20px;
+        height: 100%;
         text-align: center;
     }
 `
@@ -47,7 +51,6 @@ const MainNavgroup = styled.div`
     width: 150px;
     margin: 0px;
     padding: 0px;
-    height: 63px;
     text-align: center;
 
     box-shadow: ${props => (props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : "none")};
