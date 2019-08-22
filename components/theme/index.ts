@@ -10,6 +10,7 @@ interface Gradients {
     secondary: Gradient
     light: Gradient
     dark: Gradient
+    danger: Gradient
 }
 
 /**
@@ -75,6 +76,11 @@ export const defaultTheme: QuartzTheme = {
             start: "",
             end: "",
             text: "",
+        },
+        danger: {
+            start: "#FF6656",
+            end: "#D41400",
+            text: "white",
         },
     },
 }

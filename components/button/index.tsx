@@ -59,6 +59,7 @@ export enum ButtonAppearance {
     default = "light",
     primary = "primary",
     secondary = "secondary",
+    danger = "danger",
 }
 
 

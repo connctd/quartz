@@ -11,14 +11,14 @@ stories.addParameters({ info: { inline: true } })
 
 stories.add("Table", () => {
     const headings = ["Name", "Created", "Public", "Tags", ""]
-    const data = [
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-        ["Production", "01.07.2019", "No", "production", "edit"],
-    ]
+    const data = {
+        1: ["Production", "01.07.2019", "No", "production", "edit"],
+        2: ["Production", "01.07.2019", "No", "production", "edit"],
+        3: ["Production", "01.07.2019", "No", "production", "edit"],
+        4: ["Production", "01.07.2019", "No", "production", "edit"],
+        5: ["Production", "01.07.2019", "No", "production", "edit"],
+        6: ["Production", "01.07.2019", "No", "production", "edit"],
+        7: ["Production", "01.07.2019", "No", "production", "edit"],
+    }
     return <Table data={data} headings={headings} />
 })
