@@ -1,3 +1,4 @@
+/* eslint react/no-array-index-key: 0*/
 import React from "react"
 import styled from "styled-components"
 import { defaultTheme, Themeable } from "../theme"
@@ -35,22 +36,19 @@ const TableContainer = styled.div`
 
 export interface TableProps extends Themeable {
     headings: string[]
-    data: any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+    data: Record<string, any[]> // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export const Table: React.FC<TableProps> = React.memo(({ headings, data, theme }) => {
-    const flatData = data.reduce((acc, d) => acc.concat(d), [])
-    return (
-        <TableContainer>
-            <TableHeader theme={theme} columns={headings.length}>
-                {headings.map(h => <div key={h}>{h}</div>)}
-            </TableHeader>
-            <TableBody theme={theme} columns={headings.length}>
-                {flatData.map(d => <div key={Math.random()}>{d}</div>)}
-            </TableBody>
-        </TableContainer>
-    )
-})
+export const Table: React.FC<TableProps> = React.memo(({ headings, data, theme }) => (
+    <TableContainer>
+        <TableHeader theme={theme} columns={headings.length}>
+            {headings.map(h => <div key={h}>{h}</div>)}
+        </TableHeader>
+        <TableBody theme={theme} columns={headings.length}>
+            {Object.keys(data).map(id => data[id].map((field, col) => <div key={`${id}.${col}`}>{field}</div>))}
+        </TableBody>
+    </TableContainer>
+))
 
 Table.defaultProps = {
     theme: defaultTheme,
