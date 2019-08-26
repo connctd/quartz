@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 const StyledButtonText = styled.span`
@@ -17,9 +17,9 @@ const StyledButton = styled.button`
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
-
+    ${props => (props.disabled ? "opacity: 0.7" : css`
     :active {
-        background: linear-gradient(180deg, ${props => props.theme.gradient[props.appearance].start} -30%, ${props => props.theme.gradient[props.appearance].end} 150%);
+        background: linear-gradient(180deg, ${props.theme.gradient[props.appearance].start} -30%, ${props.theme.gradient[props.appearance].end} 150%);
         ${StyledButtonText} {
             top: 1px;
         }
@@ -28,6 +28,9 @@ const StyledButton = styled.button`
     :hover:not(:active) ${StyledButtonText} {
         top: -1px;
     }
+    `)};
+
+
 `
 
 export const StyledAnchorButton = styled.a`
@@ -76,6 +79,7 @@ export interface ButtonProps {
     href?: string
     theme?: QuartzTheme
     style?: React.CSSProperties
+    disabled?: boolean
     className?: string
 }
 
@@ -84,7 +88,7 @@ export interface ButtonProps {
  *
  */
 export const Button: React.FC<ButtonProps> = ({
-    text, appearance, type, onClick, theme = defaultTheme, href, style, className, small,
+    text, appearance, type, onClick, theme = defaultTheme, href, style, className, small, disabled,
 }) => {
     if (href) {
         return (
@@ -108,6 +112,7 @@ export const Button: React.FC<ButtonProps> = ({
             theme={theme}
             onClick={onClick}
             type={type}
+            disabled={disabled}
         >
             <StyledButtonText>{text}</StyledButtonText>
         </StyledButton>

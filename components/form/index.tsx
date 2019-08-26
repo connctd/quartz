@@ -109,7 +109,7 @@ const StyledCheckbox = styled.div`
     position: relative;
     width: 16px;
     height: 16px;
-    background: ${props => props.theme.light30};
+    background: ${props => (props.disabled ? props.theme.light30 : props.theme.light30)};
     border: 1px solid ${props => props.theme.light50};
     box-sizing: border-box;
     border-radius: 3px;
@@ -123,6 +123,8 @@ const CheckboxContainer = styled.label`
     grid-template-columns: 22px auto;
     grid-column-gap: 5px;
     padding: 10px 0;
+
+    ${props => (props.disabled ? `color: ${props.theme.dark}` : "")}
 
     &:focus-within {
         ${StyledCheckbox} {
@@ -151,22 +153,29 @@ const Tick = styled.svg`
             stroke-dasharray: 100;
             stroke-dashoffset: 50;
         }
+        &--disabled {
+            stroke: ${props => props.theme.dark};
+        }
         stroke: none;
     }
 `
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-    id, children, checked, onChange, theme = defaultTheme, className,
+    id, children, checked, onChange, disabled, theme = defaultTheme, className,
 }) => (
-    <CheckboxContainer className={className} htmlFor={id}>
-        <StyledCheckbox theme={theme} onClick={(e) => { onChange(e) }}>
+    <CheckboxContainer className={className} disabled={disabled} htmlFor={id}>
+        <StyledCheckbox
+            theme={theme}
+            disabled={disabled}
+            onClick={(e) => { if (!disabled) onChange(e) }}
+        >
             {checked && (
                 <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
-                    <path className={`checkboxTick${checked ? "--checked" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                    <path className={`checkboxTick${checked ? "--checked" : ""} ${disabled ? "checkboxTick--disabled" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                 </Tick>
             )}
         </StyledCheckbox>
-        <InvisibleCheckbox checked={checked} onChange={onChange} id={id} />
+        <InvisibleCheckbox checked={checked} disabled={disabled} onChange={onChange} id={id} />
         {children}
     </CheckboxContainer>
 )
