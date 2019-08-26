@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "0.0.0-alpha.8",
+  "version": "0.0.0-alpha.9",
   "description": "connctd design system",
   "main": "build/index.js",
   "types": "build/index.d.js",
