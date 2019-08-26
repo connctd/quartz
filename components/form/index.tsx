@@ -27,6 +27,13 @@ const StyledInput = styled.input`
     :focus {
         ${props => (props.readOnly ? "" : `border: 1px solid ${props.theme.green}`)}
     }
+    :disabled {
+        background-color: ${props => props.theme.light30};
+        color: ${props => props.theme.dark};
+    }
+    :readonly {
+        color: black;
+    }
 `
 
 const StyledInputContainer = styled.div`
@@ -78,6 +85,7 @@ export interface CheckboxProps extends Themeable {
     id: string
     children?: React.ReactNode
     checked?: boolean
+    disabled?: boolean
     onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void)
 }
 
@@ -209,6 +217,11 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
     overflow: auto;
     height: ${props => (props.height ? props.height : "120px")};
 
+    :disabled, :read-only {
+        background-color: ${props => props.theme.light30};
+        color: ${props => props.theme.dark};
+    }
+
     :focus {
         border: 1px solid ${props => props.theme.green}
 
@@ -221,6 +234,7 @@ interface TextAreaProps extends Themeable {
     value?: string
     hasError?: boolean
     error?: string
+    disabled?: boolean
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({ error, ...rest }) => (
