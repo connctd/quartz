@@ -185,12 +185,12 @@ Checkbox.defaultProps = {
 }
 
 
-const StyledPill = styled.div`
+const StyledPill = styled.span`
     border: 1px solid ${props => props.theme.light50};
     display: inline-block;
     border-radius: 5px;
     background: ${props => props.theme.light30};
-    padding: 5px 7px 5px 5px;
+    padding: 2px 9px;
     margin: 0px 0px 0px 10px;
     color: ${props => props.theme.dark};
 `
