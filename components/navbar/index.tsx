@@ -5,6 +5,7 @@ import { defaultTheme, Themeable } from "../theme/index"
 const MainNavbar = styled.div`
     background: ${props => props.theme.blue};
     font-size: 14px;
+    z-index: 100;
     position: sticky;
     width: 100%;
     height: 50px;
@@ -31,7 +32,7 @@ const MainNavbar = styled.div`
     }
 
     a {
-        padding: 14px;
+        padding: 14px 14px 13px 14px;
         font-size: 14px;
         font-weight: 500;
         width: 150px;
@@ -43,23 +44,21 @@ const MainNavbar = styled.div`
 `
 
 const MainNavgroup = styled.div`
-
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-    width: 150px;
     margin: 0px;
-    padding: 0px;
     text-align: center;
 
     box-shadow: ${props => (props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : "none")};
 
-    div {
-        margin: 20px;
+    &>div {
         color: white;
         display: inline-block;
         transition: transform 0.25s;
+        user-select: none;
+        padding: 14px 14px 13px 14px;
     }
 
     :hover {
@@ -115,7 +114,7 @@ const MainNavgroup = styled.div`
 
 
     ul {
-        visibility: hidden;
+        display: none;
         list-style: none;
         margin-top: auto;
         background: ${props => props.theme.tertiary};
@@ -125,12 +124,8 @@ const MainNavgroup = styled.div`
     }
 
     :hover ul{
-        visibility: visible;
+        display: block;
         opacity: 1.0;
-    }
-
-    ul:hover{
-        visibility: visible;
     }
 
     ul li:hover {
@@ -148,13 +143,21 @@ interface NavbarProps extends Themeable {
     children?: React.ReactNode
 }
 
+const NavWrapper = styled.div`
+    position: relative;
+    height: 50px;
+`
+
 export const Navbar: React.FC<NavbarProps> = ({
     theme,
     children,
 }) => (
-    <MainNavbar theme={theme}>
-        {children}
-    </MainNavbar>
+    <NavWrapper>
+        <MainNavbar theme={theme}>
+            {children}
+        </MainNavbar>
+    </NavWrapper>
+
 )
 
 Navbar.defaultProps = {
@@ -211,6 +214,7 @@ export const Menugroup: React.FC<MenugroupProps> = ({
     <ul>
         {React.Children.map(children, child => <li>{child}</li>)}
     </ul>
+
 )
 
 Menugroup.defaultProps = {

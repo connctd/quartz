@@ -10,6 +10,7 @@ export interface PaperProps extends Themeable {
 
 const StyledPaper = styled.div`
     position: relative;
+    z-index: 1;
     width: auto;
     background: #FFFFFF;
     box-shadow: ${props => (props.light ? "0px 5px 15px rgba(0, 0, 0, 0.1)" : "0px 0px 8px rgba(0, 0, 0, 0.25)")};
