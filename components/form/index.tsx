@@ -191,7 +191,7 @@ const StyledPill = styled.span`
     border-radius: 5px;
     background: ${props => props.theme.light30};
     padding: 2px 9px;
-    margin: 0px 0px 0px 10px;
+    margin: 0px 0px 10px 10px;
     color: ${props => props.theme.dark};
 `
 
