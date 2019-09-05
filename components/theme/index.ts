@@ -93,19 +93,19 @@ export const defaultTheme: QuartzTheme = {
         success: {
             cross: "#19A287",
             text: "#086654",
-            background: "#C5E8E1"
+            background: "#C5E8E1",
         },
         error: {
             cross: "#F5A623",
             text: "#7E4F00",
-            background: "#FCE1B4"
+            background: "#FCE1B4",
         },
         warning: {
             cross: "#F45B5B",
             text: "#6A0000",
-            background: "#FBBDBD"
-        }
+            background: "#FBBDBD",
+        },
     },
 }
 
-export { default as GlobalStyle } from "./GlobalStyles";
+export { default as GlobalStyle } from "./GlobalStyles"
