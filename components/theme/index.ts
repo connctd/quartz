@@ -1,4 +1,3 @@
-
 interface Gradient {
     start: string
     end: string
@@ -11,6 +10,13 @@ interface Gradients {
     light: Gradient
     dark: Gradient
 }
+
+interface Alerts {
+    success: string
+    error: string
+    warning: string
+}
+
 
 /**
  * Quartz theme properties used throughout the design system.
@@ -29,6 +35,7 @@ export interface QuartzTheme {
     green: string
     error: string
     gradient: Gradients
+    alert: Alerts
 }
 
 /**
@@ -76,6 +83,11 @@ export const defaultTheme: QuartzTheme = {
             end: "",
             text: "",
         },
+    },
+    alert: {
+        success: "#19A287",
+        error: "#F45B5B",
+        warning: "#F5A623",
     },
 }
 
