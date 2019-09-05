@@ -3,8 +3,7 @@ import styled from "styled-components"
 import { defaultTheme, Themeable } from "../theme"
 
 const AlertContainer = styled.div`
-
-        padding: 10px;
+        padding: 5px;
         background-color: ${props => props.theme.alert[props.appearance].background};
         border: 1px solid ${props => props.theme.alert[props.appearance].cross};
         margin-bottom: 15px;
@@ -13,7 +12,7 @@ const AlertContainer = styled.div`
 `
 
 const AlertContent = styled.div`
-    padding: 10px 0px 10px 0px;
+    padding: 2px;
 
     color: ${props => props.theme.alert[props.appearance].text};
 `
