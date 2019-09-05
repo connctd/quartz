@@ -12,11 +12,16 @@ interface Gradients {
 }
 
 interface Alerts {
-    success: string
-    error: string
-    warning: string
+    success: AlertColors
+    error: AlertColors
+    warning: AlertColors
 }
 
+interface AlertColors {
+    cross: string
+    text: string
+    background: string
+}
 
 /**
  * Quartz theme properties used throughout the design system.
@@ -85,10 +90,22 @@ export const defaultTheme: QuartzTheme = {
         },
     },
     alert: {
-        success: "#19A287",
-        error: "#F45B5B",
-        warning: "#F5A623",
+        success: {
+            cross: "#19A287",
+            text: "#086654",
+            background: "#C5E8E1"
+        },
+        error: {
+            cross: "#F5A623",
+            text: "#7E4F00",
+            background: "#FCE1B4"
+        },
+        warning: {
+            cross: "#F45B5B",
+            text: "#6A0000",
+            background: "#FBBDBD"
+        }
     },
 }
 
-export { default as GlobalStyle } from "./GlobalStyles"
+export { default as GlobalStyle } from "./GlobalStyles";

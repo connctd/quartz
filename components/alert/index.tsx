@@ -1,27 +1,26 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { darken } from "polished"
 import { defaultTheme, Themeable } from "../theme"
 
 const AlertContainer = styled.div`
 
         padding: 10px;
-        background-color: ${props => props.theme.alert[props.appearance]};
-        border: 2px solid ${props => props.theme.alert[props.appearance] && darken(0.2, props.theme.alert[props.appearance])};
+        background-color: ${props => props.theme.alert[props.appearance].background};
+        border: 1px solid ${props => props.theme.alert[props.appearance].cross};
         margin-bottom: 15px;
-        border-radius: 12px;
+        border-radius: 3px;
         transition: all 0.2s linear;
 `
 
 const AlertContent = styled.div`
     padding: 10px 0px 10px 0px;
 
-    color: ${props => props.theme.alert[props.appearance] && darken(0.2, props.theme.alert[props.appearance])};
+    color: ${props => props.theme.alert[props.appearance].text};
 `
 
 const DissmissIndicator = styled.span`
     margin-left: 15px;
-    color: ${props => props.theme.alert[props.appearance] && darken(0.2, props.theme.alert[props.appearance])};
+    color: ${props => props.theme.alert[props.appearance].cross};
     font-weight: bold;
     float: right;
     font-size: 22px;
