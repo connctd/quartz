@@ -1,4 +1,3 @@
-
 interface Gradient {
     start: string
     end: string
@@ -11,6 +10,18 @@ interface Gradients {
     light: Gradient
     dark: Gradient
     danger: Gradient
+}
+
+interface Alerts {
+    success: AlertColors
+    error: AlertColors
+    warning: AlertColors
+}
+
+interface AlertColors {
+    cross: string
+    text: string
+    background: string
 }
 
 /**
@@ -30,6 +41,7 @@ export interface QuartzTheme {
     green: string
     error: string
     gradient: Gradients
+    alert: Alerts
 }
 
 /**
@@ -81,6 +93,23 @@ export const defaultTheme: QuartzTheme = {
             start: "#FF6656",
             end: "#D41400",
             text: "white",
+        },
+    },
+    alert: {
+        success: {
+            cross: "#19A287",
+            text: "#086654",
+            background: "#C5E8E1",
+        },
+        error: {
+            cross: "#F45B5B",
+            text: "#6A0000",
+            background: "#FBBDBD",
+        },
+        warning: {
+            cross: "#F5A623",
+            text: "#7E4F00",
+            background: "#FCE1B4",
         },
     },
 }
