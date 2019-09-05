@@ -96,14 +96,14 @@ export const defaultTheme: QuartzTheme = {
             background: "#C5E8E1",
         },
         error: {
-            cross: "#F5A623",
-            text: "#7E4F00",
-            background: "#FCE1B4",
-        },
-        warning: {
             cross: "#F45B5B",
             text: "#6A0000",
             background: "#FBBDBD",
+        },
+        warning: {
+            cross: "#F5A623",
+            text: "#7E4F00",
+            background: "#FCE1B4",
         },
     },
 }
