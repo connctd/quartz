@@ -1,13 +1,11 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
-//import { action } from "@storybook/addon-actions"
 import { withKnobs } from "@storybook/addon-knobs"
 
 import {
-    Navbar, Navlink, Navgroup, Menugroup, Menuarrow,
+    Navbar, NavLink, NavGroup, MenuGroup, MenuArrow,
 } from "./index"
-//import styled from "styled-components"
 
 const stories = storiesOf("Navbar", module)
 stories.addDecorator(withKnobs)
@@ -18,26 +16,26 @@ stories.add("Navbar", () => (
     <Navbar>
         <div className="Items">
             <div className="menuName">Connctd</div>
-            <Navgroup>
-                <Navlink target="http://example.com" text="Test123" />
-            </Navgroup>
+            <NavGroup>
+                <NavLink target="http://example.com" text="Test123" />
+            </NavGroup>
         </div>
         <div className="Staples">
-            <Navgroup focus>
+            <NavGroup focus>
                 <div>
                     <p>
 Title
-                        <Menuarrow down />
+                        <MenuArrow down />
                     </p>
                 </div>
 
-                <Menugroup>
-                    <Navlink target="http://example.com" text="Test123" />
-                    <Navlink target="http://example.com" text="Test456" />
-                    <Navlink target="http://example.com" text="Test789" />
-                </Menugroup>
+                <MenuGroup>
+                    <NavLink target="http://example.com" text="Test123" />
+                    <NavLink target="http://example.com" text="Test456" />
+                    <NavLink target="http://example.com" text="Test789" />
+                </MenuGroup>
 
-            </Navgroup>
+            </NavGroup>
         </div>
     </Navbar>
 ))
@@ -45,54 +43,42 @@ Title
 stories.add("MenuArrow", () => (
     <Navbar>
         <div className="Items">
-            <Navgroup>
+            <NavGroup>
                 <div>
                     <p>
 Pfeil unten
-                        <Menuarrow down />
+                        <MenuArrow down />
                     </p>
                 </div>
-            </Navgroup>
+            </NavGroup>
 
-            <Navgroup>
+            <NavGroup>
                 <div>
                     <p>
 Pfeil oben
-                        <Menuarrow up />
+                        <MenuArrow up />
                     </p>
                 </div>
-            </Navgroup>
+            </NavGroup>
 
-            <Navgroup>
+            <NavGroup>
                 <div>
                     <p>
 Pfeil links
-                        <Menuarrow left />
+                        <MenuArrow left />
                     </p>
                 </div>
-            </Navgroup>
+            </NavGroup>
 
-            <Navgroup>
+            <NavGroup>
                 <div>
                     <p>
 Pfeil rechts
-                        <Menuarrow right />
+                        <MenuArrow right />
                     </p>
                 </div>
-            </Navgroup>
+            </NavGroup>
         </div>
     </Navbar>
 
 ))
-/*
-stories.add("component navbar", () => {
-    const NavLink = (props) => styled.a`
-    `
-    return (
-    <Navbar text="Connctd">
-        <NavLink>Apps</NavLink>
-        <NavLink>Whatever</NavLink>
-        <NavLink right></NavLink>
-    </Navbar>
-    )
-})*/

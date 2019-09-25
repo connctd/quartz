@@ -2,11 +2,11 @@ import * as React from "react"
 import styled from "styled-components"
 import { defaultTheme, Themeable } from "../theme/index"
 
-const MainNavbar = styled.div`
+const MainNavbar = styled.nav`
     background: ${props => props.theme.blue};
     font-size: 14px;
     z-index: 100;
-    position: sticky;
+    position: relative;
     width: 100%;
     height: 50px;
     display: flex;
@@ -143,21 +143,15 @@ interface NavbarProps extends Themeable {
     children?: React.ReactNode
 }
 
-const NavWrapper = styled.div`
-    position: relative;
-    height: 50px;
-`
 
 export const Navbar: React.FC<NavbarProps> = ({
     theme,
     children,
+    className,
 }) => (
-    <NavWrapper>
-        <MainNavbar theme={theme}>
-            {children}
-        </MainNavbar>
-    </NavWrapper>
-
+    <MainNavbar theme={theme} className={className}>
+        {children}
+    </MainNavbar>
 )
 
 Navbar.defaultProps = {
@@ -166,13 +160,13 @@ Navbar.defaultProps = {
 
 // Navlink
 
-interface NavlinkProps extends Themeable{
+interface NavLinkProps extends Themeable{
     text?: string
     target?: string
     focus?: boolean
 }
 
-export const Navlink: React.FC<NavlinkProps> = ({
+export const NavLink: React.FC<NavLinkProps> = ({
     text,
     target,
     focus,
@@ -180,7 +174,7 @@ export const Navlink: React.FC<NavlinkProps> = ({
     <a className={focus ? "focus" : ""} href={target}>{text}</a>
 )
 
-Navlink.defaultProps = {
+NavLink.defaultProps = {
     theme: defaultTheme,
 }
 
@@ -189,7 +183,7 @@ interface NavgroupProps extends Themeable {
     focus?: boolean
 }
 
-export const Navgroup: React.FC<NavgroupProps> = ({
+export const NavGroup: React.FC<NavgroupProps> = ({
     theme,
     children,
     focus,
@@ -200,15 +194,15 @@ export const Navgroup: React.FC<NavgroupProps> = ({
     </MainNavgroup>
 )
 
-Navgroup.defaultProps = {
+NavGroup.defaultProps = {
     theme: defaultTheme,
 }
 
-interface MenugroupProps extends Themeable {
+interface MenuGroupProps extends Themeable {
     children? : React.ReactNode
 }
 
-export const Menugroup: React.FC<MenugroupProps> = ({
+export const MenuGroup: React.FC<MenuGroupProps> = ({
     children,
 }) => (
     <ul>
@@ -217,18 +211,18 @@ export const Menugroup: React.FC<MenugroupProps> = ({
 
 )
 
-Menugroup.defaultProps = {
+MenuGroup.defaultProps = {
     theme: defaultTheme,
 }
 
-interface MenuarrowProps extends Themeable {
+interface MenuArrowProps extends Themeable {
     up? : boolean
     down? : boolean
     left? : boolean
     right? : boolean
 }
 
-export const Menuarrow: React.FC<MenuarrowProps> = ({
+export const MenuArrow: React.FC<MenuArrowProps> = ({
     up,
     down,
     left,
@@ -251,6 +245,6 @@ export const Menuarrow: React.FC<MenuarrowProps> = ({
     )
 }
 
-Menuarrow.defaultProps = {
+MenuArrow.defaultProps = {
     theme: defaultTheme,
 }
