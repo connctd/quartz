@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { Themeable } from "../theme"
 
 export interface PaperProps extends Themeable {
@@ -8,7 +8,7 @@ export interface PaperProps extends Themeable {
     light?: boolean
 }
 
-const StyledPaper = styled.div`
+const StyledPaper = styled.div<PaperProps>`
     position: relative;
     z-index: 1;
     width: auto;

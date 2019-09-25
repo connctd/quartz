@@ -1,5 +1,6 @@
 import * as React from "react"
-import styled, { keyframes } from "styled-components"
+import { keyframes } from "@emotion/core"
+import styled from "@emotion/styled"
 import { defaultTheme, Themeable } from "../theme"
 
 const loadingAnimation = keyframes`
@@ -11,7 +12,7 @@ const loadingAnimation = keyframes`
     }
 `
 
-const StyledNN = styled.svg`
+const StyledNN = styled.svg<SpiNNerProps>`
     stroke: ${props => props.theme.primary};
     fill: none;
     display: block;

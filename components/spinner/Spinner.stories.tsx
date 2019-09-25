@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { withInfo } from "@storybook/addon-info"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { withKnobs, number } from "@storybook/addon-knobs"
 import { SpiNNer } from "./index"
 

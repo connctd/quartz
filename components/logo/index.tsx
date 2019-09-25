@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { defaultTheme, QuartzTheme } from "../theme"
 
 interface LogoProps {
@@ -11,7 +11,7 @@ interface LogoProps {
     fill?: string
 }
 
-const StyledLogo = styled.svg`
+const StyledLogo = styled.svg<LogoProps>`
   ${props => (props.center ? "margin: auto; display: block;" : "")}
 `
 

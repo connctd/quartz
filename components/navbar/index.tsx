@@ -1,8 +1,8 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { defaultTheme, Themeable } from "../theme/index"
 
-const MainNavbar = styled.nav`
+const MainNavbar = styled.nav<Themeable>`
     background: ${props => props.theme.blue};
     font-size: 14px;
     z-index: 100;
@@ -43,7 +43,7 @@ const MainNavbar = styled.nav`
     }
 `
 
-const MainNavgroup = styled.div`
+const MainNavgroup = styled.div<NavLinkProps>`
     position: relative;
     display: flex;
     flex-direction: column;

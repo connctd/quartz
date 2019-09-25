@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import styled from "styled-components"
-import { defaultTheme, Themeable } from "../theme"
+import styled from "@emotion/styled"
+import { defaultTheme, Themeable, QuartzTheme } from "../theme"
 
-const AlertContainer = styled.div`
+const AlertContainer = styled.div<StyledAlertProps>`
         padding: 5px;
         background-color: ${props => props.theme.alert[props.appearance].background};
         border: 1px solid ${props => props.theme.alert[props.appearance].cross};
@@ -11,13 +11,13 @@ const AlertContainer = styled.div`
         transition: all 0.2s linear;
 `
 
-const AlertContent = styled.div`
+const AlertContent = styled.div<StyledAlertProps>`
     padding: 2px;
 
     color: ${props => props.theme.alert[props.appearance].text};
 `
 
-const DissmissIndicator = styled.span`
+const DissmissIndicator = styled.span<StyledAlertProps>`
     margin-left: 15px;
     color: ${props => props.theme.alert[props.appearance].cross};
     font-weight: bold;
@@ -34,16 +34,22 @@ export enum AlertAppearance {
     warning = "warning"
 }
 
+interface StyledAlertProps {
+    appearance: AlertAppearance
+    theme: QuartzTheme
+}
+
+
 export interface AlertProps extends Themeable {
     children: React.ReactNode
-    appearance? : AlertAppearance
+    appearance?: AlertAppearance
     dissmissable? : boolean
 }
 
 export const Alert: React.FC<AlertProps> = ({
     theme = defaultTheme,
     children,
-    appearance,
+    appearance = AlertAppearance.warning,
     dissmissable,
 
 }) => {
@@ -65,8 +71,7 @@ export const Alert: React.FC<AlertProps> = ({
                         onClick={() => {
                             setDismissed(true)
                             setTimeout(() => setHidden(true), 200)
-                        }
-                        }
+                        }}
                     >
                         &times;
                     </DissmissIndicator>
