@@ -6,3 +6,6 @@ components
 .eslintrc
 .gitignore
 now.json
+.npmrc
+now.json
+tsconfig.json
