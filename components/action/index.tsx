@@ -1,5 +1,5 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { defaultTheme, Themeable } from "../theme"
 
 export interface ActionProps extends Themeable {
@@ -7,7 +7,7 @@ export interface ActionProps extends Themeable {
     onClick: (e: React.MouseEvent) => void
 }
 
-const PlusButton = styled.div`
+const PlusButton = styled.div<Themeable>`
     width: 30px;
     height: 30px;
     background: ${props => props.theme.secondary};

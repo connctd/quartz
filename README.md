@@ -23,7 +23,8 @@ storybook so it's recommended to familiarise yourself with JSDoc syntax
 
 - React
 - TypeScript
-- styled-components
+- ~styled-components~
+- emotion
 - eslint
 - webpack
 

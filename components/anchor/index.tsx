@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { Themeable, defaultTheme } from "../theme"
 
 interface AnchorProps extends Themeable {
@@ -9,7 +9,7 @@ interface AnchorProps extends Themeable {
     target?: string
 }
 
-export const StyledAnchor = styled.a`
+export const StyledAnchor = styled.a<AnchorProps>`
     color: ${props => (props.primary ? props.theme.primary : props.theme.dark)};
     text-decoration: underline;
 `

@@ -3,6 +3,12 @@ module.exports = ({ config }) => {
       test: /\.(ts|tsx)$/,
       use: [
         {
+          loader: require.resolve('babel-loader'),
+          options: {
+            plugins: [require.resolve('babel-plugin-emotion')],
+          },
+        },
+        {
           loader: require.resolve("awesome-typescript-loader"),
         },
         // Optional

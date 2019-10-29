@@ -1,7 +1,6 @@
-import * as React from "react"
-import { createGlobalStyle } from "styled-components"
+import { css } from "@emotion/core"
 
-const GlobalStyle: React.FC = createGlobalStyle`
+const GlobalStyle = css`
   @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
 
   body,html {

@@ -1,6 +1,7 @@
 /*eslint-disable react/jsx-one-expression-per-line */
 import * as React from "react"
-import styled, { keyframes } from "styled-components"
+import { keyframes } from "@emotion/core"
+import styled from "@emotion/styled"
 import { defaultTheme, QuartzTheme, Themeable } from "../theme"
 
 
@@ -16,7 +17,7 @@ export interface InputProps
 
 }
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<InputProps>`
     padding: 12px 20px;
     box-sizing: border-box;
     width: 100%;
@@ -42,7 +43,7 @@ const StyledInputContainer = styled.div`
     margin-bottom: 8px;
 `
 
-const StyledIconContainer = styled.div`
+const StyledIconContainer = styled.div<InputProps>`
     height: ${props => (props.hasError ? 45 : 43)}px;
     width: ${props => (props.hasError ? 45 : 43)}px;
     background-color: ${props => props.theme.green};
@@ -52,7 +53,7 @@ const IconSpacing = styled.div`
     padding: 8px;
 `
 
-const FieldError = styled.div`
+const FieldError = styled.div<Themeable>`
     color: ${props => props.theme.error};
     margin: -10px 0 12px 0;
 `
@@ -91,7 +92,8 @@ export interface CheckboxProps extends Themeable {
 
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
-const InvisibleCheckbox = styled.input.attrs({ type: "checkbox" })`
+// TODO: .attrs({ type: "checkbox" }) => https://github.com/emotion-js/emotion/issues/821
+const InvisibleCheckbox = styled.input`
         border: 0;
         clip: rect(0 0 0 0);
         clippath: inset(50%);
@@ -104,7 +106,7 @@ const InvisibleCheckbox = styled.input.attrs({ type: "checkbox" })`
         width: 1px;
 `
 
-const StyledCheckbox = styled.div`
+const StyledCheckbox = styled.div<InputProps>`
     display: inline-block;
     position: relative;
     width: 16px;
@@ -143,7 +145,7 @@ const tickedAnimation = keyframes`
     }
 `
 
-const Tick = styled.svg`
+const Tick = styled.svg<Themeable>`
     position: absolute;
     top: -6px;
     .checkboxTick {
@@ -185,7 +187,7 @@ Checkbox.defaultProps = {
 }
 
 
-const StyledPill = styled.span`
+const StyledPill = styled.span<Themeable>`
     border: 1px solid ${props => props.theme.light50};
     display: inline-block;
     border-radius: 5px;
@@ -239,7 +241,7 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
 
 interface TextAreaProps extends Themeable {
     height?: number
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (event) => void
     value?: string
     hasError?: boolean
     error?: string

@@ -1,10 +1,14 @@
 /* eslint react/no-array-index-key: 0*/
 import React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import { defaultTheme, Themeable } from "../theme"
 
 
-const TableBody = styled.div`
+interface Table extends Themeable {
+    columns: number
+}
+
+const TableBody = styled.div<Table>`
     display: grid;
     grid-template-columns: repeat(${props => props.columns}, 1fr);
     grid-row-gap: 12px;
@@ -17,8 +21,7 @@ const TableBody = styled.div`
         }
     }
 `
-
-const TableHeader = styled.div`
+const TableHeader = styled.div<Table>`
     display: grid;
     background-color: ${props => props.theme.light30};
     border-radius: 2px;
