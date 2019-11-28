@@ -49,10 +49,10 @@ stories.add("Anchor Link", () => {
 
 stories.add("Tabindex", () => (
     <div>
-        <Button onClick={action("onClick")} tabindex={0} text="One" />
-        <Button onClick={action("onClick")} tabindex={0} text="Two" />
-        <Button onClick={action("onClick")} tabindex={0} text="Three" />
-        <Button onClick={action("onClick")} tabindex={-1} text="Five" />
-        <Button onClick={action("onClick")} tabindex={0} text="Four" />
+        <Button onClick={action("onClick")} tabIndex={0} text="One" />
+        <Button onClick={action("onClick")} tabIndex={0} text="Two" />
+        <Button onClick={action("onClick")} tabIndex={0} text="Three" />
+        <Button onClick={action("onClick")} tabIndex={-1} text="Five" />
+        <Button onClick={action("onClick")} tabIndex={0} text="Four" />
     </div>
 ))
