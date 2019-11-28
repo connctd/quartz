@@ -47,14 +47,12 @@ stories.add("Anchor Link", () => {
     )
 })
 
-stories.add("Tabindex", () => {
-    return (
-        <div>
-            <Button onClick={action("onClick")} tabindex={1} text="One" />
-            <Button onClick={action("onClick")} tabindex={3} text="Three" />
-            <Button onClick={action("onClick")} tabindex={5} text="Five" />
-            <Button onClick={action("onClick")} tabindex={2} text="Two" />
-            <Button onClick={action("onClick")} tabindex={4} text="Four" />
-        </div>
-    )
-})
+stories.add("Tabindex", () => (
+    <div>
+        <Button onClick={action("onClick")} tabindex={0} text="One" />
+        <Button onClick={action("onClick")} tabindex={0} text="Two" />
+        <Button onClick={action("onClick")} tabindex={0} text="Three" />
+        <Button onClick={action("onClick")} tabindex={-1} text="Five" />
+        <Button onClick={action("onClick")} tabindex={0} text="Four" />
+    </div>
+))
