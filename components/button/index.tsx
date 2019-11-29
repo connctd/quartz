@@ -15,6 +15,7 @@ interface StyledButtonProps extends Themeable {
     href?: string
     children?: React.ReactNode
     text?: string
+    tabIndex?: number
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -92,6 +93,7 @@ export interface ButtonProps {
     style?: React.CSSProperties
     disabled?: boolean
     className?: string
+    tabIndex?: number
 }
 
 /**
@@ -109,6 +111,7 @@ export const Button: React.FC<ButtonProps> = ({
     className,
     small,
     disabled,
+    tabIndex,
 }) => {
     if (href) {
         return (
@@ -120,6 +123,7 @@ export const Button: React.FC<ButtonProps> = ({
                 href={href}
                 text={text}
                 small={small}
+                tabIndex={tabIndex}
             >
                 <StyledButtonText>{text}</StyledButtonText>
             </StyledAnchorButton>
@@ -134,6 +138,7 @@ export const Button: React.FC<ButtonProps> = ({
             onClick={onClick}
             type={type}
             disabled={disabled}
+            tabIndex={tabIndex}
         >
             <StyledButtonText>{text}</StyledButtonText>
         </StyledButton>
