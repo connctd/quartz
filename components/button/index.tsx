@@ -19,31 +19,29 @@ interface StyledButtonProps extends Themeable {
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
-    background: linear-gradient(180deg, ${props => props.theme.gradient[props.appearance].start} -76.56%, ${props => props.theme.gradient[props.appearance].end} 150%);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-    color: ${props => props.theme.gradient[props.appearance].text};
-    border-radius: 12px;
-    border: none;
-    padding: 10px 20px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    ${props => (props.disabled ? "opacity: 0.7" : css`
-    :active {
-        background: linear-gradient(180deg, ${props.theme.gradient[props.appearance].start} -30%, ${props.theme.gradient[props.appearance].end} 150%);
-        ${StyledButtonText} {
-            top: 1px;
+        background: linear-gradient(180deg, ${props => props.theme.gradient[props.appearance].start} -76.56%, ${props => props.theme.gradient[props.appearance].end} 150%);
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+        color: ${props => props.theme.gradient[props.appearance].text};
+        border-radius: 12px;
+        border: none;
+        padding: 10px 20px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+        ${props => (props.disabled ? "opacity: 0.7" : css`
+        :active {
+            background: linear-gradient(180deg, ${props.theme.gradient[props.appearance].start} -30%, ${props.theme.gradient[props.appearance].end} 150%);
+            ${StyledButtonText} {
+                top: 1px;
+            }
         }
-    }
 
-    :hover:not(:active) ${StyledButtonText} {
-        top: -1px;
-    }
-    `)};
-
-
-`
+        :hover:not(:active) ${StyledButtonText} {
+            top: -1px;
+        }
+        `)};
+    `
 
 export const StyledAnchorButton = styled.a<StyledButtonProps>`
     background: linear-gradient(180deg, ${props => props.theme.gradient[props.appearance].start} -76.56%, ${props => props.theme.gradient[props.appearance].end} 150%);
@@ -79,7 +77,7 @@ export enum ButtonAppearance {
 
 
 export interface ButtonProps {
-    text: string
+    text: any //eslint-disable-line
     appearance?: ButtonAppearance
     small?: boolean
     type?: "button" | "submit" | "reset"
@@ -94,6 +92,8 @@ export interface ButtonProps {
     disabled?: boolean
     className?: string
     tabIndex?: number
+    component?: any //eslint-disable-line
+    extraProps?: any //eslint-disable-line
 }
 
 /**
@@ -112,6 +112,8 @@ export const Button: React.FC<ButtonProps> = ({
     small,
     disabled,
     tabIndex,
+    component = "button",
+    extraProps,
 }) => {
     if (href) {
         return (
@@ -129,6 +131,7 @@ export const Button: React.FC<ButtonProps> = ({
             </StyledAnchorButton>
         )
     }
+
     return (
         <StyledButton
             className={className}
@@ -139,6 +142,8 @@ export const Button: React.FC<ButtonProps> = ({
             type={type}
             disabled={disabled}
             tabIndex={tabIndex}
+            as={component}
+            {...extraProps}
         >
             <StyledButtonText>{text}</StyledButtonText>
         </StyledButton>
