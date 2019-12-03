@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import isPropValid from "@emotion/is-prop-valid"
 import { Themeable, defaultTheme } from "../theme"
 
 interface AnchorProps extends Themeable {
@@ -11,7 +12,9 @@ interface AnchorProps extends Themeable {
     extraProps?: any //eslint-disable-line
 }
 
-const StyledAnchor = styled("a")<AnchorProps>`
+const StyledAnchor = styled("a", {
+    shouldForwardProp: prop => isPropValid(prop) && prop !== "primary",
+})<AnchorProps>`
 color: ${props => (props.primary ? props.theme.primary : props.theme.dark)};
 text-decoration: underline;
 `

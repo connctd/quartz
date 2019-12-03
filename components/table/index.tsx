@@ -16,7 +16,7 @@ const TableBody = styled.div<Table>`
     div {
         padding: 12px;
         border-bottom: 1px solid ${props => props.theme.light50};
-        &:nth-child(${props => props.columns}n) {
+        &:nth-of-type(${props => props.columns}n) {
             text-align: right;
         }
     }

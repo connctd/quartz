@@ -87,7 +87,7 @@ export interface CheckboxProps extends Themeable {
     children?: React.ReactNode
     checked?: boolean
     disabled?: boolean
-    onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void)
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 // Hide checkbox visually but remain accessible to screen readers.
@@ -138,7 +138,7 @@ const CheckboxContainer = styled.label`
 
 const tickedAnimation = keyframes`
     from {
-        stroke-dashoffset: -50;
+        stroke-dashoffset: -20;
     }
     to {
         stroke-dashoffset: 50;
@@ -151,7 +151,7 @@ const Tick = styled.svg<Themeable>`
     .checkboxTick {
         &--checked {
             stroke: ${props => props.theme.secondary};
-            animation: ${tickedAnimation} 1 0.4s ease-in;
+            animation: ${tickedAnimation} 1 0.4s ease-out;
             stroke-dasharray: 100;
             stroke-dashoffset: 50;
         }
@@ -177,7 +177,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 </Tick>
             )}
         </StyledCheckbox>
-        <InvisibleCheckbox checked={checked} disabled={disabled} onChange={onChange} id={id} />
+        <InvisibleCheckbox type="checkbox" checked={checked} disabled={disabled} onChange={onChange} id={id} />
         {children}
     </CheckboxContainer>
 )
