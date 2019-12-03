@@ -3,20 +3,31 @@ import styled from "@emotion/styled"
 import { Themeable, defaultTheme } from "../theme"
 
 interface AnchorProps extends Themeable {
-    href: string
-    children: React.ReactNode
+    href?: string
+    children?: React.ReactNode
     primary?: boolean
     target?: string
+    component?: any //eslint-disable-line
+    extraProps?: any //eslint-disable-line
 }
 
-export const StyledAnchor = styled.a<AnchorProps>`
-    color: ${props => (props.primary ? props.theme.primary : props.theme.dark)};
-    text-decoration: underline;
+const StyledAnchor = styled("a")<AnchorProps>`
+color: ${props => (props.primary ? props.theme.primary : props.theme.dark)};
+text-decoration: underline;
 `
 
-export const Anchor: React.FC<AnchorProps> = ({ children, ...rest }) => (
-    <StyledAnchor {...rest}>{children}</StyledAnchor>
-)
+export const Anchor: React.FC<AnchorProps> = React.memo(({
+    children, primary, theme, component = "a", extraProps,
+}) => (
+    <StyledAnchor
+        as={component}
+        primary={primary}
+        theme={theme}
+        {...extraProps}
+    >
+        {children}
+    </StyledAnchor>
+))
 
 Anchor.defaultProps = {
     theme: defaultTheme,
