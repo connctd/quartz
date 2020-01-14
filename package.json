@@ -7,7 +7,7 @@
   "author": "Pandelis Zembashis <pandelis.zembashis@connctd.com>",
   "license": "MIT",
   "engines": {
-    "node": "10.x",
+    "node": "^10.x",
     "yarn": "^1.15.0"
   },
   "dependencies": {
