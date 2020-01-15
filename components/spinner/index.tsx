@@ -5,10 +5,10 @@ import { defaultTheme, Themeable } from "../theme"
 
 const loadingAnimation = keyframes`
     from {
-        stroke-dashoffset: 0;
+        stroke-dashoffset: 1200;
     }
     to {
-        stroke-dashoffset: -1000;
+        stroke-dashoffset: 0;
     }
 `
 
@@ -17,9 +17,8 @@ const StyledNN = styled.svg<SpiNNerProps>`
     fill: none;
     display: block;
     .path {
-        stroke-dasharray: 500;
-        stroke-dashoffset: 0;
-        animation: ${loadingAnimation} infinite ${props => props.speed}s linear;
+        stroke-dasharray: 1200;
+        animation: ${loadingAnimation} infinite ${props => props.speed}s cubic-bezier(0.47, 0, 0.745, 0.715) 0s both;
     }
 `
 

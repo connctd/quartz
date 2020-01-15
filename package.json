@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "1.0.5",
+  "version": "1.0.6-3",
   "description": "connctd design system",
   "main": "build/index.js",
   "types": "build/index.d.js",
@@ -13,12 +13,16 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
-    "babel-plugin-emotion": "^10.0.19",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
     "@connctd/eslint-config-typescript": "^1.0.3",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
@@ -36,24 +40,30 @@
     "@typescript-eslint/parser": "^1.11.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "babel-plugin-emotion": "^10.0.27",
     "eslint": "^5.0.1",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
+    "np": "^6.1.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
     "webpack": "^4.0.0"
   },
   "scripts": {
-    "prepublishOnly": "tsc",
+    "prepublishOnly": "npm run compile && tsc",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public -s ./.storybook/static",
     "watch": "tsc --watch",
-    "lint": "eslint ./components --ext ts,tsx,js,jsx"
+    "lint": "eslint ./components --ext ts,tsx,js,jsx",
+    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
+    "check-types": "tsc",
+    "deploy": "np",
+    "test": "echo Wow 100% success"
   }
 }
