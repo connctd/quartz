@@ -18,7 +18,11 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
     "@connctd/eslint-config-typescript": "^1.0.3",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
@@ -54,6 +58,8 @@
     "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public -s ./.storybook/static",
     "watch": "tsc --watch",
-    "lint": "eslint ./components --ext ts,tsx,js,jsx"
+    "lint": "eslint ./components --ext ts,tsx,js,jsx",
+    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
+    "check-types": "tsc"
   }
 }
