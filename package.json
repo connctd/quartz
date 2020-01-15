@@ -1,13 +1,13 @@
 {
   "name": "@connctd/quartz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "connctd design system",
   "main": "build/index.js",
   "types": "build/index.d.js",
   "author": "Pandelis Zembashis <pandelis.zembashis@connctd.com>",
   "license": "MIT",
   "engines": {
-    "node": "^10.x",
+    "node": ">=10.0.0",
     "yarn": "^1.15.0"
   },
   "dependencies": {
