@@ -13,7 +13,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
-    "babel-plugin-emotion": "^10.0.19",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -41,6 +40,7 @@
     "@typescript-eslint/parser": "^1.11.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "babel-plugin-emotion": "^10.0.27",
     "eslint": "^5.0.1",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.0",
