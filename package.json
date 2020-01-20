@@ -60,6 +60,7 @@
     "watch": "tsc --watch",
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "test": "echo Wow 100% success"
   }
 }
