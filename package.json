@@ -52,7 +52,7 @@
     "webpack": "^4.0.0"
   },
   "scripts": {
-    "prepublishOnly": "tsc",
+    "prepublishOnly": "tsc && npm run compile",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
