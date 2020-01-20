@@ -22,6 +22,7 @@
     "@babel/core": "^7.5.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@connctd/eslint-config-typescript": "^1.0.3",
     "@storybook/addon-actions": "^5.1.9",
