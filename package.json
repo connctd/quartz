@@ -47,13 +47,14 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
+    "np": "^6.1.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3",
     "webpack": "^4.0.0"
   },
   "scripts": {
-    "prepublishOnly": "tsc && npm run compile",
+    "prepublishOnly": "npm run compile && tsc",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
@@ -62,6 +63,7 @@
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
+    "deploy": "np",
     "test": "echo Wow 100% success"
   }
 }

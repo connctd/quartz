@@ -18,10 +18,11 @@
       "suppressImplicitAnyIndexErrors": true,
       "noUnusedLocals": true,
       "declaration": true,
+      "emitDeclarationOnly": true,
       "allowSyntheticDefaultImports": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true
     },
     "include": ["components/**/*"],
     "exclude": ["node_modules", "build", "scripts", "components/**/*.stories.tsx"]
-  }
+}
