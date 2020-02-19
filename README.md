@@ -16,7 +16,7 @@
 ## Pre-requisites
 
 - Yarn
-- Node 10x
+- Node >=10
 
 This project uses JSDoc syntax to automatically generate docs and usage instructions within
 storybook so it's recommended to familiarise yourself with JSDoc syntax
@@ -27,7 +27,8 @@ storybook so it's recommended to familiarise yourself with JSDoc syntax
 - TypeScript
 - emotion
 - eslint
-- webpack
+- babel
+- storybook
 
 ## Developing components
 
