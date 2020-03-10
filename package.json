@@ -53,6 +53,9 @@
     "typescript": "^3.5.3",
     "webpack": "^4.0.0"
   },
+  "np": {
+		"contents": "build"
+	},
   "scripts": {
     "prepublishOnly": "[ ! -f index.d.ts ] && echo \"Error: Don't run 'npm publish' in root. Use 'yarn deploy' instead.\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
@@ -63,8 +66,8 @@
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
-    "deploy": "npm run compile && tsc && cp package.json ./build/package.json && cp README.md ./build/README.md && cd ./build && np",
-    "deployOnly": "cd ./build && np",
+    "deploy": "npm run compile && tsc && np --contents build",
+    "deployOnly": "np --contents build",
     "test": "echo Wow 100% success"
   }
 }
