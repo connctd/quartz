@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "1.0.6-3",
+  "version": "1.0.6-4",
   "description": "connctd design system",
   "main": "index.js",
   "types": "index.d.js",
@@ -54,12 +54,13 @@
     "webpack": "^4.0.0"
   },
   "np": {
-		"contents": "build"
+    "contents": "build"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
+    "prepublishOnly": "cp package.json ./build/package.json && cp README.md ./build/README.md",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
@@ -68,7 +69,7 @@
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
-    "deploy": "npm run compile && tsc && cp package.json ./build/package.json && cp README.md ./build/README.md && np --contents build",
+    "deploy": "npm run compile && tsc && np --contents build",
     "deployOnly": "np --contents build",
     "test": "echo Wow 100% success"
   }
