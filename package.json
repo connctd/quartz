@@ -2,8 +2,8 @@
   "name": "@connctd/quartz",
   "version": "1.0.6-3",
   "description": "connctd design system",
-  "main": "build/index.js",
-  "types": "build/index.d.js",
+  "main": "index.js",
+  "types": "index.d.js",
   "author": "Pandelis Zembashis <pandelis.zembashis@connctd.com>",
   "license": "MIT",
   "engines": {
@@ -54,7 +54,7 @@
     "webpack": "^4.0.0"
   },
   "scripts": {
-    "prepublishOnly": "npm run compile && tsc",
+    "prepublishOnly": "[ ! -f index.d.ts ] && echo \"Error: Don't run 'npm publish' in root. Use 'yarn deploy' instead.\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
@@ -63,7 +63,8 @@
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
-    "deploy": "np",
+    "deploy": "npm run compile && tsc && cp package.json ./build/package.json && cp README.md ./build/README.md && cd ./build && np",
+    "deployOnly": "cd ./build && np",
     "test": "echo Wow 100% success"
   }
 }
