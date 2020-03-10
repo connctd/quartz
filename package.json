@@ -57,7 +57,6 @@
 		"contents": "build"
 	},
   "scripts": {
-    "prepublishOnly": "[ ! -f index.d.ts ] && echo \"Error: Don't run 'npm publish' in root. Use 'yarn deploy' instead.\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
