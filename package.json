@@ -60,7 +60,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "prepublish": "cp ../package.json ./package.json",
+    "prepublishOnly": "cp ../package.json ./package.json",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
