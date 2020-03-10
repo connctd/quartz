@@ -60,7 +60,6 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    // "prepublishOnly": "echo THIS IS RUNNING && pwd && cp package.json ./build/package.json && cp README.md ./build/README.md",
     "storybook": "start-storybook -p 6006 -s ./.storybook/static",
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
