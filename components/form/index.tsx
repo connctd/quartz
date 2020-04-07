@@ -260,3 +260,26 @@ export const TextArea: React.FC<TextAreaProps> = ({ error, ...rest }) => (
 TextArea.defaultProps = {
     theme: defaultTheme,
 }
+
+
+/**
+ * The two duplicate declarations bellow is a function
+ * of TypeScript called Interface Merging
+ *
+ * https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces
+ */
+
+//eslint-disable-next-line
+interface DropdownProps extends InputProps {
+
+}
+//eslint-disable-next-line
+interface DropdownProps extends Themeable {
+
+}
+
+const StyledDropdown = styled.input``
+
+export const Dropdown: React.FC<DropdownProps> = () => (
+    <StyledDropdown />
+)

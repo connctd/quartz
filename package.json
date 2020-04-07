@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "nodemon": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -59,7 +60,8 @@
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public -s ./.storybook/static",
-    "watch": "tsc --watch",
+    "watch": "nodemon --watch components --ignore 'components/**/*.stories.tsx' -e ts,tsx --exec 'yarn transpile'",
+    "transpile": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
