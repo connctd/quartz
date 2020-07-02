@@ -120,7 +120,7 @@ const StyledCheckbox = styled.div<InputProps>`
     cursor: pointer;
 `
 
-const CheckboxContainer = styled.label`
+const CheckboxContainer = styled.label<{disabled: boolean, theme: QuartzTheme, }>`
     display: grid;
     grid-template-columns: 22px auto;
     grid-column-gap: 5px;
@@ -163,7 +163,7 @@ const Tick = styled.svg<Themeable>`
 `
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-    id, children, checked, onChange, disabled, theme = defaultTheme, className,
+    id, children, checked, onChange, disabled = false, theme = defaultTheme, className,
 }) => (
     <CheckboxContainer className={className} disabled={disabled} htmlFor={id}>
         <StyledCheckbox
@@ -173,7 +173,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         >
             {checked && (
                 <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
-                    <path className={`checkboxTick${checked ? "--checked" : ""} ${disabled ? "checkboxTick--disabled" : ""}`} d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677" stroke={theme.secondary} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                        className={`checkboxTick${checked ? "--checked" : ""} ${disabled ? "checkboxTick--disabled" : ""}`}
+                        d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677"
+                        stroke={theme.secondary}
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
                 </Tick>
             )}
         </StyledCheckbox>
