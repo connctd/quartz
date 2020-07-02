@@ -62,7 +62,7 @@
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public -s ./.storybook/static",
-    "watch": "tsc --watch",
+    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
     "lint": "eslint ./components --ext ts,tsx,js,jsx",
     "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
