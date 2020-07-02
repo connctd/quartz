@@ -5,7 +5,7 @@ import Paper from "./index"
 
 const stories = storiesOf("Paper", module)
 stories.addDecorator(withInfo)
-stories.addParameters({ info: { inline: true }, options: { theme: { appContentBg: "#FAFAFA" } } })
+stories.addParameters({ info: { inline: true } })
 
 stories.add("Default", () => (
     <Paper>

@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+      "outDir": "build",
+      "module": "es6",
+      "target": "esnext",
+      "lib": ["es5", "es6", "es7", "es2017", "dom"],
+      "sourceMap": true,
+      "allowJs": false,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "rootDirs": ["src", "components"],
+      "baseUrl": "components",
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": false,
+      "strictNullChecks": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "noUnusedLocals": true,
+      "declaration": true,
+      "emitDeclarationOnly": false,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
+    },
+    "include": ["components/**/*"],
+    "exclude": ["node_modules", "build", "scripts", "components/**/*.stories.tsx"]
+}
