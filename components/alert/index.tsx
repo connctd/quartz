@@ -13,7 +13,6 @@ const AlertContainer = styled.div<StyledAlertProps>`
 
 const AlertContent = styled.div<StyledAlertProps>`
   padding: 16px;
-
   color: ${(props) => props.theme.alert[props.appearance].text};
 `;
 

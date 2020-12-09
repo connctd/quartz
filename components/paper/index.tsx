@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-
 import { Themeable } from '../theme';
 
 export interface PaperProps extends Themeable {
