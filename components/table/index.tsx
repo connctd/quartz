@@ -39,7 +39,7 @@ const TableContainer = styled.div`
 
 export interface TableProps extends Themeable {
   headings: string[];
-  data: Record<string, any[]>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: Record<string, any[]>;
 }
 
 export const Table: React.FC<TableProps> = React.memo(({ headings, data, theme }) => (
