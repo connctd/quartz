@@ -1,5 +1,6 @@
 export * from './action';
 export * from './button';
+export * from './delimiter';
 export * from './input';
 export * from './checkbox';
 export * from './pill';
