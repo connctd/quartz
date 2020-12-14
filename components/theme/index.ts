@@ -124,6 +124,7 @@ export const GlobalStyle = css`
     padding: 0;
     height: 100%;
     font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif;
+    font-size: 14px;
   }
 
   #root { /* Margin collapse fix  */
