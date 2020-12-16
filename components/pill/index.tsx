@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+
 import { defaultTheme, Themeable } from '../theme';
 
 export interface PillProps extends Themeable {
@@ -12,7 +13,6 @@ const StyledPill = styled.span<Themeable>`
   border-radius: 5px;
   background: ${(props) => props.theme.light30};
   padding: 2px 9px;
-  margin: 0px 0px 10px 10px;
   color: ${(props) => props.theme.dark};
 `;
 
