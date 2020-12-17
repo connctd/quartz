@@ -32,8 +32,8 @@ const InvisibleCheckbox = styled.input`
 const StyledCheckbox = styled.div<InputProps>`
   display: inline-block;
   position: relative;
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
   background: ${(props) => (props.disabled ? props.theme.light30 : props.theme.light30)};
   border: 1px solid ${(props) => props.theme.light50};
   box-sizing: border-box;
@@ -45,8 +45,9 @@ const StyledCheckbox = styled.div<InputProps>`
 
 const CheckboxContainer = styled.label<{ disabled: boolean, theme: QuartzTheme }>`
   display: grid;
-  grid-template-columns: 22px auto;
-  grid-column-gap: 5px;
+  grid-template-columns: 30px auto;
+  grid-column-gap: 8px;
+  align-items: center;
   margin-bottom: 16px;
   padding: 10px 0;
 
@@ -71,12 +72,13 @@ const tickedAnimation = keyframes`
 
 const Tick = styled.svg<Themeable>`
   position: absolute;
-  top: -6px;
+  top: -5px;
+  left: -5px;
 
   .checkboxTick {
     &--checked {
       stroke: ${(props) => props.theme.secondary};
-      animation: ${tickedAnimation} 1 0.4s ease-out;
+      animation: ${tickedAnimation} 0.6s;
       stroke-dasharray: 100;
       stroke-dashoffset: 50;
     }
@@ -88,21 +90,34 @@ const Tick = styled.svg<Themeable>`
 `;
 
 export const Checkbox: React.FC<CheckboxProps> = ({
-  id, children, checked, onChange, disabled = false, theme = defaultTheme, className
+  id,
+  children,
+  checked,
+  onChange,
+  disabled = false,
+  theme = defaultTheme,
+  className,
+  ...rest
 }) => (
-  <CheckboxContainer className={className} disabled={disabled} htmlFor={id}>
+  <CheckboxContainer
+    className={className}
+    disabled={disabled}
+    htmlFor={id}
+    theme={theme}
+    {...rest}
+  >
     <StyledCheckbox
       theme={theme}
       disabled={disabled}
       onClick={(e) => { if (!disabled) onChange(e); }}
     >
       {checked && (
-        <Tick width="18" height="20" viewBox="0 0 18 20" fill="none">
+        <Tick width="40" height="40" viewBox="0 0 40 40" fill="none">
           <path
             className={`checkboxTick${checked ? '--checked' : ''} ${disabled ? 'checkboxTick--disabled' : ''}`}
-            d="M16.3872 1.77417L7.33506 18.3226L1.67749 10.9677"
+            d="M 35 2 L 20 25 L 12 15"
             stroke={theme.secondary}
-            strokeWidth="2"
+            strokeWidth="3"
             strokeMiterlimit="10"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -114,7 +129,3 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     {children}
   </CheckboxContainer>
 );
-
-Checkbox.defaultProps = {
-  theme: defaultTheme
-};
