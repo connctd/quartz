@@ -12,4 +12,5 @@ export * from './logo';
 export * from './anchor';
 export * from './navbar';
 export * from './table';
+export * from './tooltip';
 export * from './alert';
