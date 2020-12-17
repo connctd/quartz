@@ -21,9 +21,10 @@ export const LabelContainer = styled.label<React.LabelHTMLAttributes<HTMLLabelEl
 `;
 
 const StyledInput = styled.input<InputProps>`
-  padding: 12px 20px;
+  padding: 0 16px;
   box-sizing: border-box;
   width: 100%;
+  height: 45px;
   border: 1px solid ${(props) => (props.hasError ? props.theme.error : props.theme.light50)};
   font-size: 14px;
   border-radius: ${(props) => {
