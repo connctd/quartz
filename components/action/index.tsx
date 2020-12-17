@@ -42,9 +42,18 @@ const ActionContainer = styled.a`
 `;
 
 export const Action: React.FC<ActionProps> = ({
-  label, type = 'add', theme = defaultTheme, onClick, className
+  label,
+  type = 'add',
+  onClick,
+  className,
+  theme = defaultTheme,
+  ...rest
 }) => (
-  <ActionContainer className={className} onClick={onClick}>
+  <ActionContainer
+    className={className}
+    onClick={onClick}
+    {...rest}
+  >
     {label && (<Label>{label}</Label>)}
     <IconCircle theme={theme} type={type} />
   </ActionContainer>
