@@ -48,6 +48,7 @@ const CheckboxContainer = styled.label<{ disabled: boolean, theme: QuartzTheme }
   grid-template-columns: 30px auto;
   grid-column-gap: 8px;
   align-items: center;
+  width: 100%;
   margin-bottom: 16px;
   padding: 10px 0;
 
@@ -125,7 +126,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         </Tick>
       )}
     </StyledCheckbox>
-    <InvisibleCheckbox type="checkbox" checked={checked} disabled={disabled} onChange={onChange} id={id} />
+    <InvisibleCheckbox
+      type="checkbox"
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+      id={id}
+    />
     {children}
   </CheckboxContainer>
 );
