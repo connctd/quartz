@@ -18,6 +18,7 @@ export interface InputProps
 
 export const LabelContainer = styled.label<React.LabelHTMLAttributes<HTMLLabelElement>>`
   margin-bottom: 16px;
+  width: 100%;
 `;
 
 const StyledInput = styled.input<InputProps>`
@@ -60,7 +61,7 @@ const StyledInputContainer = styled.div`
 const StyledPrefixContainer = styled.div<Themeable>`
   padding: 0 16px;
   margin-right: -1px;
-  height: 49px;
+  height: 45px;
   background-color: ${(props) => props.theme.light50};
   color: ${(props) => props.theme.dark};
   line-height: 49px;
@@ -78,7 +79,7 @@ const IconSpacing = styled.div`
   padding: 8px;
 `;
 
-const FieldDescription = styled.div<Themeable>`
+export const FieldDescription = styled.div<Themeable>`
   color: ${(props) => props.theme.dark};
   margin-top: 8px;
 `;

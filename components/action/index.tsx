@@ -28,7 +28,9 @@ const IconCircle = styled.div<Themeable & Pick<ActionProps, 'type'>>`
     content: '+';
 
     ${({ type }) => (type === 'delete' ? css(`
-      transform: translateX(-1px) translateY(-0.5px) rotateZ(45deg)
+      content: '✕';
+      font-size: 14px;
+      transform: translateY(-3px);
     `) : '')};
   }
 `;
