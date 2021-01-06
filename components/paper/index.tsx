@@ -5,6 +5,7 @@ import { Themeable } from '../theme';
 
 export interface PaperProps extends Themeable {
   children: React.ReactNode;
+  warning?: boolean;
 }
 
 const StyledPaper = styled.div<PaperProps>`
@@ -16,10 +17,12 @@ const StyledPaper = styled.div<PaperProps>`
   border: solid 1px #bdbdbd;
   border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+
+  ${({ warning }) => (warning ? 'border: dashed 8px #eada56' : '')}
 `;
 
-export const Paper: React.FC<PaperProps> = ({ children, ...rest }) => (
-  <StyledPaper {...rest}>
+export const Paper: React.FC<PaperProps> = ({ children, warning, ...rest }) => (
+  <StyledPaper warning={warning} {...rest}>
     {children}
   </StyledPaper>
 );
