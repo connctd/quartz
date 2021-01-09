@@ -14,6 +14,7 @@ export interface InputProps
   prefix?: string;
   className?: string;
   icon?: React.ReactNode;
+  onClickIcon?: () => void;
 }
 
 export const LabelContainer = styled.label<React.LabelHTMLAttributes<HTMLLabelElement>>`
@@ -69,10 +70,12 @@ const StyledPrefixContainer = styled.div<Themeable>`
 `;
 
 const StyledIconContainer = styled.div<InputProps>`
-  height: 49px;
-  width: 49px;
+  height: 45px;
+  width: 45px;
   background-color: ${(props) => props.theme.green};
   border-radius: 0 3px 3px 0;
+
+  ${({ onClick }) => (onClick ? 'cursor: pointer;' : '')}
 `;
 
 const IconSpacing = styled.div`
@@ -90,7 +93,7 @@ export const FieldError = styled.div<Themeable>`
 `;
 
 export const Input: React.FC<InputProps> = ({
-  label, id, description, prefix, hasError, error, theme, icon, ...rest
+  label, id, description, prefix, hasError, error, theme, icon, onClickIcon, ...rest
 }) => (
   <LabelContainer htmlFor={id}>
     {label}
@@ -109,7 +112,11 @@ export const Input: React.FC<InputProps> = ({
         {...rest}
       />
       {icon && (
-        <StyledIconContainer theme={theme} hasError={hasError}>
+        <StyledIconContainer
+          theme={theme}
+          hasError={hasError}
+          onClick={onClickIcon}
+        >
           <IconSpacing>{icon}</IconSpacing>
         </StyledIconContainer>
       )}
