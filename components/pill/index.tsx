@@ -8,16 +8,18 @@ export interface PillProps extends Themeable {
 }
 
 const StyledPill = styled.span<Themeable>`
-  border: 1px solid ${(props) => props.theme.light50};
+  border: 1px solid #302C70;
   display: inline-block;
   border-radius: 5px;
-  background: ${(props) => props.theme.light30};
+  background: #dcdaf1;
   padding: 2px 9px;
-  color: ${(props) => props.theme.dark};
+  color: #302C70;
 `;
 
-export const Pill: React.FC<PillProps> = ({ theme = defaultTheme, children }) => (
-  <StyledPill theme={theme}>{children}</StyledPill>
+export const Pill: React.FC<PillProps> = ({ theme = defaultTheme, children, ...rest }) => (
+  <StyledPill theme={theme} {...rest}>
+    {children}
+  </StyledPill>
 );
 
 Pill.defaultProps = {
