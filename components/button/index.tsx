@@ -30,6 +30,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 12px;
   border: none;
   padding: 10px 20px;
+  text-align: center;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -55,6 +56,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 `;
 
 export const StyledAnchorButton = styled.a<StyledButtonProps>`
+  display: inline-block;
   background: linear-gradient(
     180deg,
     ${(props) => props.theme.gradient[props.appearance].start} -76.56%,
@@ -68,6 +70,7 @@ export const StyledAnchorButton = styled.a<StyledButtonProps>`
   font-style: normal;
   font-weight: 600;
   font-size: ${(props) => (props.small ? 12 : 18)}px;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
 
