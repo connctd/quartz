@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -6,8 +6,6 @@ import { Themeable } from '../theme';
 
 interface CollapseProps {
   heading: string;
-  expanded: boolean;
-  toggle: () => void;
   children: React.ReactNode;
 }
 
@@ -66,18 +64,24 @@ const CollapseBody = styled.div<Expandable>`
   `) : '')}
 `;
 
-export const Collapse: React.FC<CollapseProps & Themeable> = ({
-  heading, expanded, toggle, children, ...rest
-}) => (
-  <CollapseContainer {...rest}>
-    <CollapseHeader
-      onClick={toggle}
-      expanded={expanded}
-    >
-      {heading}
-    </CollapseHeader>
-    <CollapseBody expanded={expanded}>
-      {children}
-    </CollapseBody>
-  </CollapseContainer>
-);
+export const Collapse: React.FC<CollapseProps & Themeable> = ({ heading, children, ...rest }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const toggle = () => {
+    setExpanded(!expanded);
+  };
+
+  return (
+    <CollapseContainer {...rest}>
+      <CollapseHeader
+        onClick={toggle}
+        expanded={expanded}
+      >
+        {heading}
+      </CollapseHeader>
+      <CollapseBody expanded={expanded}>
+        {children}
+      </CollapseBody>
+    </CollapseContainer>
+  );
+};
