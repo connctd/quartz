@@ -12,7 +12,7 @@ const AlertContainer = styled.div<StyledAlertProps>`
 `;
 
 const AlertContent = styled.div<StyledAlertProps>`
-  padding: 2px;
+  padding: 16px;
 
   color: ${(props) => props.theme.alert[props.appearance].text};
 `;
@@ -42,7 +42,7 @@ interface StyledAlertProps {
 export interface AlertProps extends Themeable {
   children: React.ReactNode;
   appearance?: AlertAppearance;
-  dissmissable? : boolean;
+  dissmissable?: boolean;
 }
 
 export const Alert: React.FC<AlertProps> = ({
