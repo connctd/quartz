@@ -5,6 +5,7 @@ export * from './button';
 export * from './checkbox';
 export * from './collapse';
 export * from './delimiter';
+export * from './dialog';
 export * from './input';
 export * from './logo';
 export * from './navbar';
