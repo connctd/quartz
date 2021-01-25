@@ -18,6 +18,7 @@ export interface InputProps
 }
 
 export const LabelContainer = styled.label<React.LabelHTMLAttributes<HTMLLabelElement>>`
+  display: inline-block;
   margin-bottom: 16px;
   width: 100%;
 `;
