@@ -1,49 +1,66 @@
-import * as React from "react"
-import styled from "@emotion/styled"
-import { defaultTheme, Themeable } from "../theme"
+import * as React from 'react';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { defaultTheme, Themeable } from '../theme';
 
 export interface ActionProps extends Themeable {
-    label: string
-    onClick: (e: React.MouseEvent) => void
+  label?: string;
+  type?: 'add' | 'delete';
+  onClick: (e: React.MouseEvent) => void;
 }
 
-const PlusButton = styled.div<Themeable>`
-    width: 30px;
-    height: 30px;
-    background: ${props => props.theme.secondary};
-    border-radius: 50%;
-    color: white;
-    margin-left: 10px;
-    text-align: center;
-    font-size: 24px;
-    position: relative;
-    :after {
-        position: absolute;
-        content: "+";
-        top: -2px;
-        left: 9px;
-    }
-`
+const Label = styled.span`
+  margin-right: 8px;
+`;
+
+const IconCircle = styled.div<Themeable & Pick<ActionProps, 'type'>>`
+  width: 30px;
+  height: 30px;
+  background-color: ${({ type, theme }) => (type === 'add' ? theme.secondary : theme.primary)};
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 34px;
+  border-radius: 50%;
+
+  :after {
+    display: inline-block;
+    content: '+';
+
+    ${({ type }) => (type === 'delete' ? css(`
+      content: '✕';
+      font-size: 14px;
+      transform: translateY(-3px);
+    `) : '')};
+  }
+`;
 
 const ActionContainer = styled.a`
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    cursor: pointer;
-    user-select: none;
-`
-
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+`;
 
 export const Action: React.FC<ActionProps> = ({
-    label, theme = defaultTheme, onClick, className,
+  label,
+  type = 'add',
+  onClick,
+  className,
+  theme = defaultTheme,
+  ...rest
 }) => (
-    <ActionContainer className={className} onClick={onClick}>
-        <span>{label}</span>
-        <PlusButton theme={theme} />
-    </ActionContainer>
-)
-
+  <ActionContainer
+    className={className}
+    onClick={onClick}
+    {...rest}
+  >
+    {label && (<Label>{label}</Label>)}
+    <IconCircle theme={theme} type={type} />
+  </ActionContainer>
+);
 
 Action.defaultProps = {
-    theme: defaultTheme,
-}
+  theme: defaultTheme
+};
