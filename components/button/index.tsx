@@ -36,7 +36,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-size: 18px;
   cursor: pointer;
 
-  ${(props) => (props.disabled ? 'opacity: 0.7' : css(`
+  ${(props) => (props.disabled ? css(`
+    opacity: 0.7;
+    cursor: not-allowed;
+  `) : css(`
     :active {
       background: linear-gradient(
         180deg,
