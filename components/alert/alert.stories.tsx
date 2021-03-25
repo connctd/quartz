@@ -7,7 +7,6 @@ import { Alert, AlertAppearance } from './index';
 const stories = storiesOf('Alert', module);
 stories.addDecorator(withInfo);
 stories.addDecorator(withKnobs);
-stories.addParameters({ info: { inline: false } });
 
 stories.add('Default (Warning)', () => <Alert><span>Hallo Welt!</span></Alert>);
 

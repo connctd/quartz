@@ -10,7 +10,7 @@ const stories = storiesOf('Input', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
+
 
 stories.add('Input', () => {
   const placeholder: string = text('Placeholder', 'Email');

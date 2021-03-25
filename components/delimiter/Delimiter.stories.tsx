@@ -9,7 +9,6 @@ const stories = storiesOf('Delimiter', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
 
 stories.add('Delimiter', () => {
   const textContent = text('Delimiter Text', 'Delimiter');

@@ -10,7 +10,6 @@ const stories = storiesOf('Select', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
 
 const eventsFromNames = actions('onChange');
 

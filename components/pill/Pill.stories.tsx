@@ -9,7 +9,6 @@ const stories = storiesOf('Pill', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
 
 stories.add('Pill', () => {
   const content = text('Pill Content', 'Example Pill');

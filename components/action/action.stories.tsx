@@ -10,7 +10,6 @@ const stories = storiesOf('Action', module);
 
 stories.addDecorator(withInfo);
 stories.addDecorator(withKnobs);
-stories.addParameters({ info: { inline: false } });
 
 stories.add('Default', () => {
   const label = text('Label', 'Create an App');

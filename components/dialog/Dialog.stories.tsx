@@ -5,7 +5,7 @@ import { Dialog } from './index';
 
 const stories = storiesOf('Dialog', module);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
+
 
 stories.add('Default', () => (
   <Dialog heading="Details">

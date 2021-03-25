@@ -8,7 +8,6 @@ import { Button, ButtonAppearance } from './index';
 const stories = storiesOf('Button', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: false } });
 
 stories.add('Button', () => {
   const btnText = text('Text', 'Action');
