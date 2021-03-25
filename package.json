@@ -10,6 +10,18 @@
     "node": ">=10.0.0",
     "yarn": "^1.15.0"
   },
+  "scripts": {
+    "prepublishOnly": "npm run compile && tsc",
+    "storybook": "start-storybook -p 6006 -s ./.storybook/static",
+    "build-storybook": "build-storybook",
+    "start": "start-storybook -p 6006 -s ./.storybook/static",
+    "build": "build-storybook -o public -s ./.storybook/static",
+    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
+    "lint": "eslint ./components --ext ts,tsx,js,jsx",
+    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
+    "check-types": "tsc",
+    "deploy": "np"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
@@ -57,18 +69,5 @@
     "ts-loader": "^7.0.5",
     "typescript": "4.1.2",
     "webpack": "^4.0.0"
-  },
-  "scripts": {
-    "prepublishOnly": "npm run compile && tsc",
-    "storybook": "start-storybook -p 6006 -s ./.storybook/static",
-    "build-storybook": "build-storybook",
-    "start": "start-storybook -p 6006 -s ./.storybook/static",
-    "build": "build-storybook -o public -s ./.storybook/static",
-    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
-    "lint": "eslint ./components --ext ts,tsx,js,jsx",
-    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
-    "check-types": "tsc",
-    "deploy": "np",
-    "test": "echo Wow 100% success"
   }
 }
