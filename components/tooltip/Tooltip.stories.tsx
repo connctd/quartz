@@ -9,7 +9,7 @@ const stories = storiesOf('Tooltip', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
+stories.addParameters({ info: { inline: false } });
 
 stories.add('Tooltip', () => (
   <Tooltip content="I'm a Tooltip ...">

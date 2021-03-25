@@ -5,7 +5,7 @@ import Paper from './index';
 
 const stories = storiesOf('Paper', module);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
+stories.addParameters({ info: { inline: false } });
 
 stories.add('Default', () => (
   <Paper>

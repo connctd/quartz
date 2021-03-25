@@ -10,7 +10,7 @@ const stories = storiesOf('Checkbox', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
+stories.addParameters({ info: { inline: false } });
 
 stories.add('Checkbox', () => {
   const [checked, check] = useState(true);
