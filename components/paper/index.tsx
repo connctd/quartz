@@ -1,10 +1,12 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { Themeable } from '../theme';
+
+import { defaultTheme, Themeable } from '../theme';
 
 export interface PaperProps extends Themeable {
   children: React.ReactNode;
   warning?: boolean;
+  danger?: boolean;
 }
 
 const StyledPaper = styled.div<PaperProps>`
@@ -18,10 +20,22 @@ const StyledPaper = styled.div<PaperProps>`
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
   ${({ warning }) => (warning ? 'border: dashed 8px #eada56' : '')}
+  ${({ danger, theme }) => (danger ? `border: dashed 8px ${theme.error}` : '')}
 `;
 
-export const Paper: React.FC<PaperProps> = ({ children, warning, ...rest }) => (
-  <StyledPaper warning={warning} {...rest}>
+export const Paper: React.FC<PaperProps> = ({
+  theme = defaultTheme,
+  warning,
+  danger,
+  children,
+  ...rest
+}) => (
+  <StyledPaper
+    theme={theme}
+    warning={warning}
+    danger={danger}
+    {...rest}
+  >
     {children}
   </StyledPaper>
 );
