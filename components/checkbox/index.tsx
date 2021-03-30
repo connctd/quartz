@@ -35,7 +35,7 @@ const StyledCheckbox = styled.div<InputProps>`
   width: 30px;
   height: 30px;
   background: ${(props) => (props.theme.gray5)};
-  border: 1px solid ${(props) => props.theme.gray4};
+  border: 1px solid ${(props) => props.theme.gray3};
   box-sizing: border-box;
   border-radius: 3px;
   transition: all 150ms;

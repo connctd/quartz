@@ -155,18 +155,6 @@ export const defaultTheme: QuartzTheme = {
   ...colors
 };
 
-// primary: '#D4550A',
-// secondary: '#19A287',
-// tertiary: '#201E50',
-// blue: '#302C70',
-// light30: '#F3F3F3',
-// light50: '#D8D8D8',
-// light: 'white',
-// dark: '#4A4A4A',
-// dark70: '#6B6B6B',
-// green: '#19A287',
-// error: '#D0021B',
-
 export const GlobalStyle = css`
   @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
 

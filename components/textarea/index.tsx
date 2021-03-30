@@ -18,7 +18,7 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   margin-bottom: -9px;
   padding: 12px 20px;
   display: inline-block;
-  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray2)};
+  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray3)};
   border-radius: 3px;
   box-sizing: border-box;
   font-size: 14px;

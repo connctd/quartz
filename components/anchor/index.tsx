@@ -15,7 +15,7 @@ interface AnchorProps extends Themeable {
 const StyledAnchor = styled('a', {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== 'primary'
 }) <AnchorProps>`
-  color: ${(props) => (props.primary ? props.theme.primary : props.theme.gray1)};
+  color: ${(props) => (props.primary ? props.theme.success : props.theme.gray1)};
   text-decoration: underline;
 `;
 

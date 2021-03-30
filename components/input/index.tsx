@@ -28,7 +28,7 @@ const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
   width: 100%;
   height: 45px;
-  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray2)};
+  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray3)};
   font-size: 14px;
   border-radius: ${(props) => {
     if (props.prefix) {
@@ -64,10 +64,11 @@ const StyledPrefixContainer = styled.div<Themeable>`
   padding: 0 16px;
   margin-right: -1px;
   height: 45px;
-  background-color: ${(props) => props.theme.gray4};
+  background-color: ${(props) => props.theme.gray5};
   color: ${(props) => props.theme.gray1};
   line-height: 49px;
   border-radius: 3px 0 0 3px;
+  border: solid 1px ${(props) => props.theme.gray3};
 `;
 
 const StyledIconContainer = styled.div<InputProps>`
