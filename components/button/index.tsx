@@ -95,7 +95,6 @@ export const StyledAnchorButton = styled.a<StyledButtonProps>`
 `;
 
 export enum ButtonAppearance {
-  default = 'light',
   primary = 'primary',
   secondary = 'secondary',
   danger = 'danger'
@@ -127,7 +126,7 @@ export interface ButtonProps {
  */
 export const Button: React.FC<ButtonProps> = ({
   text,
-  appearance = ButtonAppearance.default,
+  appearance = ButtonAppearance.primary,
   type,
   onClick,
   theme = defaultTheme,
@@ -177,6 +176,6 @@ export const Button: React.FC<ButtonProps> = ({
 
 Button.defaultProps = {
   type: 'button',
-  appearance: ButtonAppearance.default,
+  appearance: ButtonAppearance.primary,
   theme: defaultTheme
 };

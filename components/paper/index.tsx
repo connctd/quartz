@@ -20,7 +20,7 @@ const StyledPaper = styled.div<PaperProps>`
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
   ${({ warning }) => (warning ? 'border: dashed 8px #eada56' : '')}
-  ${({ danger, theme }) => (danger ? `border: dashed 8px ${theme.error}` : '')}
+  ${({ danger, theme }) => (danger ? `border: dashed 8px ${theme.danger}` : '')}
 `;
 
 export const Paper: React.FC<PaperProps> = ({

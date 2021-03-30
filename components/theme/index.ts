@@ -6,24 +6,10 @@ interface Gradient {
   text: string;
 }
 
-interface Gradients {
-  primary: Gradient;
-  secondary: Gradient;
-  light: Gradient;
-  dark: Gradient;
-  danger: Gradient;
-}
-
-interface Alerts {
-  success: AlertColors;
-  error: AlertColors;
-  warning: AlertColors;
-}
-
-interface AlertColors {
-  cross: string;
-  text: string;
+interface Alert {
   background: string;
+  border: string;
+  text: string;
 }
 
 /**
@@ -33,17 +19,51 @@ interface AlertColors {
 export interface QuartzTheme {
   primary: string;
   secondary: string;
-  tertiary: string;
+  danger: string;
+  success: string;
+  warning: string;
+  info: string;
+
+  gradient: {
+    primary: Gradient;
+    secondary: Gradient;
+    danger: Gradient;
+  };
+
+  alert: {
+    success: Alert;
+    error: Alert;
+    warning: Alert;
+  };
+
+  black: string;
+  white: string;
+
+  gray1: string;
+  gray2: string;
+  gray3: string;
+  gray4: string;
+  gray5: string;
+
+  purple1: string;
+  purple2: string;
+  purple3: string;
+
+  red1: string;
+  red2: string;
+  red3: string;
+
+  orange1: string;
+  orange2: string;
+  orange3: string;
+
+  green1: string;
+  green2: string;
+  green3: string;
+
+  yellow: string;
   blue: string;
-  light30: string;
-  light50: string;
-  light: string;
-  dark: string;
-  dark70: string;
-  green: string;
-  error: string;
-  gradient: Gradients;
-  alert: Alerts;
+  magenta: string;
 }
 
 /**
@@ -57,64 +77,95 @@ export interface Themeable {
   style?: React.CSSProperties;
 }
 
-export const defaultTheme: QuartzTheme = {
-  primary: '#D4550A', // red?
-  secondary: '#19A287', // green
+const colors = {
+  black: '#000000',
+  white: '#FFFFFF',
 
-  tertiary: '#201E50', // dark purple?
-  blue: '#302C70',
-  light30: '#F3F3F3',
-  light50: '#D8D8D8',
-  light: 'white',
-  dark: '#4A4A4A',
-  dark70: '#6B6B6B',
-  green: '#19A287',
-  error: '#D0021B',
+  gray1: '#4F4F4F',
+  gray2: '#828282',
+  gray3: '#BDBDBD',
+  gray4: '#E0E0E0',
+  gray5: '#F2F2F2',
+
+  purple1: '#302C70',
+  purple2: '#DCDAF1',
+  purple3: '#524CB9',
+
+  red1: '#E64C3C',
+  red2: '#F2A097',
+  red3: '#6A0000',
+
+  orange1: '#DA7132',
+  orange2: '#FBE0B4',
+  orange3: '#7E4F00',
+
+  green1: '#169882',
+  green2: '#E4FBF7',
+  green3: '#15502C',
+
+  yellow: '#EADA56',
+  blue: '#478DC0',
+  magenta: '#531E6B'
+};
+
+export const defaultTheme: QuartzTheme = {
+  primary: colors.purple1,
+  secondary: colors.gray4,
+  danger: colors.red1,
+  success: colors.green1,
+  warning: colors.yellow,
+  info: colors.blue,
+
   gradient: {
     primary: {
-      start: '#FFE9E7',
-      end: '#FF1800',
-      text: 'white'
+      start: colors.purple2,
+      end: colors.purple1,
+      text: colors.white
     },
     secondary: {
-      start: '#6D68C1',
-      end: '#302C70',
-      text: 'white'
-    },
-    light: {
-      start: '#FFFFFF',
-      end: '#D8D8D8',
-      text: '#6B6B6B'
-    },
-    dark: {
-      start: '',
-      end: '',
-      text: ''
+      start: colors.gray5,
+      end: colors.gray4,
+      text: colors.gray1
     },
     danger: {
-      start: '#FF6656',
-      end: '#D41400',
-      text: 'white'
+      start: colors.red2,
+      end: colors.red1,
+      text: colors.white
     }
   },
+
   alert: {
     success: {
-      cross: '#19A287',
-      text: '#086654',
-      background: '#C5E8E1'
+      background: colors.green2,
+      border: colors.green1,
+      text: colors.green3
     },
     error: {
-      cross: '#F45B5B',
-      text: '#6A0000',
-      background: '#FBBDBD'
+      background: colors.red2,
+      border: colors.red1,
+      text: colors.red3
     },
     warning: {
-      cross: '#F5A623',
-      text: '#7E4F00',
-      background: '#FCE1B4'
+      background: colors.orange2,
+      border: colors.orange1,
+      text: colors.orange3
     }
-  }
+  },
+
+  ...colors
 };
+
+// primary: '#D4550A',
+// secondary: '#19A287',
+// tertiary: '#201E50',
+// blue: '#302C70',
+// light30: '#F3F3F3',
+// light50: '#D8D8D8',
+// light: 'white',
+// dark: '#4A4A4A',
+// dark70: '#6B6B6B',
+// green: '#19A287',
+// error: '#D0021B',
 
 export const GlobalStyle = css`
   @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');

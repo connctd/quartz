@@ -28,7 +28,7 @@ const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
   width: 100%;
   height: 45px;
-  border: 1px solid ${(props) => (props.hasError ? props.theme.error : props.theme.light50)};
+  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray2)};
   font-size: 14px;
   border-radius: ${(props) => {
     if (props.prefix) {
@@ -42,13 +42,13 @@ const StyledInput = styled.input<InputProps>`
     return '3px';
   }};
 
-  ${(props) => (props.disabled || props.readOnly ? `background-color: ${props.theme.light30}` : '')}
+  ${(props) => (props.disabled || props.readOnly ? `background-color: ${props.theme.gray5}` : '')}
   :focus {
-    ${(props) => (props.readOnly ? '' : `border: 1px solid ${props.theme.green}`)}
+    ${(props) => (props.readOnly ? '' : `border: 1px solid ${props.theme.success}`)}
   }
   :disabled {
-    background-color: ${(props) => props.theme.light30};
-    color: ${(props) => props.theme.dark};
+    background-color: ${(props) => props.theme.gray5};
+    color: ${(props) => props.theme.gray1};
   }
   :readonly {
     color: black;
@@ -64,8 +64,8 @@ const StyledPrefixContainer = styled.div<Themeable>`
   padding: 0 16px;
   margin-right: -1px;
   height: 45px;
-  background-color: ${(props) => props.theme.light50};
-  color: ${(props) => props.theme.dark};
+  background-color: ${(props) => props.theme.gray4};
+  color: ${(props) => props.theme.gray1};
   line-height: 49px;
   border-radius: 3px 0 0 3px;
 `;
@@ -73,7 +73,7 @@ const StyledPrefixContainer = styled.div<Themeable>`
 const StyledIconContainer = styled.div<InputProps>`
   height: 45px;
   width: 45px;
-  background-color: ${(props) => props.theme.green};
+  background-color: ${(props) => props.theme.success};
   border-radius: 0 3px 3px 0;
 
   ${({ onClick }) => (onClick ? 'cursor: pointer;' : '')}
@@ -84,12 +84,12 @@ const IconSpacing = styled.div`
 `;
 
 export const FieldDescription = styled.div<Themeable>`
-  color: ${(props) => props.theme.dark};
+  color: ${(props) => props.theme.gray1};
   margin-top: 8px;
 `;
 
 export const FieldError = styled.div<Themeable>`
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.danger};
   margin-top: 8px;
 `;
 

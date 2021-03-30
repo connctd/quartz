@@ -16,7 +16,7 @@ const Label = styled.span`
 const IconCircle = styled.div<Themeable & Pick<ActionProps, 'type'>>`
   width: 30px;
   height: 30px;
-  background-color: ${({ type, theme }) => (type === 'add' ? theme.secondary : theme.primary)};
+  background-color: ${({ type, theme }) => (type === 'add' ? theme.success : theme.danger)};
   color: #fff;
   font-size: 24px;
   text-align: center;

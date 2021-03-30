@@ -5,7 +5,7 @@ import { defaultTheme, Themeable, QuartzTheme } from '../theme';
 const AlertContainer = styled.div<StyledAlertProps>`
   padding: 5px;
   background-color: ${(props) => props.theme.alert[props.appearance].background};
-  border: 1px solid ${(props) => props.theme.alert[props.appearance].cross};
+  border: 1px solid ${(props) => props.theme.alert[props.appearance].border};
   margin-bottom: 15px;
   border-radius: 3px;
   transition: all 0.2s linear;
@@ -18,7 +18,7 @@ const AlertContent = styled.div<StyledAlertProps>`
 
 const DissmissIndicator = styled.span<StyledAlertProps>`
   margin-left: 15px;
-  color: ${(props) => props.theme.alert[props.appearance].cross};
+  color: ${(props) => props.theme.alert[props.appearance].border};
   font-weight: bold;
   float: right;
   font-size: 22px;

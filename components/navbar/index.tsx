@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { defaultTheme, Themeable } from '../theme/index';
 
 const MainNavbar = styled.nav<Themeable>`
-  background: ${(props) => props.theme.blue};
+  background: ${(props) => props.theme.primary};
   font-size: 14px;
   z-index: 100;
   position: relative;
@@ -51,7 +51,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
   margin: 0px;
   text-align: center;
 
-  box-shadow: ${(props) => (props.focus ? `0px 3px 0px 0px ${props.theme.secondary}` : 'none')};
+  box-shadow: ${(props) => (props.focus ? `0px 3px 0px 0px ${props.theme.primary}` : 'none')};
 
   &>div {
     color: white;
@@ -62,7 +62,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
   }
 
   :hover {
-    background: ${(props) => props.theme.tertiary};
+    background: ${(props) => props.theme.purple3};
   }
 
   :hover .down {
@@ -114,7 +114,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
     display: none;
     list-style: none;
     margin-top: auto;
-    background: ${(props) => props.theme.tertiary};
+    background: ${(props) => props.theme.purple3};
     padding: 0px;
     opacity: 0.0;
     transition: opacity 0.25s;
@@ -127,7 +127,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
 
   ul li:hover {
     visibility: visible;
-    background: ${(props) => props.theme.blue};
+    background: ${(props) => props.theme.primary};
   }
 
   ul li {
@@ -155,7 +155,7 @@ Navbar.defaultProps = {
 
 // Navlink
 
-interface NavLinkProps extends Themeable{
+interface NavLinkProps extends Themeable {
   text?: string;
   target?: string;
   focus?: boolean;
@@ -194,7 +194,7 @@ NavGroup.defaultProps = {
 };
 
 interface MenuGroupProps extends Themeable {
-  children? : React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const MenuGroup: React.FC<MenuGroupProps> = ({
@@ -211,10 +211,10 @@ MenuGroup.defaultProps = {
 };
 
 interface MenuArrowProps extends Themeable {
-  up? : boolean;
-  down? : boolean;
-  left? : boolean;
-  right? : boolean;
+  up?: boolean;
+  down?: boolean;
+  left?: boolean;
+  right?: boolean;
 }
 
 export const MenuArrow: React.FC<MenuArrowProps> = ({

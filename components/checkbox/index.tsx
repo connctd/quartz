@@ -34,8 +34,8 @@ const StyledCheckbox = styled.div<InputProps>`
   position: relative;
   width: 30px;
   height: 30px;
-  background: ${(props) => (props.disabled ? props.theme.light30 : props.theme.light30)};
-  border: 1px solid ${(props) => props.theme.light50};
+  background: ${(props) => (props.theme.gray5)};
+  border: 1px solid ${(props) => props.theme.gray4};
   box-sizing: border-box;
   border-radius: 3px;
   transition: all 150ms;
@@ -52,12 +52,12 @@ const CheckboxContainer = styled.label<{ disabled: boolean, theme: QuartzTheme }
   margin-bottom: 16px;
   padding: 10px 0;
 
-  ${(props) => (props.disabled ? `color: ${props.theme.dark}` : '')}
+  ${(props) => (props.disabled ? `color: ${props.theme.gray2}` : '')}
 
   &:focus-within {
     ${StyledCheckbox} {
-      border: 1px solid ${(props) => props.theme.green};
-      box-shadow: 0px 0px 3px 0px ${(props) => props.theme.green};
+      border: 1px solid ${(props) => props.theme.success};
+      box-shadow: 0px 0px 3px 0px ${(props) => props.theme.success};
     }
   }
 `;
@@ -78,13 +78,13 @@ const Tick = styled.svg<Themeable>`
 
   .checkboxTick {
     &--checked {
-      stroke: ${(props) => props.theme.secondary};
+      stroke: ${(props) => props.theme.success};
       animation: ${tickedAnimation} 0.6s;
       stroke-dasharray: 100;
       stroke-dashoffset: 50;
     }
     &--disabled {
-      stroke: ${(props) => props.theme.dark};
+      stroke: ${(props) => props.theme.gray1};
     }
     stroke: none;
   }
@@ -117,7 +117,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           <path
             className={`checkboxTick${checked ? '--checked' : ''} ${disabled ? 'checkboxTick--disabled' : ''}`}
             d="M 35 2 L 20 25 L 12 15"
-            stroke={theme.secondary}
+            stroke={theme.success}
             strokeWidth="3"
             strokeMiterlimit="10"
             strokeLinecap="round"
