@@ -118,13 +118,13 @@ export const defaultTheme: QuartzTheme = {
 
   gradient: {
     primary: {
-      start: colors.purple2,
+      start: colors.purple3,
       end: colors.purple1,
       text: colors.white
     },
     secondary: {
       start: colors.gray5,
-      end: colors.gray4,
+      end: colors.gray3,
       text: colors.gray1
     },
     danger: {
@@ -156,7 +156,7 @@ export const defaultTheme: QuartzTheme = {
 };
 
 export const GlobalStyle = css`
-  @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Hind:400,500,600,700&display=swap');
 
   body,html {
     margin: 0 auto;
@@ -172,18 +172,12 @@ export const GlobalStyle = css`
     height: 100%;
   }
 
-  input, select, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; outline: none; }
-
-  :focus { /* https://stackoverflow.com/questions/935559/remove-safari-chrome-textinput-textarea-glow */
-    outline-color: transparent;
-    outline-style: none;
-  }
+  input, select, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; }
 
   a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
   }
-
 
   * {
     box-sizing: border-box;
