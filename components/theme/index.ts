@@ -45,21 +45,21 @@ export interface QuartzTheme {
   gray4: string;
   gray5: string;
 
-  purple1: string;
-  purple2: string;
-  purple3: string;
+  purple: string;
+  purpleLight: string;
+  purpleDark: string;
 
-  red1: string;
-  red2: string;
-  red3: string;
+  red: string;
+  redLight: string;
+  redDark: string;
 
-  orange1: string;
-  orange2: string;
-  orange3: string;
+  orange: string;
+  orangeLight: string;
+  orangeDark: string;
 
-  green1: string;
-  green2: string;
-  green3: string;
+  green: string;
+  greenLight: string;
+  greenDark: string;
 
   yellow: string;
   blue: string;
@@ -87,21 +87,22 @@ const colors = {
   gray4: '#E0E0E0',
   gray5: '#F2F2F2',
 
-  purple1: '#302C70',
-  purple2: '#DCDAF1',
-  purple3: '#524CB9',
+  purple: '#302C70',
+  purpleLight: '#DCDAF1',
+  purpleDark: '#201E50',
+  purpleVibrant: '#524CB9',
 
-  red1: '#E64C3C',
-  red2: '#F2A097',
-  red3: '#6A0000',
+  red: '#E64C3C',
+  redLight: '#F2A097',
+  redDark: '#6A0000',
 
-  orange1: '#DA7132',
-  orange2: '#FBE0B4',
-  orange3: '#7E4F00',
+  orange: '#DA7132',
+  orangeLight: '#FBE0B4',
+  orangeDark: '#7E4F00',
 
-  green1: '#169882',
-  green2: '#E4FBF7',
-  green3: '#15502C',
+  green: '#169882',
+  greenLight: '#E4FBF7',
+  greenDark: '#15502C',
 
   yellow: '#EADA56',
   blue: '#478DC0',
@@ -109,17 +110,17 @@ const colors = {
 };
 
 export const defaultTheme: QuartzTheme = {
-  primary: colors.purple1,
+  primary: colors.purple,
   secondary: colors.gray4,
-  danger: colors.red1,
-  success: colors.green1,
+  danger: colors.red,
+  success: colors.green,
   warning: colors.yellow,
   info: colors.blue,
 
   gradient: {
     primary: {
-      start: colors.purple3,
-      end: colors.purple1,
+      start: colors.purpleVibrant,
+      end: colors.purple,
       text: colors.white
     },
     secondary: {
@@ -128,27 +129,27 @@ export const defaultTheme: QuartzTheme = {
       text: colors.gray1
     },
     danger: {
-      start: colors.red2,
-      end: colors.red1,
+      start: colors.redLight,
+      end: colors.red,
       text: colors.white
     }
   },
 
   alert: {
     success: {
-      background: colors.green2,
-      border: colors.green1,
-      text: colors.green3
+      background: colors.greenLight,
+      border: colors.green,
+      text: colors.greenDark
     },
     error: {
-      background: colors.red2,
-      border: colors.red1,
-      text: colors.red3
+      background: colors.redLight,
+      border: colors.red,
+      text: colors.redDark
     },
     warning: {
-      background: colors.orange2,
-      border: colors.orange1,
-      text: colors.orange3
+      background: colors.orangeLight,
+      border: colors.orange,
+      text: colors.orangeDark
     }
   },
 

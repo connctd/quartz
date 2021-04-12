@@ -62,7 +62,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
   }
 
   :hover {
-    background: ${(props) => props.theme.purple3};
+    background: ${(props) => props.theme.purpleDark};
   }
 
   :hover .down {
@@ -114,7 +114,7 @@ const MainNavgroup = styled.div<NavLinkProps>`
     display: none;
     list-style: none;
     margin-top: auto;
-    background: ${(props) => props.theme.purple3};
+    background: ${(props) => props.theme.purpleDark};
     padding: 0px;
     opacity: 0.0;
     transition: opacity 0.25s;
