@@ -6,7 +6,6 @@ import { Dialog } from './index';
 const stories = storiesOf('Dialog', module);
 stories.addDecorator(withInfo);
 
-
 stories.add('Default', () => (
   <Dialog heading="Details">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum facere sapiente saepe mollitia molestiae,

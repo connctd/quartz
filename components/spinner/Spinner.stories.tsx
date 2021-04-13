@@ -9,7 +9,6 @@ const stories = storiesOf('Spinner', module);
 stories.addDecorator(withInfo);
 stories.addDecorator(withKnobs);
 
-
 const Centered = styled.div`
     text-align: center;
     margin: auto;

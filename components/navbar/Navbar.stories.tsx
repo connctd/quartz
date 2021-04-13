@@ -11,7 +11,6 @@ const stories = storiesOf('Navbar', module);
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
 
-
 stories.add('Navbar', () => (
   <Navbar>
     <div className="Items">
