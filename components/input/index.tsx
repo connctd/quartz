@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import * as React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
 
 export interface InputProps
@@ -17,41 +18,73 @@ export interface InputProps
   onClickIcon?: () => void;
 }
 
-export const LabelContainer = styled.label<React.LabelHTMLAttributes<HTMLLabelElement>>`
-  display: inline-block;
+export interface LabelProps extends Themeable {
+  hasError?: boolean;
+  required?: boolean;
+}
+
+export const Label = styled.label<LabelProps>`
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+
+  ${({ hasError, theme }) => (hasError ? css`
+    color: ${theme.danger};
+  ` : '')}
+
+  ${({ required, theme }) => (required ? css`
+    &:after {
+      content: " *";
+      color: ${theme.danger};
+      font-weight: 600;
+    }
+  ` : '')}
+`;
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-column-gap: 8px;
   margin-bottom: 16px;
-  width: 100%;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    ${Label} {
+      text-align: left;
+    }
+  }
 `;
 
 const StyledInput = styled.input<InputProps>`
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding: 12px 16px 11px;
   width: 100%;
   height: 45px;
-  border: 1px solid ${(props) => (props.hasError ? props.theme.danger : props.theme.gray3)};
   font-size: 14px;
-  border-radius: ${(props) => {
-    if (props.prefix) {
+  outline: none;
+  border: 1px solid ${({ hasError, theme }) => (hasError ? theme.danger : theme.gray3)};
+  border-radius: ${({ prefix, icon }) => {
+    if (prefix) {
       return '0 3px 3px 0';
     }
 
-    if (props.icon) {
+    if (icon) {
       return '3px 0 0 3px';
     }
 
     return '3px';
   }};
 
-  ${(props) => (props.disabled || props.readOnly ? `background-color: ${props.theme.gray5}` : '')}
+  ${({ disabled, readOnly, theme }) => (disabled || readOnly ? `background-color: ${theme.gray5}` : '')}
+
   :focus {
-    ${(props) => (props.readOnly ? '' : `border: 1px solid ${props.theme.success}`)}
+    ${({ readOnly, theme }) => (readOnly ? '' : `border-color: ${theme.gray2}`)}
   }
+
   :disabled {
-    background-color: ${(props) => props.theme.gray5};
-    color: ${(props) => props.theme.gray1};
-  }
-  :readonly {
-    color: black;
+    background-color: ${({ theme }) => theme.gray5};
+    color: ${({ theme }) => theme.gray1};
   }
 `;
 
@@ -60,83 +93,148 @@ const StyledInputContainer = styled.div`
   width: 100%;
 `;
 
-const StyledPrefixContainer = styled.div<Themeable>`
+const FieldPrefix = styled.div<Themeable>`
   padding: 0 16px;
   margin-right: -1px;
   height: 45px;
-  background-color: ${(props) => props.theme.gray5};
-  color: ${(props) => props.theme.gray1};
-  line-height: 49px;
+  background-color: ${({ theme }) => theme.gray5};
+  color: ${({ theme }) => theme.gray1};
+  font-size: 14px;
+  line-height: 45px;
   border-radius: 3px 0 0 3px;
-  border: solid 1px ${(props) => props.theme.gray3};
+  border: solid 1px ${({ theme }) => theme.gray3};
 `;
 
-const StyledIconContainer = styled.div<InputProps>`
+const IconButton = styled.button<Themeable & { onClick?: () => void }>`
+  appearance: none;
+  padding: 8px;
+  margin-left: -1px;
   height: 45px;
   width: 45px;
-  background-color: ${(props) => props.theme.success};
+  background-color: ${({ theme }) => theme.green};
+  border: solid 1px ${({ theme }) => theme.greenDark};
   border-radius: 0 3px 3px 0;
+  outline: none;
 
-  ${({ onClick }) => (onClick ? 'cursor: pointer;' : '')}
-`;
+  ${({ onClick }) => {
+    if (onClick) {
+      return css`
+        cursor: pointer;
 
-const IconSpacing = styled.div`
-  padding: 8px;
+        :hover {
+          opacity: 0.9;
+        }
+
+        :active {
+          opacity: 1;
+          padding: 10px;
+        }
+      `;
+    }
+
+    return '';
+  }}
 `;
 
 export const FieldDescription = styled.div<Themeable>`
-  color: ${(props) => props.theme.gray1};
+  color: ${({ theme }) => theme.gray2};
   margin-top: 8px;
 `;
 
 export const FieldError = styled.div<Themeable>`
-  color: ${(props) => props.theme.danger};
+  color: ${({ theme }) => theme.danger};
   margin-top: 8px;
 `;
 
 export const Input: React.FC<InputProps> = ({
-  label, id, description, prefix, hasError, error, theme, icon, onClickIcon, ...rest
-}) => (
-  <LabelContainer htmlFor={id}>
-    {label}
-    <StyledInputContainer>
-      {prefix && (
-        <StyledPrefixContainer theme={theme}>
-          {prefix}
-        </StyledPrefixContainer>
-      )}
-      <StyledInput
-        id={id}
-        hasError={hasError}
-        prefix={prefix}
-        icon={icon}
-        theme={theme}
-        {...rest}
-      />
-      {icon && (
-        <StyledIconContainer
-          theme={theme}
-          hasError={hasError}
-          onClick={onClickIcon}
-        >
-          <IconSpacing>{icon}</IconSpacing>
-        </StyledIconContainer>
-      )}
-    </StyledInputContainer>
-    { hasError && (
+  label,
+  id,
+  required = false,
+  description,
+  prefix,
+  hasError,
+  error,
+  theme = defaultTheme,
+  icon,
+  onClickIcon,
+  ...rest
+}) => {
+  let errorElement;
+  let descriptionElement;
+  let prefixElement;
+  let iconElement;
+
+  if (hasError) {
+    errorElement = (
       <FieldError theme={theme}>
         {error}
       </FieldError>
-    )}
-    { description && (
+    );
+  }
+
+  if (description) {
+    descriptionElement = (
       <FieldDescription theme={theme}>
         {description}
       </FieldDescription>
-    )}
-  </LabelContainer>
-);
+    );
+  }
 
-Input.defaultProps = {
-  type: 'text',
-  theme: defaultTheme
+  if (prefix) {
+    prefixElement = (
+      <FieldPrefix theme={theme}>
+        {prefix}
+      </FieldPrefix>
+    );
+  }
+
+  if (icon) {
+    iconElement = (
+      <IconButton
+        theme={theme}
+        onClick={onClickIcon}
+      >
+        {icon}
+      </IconButton>
+    );
+  }
+
+  const inputElements = (
+    <>
+      <StyledInputContainer>
+        {prefixElement}
+        <StyledInput
+          id={id}
+          hasError={hasError}
+          prefix={prefix}
+          icon={icon}
+          theme={theme}
+          {...rest}
+        />
+        {iconElement}
+      </StyledInputContainer>
+      {errorElement}
+      {descriptionElement}
+    </>
+  );
+
+  if (label) {
+    return (
+      <Container>
+        <Label
+          htmlFor={id}
+          hasError={hasError}
+          required={required}
+          theme={theme}
+        >
+          {label}
+        </Label>
+        <div>
+          {inputElements}
+        </div>
+      </Container>
+    );
+  }
+
+  return inputElements;
 };

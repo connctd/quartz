@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { Themeable, defaultTheme } from '../theme';
-import { LabelContainer, FieldError } from '../input';
+import { FieldError } from '../input';
 
 interface TextAreaProps extends Themeable {
   height?: number;
@@ -38,18 +38,17 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
 `;
 
 export const TextArea: React.FC<TextAreaProps> = ({
-  theme, hasError, error, ...rest
+  theme = defaultTheme,
+  hasError,
+  error,
+  ...rest
 }) => (
-  <LabelContainer>
+  <>
     <StyledTextArea theme={theme} hasError={hasError} {...rest} />
     { hasError && (
       <FieldError theme={theme}>
         {error}
       </FieldError>
     )}
-  </LabelContainer>
+  </>
 );
-
-TextArea.defaultProps = {
-  theme: defaultTheme
-};
