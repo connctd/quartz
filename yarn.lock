@@ -1230,8 +1230,8 @@
 
 "@connctd/eslint-config-typescript@^1.1.4":
   version "1.1.4"
-  resolved "https://npm.build.connctd.io/@connctd%2feslint-config-typescript/-/eslint-config-typescript-1.1.4.tgz#19084f29247896f38ce9bf92b5cffa5b64ca2440"
-  integrity sha512-ipQ5qf/va4E2LysxX1rZKXhInSdsR/mD6iftbwYnUDZoJC2GIsQI6fzlHu7UbW2zag+D7wo0xTk/lt0IkIZidw==
+  resolved "https://registry.yarnpkg.com/@connctd/eslint-config-typescript/-/eslint-config-typescript-1.1.4.tgz#39c51693e2e0bf9b8cb789eb8d6e3759625bb569"
+  integrity sha512-9PQtqmdkgAJEJ8qwfR8aaDFgRUtPB1SlqiZlCl5lHznJek7SOm5BTFCTSDXyB8kcOoe1f4LYubw2Ffne6j3FYQ==
 
 "@egoist/vue-to-react@^1.1.0":
   version "1.1.0"
