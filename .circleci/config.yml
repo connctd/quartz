@@ -10,7 +10,9 @@ jobs:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: install-dependencies
-          command: yarn install
+          # $NPMRC is saved in OnePassword for reference:
+          # https://connctd.1password.com/vaults/nofs7a4sjhz6iyje5at6lp2i7u/allitems/zpzkgifbzfelvdasqjncutefay
+          command: echo $NPMRC | base64 -d > .npmrc && yarn install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
