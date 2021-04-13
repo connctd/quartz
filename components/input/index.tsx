@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-import * as React from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
@@ -11,7 +10,7 @@ export interface InputProps
   error?: string;
   label?: string;
   id?: string;
-  description?: string;
+  description?: React.ReactNode;
   prefix?: string;
   className?: string;
   icon?: React.ReactNode;
