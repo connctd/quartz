@@ -4,8 +4,8 @@ import { css } from '@emotion/core';
 
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
 import {
-  FormElementContainer, FormElementLabel, FormElementDescription, FormElementError
-} from '../formelement';
+  FormFieldContainer, FormFieldLabel, FormFieldDescription, FormFieldError
+} from '../formfield';
 
 export interface InputProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -119,17 +119,17 @@ export const Input: React.FC<InputProps> = ({
 
   if (hasError) {
     errorElement = (
-      <FormElementError theme={theme}>
+      <FormFieldError theme={theme}>
         {error}
-      </FormElementError>
+      </FormFieldError>
     );
   }
 
   if (description) {
     descriptionElement = (
-      <FormElementDescription theme={theme}>
+      <FormFieldDescription theme={theme}>
         {description}
-      </FormElementDescription>
+      </FormFieldDescription>
     );
   }
 
@@ -173,19 +173,19 @@ export const Input: React.FC<InputProps> = ({
 
   if (label) {
     return (
-      <FormElementContainer>
-        <FormElementLabel
+      <FormFieldContainer>
+        <FormFieldLabel
           htmlFor={id}
           hasError={hasError}
           required={required}
           theme={theme}
         >
           {label}
-        </FormElementLabel>
+        </FormFieldLabel>
         <div>
           {inputElements}
         </div>
-      </FormElementContainer>
+      </FormFieldContainer>
     );
   }
 

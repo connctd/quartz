@@ -5,8 +5,8 @@ import { keyframes } from '@emotion/core';
 import { Themeable, defaultTheme, QuartzTheme } from '../theme';
 import { InputProps } from '../input';
 import {
-  FormElementContainer, FormElementLabel, FormElementDescription
-} from '../formelement';
+  FormFieldContainer, FormFieldLabel, FormFieldDescription
+} from '../formfield';
 
 export interface CheckboxProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   id: string;
@@ -134,9 +134,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   if (description) {
     descriptionElement = (
-      <FormElementDescription theme={theme}>
+      <FormFieldDescription theme={theme}>
         {description}
-      </FormElementDescription>
+      </FormFieldDescription>
     );
   }
 
@@ -170,20 +170,20 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   if (label) {
     return (
-      <FormElementContainer
+      <FormFieldContainer
         className={className}
         theme={theme}
       >
-        <FormElementLabel
+        <FormFieldLabel
           htmlFor={id}
           theme={theme}
         >
           {label}
-        </FormElementLabel>
+        </FormFieldLabel>
         <div>
           {checkboxElements}
         </div>
-      </FormElementContainer>
+      </FormFieldContainer>
     );
   }
 

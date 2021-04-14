@@ -8,7 +8,7 @@ export interface LabelProps extends Themeable {
   required?: boolean;
 }
 
-export const FormElementLabel = styled.label<LabelProps>`
+export const FormFieldLabel = styled.label<LabelProps>`
   margin-top: 12px;
   font-weight: 400;
   text-align: right;
@@ -26,7 +26,7 @@ export const FormElementLabel = styled.label<LabelProps>`
   ` : '')}
 `;
 
-export const FormElementContainer = styled.div`
+export const FormFieldContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2.5fr;
   grid-column-gap: 8px;
@@ -36,18 +36,18 @@ export const FormElementContainer = styled.div`
   @media screen and (max-width: 600px) {
     grid-template-columns: 1fr;
 
-    ${FormElementLabel} {
+    ${FormFieldLabel} {
       text-align: left;
     }
   }
 `;
 
-export const FormElementDescription = styled.div<Themeable>`
+export const FormFieldDescription = styled.div<Themeable>`
   color: ${({ theme }) => theme.gray2};
   margin-top: 8px;
 `;
 
-export const FormElementError = styled.div<Themeable>`
+export const FormFieldError = styled.div<Themeable>`
   color: ${({ theme }) => theme.danger};
   margin-top: 8px;
 `;
