@@ -19,9 +19,7 @@ stories.add('Placeholder', () => {
       id="Readme"
       placeholder={placeholder}
       onChange={action('onChange')}
-    >
-      I agree to the Terms of Service
-    </Textarea>
+    />
   );
 });
 
@@ -33,9 +31,7 @@ stories.add('Label', () => {
       id="Readme"
       label={label}
       onChange={action('onChange')}
-    >
-      I agree to the Terms of Service
-    </Textarea>
+    />
   );
 });
 
@@ -49,9 +45,7 @@ stories.add('Description', () => {
       label={label}
       description={description}
       onChange={action('onChange')}
-    >
-      I agree to the Terms of Service
-    </Textarea>
+    />
   );
 });
 
@@ -66,9 +60,7 @@ stories.add('Error', () => {
       hasError={!!error.length}
       error={error}
       onChange={action('onChange')}
-    >
-      I agree to the Terms of Service
-    </Textarea>
+    />
   );
 });
 
@@ -81,8 +73,6 @@ stories.add('Disabled', () => {
       label={label}
       disabled
       onChange={action('onChange')}
-    >
-      I agree to the Terms of Service
-    </Textarea>
+    />
   );
 });
