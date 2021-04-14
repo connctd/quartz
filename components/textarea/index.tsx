@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { Themeable, defaultTheme } from '../theme';
-import { FieldError } from '../input';
+import { FormElementError } from '../formelement';
 
 interface TextAreaProps extends Themeable {
   height?: number;
@@ -46,9 +46,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
   <>
     <StyledTextArea theme={theme} hasError={hasError} {...rest} />
     { hasError && (
-      <FieldError theme={theme}>
+      <FormElementError theme={theme}>
         {error}
-      </FieldError>
+      </FormElementError>
     )}
   </>
 );

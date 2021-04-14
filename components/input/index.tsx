@@ -1,60 +1,24 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
+import {
+  FormElementContainer, FormElementLabel, FormElementDescription, FormElementError
+} from '../formelement';
 
 export interface InputProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  theme?: QuartzTheme;
-  hasError?: boolean;
-  error?: string;
-  label?: string;
   id?: string;
+  label?: string;
   description?: React.ReactNode;
   prefix?: string;
-  className?: string;
+  hasError?: boolean;
+  error?: string;
   icon?: React.ReactNode;
   onClickIcon?: () => void;
+  theme?: QuartzTheme;
 }
-
-export interface LabelProps extends Themeable {
-  hasError?: boolean;
-  required?: boolean;
-}
-
-export const Label = styled.label<LabelProps>`
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 400;
-  text-align: right;
-
-  ${({ hasError, theme }) => (hasError ? css`
-    color: ${theme.danger};
-  ` : '')}
-
-  ${({ required, theme }) => (required ? css`
-    &:after {
-      content: " *";
-      color: ${theme.danger};
-      font-weight: 600;
-    }
-  ` : '')}
-`;
-
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  grid-column-gap: 8px;
-  margin-bottom: 16px;
-
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-
-    ${Label} {
-      text-align: left;
-    }
-  }
-`;
 
 const StyledInput = styled.input<InputProps>`
   padding: 12px 16px 11px;
@@ -135,16 +99,6 @@ const IconButton = styled.button<Themeable & { onClick?: () => void }>`
   }}
 `;
 
-export const FieldDescription = styled.div<Themeable>`
-  color: ${({ theme }) => theme.gray2};
-  margin-top: 8px;
-`;
-
-export const FieldError = styled.div<Themeable>`
-  color: ${({ theme }) => theme.danger};
-  margin-top: 8px;
-`;
-
 export const Input: React.FC<InputProps> = ({
   label,
   id,
@@ -165,17 +119,17 @@ export const Input: React.FC<InputProps> = ({
 
   if (hasError) {
     errorElement = (
-      <FieldError theme={theme}>
+      <FormElementError theme={theme}>
         {error}
-      </FieldError>
+      </FormElementError>
     );
   }
 
   if (description) {
     descriptionElement = (
-      <FieldDescription theme={theme}>
+      <FormElementDescription theme={theme}>
         {description}
-      </FieldDescription>
+      </FormElementDescription>
     );
   }
 
@@ -219,19 +173,19 @@ export const Input: React.FC<InputProps> = ({
 
   if (label) {
     return (
-      <Container>
-        <Label
+      <FormElementContainer>
+        <FormElementLabel
           htmlFor={id}
           hasError={hasError}
           required={required}
           theme={theme}
         >
           {label}
-        </Label>
+        </FormElementLabel>
         <div>
           {inputElements}
         </div>
-      </Container>
+      </FormElementContainer>
     );
   }
 

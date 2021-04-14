@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { defaultTheme, Themeable } from '../theme';
-import { FieldError } from '../input';
+import { FormElementError } from '../formelement';
 
 interface SelectProps extends React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
   placeholder?: string;
@@ -69,9 +69,9 @@ export const Select: React.FC<SelectProps & Themeable> & SelectSubcomponents = (
       {children}
     </StyledSelect>
     {hasError && (
-      <FieldError theme={theme}>
+      <FormElementError theme={theme}>
         {error}
-      </FieldError>
+      </FormElementError>
     )}
   </SelectContainer>
 );
