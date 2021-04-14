@@ -152,7 +152,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 
   const checkboxElements = (
-    <>
+    <div>
       <CheckboxContainer theme={theme}>
         {invisibleCheckboxElement}
         <StyledCheckbox
@@ -165,7 +165,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         {childLabelElement}
       </CheckboxContainer>
       {descriptionElement}
-    </>
+    </div>
   );
 
   if (label) {
@@ -180,9 +180,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         >
           {label}
         </FormFieldLabel>
-        <div>
-          {checkboxElements}
-        </div>
+        {checkboxElements}
       </FormFieldContainer>
     );
   }

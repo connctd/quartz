@@ -153,7 +153,7 @@ export const Input: React.FC<InputProps> = ({
   }
 
   const inputElements = (
-    <>
+    <div>
       <StyledInputContainer>
         {prefixElement}
         <StyledInput
@@ -168,7 +168,7 @@ export const Input: React.FC<InputProps> = ({
       </StyledInputContainer>
       {errorElement}
       {descriptionElement}
-    </>
+    </div>
   );
 
   if (label) {
@@ -182,9 +182,7 @@ export const Input: React.FC<InputProps> = ({
         >
           {label}
         </FormFieldLabel>
-        <div>
-          {inputElements}
-        </div>
+        {inputElements}
       </FormFieldContainer>
     );
   }

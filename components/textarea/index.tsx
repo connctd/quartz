@@ -69,7 +69,9 @@ export const Textarea: React.FC<TextareaProps> = ({
   disabled,
   hasError,
   error,
-  resize
+  resize,
+  onChange,
+  ...rest
 }) => {
   let descriptionElement;
   let errorElement;
@@ -91,7 +93,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   }
 
   const textAreaElements = (
-    <>
+    <div>
       <StyledTextarea
         theme={theme}
         height={height}
@@ -101,9 +103,11 @@ export const Textarea: React.FC<TextareaProps> = ({
         disabled={disabled}
         hasError={hasError}
         resize={resize}
+        onChange={onChange}
+        {...rest}
       />
       {errorElement}
-    </>
+    </div>
   );
 
   if (label) {
@@ -120,9 +124,7 @@ export const Textarea: React.FC<TextareaProps> = ({
           </FormFieldLabel>
           {descriptionElement}
         </LabelDescriptionContainer>
-        <div>
-          {textAreaElements}
-        </div>
+        {textAreaElements}
       </FormFieldContainer>
     );
   }
