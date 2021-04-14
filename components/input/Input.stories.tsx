@@ -14,7 +14,12 @@ stories.addDecorator(withInfo);
 stories.add('Placeholder', () => {
   const placeholder = text('Placeholder', 'Email');
 
-  return <Input placeholder={placeholder} onChange={action('onChange')} />;
+  return (
+    <Input
+      placeholder={placeholder}
+      onChange={action('onChange')}
+    />
+  );
 });
 
 stories.add('Label', () => {
@@ -48,7 +53,7 @@ stories.add('Error', () => {
   return (
     <Input
       label={label}
-      hasError={!!error}
+      hasError={!!error.length}
       error={error}
       onChange={action('onChange')}
     />
