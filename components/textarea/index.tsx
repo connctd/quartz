@@ -43,8 +43,18 @@ const StyledTextarea = styled.textarea<TextareaProps>`
     border: 1px solid ${({ theme }) => theme.gray2}
   }
 `;
+
 const LabelDescriptionContainer = styled.div`
   text-align: right;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 12px;
+    text-align: left;
+
+    ${FormFieldDescription} {
+      margin-bottom: 8px;
+    }
+  }
 `;
 
 export const Textarea: React.FC<TextareaProps> = ({

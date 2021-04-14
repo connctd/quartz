@@ -3,6 +3,7 @@ export * from './alert';
 export * from './anchor';
 export * from './button';
 export * from './checkbox';
+export * from './checkboxGroup';
 export * from './collapse';
 export * from './delimiter';
 export * from './dialog';
