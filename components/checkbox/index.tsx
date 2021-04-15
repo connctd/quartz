@@ -13,7 +13,7 @@ export interface CheckboxProps extends React.DetailedHTMLProps<React.InputHTMLAt
   label?: string;
   children?: React.ReactNode;
   checked?: boolean;
-  description?: string;
+  description?: React.ReactNode;
   disabled?: boolean;
   theme?: QuartzTheme;
 }

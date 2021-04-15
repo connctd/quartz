@@ -1,7 +1,13 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import { Themeable } from '../theme';
+import { defaultTheme, Themeable } from '../theme';
+
+interface FormFieldProps extends Themeable {
+  label: string;
+  description?: React.ReactNode;
+}
 
 export interface LabelProps extends Themeable {
   hasError?: boolean;
@@ -51,3 +57,37 @@ export const FormFieldError = styled.div<Themeable>`
   color: ${({ theme }) => theme.danger};
   margin-top: 8px;
 `;
+
+const FormFieldChildContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 45px;
+`;
+
+export const FormField: React.FC<FormFieldProps> = ({
+  theme = defaultTheme, label, description, children
+}) => {
+  let descriptionElement;
+
+  if (description) {
+    descriptionElement = (
+      <FormFieldDescription theme={theme}>
+        {description}
+      </FormFieldDescription>
+    );
+  }
+
+  return (
+    <FormFieldContainer>
+      <FormFieldLabel theme={theme}>
+        {label}
+      </FormFieldLabel>
+      <div>
+        <FormFieldChildContainer>
+          {children}
+        </FormFieldChildContainer>
+        {descriptionElement}
+      </div>
+    </FormFieldContainer>
+  );
+};
