@@ -27,11 +27,7 @@ const DissmissIndicator = styled.span<StyledAlertProps>`
   transition: 0.3s;
 `;
 
-export enum AlertAppearance {
-  success = 'success',
-  error = 'error',
-  warning = 'warning'
-}
+type AlertAppearance = 'success' | 'error' | 'warning';
 
 interface StyledAlertProps {
   appearance: AlertAppearance;
@@ -47,8 +43,8 @@ export interface AlertProps extends Themeable {
 export const Alert: React.FC<AlertProps> = ({
   theme = defaultTheme,
   children,
-  appearance = AlertAppearance.warning,
-  dissmissable
+  appearance = 'warning',
+  dissmissable = false
 
 }) => {
   const [dismissed, setDismissed] = useState(false);
@@ -83,10 +79,4 @@ export const Alert: React.FC<AlertProps> = ({
     );
   }
   return (null);
-};
-
-Alert.defaultProps = {
-  appearance: AlertAppearance.warning,
-  theme: defaultTheme,
-  dissmissable: false
 };
