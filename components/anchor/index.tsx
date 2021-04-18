@@ -20,21 +20,24 @@ const StyledAnchor = styled('a', {
 `;
 
 export const Anchor: React.FC<AnchorProps> = React.memo(({
-  children, primary, theme, href, component = 'a', extraProps
+  children,
+  primary,
+  theme = defaultTheme,
+  href,
+  component = 'a',
+  style,
+  extraProps
 }) => (
   <StyledAnchor
     as={component}
     primary={primary}
     theme={theme}
     href={href}
+    style={style}
     {...extraProps}
   >
     {children}
   </StyledAnchor>
 ));
-
-Anchor.defaultProps = {
-  theme: defaultTheme
-};
 
 export default Anchor;
