@@ -84,7 +84,7 @@ export const Textarea: React.FC<TextareaProps> = ({
     );
   }
 
-  if (hasError && !!error?.length) {
+  if (hasError && error && error.length) {
     errorElement = (
       <FormFieldError theme={theme}>
         {error}

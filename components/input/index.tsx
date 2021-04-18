@@ -117,7 +117,7 @@ export const Input: React.FC<InputProps> = ({
   let prefixElement;
   let iconElement;
 
-  if (hasError && !!error?.length) {
+  if (hasError && error && error.length) {
     errorElement = (
       <FormFieldError theme={theme}>
         {error}

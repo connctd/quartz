@@ -76,7 +76,7 @@ export const Select: React.FC<SelectProps & Themeable> & SelectSubcomponents = (
   let errorElement;
   let descriptionElement;
 
-  if (hasError && !!error?.length) {
+  if (hasError && error && error.length) {
     errorElement = (
       <FormFieldError theme={theme}>
         {error}
