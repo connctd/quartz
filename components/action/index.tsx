@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, ThemeContext } from '@emotion/core';
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { defaultTheme, Themeable } from '../theme';
 
