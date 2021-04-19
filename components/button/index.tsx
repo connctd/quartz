@@ -126,7 +126,8 @@ export const Button: React.FC<ButtonProps> = ({
   style,
   className,
   tabIndex,
-  extraProps
+  extraProps,
+  ...rest
 }) => {
   if (href) {
     return (
@@ -138,6 +139,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={className}
         style={style}
         tabIndex={tabIndex}
+        {...extraProps}
       >
         {children}
       </StyledAnchorButton>
@@ -157,6 +159,7 @@ export const Button: React.FC<ButtonProps> = ({
       tabIndex={tabIndex}
       as={component}
       {...extraProps}
+      {...rest}
     >
       {children}
     </StyledButton>

@@ -90,7 +90,7 @@ const IconButton = styled.button<Themeable & { onClick?: () => void }>`
 
         :active {
           opacity: 1;
-          padding: 10px;
+          padding: 9px;
         }
       `;
     }
