@@ -97,6 +97,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       <StyledTextarea
         theme={theme}
         height={height}
+        id={id}
         value={value}
         placeholder={placeholder}
         required={required}
