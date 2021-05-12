@@ -48,6 +48,7 @@ export interface QuartzTheme {
   purple: string;
   purpleLight: string;
   purpleDark: string;
+  purpleVibrant: string;
 
   red: string;
   redLight: string;

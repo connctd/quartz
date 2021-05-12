@@ -14,6 +14,7 @@ export * from './navbar';
 export * from './paper';
 export * from './pill';
 export * from './select';
+export * from './sidebar';
 export * from './spinner';
 export * from './table';
 export * from './textarea';

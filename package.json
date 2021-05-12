@@ -22,9 +22,13 @@
     "check-types": "tsc",
     "deploy": "np"
   },
+  "peerDependencies": {
+    "mdi-react": "^7.5.0"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "mdi-react": "^7.5.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-tippy": "^1.4.0"
