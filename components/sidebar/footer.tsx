@@ -6,14 +6,17 @@ import { Themeable, defaultTheme } from '../theme';
 import { SidebarLinkProps } from './link';
 
 export interface SidebarFooterProps extends Themeable {
-  children: React.ReactElement<SidebarLinkProps>[];
   copyright: string;
+  bordered?: boolean;
+  children: React.ReactElement<SidebarLinkProps>[];
 }
 
-const Footer = styled.div`
+const Footer = styled.div<{ bordered: boolean }>`
   flex-shrink: 0;
   padding: 16px;
   font-size: 10px;
+
+  ${({ bordered }) => (bordered ? 'border-top: solid 1px rgba(0, 0, 0, 0.2);' : '')}
 `;
 
 const FooterLinks = styled.div`
@@ -31,9 +34,10 @@ const FooterCopyright = styled.div<Themeable>`
 export const SidebarFooter: React.FC<SidebarFooterProps> = ({
   copyright,
   children,
+  bordered = false,
   theme = defaultTheme
 }) => (
-  <Footer>
+  <Footer bordered={bordered}>
     <FooterLinks>
       {children}
     </FooterLinks>

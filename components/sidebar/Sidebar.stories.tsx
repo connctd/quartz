@@ -12,11 +12,9 @@ import LightbulbIcon from 'mdi-react/LightbulbIcon';
 import PuzzleOutlineIcon from 'mdi-react/PuzzleOutlineIcon';
 import PuzzleIcon from 'mdi-react/PuzzleIcon';
 import NotebookOutlineIcon from 'mdi-react/NotebookOutlineIcon';
-import NotebookIcon from 'mdi-react/NotebookIcon';
 import SchoolOutlineIcon from 'mdi-react/SchoolOutlineIcon';
-import SchoolIcon from 'mdi-react/SchoolIcon';
 import GraphOutlineIcon from 'mdi-react/GraphOutlineIcon';
-import GraphIcon from 'mdi-react/GraphIcon';
+import FlaskOutlineIcon from 'mdi-react/FlaskOutlineIcon';
 
 import { Sidebar } from './index';
 
@@ -82,25 +80,13 @@ stories.add('Dev-Center - with Apps', () => {
           </Sidebar.Button>
         </Sidebar.Navigation>
         <Sidebar.SecondaryNavigation>
-          <Sidebar.Button
-            icon={NotebookOutlineIcon}
-            activeIcon={NotebookIcon}
-            href="#things"
-          >
+          <Sidebar.Button icon={NotebookOutlineIcon} href="#documentation">
             Documentation
           </Sidebar.Button>
-          <Sidebar.Button
-            icon={SchoolOutlineIcon}
-            activeIcon={SchoolIcon}
-            href="#units"
-          >
+          <Sidebar.Button icon={SchoolOutlineIcon} href="#tutorials">
             Tutorials
           </Sidebar.Button>
-          <Sidebar.Button
-            icon={GraphOutlineIcon}
-            activeIcon={GraphIcon}
-            href="#connectors"
-          >
+          <Sidebar.Button icon={GraphOutlineIcon} href="#connectors">
             GraphQL Explorer
           </Sidebar.Button>
         </Sidebar.SecondaryNavigation>
@@ -132,6 +118,8 @@ stories.add('Dev-Center - with Apps', () => {
 stories.add('Dev-Center - no Apps', () => {
   const apps = [];
 
+  const [currentPage, setCurrentPage] = useState('Things');
+
   return (
     <StoryContainer>
       <Sidebar>
@@ -145,47 +133,41 @@ stories.add('Dev-Center - no Apps', () => {
         />
         <Sidebar.Navigation>
           <Sidebar.Button
+            active={currentPage === 'Things'}
             icon={LightbulbOutlineIcon}
             activeIcon={LightbulbIcon}
             component="button"
+            extraProps={{ onClick() { setCurrentPage('Things'); } }}
           >
             Things
           </Sidebar.Button>
           <Sidebar.Button
+            active={currentPage === 'Units'}
             icon={ArchiveOutlineIcon}
             activeIcon={ArchiveIcon}
             component="button"
+            extraProps={{ onClick() { setCurrentPage('Units'); } }}
           >
             Units
           </Sidebar.Button>
           <Sidebar.Button
+            active={currentPage === 'Connectors'}
             icon={PuzzleOutlineIcon}
             activeIcon={PuzzleIcon}
             component="button"
+            extraProps={{ onClick() { setCurrentPage('Connectors'); } }}
           >
             Connectors
           </Sidebar.Button>
         </Sidebar.Navigation>
         <Sidebar.SecondaryNavigation>
-          <Sidebar.Button
-            icon={NotebookOutlineIcon}
-            activeIcon={NotebookIcon}
-            href="#things"
-          >
+          <Sidebar.Button icon={NotebookOutlineIcon} href="#documentation">
             Documentation
           </Sidebar.Button>
-          <Sidebar.Button
-            icon={SchoolOutlineIcon}
-            activeIcon={SchoolIcon}
-            href="#units"
-          >
+          <Sidebar.Button icon={SchoolOutlineIcon} href="#tutorials">
             Tutorials
           </Sidebar.Button>
-          <Sidebar.Button
-            icon={GraphOutlineIcon}
-            activeIcon={GraphIcon}
-            href="#connectors"
-          >
+          <Sidebar.Button icon={GraphOutlineIcon} href="#connectors">
             GraphQL Explorer
           </Sidebar.Button>
         </Sidebar.SecondaryNavigation>
@@ -215,55 +197,255 @@ stories.add('Dev-Center - no Apps', () => {
 });
 
 stories.add('Docs & Tutorial', () => {
-  const [currentPage, setCurrentPage] = useState('Things');
+  const [currentPage, setCurrentPage] = useState('Introduction');
 
   return (
     <StoryContainer>
       <Sidebar>
         <Sidebar.Head bordered>
-          <img src="/logo.svg" alt="Logo" width="100%" />
+          <img src="/logo-docs.svg" alt="Logo" width="100%" />
         </Sidebar.Head>
         <Sidebar.Navigation>
-          <Sidebar.Button
-            active={currentPage === 'Things'}
-            icon={LightbulbOutlineIcon}
-            activeIcon={LightbulbIcon}
-            component="button"
-            extraProps={{ onClick() { setCurrentPage('Things'); } }}
+          <Sidebar.Section title="Gettings Started">
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Introduction - Gettings Started'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Introduction - Gettings Started'); } }}
+            >
+              Introduction
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'What is connctd?'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('What is connctd?'); } }}
+            >
+              What is connctd?
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'How to get started'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('How to get started'); } }}
+            >
+              How to get started
+            </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Authorization'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Authorization'); } }}
+            >
+              Authorization
+            </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'OAuth 2.0'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('OAuth 2.0'); } }}
+            >
+              OAuth 2.0
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Client Credentials Flow'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Client Credentials Flow'); } }}
+            >
+              Client Credentials Flow
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Authorization Code Grant Flow'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Authorization Code Grant Flow'); } }}
+            >
+              Authorization Code Grant Flow
+            </Sidebar.Button>
+          </Sidebar.Section>
+
+          <Sidebar.Section
+            title="GraphQL"
+            expandable
+            initExpanded
+            contentHeight="375px"
           >
-            Things
-          </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Introduction - GraphQL'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Introduction - GraphQL'); } }}
+            >
+              Introduction
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Quick Start'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Quick Start'); } }}
+            >
+              Quick Start
+            </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Tools'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Tools'); } }}
+            >
+              Tools
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Client Libraries'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Client Libraries'); } }}
+            >
+              Client Libraries
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'SDL'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('SDL'); } }}
+            >
+              SDL
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Schema Introspection'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Schema Introspection'); } }}
+            >
+              Schema Introspection
+            </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Things - GraphQL'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Things - GraphQL'); } }}
+            >
+              Things
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Resolve'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Resolve'); } }}
+            >
+              Resolve
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Create'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Create'); } }}
+            >
+              Create
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Delete'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Delete'); } }}
+            >
+              Delete
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Trigger Actions'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Trigger Actions'); } }}
+            >
+              Trigger Actions
+            </Sidebar.Button>
+          </Sidebar.Section>
+
+          <Sidebar.Section
+            title="REST"
+            expandable
+            contentHeight="240px"
+          >
+            <Sidebar.Button
+              mainPage
+              active={currentPage === 'Apps'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Apps'); } }}
+            >
+              Apps
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Register a callback url'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Register a callback url'); } }}
+            >
+              Register a callback url
+            </Sidebar.Button>
+            <Sidebar.Button
+              mainPage
+              legacy
+              active={currentPage === 'Things - REST'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Things - REST'); } }}
+            >
+              Things
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Create Thing'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Create Thing'); } }}
+            >
+              Create Thing
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Retrieve Things'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Retrieve Things'); } }}
+            >
+              Retrieve Things
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Retrieve Thing'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Retrieve Thing'); } }}
+            >
+              Retrieve Thing
+            </Sidebar.Button>
+            <Sidebar.Button
+              subPage
+              active={currentPage === 'Retrieve Thing Component'}
+              component="button"
+              extraProps={{ onClick() { setCurrentPage('Retrieve Thing Component'); } }}
+            >
+              Retrieve Thing Component
+            </Sidebar.Button>
+          </Sidebar.Section>
         </Sidebar.Navigation>
         <Sidebar.SecondaryNavigation>
           <Sidebar.Button
-            icon={NotebookOutlineIcon}
-            activeIcon={NotebookIcon}
-            href="#things"
+            icon={FlaskOutlineIcon}
+            href="#dev-cetner"
           >
-            Documentation
+            Developer Center
           </Sidebar.Button>
           <Sidebar.Button
             icon={SchoolOutlineIcon}
-            activeIcon={SchoolIcon}
-            href="#units"
+            href="#tutorials"
           >
             Tutorials
           </Sidebar.Button>
           <Sidebar.Button
             icon={GraphOutlineIcon}
-            activeIcon={GraphIcon}
-            href="#connectors"
+            href="#graphql-explorer"
           >
             GraphQL Explorer
           </Sidebar.Button>
         </Sidebar.SecondaryNavigation>
-        <Sidebar.Account
-          username="user@example.com"
-          imageSrc="https://avatars.githubusercontent.com/u/2061454?v=4"
-          linkText="Account Settings"
-          href="#account"
-        />
-        <Sidebar.Footer copyright="© 2021 IoT connctd GmbH">
+        <Sidebar.Footer copyright="© 2021 IoT connctd GmbH" bordered>
           <Sidebar.Link href="//connctd.com/agb" target="_blank">
             Terms of Service
           </Sidebar.Link>
