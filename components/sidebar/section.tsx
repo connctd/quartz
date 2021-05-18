@@ -11,6 +11,7 @@ export interface SidebarSectionProps extends Themeable {
   expandable?: boolean;
   initExpanded?: boolean;
   contentHeight?: string;
+  hideSidebar?: () => void;
   children: React.ReactElement<SidebarButtonProps>[];
 }
 
@@ -88,6 +89,7 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
   expandable = false,
   initExpanded = false,
   contentHeight,
+  hideSidebar,
   children,
   theme = defaultTheme
 }) => {
@@ -112,7 +114,9 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
     );
   }
 
-  const buttonsWithTabIndex = React.Children.map(children, (child) => React.cloneElement(child, { tabIndex }));
+  const buttonsWithProps = React.Children.map(children, (child) => (
+    React.cloneElement(child, { tabIndex, hideSidebar })
+  ));
 
   return (
     <Section>
@@ -124,7 +128,7 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
         expanded={expanded}
         contentHeight={contentHeight}
       >
-        {buttonsWithTabIndex}
+        {buttonsWithProps}
       </SectionContent>
     </Section>
   );

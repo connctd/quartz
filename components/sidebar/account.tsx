@@ -10,6 +10,7 @@ export interface SidebarAccountProps extends Themeable {
   imageSrc: string;
   linkText: string;
   href?: string;
+  hideSidebar?: () => void;
   component?: any;
   extraProps?: any;
 }
@@ -72,6 +73,7 @@ export const SidebarAccount: React.FC<SidebarAccountProps> = ({
   imageSrc,
   linkText = 'Account',
   href,
+  hideSidebar,
   component = 'a',
   extraProps,
   style,
@@ -79,6 +81,7 @@ export const SidebarAccount: React.FC<SidebarAccountProps> = ({
 }) => (
   <Account
     href={href}
+    onMouseDown={hideSidebar}
     style={style}
     theme={theme}
     as={component}

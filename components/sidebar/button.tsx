@@ -6,6 +6,8 @@ import { MdiReactIconComponentType } from 'mdi-react';
 
 import { Themeable, defaultTheme } from '../theme';
 
+import { breakpoint } from '../../utils/breakpoint';
+
 export interface SidebarButtonProps extends Themeable {
   children: React.ReactNode;
   active?: boolean;
@@ -15,6 +17,7 @@ export interface SidebarButtonProps extends Themeable {
   mainPage?: boolean;
   subPage?: boolean;
   legacy?: boolean;
+  hideSidebar?: () => void;
   tabIndex?: number;
   component?: any;
   extraProps?: any;
@@ -24,7 +27,7 @@ export const Button = styled.a<Themeable & { active?: boolean, mainPage?: boolea
   appearance: none;
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 8px;
   width: 100%;
   background-color: transparent;
   color: ${({ theme }) => theme.white};
@@ -67,6 +70,10 @@ export const Button = styled.a<Themeable & { active?: boolean, mainPage?: boolea
 
     return '';
   }}
+
+  ${breakpoint('mobileM')} {
+    padding: 16px;
+  }
 `;
 
 const ButtonIcon = styled.div`
@@ -99,6 +106,7 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
   href,
   mainPage = false,
   subPage = false,
+  hideSidebar,
   legacy,
   tabIndex,
   component = 'a',
@@ -138,6 +146,7 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
       href={href}
       mainPage={mainPage}
       subPage={subPage}
+      onMouseDown={hideSidebar}
       tabIndex={tabIndex}
       style={style}
       theme={theme}

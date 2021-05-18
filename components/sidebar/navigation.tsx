@@ -1,20 +1,29 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import { defaultTheme, Themeable } from '../theme';
+
+import { breakpoint } from '../../utils/breakpoint';
+
 import { Button, SidebarButtonProps } from './button';
 
-export interface SidebarNavigationProps {
-  children: React.ReactElement<SidebarButtonProps> | React.ReactElement<SidebarButtonProps>[];
+export interface SidebarNavigationProps extends Themeable {
+  hideSidebar?: () => void;
+  children: React.ReactElement<SidebarButtonProps>[];
 }
 
-const Navigation = styled.nav`
+const Navigation = styled.nav<Themeable>`
   flex-grow: 1;
   flex-shrink: 1;
   padding: 16px;
   overflow-y: auto;
 
   ${Button} {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+
+    ${breakpoint('mobileM')} {
+      margin-bottom: 16px;
+    }
   }
 
   ${Button}:last-of-type {
@@ -22,14 +31,18 @@ const Navigation = styled.nav`
   }
 `;
 
-const SecondaryNavigation = styled.nav`
+const SecondaryNavigation = styled.nav<Themeable>`
   flex-shrink: 0;
   padding: 16px;
   border-top: solid 1px rgba(0, 0, 0, 0.2);
 
   ${Button} {
     margin-bottom: 8px;
-    padding: 8px 16px;
+    padding: 8px;
+
+    ${breakpoint('mobileM')} {
+      padding: 8px 16px;
+    }
   }
 
   ${Button}:last-of-type {
@@ -37,14 +50,34 @@ const SecondaryNavigation = styled.nav`
   }
 `;
 
-export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ children }) => (
-  <Navigation>
-    {children}
-  </Navigation>
-);
+export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
+  hideSidebar,
+  children,
+  theme = defaultTheme
+}) => {
+  const childrenWithHideSidebar = React.Children.map(children, (child) => (
+    React.cloneElement(child, { hideSidebar })
+  ));
 
-export const SidebarSecondaryNavigation: React.FC<SidebarNavigationProps> = ({ children }) => (
-  <SecondaryNavigation>
-    {children}
-  </SecondaryNavigation>
-);
+  return (
+    <Navigation theme={theme}>
+      {childrenWithHideSidebar}
+    </Navigation>
+  );
+};
+
+export const SidebarSecondaryNavigation: React.FC<SidebarNavigationProps> = ({
+  hideSidebar,
+  children,
+  theme = defaultTheme
+}) => {
+  const childrenWithHideSidebar = React.Children.map(children, (child) => (
+    React.cloneElement(child, { hideSidebar })
+  ));
+
+  return (
+    <SecondaryNavigation theme={theme}>
+      {childrenWithHideSidebar}
+    </SecondaryNavigation>
+  );
+};

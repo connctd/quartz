@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 
 import { Themeable, defaultTheme } from '../theme';
 
+import { breakpoint } from '../../utils/breakpoint';
+
 import { SidebarLinkProps } from './link';
 
 export interface SidebarFooterProps extends Themeable {
@@ -11,12 +13,16 @@ export interface SidebarFooterProps extends Themeable {
   children: React.ReactElement<SidebarLinkProps>[];
 }
 
-const Footer = styled.div<{ bordered: boolean }>`
+const Footer = styled.div<Themeable & { bordered: boolean }>`
   flex-shrink: 0;
-  padding: 16px;
+  padding: 8px 16px;
   font-size: 10px;
 
   ${({ bordered }) => (bordered ? 'border-top: solid 1px rgba(0, 0, 0, 0.2);' : '')}
+
+  ${breakpoint('mobileM')} {
+    padding: 16px;
+  }
 `;
 
 const FooterLinks = styled.div`
@@ -37,7 +43,7 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({
   bordered = false,
   theme = defaultTheme
 }) => (
-  <Footer bordered={bordered}>
+  <Footer bordered={bordered} theme={theme}>
     <FooterLinks>
       {children}
     </FooterLinks>

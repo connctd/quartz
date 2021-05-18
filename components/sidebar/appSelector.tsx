@@ -16,6 +16,7 @@ export interface SidebarAppSelectorProps extends Themeable {
   linkComponent?: any;
   createAppProps: any;
   allAppsProps: any;
+  hideSidebar?: () => void;
 }
 
 const AppSelectorContainer = styled.div`
@@ -262,12 +263,21 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
   linkComponent = 'a',
   createAppProps,
   allAppsProps,
+  hideSidebar,
   theme = defaultTheme
 }) => {
   const [open, setOpen] = useState(false);
 
   const appsWithoutCurrent = apps.filter((app) => app.name !== currentApp?.name);
   const tabIndex = open ? 0 : -1;
+
+  const toggleAppSelector = () => setOpen(!open);
+
+  const closeAppSelector = () => {
+    setOpen(false);
+
+    if (hideSidebar) hideSidebar();
+  };
 
   const appLinks = appsWithoutCurrent.map((app) => {
     const handleClick = () => {
@@ -303,6 +313,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
           you first need to create an app
         </AppSelectorEmptyStateDescription>
         <AppSelectorEmptyStateCreateApp
+          onMouseDown={closeAppSelector}
           theme={theme}
           as={linkComponent}
           {...createAppProps}
@@ -317,7 +328,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
     <AppSelectorContainer>
       <AppSelector
         theme={theme}
-        onClick={() => { setOpen(!open); }}
+        onClick={toggleAppSelector}
       >
         <AppSelectorWording>
           <AppSelectorLabel>
@@ -337,6 +348,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
         </AppSelectorApps>
         <AppSelectorFooter>
           <AppSeletorCreateApp
+            onMouseDown={closeAppSelector}
             tabIndex={tabIndex}
             theme={theme}
             as={linkComponent}
@@ -345,6 +357,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
             Create App
           </AppSeletorCreateApp>
           <AppSelectorAllApps
+            onMouseDown={closeAppSelector}
             tabIndex={tabIndex}
             as={linkComponent}
             {...allAppsProps}

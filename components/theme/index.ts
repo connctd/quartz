@@ -24,18 +24,6 @@ export interface QuartzTheme {
   warning: string;
   info: string;
 
-  gradient: {
-    primary: Gradient;
-    secondary: Gradient;
-    danger: Gradient;
-  };
-
-  alert: {
-    success: Alert;
-    error: Alert;
-    warning: Alert;
-  };
-
   black: string;
   white: string;
 
@@ -65,6 +53,28 @@ export interface QuartzTheme {
   yellow: string;
   blue: string;
   magenta: string;
+
+  gradient: {
+    primary: Gradient;
+    secondary: Gradient;
+    danger: Gradient;
+  };
+
+  alert: {
+    success: Alert;
+    error: Alert;
+    warning: Alert;
+  };
+
+  screenSize: {
+    mobileS: string;
+    mobileM: string;
+    mobileL: string;
+    tablet: string;
+    laptop: string;
+    laptopL: string;
+    desktop: string;
+  };
 }
 
 /**
@@ -110,6 +120,16 @@ const colors = {
   magenta: '#531E6B'
 };
 
+const screenSize = {
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '1800px'
+};
+
 export const defaultTheme: QuartzTheme = {
   primary: colors.purple,
   secondary: colors.gray4,
@@ -117,6 +137,8 @@ export const defaultTheme: QuartzTheme = {
   success: colors.green,
   warning: colors.yellow,
   info: colors.blue,
+
+  ...colors,
 
   gradient: {
     primary: {
@@ -154,7 +176,7 @@ export const defaultTheme: QuartzTheme = {
     }
   },
 
-  ...colors
+  screenSize
 };
 
 export const GlobalStyle = css`

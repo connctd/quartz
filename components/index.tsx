@@ -1,6 +1,7 @@
 export * from './action';
 export * from './alert';
 export * from './anchor';
+export * from './appShell';
 export * from './button';
 export * from './checkbox';
 export * from './checkboxGroup';
