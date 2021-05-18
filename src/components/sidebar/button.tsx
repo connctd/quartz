@@ -14,8 +14,9 @@ export interface SidebarButtonProps extends Themeable {
   icon?: MdiReactIconComponentType;
   activeIcon?: MdiReactIconComponentType;
   href?: string;
-  mainPage?: boolean;
-  subPage?: boolean;
+  target?: string;
+  mainpage?: boolean;
+  subpage?: boolean;
   legacy?: boolean;
   hideSidebar?: () => void;
   tabIndex?: number;
@@ -23,7 +24,7 @@ export interface SidebarButtonProps extends Themeable {
   extraProps?: any;
 }
 
-export const Button = styled.a<Themeable & { active?: boolean, mainPage?: boolean, subPage?: boolean }>`
+export const Button = styled.a<Themeable & { active: number, mainpage: number, subpage: number }>`
   appearance: none;
   display: flex;
   align-items: center;
@@ -48,14 +49,14 @@ export const Button = styled.a<Themeable & { active?: boolean, mainPage?: boolea
 
   ${({ active, theme }) => (active ? css(`background-color: ${theme.purpleVibrant};`) : '')}
 
-  ${({ active, mainPage, subPage, theme }) => {
-    if (mainPage) {
+  ${({ active, mainpage, subpage, theme }) => {
+    if (mainpage) {
       return css`
         font-weight: 700;
       `;
     }
 
-    if (subPage) {
+    if (subpage) {
       return css`
         margin-left: 16px;
         width: calc(100% - 16px);
@@ -71,7 +72,7 @@ export const Button = styled.a<Themeable & { active?: boolean, mainPage?: boolea
     return '';
   }}
 
-  ${breakpoint('mobileM')} {
+  ${breakpoint('mobileL')} {
     padding: 16px;
   }
 `;
@@ -104,8 +105,9 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
   activeIcon,
   children,
   href,
-  mainPage = false,
-  subPage = false,
+  target,
+  mainpage = false,
+  subpage = false,
   hideSidebar,
   legacy,
   tabIndex,
@@ -142,11 +144,12 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
 
   return (
     <Button
-      active={active}
+      active={active ? 1 : 0}
       href={href}
-      mainPage={mainPage}
-      subPage={subPage}
-      onMouseDown={hideSidebar}
+      target={target}
+      mainpage={mainpage ? 1 : 0}
+      subpage={subpage ? 1 : 0}
+      onMouseUp={hideSidebar}
       tabIndex={tabIndex}
       style={style}
       theme={theme}

@@ -13,14 +13,14 @@ export interface SidebarFooterProps extends Themeable {
   children: React.ReactElement<SidebarLinkProps>[];
 }
 
-const Footer = styled.div<Themeable & { bordered: boolean }>`
+const Footer = styled.footer<Themeable & { bordered: boolean }>`
   flex-shrink: 0;
   padding: 8px 16px;
   font-size: 10px;
 
   ${({ bordered }) => (bordered ? 'border-top: solid 1px rgba(0, 0, 0, 0.2);' : '')}
 
-  ${breakpoint('mobileM')} {
+  ${breakpoint('mobileL')} {
     padding: 16px;
   }
 `;

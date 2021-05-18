@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
 
 import { Themeable, defaultTheme } from '../theme';
+import { Spinner } from '../spinner';
 
 interface AppSelectorApp {
   name: string;
@@ -11,6 +12,7 @@ interface AppSelectorApp {
 }
 
 export interface SidebarAppSelectorProps extends Themeable {
+  loading?: boolean;
   apps: AppSelectorApp[];
   currentApp?: AppSelectorApp;
   linkComponent?: any;
@@ -82,7 +84,7 @@ const AppSelectorMenu = styled.div<Themeable & { open: boolean }>`
   flex-shrink: 0;
   max-height: ${({ open }) => (open ? '175px' : '0')};
   background-color: ${({ theme }) => theme.purpleDark};
-  overflow-y: scroll;
+  overflow: hidden;
   transition: max-height 0.25s ease-out;
 `;
 
@@ -94,8 +96,14 @@ const AppSelectorApps = styled.div<{ open: boolean }>`
   padding: 0 16px;
   padding-top: ${({ open }) => (open ? '16px' : '0')};
   padding-bottom: ${({ open }) => (open ? '16px' : '0')};
-  overflow-y: auto;
+  overflow-y: scroll;
   transition: padding 0.25s ease-out;
+`;
+
+const AppSelectorAppsEmptyState = styled.div<Themeable>`
+  color: ${({ theme }) => theme.white};
+  font-size: 12px;
+  opacity: 0.7;
 `;
 
 const AppSelectorApp = styled.button<Themeable>`
@@ -209,6 +217,31 @@ const AppSelectorEmptyState = styled.div<Themeable>`
   backdrop-filter: blur(10px);
 `;
 
+const AppSelectorLoadingState = styled.div<Themeable>`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 296px;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  backdrop-filter: blur(10px);
+`;
+
+const AppSelectorLoading = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 32px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  border-radius: 50%;
+`;
+
 const AppSelectorEmptyStateHeading = styled.div`
   margin-bottom: 16px;
   font-size: 16px;
@@ -258,6 +291,7 @@ const AppSelectorEmptyStateCreateApp = styled.a<Themeable>`
 `;
 
 export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
+  loading,
   apps,
   currentApp,
   linkComponent = 'a',
@@ -285,6 +319,9 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
       setTimeout(() => {
         app.onClick();
       }, 200);
+      setTimeout(() => {
+        if (hideSidebar) hideSidebar();
+      }, 400);
     };
 
     return (
@@ -301,7 +338,23 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
 
   let emptyState;
 
-  if (apps.length === 0) {
+  if (loading) {
+    emptyState = (
+      <AppSelectorLoadingState theme={theme}>
+        <AppSelectorLoading>
+          <Spinner
+            color={theme.purpleVibrant}
+            bgColor="rgba(0, 0, 0, 0.5)"
+            size="50px"
+            strokeSize="7px"
+          />
+          <div style={{ marginTop: 16 }}>
+            Loading Data ...
+          </div>
+        </AppSelectorLoading>
+      </AppSelectorLoadingState>
+    );
+  } else if (apps.length === 0) {
     emptyState = (
       <AppSelectorEmptyState theme={theme}>
         <AppSelectorEmptyStateHeading>
@@ -313,7 +366,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
           you first need to create an app
         </AppSelectorEmptyStateDescription>
         <AppSelectorEmptyStateCreateApp
-          onMouseDown={closeAppSelector}
+          onMouseUp={closeAppSelector}
           theme={theme}
           as={linkComponent}
           {...createAppProps}
@@ -321,6 +374,16 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
           Create App
         </AppSelectorEmptyStateCreateApp>
       </AppSelectorEmptyState>
+    );
+  }
+
+  let onlyOneAppDescription;
+
+  if (apps.length === 1) {
+    onlyOneAppDescription = (
+      <AppSelectorAppsEmptyState theme={theme}>
+        You just have one app: <b>{currentApp?.name}</b>
+      </AppSelectorAppsEmptyState>
     );
   }
 
@@ -345,10 +408,11 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
       <AppSelectorMenu open={open} theme={theme}>
         <AppSelectorApps open={open}>
           {appLinks}
+          {onlyOneAppDescription}
         </AppSelectorApps>
         <AppSelectorFooter>
           <AppSeletorCreateApp
-            onMouseDown={closeAppSelector}
+            onMouseUp={closeAppSelector}
             tabIndex={tabIndex}
             theme={theme}
             as={linkComponent}
@@ -357,7 +421,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
             Create App
           </AppSeletorCreateApp>
           <AppSelectorAllApps
-            onMouseDown={closeAppSelector}
+            onMouseUp={closeAppSelector}
             tabIndex={tabIndex}
             as={linkComponent}
             {...allAppsProps}

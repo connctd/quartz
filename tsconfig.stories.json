@@ -33,12 +33,12 @@
     "emitDecoratorMetadata": true
   },
   "include": [
-    "components/**/*"
+    "src"
   ],
   "exclude": [
     "node_modules",
     "build",
     "scripts",
-    "components/**/*.stories.tsx"
+    "src/components/**/*.stories.tsx"
   ]
 }

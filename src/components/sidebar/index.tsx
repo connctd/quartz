@@ -79,12 +79,15 @@ const MobileBarLogo = styled.div`
 const MobileBackdrop = styled.div<Themeable & { showing: boolean }>`
   position: fixed;
   top: 0;
-  left: ${({ showing }) => (showing ? '0' : '-100vw')};
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  opacity: ${({ showing }) => (showing ? '1' : '0')};
+  visibility: visible;
+  pointer-events: ${({ showing }) => (showing ? 'auto' : 'none')};
   backdrop-filter: blur(3px);
-  transition: left 0.2s ease-in-out;
+  transition: opacity 0.2s linear;
 
   ${breakpoint('laptop')} {
     display: none;
@@ -96,7 +99,8 @@ const MobileClose = styled.button<Themeable>`
   display: flex;
   align-items: center;
   position: absolute;
-  left: 240px;
+  top: 5px;
+  right: 5px;
   padding: 8px;
   background-color: transparent;
   color: ${({ theme }) => (theme.white)};

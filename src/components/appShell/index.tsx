@@ -44,7 +44,6 @@ const StyledContentArea = styled.div<Themeable>`
   top: 60px;
   width: 100vw;
   padding: 0 16px;
-  height: calc(100% - 60px);
   overflow-y: auto;
   z-index: 1;
 
@@ -53,7 +52,6 @@ const StyledContentArea = styled.div<Themeable>`
     left: 240px;
     padding: 0 32px;
     width: calc(100% - 240px);
-    height: 100vh;
   }
 `;
 

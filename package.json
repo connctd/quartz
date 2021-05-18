@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "2.0.0-0",
+  "version": "2.0.0-1",
   "description": "connctd design system",
   "main": "build/index.js",
   "types": "build/index.d.js",
@@ -16,9 +16,9 @@
     "build-storybook": "build-storybook",
     "start": "start-storybook -p 6006 -s ./.storybook/static",
     "build": "build-storybook -o public -s ./.storybook/static",
-    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
-    "lint": "eslint ./components --ext ts,tsx,js,jsx",
-    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
+    "watch": "babel src --out-dir build --ignore 'src/components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
+    "lint": "eslint ./src --ext ts,tsx,js,jsx",
+    "compile": "rm -rf ./build && babel src --out-dir build --ignore 'src/components/**/*.stories.tsx' --extensions '.ts,.tsx'",
     "check-types": "tsc",
     "deploy": "np"
   },

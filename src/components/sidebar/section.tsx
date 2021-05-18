@@ -80,7 +80,7 @@ const SectionContent = styled.div<{ expanded?: boolean, contentHeight?: string }
   margin-bottom: 24px;
   padding-top: ${({ expanded }) => (expanded ? '16px' : '0')};
   max-height: ${({ expanded, contentHeight }) => (expanded ? (contentHeight || '2000px') : '0')};
-  overflow-y: scroll;
+  overflow-y: hidden;
   transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 `;
 

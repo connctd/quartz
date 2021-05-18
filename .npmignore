@@ -2,7 +2,7 @@
 .github
 .storybook
 .vscode
-components
+src
 .eslintrc
 .gitignore
 now.json

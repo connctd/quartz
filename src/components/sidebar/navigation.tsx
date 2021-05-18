@@ -9,7 +9,7 @@ import { Button, SidebarButtonProps } from './button';
 
 export interface SidebarNavigationProps extends Themeable {
   hideSidebar?: () => void;
-  children: React.ReactElement<SidebarButtonProps>[];
+  children: React.ReactElement<SidebarButtonProps> | React.ReactElement<SidebarButtonProps>[];
 }
 
 const Navigation = styled.nav<Themeable>`
@@ -21,7 +21,7 @@ const Navigation = styled.nav<Themeable>`
   ${Button} {
     margin-bottom: 8px;
 
-    ${breakpoint('mobileM')} {
+    ${breakpoint('mobileL')} {
       margin-bottom: 16px;
     }
   }
@@ -40,7 +40,7 @@ const SecondaryNavigation = styled.nav<Themeable>`
     margin-bottom: 8px;
     padding: 8px;
 
-    ${breakpoint('mobileM')} {
+    ${breakpoint('mobileL')} {
       padding: 8px 16px;
     }
   }
@@ -55,7 +55,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
   children,
   theme = defaultTheme
 }) => {
-  const childrenWithHideSidebar = React.Children.map(children, (child) => (
+  const childrenWithHideSidebar = React.Children.map(children, (child: React.ReactElement<SidebarButtonProps>) => (
     React.cloneElement(child, { hideSidebar })
   ));
 
@@ -71,7 +71,7 @@ export const SidebarSecondaryNavigation: React.FC<SidebarNavigationProps> = ({
   children,
   theme = defaultTheme
 }) => {
-  const childrenWithHideSidebar = React.Children.map(children, (child) => (
+  const childrenWithHideSidebar = React.Children.map(children, (child: React.ReactElement<SidebarButtonProps>) => (
     React.cloneElement(child, { hideSidebar })
   ));
 

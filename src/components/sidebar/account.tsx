@@ -5,6 +5,8 @@ import ChevronRightIcon from 'mdi-react/ChevronRightIcon';
 
 import { Themeable, defaultTheme } from '../theme';
 
+import { breakpoint } from '../../utils/breakpoint';
+
 export interface SidebarAccountProps extends Themeable {
   username: string;
   imageSrc: string;
@@ -26,7 +28,7 @@ const Account = styled.a<Themeable>`
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  padding: 16px;
+  padding: 8px 16px;
   color: ${({ theme }) => theme.white};
   text-decoration: none;
   border-top: solid 1px rgba(0, 0, 0, 0.2);
@@ -46,6 +48,10 @@ const Account = styled.a<Themeable>`
   &:active {
     background-color: rgba(0, 0, 0, 0.4);
   }
+
+  ${breakpoint('mobileL')} {
+    padding: 16px;
+  }
 `;
 
 const AccountImage = styled.img`
@@ -57,10 +63,16 @@ const AccountImage = styled.img`
 
 const AccountWording = styled.div`
   flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
 `;
 
 const AccountUsername = styled.div<Themeable>`
+  flex-shrink: 1;
   font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const AccountLink = styled.div`
@@ -81,7 +93,7 @@ export const SidebarAccount: React.FC<SidebarAccountProps> = ({
 }) => (
   <Account
     href={href}
-    onMouseDown={hideSidebar}
+    onMouseUp={hideSidebar}
     style={style}
     theme={theme}
     as={component}

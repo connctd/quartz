@@ -220,6 +220,97 @@ stories.add('Dev-Center - no Apps', () => {
   );
 });
 
+stories.add('Dev-Center - loading', () => {
+  const apps = [];
+
+  const [currentPage, setCurrentPage] = useState('Things');
+
+  return (
+    <StoryContainer>
+      <AppShell>
+        <AppShell.Navigation>
+          <Sidebar>
+            <Sidebar.Head>
+              <img src="/logo.svg" alt="Logo" width="100%" />
+            </Sidebar.Head>
+            <Sidebar.AppSelector
+              loading
+              apps={apps}
+              createAppProps={{ href: '#create-app' }}
+              allAppsProps={{ href: '#all-apps' }}
+            />
+            <Sidebar.Navigation>
+              <Sidebar.Button
+                active={currentPage === 'Things'}
+                icon={LightbulbOutlineIcon}
+                activeIcon={LightbulbIcon}
+                component="button"
+                extraProps={{ onClick() { setCurrentPage('Things'); } }}
+              >
+                Things
+              </Sidebar.Button>
+              <Sidebar.Button
+                active={currentPage === 'Units'}
+                icon={ArchiveOutlineIcon}
+                activeIcon={ArchiveIcon}
+                component="button"
+                extraProps={{ onClick() { setCurrentPage('Units'); } }}
+              >
+                Units
+              </Sidebar.Button>
+              <Sidebar.Button
+                active={currentPage === 'Connectors'}
+                icon={PuzzleOutlineIcon}
+                activeIcon={PuzzleIcon}
+                component="button"
+                extraProps={{ onClick() { setCurrentPage('Connectors'); } }}
+              >
+                Connectors
+              </Sidebar.Button>
+            </Sidebar.Navigation>
+            <Sidebar.SecondaryNavigation>
+              <Sidebar.Button icon={NotebookOutlineIcon} href="#documentation">
+                Documentation
+              </Sidebar.Button>
+              <Sidebar.Button icon={SchoolOutlineIcon} href="#tutorials">
+                Tutorials
+              </Sidebar.Button>
+              <Sidebar.Button icon={GraphOutlineIcon} href="#connectors">
+                GraphQL Explorer
+              </Sidebar.Button>
+            </Sidebar.SecondaryNavigation>
+            <Sidebar.Account
+              username="user@example.com"
+              imageSrc="https://avatars.githubusercontent.com/u/2061454?v=4"
+              linkText="Account Settings"
+              href="#account"
+            />
+            <Sidebar.Footer copyright="© 2021 IoT connctd GmbH">
+              <Sidebar.Link href="//connctd.com/agb" target="_blank">
+                Terms of Service
+              </Sidebar.Link>
+              <Sidebar.Link href="//connctd.com/imprint" target="_blank">
+                Imprint
+              </Sidebar.Link>
+              <Sidebar.Link href="//connctd.com/privacy" target="_blank">
+                Privary
+              </Sidebar.Link>
+              <Sidebar.Link href="//connctd.com/privacy" target="_blank">
+                Cookies
+              </Sidebar.Link>
+            </Sidebar.Footer>
+          </Sidebar>
+        </AppShell.Navigation>
+        <AppShell.Content>
+          <Content>
+            Content...
+          </Content>
+        </AppShell.Content>
+      </AppShell>
+    </StoryContainer>
+  );
+});
+
 stories.add('Docs & Tutorial', () => {
   const [currentPage, setCurrentPage] = useState('Introduction');
 
@@ -234,7 +325,7 @@ stories.add('Docs & Tutorial', () => {
             <Sidebar.Navigation>
               <Sidebar.Section title="Gettings Started">
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Introduction - Gettings Started'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Introduction - Gettings Started'); } }}
@@ -242,7 +333,7 @@ stories.add('Docs & Tutorial', () => {
                   Introduction
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'What is connctd?'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('What is connctd?'); } }}
@@ -250,7 +341,7 @@ stories.add('Docs & Tutorial', () => {
                   What is connctd?
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'How to get started'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('How to get started'); } }}
@@ -258,7 +349,7 @@ stories.add('Docs & Tutorial', () => {
                   How to get started
                 </Sidebar.Button>
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Authorization'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Authorization'); } }}
@@ -266,7 +357,7 @@ stories.add('Docs & Tutorial', () => {
                   Authorization
                 </Sidebar.Button>
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'OAuth 2.0'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('OAuth 2.0'); } }}
@@ -274,7 +365,7 @@ stories.add('Docs & Tutorial', () => {
                   OAuth 2.0
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Client Credentials Flow'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Client Credentials Flow'); } }}
@@ -282,7 +373,7 @@ stories.add('Docs & Tutorial', () => {
                   Client Credentials Flow
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Authorization Code Grant Flow'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Authorization Code Grant Flow'); } }}
@@ -298,7 +389,7 @@ stories.add('Docs & Tutorial', () => {
                 contentHeight="375px"
               >
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Introduction - GraphQL'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Introduction - GraphQL'); } }}
@@ -306,7 +397,7 @@ stories.add('Docs & Tutorial', () => {
                   Introduction
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Quick Start'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Quick Start'); } }}
@@ -314,7 +405,7 @@ stories.add('Docs & Tutorial', () => {
                   Quick Start
                 </Sidebar.Button>
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Tools'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Tools'); } }}
@@ -322,7 +413,7 @@ stories.add('Docs & Tutorial', () => {
                   Tools
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Client Libraries'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Client Libraries'); } }}
@@ -330,7 +421,7 @@ stories.add('Docs & Tutorial', () => {
                   Client Libraries
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'SDL'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('SDL'); } }}
@@ -338,7 +429,7 @@ stories.add('Docs & Tutorial', () => {
                   SDL
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Schema Introspection'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Schema Introspection'); } }}
@@ -346,7 +437,7 @@ stories.add('Docs & Tutorial', () => {
                   Schema Introspection
                 </Sidebar.Button>
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Things - GraphQL'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Things - GraphQL'); } }}
@@ -354,7 +445,7 @@ stories.add('Docs & Tutorial', () => {
                   Things
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Resolve'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Resolve'); } }}
@@ -362,7 +453,7 @@ stories.add('Docs & Tutorial', () => {
                   Resolve
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Create'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Create'); } }}
@@ -370,7 +461,7 @@ stories.add('Docs & Tutorial', () => {
                   Create
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Delete'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Delete'); } }}
@@ -378,7 +469,7 @@ stories.add('Docs & Tutorial', () => {
                   Delete
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Trigger Actions'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Trigger Actions'); } }}
@@ -390,10 +481,10 @@ stories.add('Docs & Tutorial', () => {
               <Sidebar.Section
                 title="REST"
                 expandable
-                contentHeight="240px"
+                contentHeight="270px"
               >
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   active={currentPage === 'Apps'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Apps'); } }}
@@ -401,7 +492,7 @@ stories.add('Docs & Tutorial', () => {
                   Apps
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Register a callback url'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Register a callback url'); } }}
@@ -409,7 +500,7 @@ stories.add('Docs & Tutorial', () => {
                   Register a callback url
                 </Sidebar.Button>
                 <Sidebar.Button
-                  mainPage
+                  mainpage
                   legacy
                   active={currentPage === 'Things - REST'}
                   component="button"
@@ -418,7 +509,7 @@ stories.add('Docs & Tutorial', () => {
                   Things
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Create Thing'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Create Thing'); } }}
@@ -426,7 +517,7 @@ stories.add('Docs & Tutorial', () => {
                   Create Thing
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Retrieve Things'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Retrieve Things'); } }}
@@ -434,7 +525,7 @@ stories.add('Docs & Tutorial', () => {
                   Retrieve Things
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Retrieve Thing'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Retrieve Thing'); } }}
@@ -442,7 +533,7 @@ stories.add('Docs & Tutorial', () => {
                   Retrieve Thing
                 </Sidebar.Button>
                 <Sidebar.Button
-                  subPage
+                  subpage
                   active={currentPage === 'Retrieve Thing Component'}
                   component="button"
                   extraProps={{ onClick() { setCurrentPage('Retrieve Thing Component'); } }}
