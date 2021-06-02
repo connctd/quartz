@@ -14,8 +14,8 @@ const StyledPaper = styled.div<PaperProps>`
   z-index: 1;
   padding: 32px;
   width: auto;
-  background: #fff;
-  border: solid 1px #bdbdbd;
+  background-color: ${({ theme }) => theme.white};
+  border: solid 1px ${({ theme }) => theme.gray3};
   border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
