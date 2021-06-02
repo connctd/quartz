@@ -5,7 +5,6 @@ import { Collapse } from './index';
 
 const stories = storiesOf('Collapse', module);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
 
 stories.add('Default', () => (
   <Collapse heading="Details">

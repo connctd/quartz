@@ -1,182 +1,167 @@
-import * as React from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
 
-const StyledButtonText = styled.span`
-  position: relative;
-`;
+export type ButtonAppearance = 'primary' | 'secondary' | 'danger';
 
 interface StyledButtonProps extends Themeable {
   theme: QuartzTheme;
   appearance: ButtonAppearance;
   disabled?: boolean;
-  small?: boolean;
+  block?: boolean;
+  as?: any;
+}
+
+export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  theme?: QuartzTheme;
+  appearance?: ButtonAppearance;
   href?: string;
-  children?: React.ReactNode;
-  text?: string;
-  tabIndex?: number;
+  component?: any;
+  block?: boolean;
+  extraProps?: any;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
+  padding: 8px 32px;
+  width: ${({ block }) => (block ? '100%' : 'auto')};
   background: linear-gradient(
-    180deg,
-    ${(props) => props.theme.gradient[props.appearance].start} -76.56%,
-    ${(props) => props.theme.gradient[props.appearance].end} 150%
+    to bottom,
+    ${({ theme, appearance }) => theme.gradient[appearance].start} 0%,
+    ${({ theme, appearance }) => theme.gradient[appearance].end} 100%
   );
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   color: ${(props) => props.theme.gradient[props.appearance].text};
-  border-radius: 12px;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
   font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
   cursor: pointer;
 
-  ${(props) => (props.disabled ? css(`
-    opacity: 0.7;
-    cursor: not-allowed;
-  `) : css(`
-    :active {
-      background: linear-gradient(
-        180deg,
-        ${props.theme.gradient[props.appearance].start} -30%,
-        ${props.theme.gradient[props.appearance].end} 150%
-      );
+  ${({ disabled, theme, appearance }) => {
+    if (disabled) {
+      return css`
+        opacity: 0.7;
+        cursor: not-allowed;
+      `;
+    }
 
-      ${StyledButtonText} {
-        top: 1px;
+    return css`
+      :hover {
+        background: linear-gradient(
+          180deg,
+          ${theme.gradient[appearance].start} 0%,
+          ${theme.gradient[appearance].end} 130%
+        );
       }
-    }
 
-    :hover:not(:active) ${StyledButtonText} {
-      top: -1px;
-    }
-  `))};
+      :active {
+        background: linear-gradient(
+          180deg,
+          ${theme.gradient[appearance].start} -30%,
+          ${theme.gradient[appearance].end} 100%
+        );
+      }
+    `;
+  }}
 `;
 
 export const StyledAnchorButton = styled.a<StyledButtonProps>`
   display: inline-block;
+  padding: 8px 32px;
   background: linear-gradient(
-    180deg,
-    ${(props) => props.theme.gradient[props.appearance].start} -76.56%,
-    ${(props) => props.theme.gradient[props.appearance].end} 150%
+    to bottom,
+    ${({ theme, appearance }) => theme.gradient[appearance].start} 0%,
+    ${({ theme, appearance }) => theme.gradient[appearance].end} 100%
   );
-  box-shadow: 0px ${(props) => (props.small ? '1px 3px' : '3px 10px')} rgba(0, 0, 0, 0.2);
   color: ${(props) => props.theme.gradient[props.appearance].text};
-  border-radius: ${(props) => (props.small ? 5 : 12)}px;
-  border: none;
-  padding: ${(props) => (props.small ? '5px 10px' : '10px 20px')};
-  font-style: normal;
-  font-weight: 600;
-  font-size: ${(props) => (props.small ? 12 : 18)}px;
+  font-size: 18px;
+  font-weight: 500;
   text-align: center;
+  font-style: normal;
   text-decoration: none;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 
-  :active {
-    background: linear-gradient(
-      180deg,
-      ${(props) => props.theme.gradient[props.appearance].start} -30%,
-      ${(props) => props.theme.gradient[props.appearance].end} 150%
-    );
-
-    ${StyledButtonText} {
-        top: 1px;
+  ${({ disabled, theme, appearance }) => {
+    if (disabled) {
+      return css`
+        opacity: 0.7;
+        cursor: not-allowed;
+      `;
     }
-  }
 
-  :hover:not(:active) ${StyledButtonText} {
-    top: -1px;
-  }
+    return css`
+      :hover {
+        background: linear-gradient(
+          180deg,
+          ${theme.gradient[appearance].start} 0%,
+          ${theme.gradient[appearance].end} 130%
+        );
+      }
+
+      :active {
+        background: linear-gradient(
+          180deg,
+          ${theme.gradient[appearance].start} -30%,
+          ${theme.gradient[appearance].end} 100%
+        );
+      }
+    `;
+  }}
 `;
 
-export enum ButtonAppearance {
-  default = 'light',
-  primary = 'primary',
-  secondary = 'secondary',
-  danger = 'danger'
-}
-
-export interface ButtonProps {
-  text: any;
-  appearance?: ButtonAppearance;
-  small?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-  onClick?: (event) => void;
-  /**
-     * If supplied the <button> will be replaced with an <a> to conform to correct
-     *  HTML5 semantics.
-     */
-  href?: string;
-  theme?: QuartzTheme;
-  style?: React.CSSProperties;
-  disabled?: boolean;
-  className?: string;
-  tabIndex?: number;
-  component?: any;
-  extraProps?: any;
-}
-
-/**
- * Base button component with which all other helper buttons inherit
- *
- */
 export const Button: React.FC<ButtonProps> = ({
-  text,
-  appearance = ButtonAppearance.default,
-  type,
-  onClick,
   theme = defaultTheme,
+  appearance = 'primary',
+  type = 'button',
+  component = 'button',
+  children,
+  onClick,
   href,
+  disabled,
+  block,
   style,
   className,
-  small,
-  disabled,
   tabIndex,
-  component = 'button',
-  extraProps
+  extraProps,
+  ...rest
 }) => {
   if (href) {
     return (
       <StyledAnchorButton
+        theme={theme}
+        appearance={appearance}
+        href={href}
+        block={block}
         className={className}
         style={style}
-        appearance={appearance}
-        theme={theme}
-        href={href}
-        text={text}
-        small={small}
         tabIndex={tabIndex}
+        {...extraProps}
       >
-        <StyledButtonText>{text}</StyledButtonText>
+        {children}
       </StyledAnchorButton>
     );
   }
 
   return (
     <StyledButton
+      theme={theme}
+      appearance={appearance}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      block={block}
       className={className}
       style={style}
-      appearance={appearance}
-      theme={theme}
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
       tabIndex={tabIndex}
       as={component}
       {...extraProps}
+      {...rest}
     >
-      <StyledButtonText>{text}</StyledButtonText>
+      {children}
     </StyledButton>
   );
-};
-
-Button.defaultProps = {
-  type: 'button',
-  appearance: ButtonAppearance.default,
-  theme: defaultTheme
 };

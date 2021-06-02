@@ -13,7 +13,7 @@ const loadingAnimation = keyframes`
 `;
 
 const StyledNN = styled.svg<SpiNNerProps>`
-  stroke: ${(props) => props.theme.primary};
+  stroke: ${(props) => props.theme.orange};
   fill: none;
   display: block;
   .path {

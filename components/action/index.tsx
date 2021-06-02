@@ -6,7 +6,10 @@ import { defaultTheme, Themeable } from '../theme';
 export interface ActionProps extends Themeable {
   label?: string;
   type?: 'add' | 'delete';
-  onClick: (e: React.MouseEvent) => void;
+  href?: string;
+  component?: any;
+  extraProps?: any;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const Label = styled.span`
@@ -16,7 +19,7 @@ const Label = styled.span`
 const IconCircle = styled.div<Themeable & Pick<ActionProps, 'type'>>`
   width: 30px;
   height: 30px;
-  background-color: ${({ type, theme }) => (type === 'add' ? theme.secondary : theme.primary)};
+  background-color: ${({ type, theme }) => (type === 'add' ? theme.success : theme.danger)};
   color: #fff;
   font-size: 24px;
   text-align: center;
@@ -35,9 +38,11 @@ const IconCircle = styled.div<Themeable & Pick<ActionProps, 'type'>>`
   }
 `;
 
-const ActionContainer = styled.a`
+const ActionContainer = styled.a<Themeable>`
   display: inline-flex;
   align-items: center;
+  color: ${({ theme }) => theme.black};
+  text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   user-select: none;
@@ -46,15 +51,18 @@ const ActionContainer = styled.a`
 export const Action: React.FC<ActionProps> = ({
   label,
   type = 'add',
+  component = 'a',
   onClick,
   className,
   theme = defaultTheme,
-  ...rest
+  extraProps
 }) => (
   <ActionContainer
+    theme={theme}
     className={className}
     onClick={onClick}
-    {...rest}
+    as={component}
+    {...extraProps}
   >
     {label && (<Label>{label}</Label>)}
     <IconCircle theme={theme} type={type} />

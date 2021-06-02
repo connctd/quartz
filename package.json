@@ -1,6 +1,6 @@
 {
   "name": "@connctd/quartz",
-  "version": "2.0.0",
+  "version": "2.0.0-0",
   "description": "connctd design system",
   "main": "build/index.js",
   "types": "build/index.d.js",
@@ -9,6 +9,18 @@
   "engines": {
     "node": ">=10.0.0",
     "yarn": "^1.15.0"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run compile && tsc",
+    "storybook": "start-storybook -p 6006 -s ./.storybook/static",
+    "build-storybook": "build-storybook",
+    "start": "start-storybook -p 6006 -s ./.storybook/static",
+    "build": "build-storybook -o public -s ./.storybook/static",
+    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
+    "lint": "eslint ./components --ext ts,tsx,js,jsx",
+    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
+    "check-types": "tsc",
+    "deploy": "np"
   },
   "dependencies": {
     "@emotion/core": "^10.0.17",
@@ -26,7 +38,6 @@
     "@babel/preset-typescript": "^7.8.3",
     "@connctd/eslint-config-typescript": "^1.1.4",
     "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-info": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",
     "@storybook/addon-links": "^5.1.9",
@@ -57,18 +68,5 @@
     "ts-loader": "^7.0.5",
     "typescript": "4.1.2",
     "webpack": "^4.0.0"
-  },
-  "scripts": {
-    "prepublishOnly": "npm run compile && tsc",
-    "storybook": "start-storybook -p 6006 -s ./.storybook/static",
-    "build-storybook": "build-storybook",
-    "start": "start-storybook -p 6006 -s ./.storybook/static",
-    "build": "build-storybook -o public -s ./.storybook/static",
-    "watch": "babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx' --watch",
-    "lint": "eslint ./components --ext ts,tsx,js,jsx",
-    "compile": "rm -rf ./build && babel components --out-dir build --ignore 'components/**/*.stories.tsx' --extensions '.ts,.tsx'",
-    "check-types": "tsc",
-    "deploy": "np",
-    "test": "echo Wow 100% success"
   }
 }

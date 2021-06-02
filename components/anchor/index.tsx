@@ -15,26 +15,29 @@ interface AnchorProps extends Themeable {
 const StyledAnchor = styled('a', {
   shouldForwardProp: (prop) => isPropValid(prop) && prop !== 'primary'
 }) <AnchorProps>`
-  color: ${(props) => (props.primary ? props.theme.secondary : props.theme.dark)};
+  color: ${(props) => (props.primary ? props.theme.success : props.theme.gray1)};
   text-decoration: underline;
 `;
 
 export const Anchor: React.FC<AnchorProps> = React.memo(({
-  children, primary, theme, href, component = 'a', extraProps
+  children,
+  primary,
+  theme = defaultTheme,
+  href,
+  component = 'a',
+  style,
+  extraProps
 }) => (
   <StyledAnchor
     as={component}
     primary={primary}
     theme={theme}
     href={href}
+    style={style}
     {...extraProps}
   >
     {children}
   </StyledAnchor>
 ));
-
-Anchor.defaultProps = {
-  theme: defaultTheme
-};
 
 export default Anchor;

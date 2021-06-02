@@ -9,7 +9,6 @@ const stories = storiesOf('Table', module);
 
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
 
 stories.add('Table', () => (
   <Table>

@@ -5,7 +5,6 @@ import Logo from './index';
 
 const stories = storiesOf('Logo', module);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
 
 stories.add('Logo', () => (
   <div style={{ display: 'grid', gridGap: 10 }}>

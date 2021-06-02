@@ -21,7 +21,7 @@ const DelimiterText = styled.div`
 const DelimiterLine = styled.div<Themeable>`
   flex-grow: 1;
   height: 0px;
-  border-top: dashed 2px ${(props) => props.theme.light50};
+  border-top: dashed 2px ${(props) => props.theme.gray3};
 `;
 
 export const Delimiter: React.FC<DelimiterProps> = ({ text, theme }) => {

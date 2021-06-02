@@ -1,55 +1,134 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Themeable, defaultTheme } from '../theme';
-import { LabelContainer, FieldError } from '../input';
+import { QuartzTheme, defaultTheme } from '../theme';
+import {
+  FormFieldContainer, FormFieldLabel, FormFieldDescription, FormFieldError
+} from '../formfield';
 
-interface TextAreaProps extends Themeable {
+interface TextareaProps
+  extends React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
   height?: number;
+  id?: string;
   value?: string;
+  placeholder?: string;
+  label?: string;
+  description?: React.ReactNode;
+  required?: boolean;
+  disabled?: boolean;
   hasError?: boolean;
   error?: string;
-  disabled?: boolean;
   resize?: boolean;
-  onChange?: (event) => void;
+  theme?: QuartzTheme;
 }
 
-const StyledTextArea = styled.textarea<TextAreaProps>`
-  margin-bottom: -9px;
-  padding: 12px 20px;
+const StyledTextarea = styled.textarea<TextareaProps>`
   display: inline-block;
-  border: 1px solid ${(props) => (props.hasError ? props.theme.error : props.theme.light50)};
-  border-radius: 3px;
-  box-sizing: border-box;
-  font-size: 14px;
+  margin-bottom: -9px;
+  padding: 12px 16px;
   width: 100%;
-  resize: ${(props) => (props.resize ? 'vertical' : 'none')};
+  height: ${({ height }) => (height || '120px')};
+  font-size: 14px;
+  border: 1px solid ${({ hasError, theme }) => (hasError ? theme.danger : theme.gray3)};
+  border-radius: 3px;
+  outline: none;
   overflow: auto;
-  height: ${(props) => (props.height ? props.height : '120px')};
+  resize: ${({ resize }) => (resize ? 'vertical' : 'none')};
 
-  :disabled, :read-only {
-    background-color: ${(props) => props.theme.light30};
-    color: ${(props) => props.theme.dark};
+  :disabled {
+    cursor: not-allowed;
   }
 
   :focus {
-    border: 1px solid ${(props) => props.theme.green}
+    border: 1px solid ${({ theme }) => theme.gray2}
   }
 `;
 
-export const TextArea: React.FC<TextAreaProps> = ({
-  theme, hasError, error, ...rest
-}) => (
-  <LabelContainer>
-    <StyledTextArea theme={theme} hasError={hasError} {...rest} />
-    { hasError && (
-      <FieldError theme={theme}>
-        {error}
-      </FieldError>
-    )}
-  </LabelContainer>
-);
+const LabelDescriptionContainer = styled.div`
+  text-align: right;
 
-TextArea.defaultProps = {
-  theme: defaultTheme
+  @media screen and (max-width: 600px) {
+    margin-top: 12px;
+    text-align: left;
+
+    ${FormFieldDescription} {
+      margin-bottom: 8px;
+    }
+  }
+`;
+
+export const Textarea: React.FC<TextareaProps> = ({
+  theme = defaultTheme,
+  height,
+  id,
+  value,
+  placeholder,
+  label,
+  description,
+  required,
+  disabled,
+  hasError,
+  error,
+  resize,
+  onChange,
+  ...rest
+}) => {
+  let descriptionElement;
+  let errorElement;
+
+  if (description) {
+    descriptionElement = (
+      <FormFieldDescription theme={theme}>
+        {description}
+      </FormFieldDescription>
+    );
+  }
+
+  if (hasError && error && error.length) {
+    errorElement = (
+      <FormFieldError theme={theme}>
+        {error}
+      </FormFieldError>
+    );
+  }
+
+  const textAreaElements = (
+    <div>
+      <StyledTextarea
+        theme={theme}
+        height={height}
+        id={id}
+        value={value}
+        placeholder={placeholder}
+        required={required}
+        disabled={disabled}
+        hasError={hasError}
+        resize={resize}
+        onChange={onChange}
+        {...rest}
+      />
+      {errorElement}
+    </div>
+  );
+
+  if (label) {
+    return (
+      <FormFieldContainer>
+        <LabelDescriptionContainer>
+          <FormFieldLabel
+            htmlFor={id}
+            hasError={hasError}
+            required={required}
+            theme={theme}
+          >
+            {label}
+          </FormFieldLabel>
+          {descriptionElement}
+        </LabelDescriptionContainer>
+        {textAreaElements}
+      </FormFieldContainer>
+    );
+  }
+
+  return textAreaElements;
 };

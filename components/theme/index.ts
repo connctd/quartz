@@ -6,24 +6,10 @@ interface Gradient {
   text: string;
 }
 
-interface Gradients {
-  primary: Gradient;
-  secondary: Gradient;
-  light: Gradient;
-  dark: Gradient;
-  danger: Gradient;
-}
-
-interface Alerts {
-  success: AlertColors;
-  error: AlertColors;
-  warning: AlertColors;
-}
-
-interface AlertColors {
-  cross: string;
-  text: string;
+interface Alert {
   background: string;
+  border: string;
+  text: string;
 }
 
 /**
@@ -33,17 +19,51 @@ interface AlertColors {
 export interface QuartzTheme {
   primary: string;
   secondary: string;
-  tertiary: string;
-  blue: string;
-  light30: string;
-  light50: string;
-  light: string;
-  dark: string;
-  dark70: string;
+  danger: string;
+  success: string;
+  warning: string;
+  info: string;
+
+  gradient: {
+    primary: Gradient;
+    secondary: Gradient;
+    danger: Gradient;
+  };
+
+  alert: {
+    success: Alert;
+    error: Alert;
+    warning: Alert;
+  };
+
+  black: string;
+  white: string;
+
+  gray1: string;
+  gray2: string;
+  gray3: string;
+  gray4: string;
+  gray5: string;
+
+  purple: string;
+  purpleLight: string;
+  purpleDark: string;
+
+  red: string;
+  redLight: string;
+  redDark: string;
+
+  orange: string;
+  orangeLight: string;
+  orangeDark: string;
+
   green: string;
-  error: string;
-  gradient: Gradients;
-  alert: Alerts;
+  greenLight: string;
+  greenDark: string;
+
+  yellow: string;
+  blue: string;
+  magenta: string;
 }
 
 /**
@@ -57,67 +77,87 @@ export interface Themeable {
   style?: React.CSSProperties;
 }
 
-export const defaultTheme: QuartzTheme = {
-  primary: '#D4550A', // red?
-  secondary: '#19A287', // green
+const colors = {
+  black: '#000000',
+  white: '#FFFFFF',
 
-  tertiary: '#201E50', // dark purple?
-  blue: '#302C70',
-  light30: '#F3F3F3',
-  light50: '#D8D8D8',
-  light: 'white',
-  dark: '#4A4A4A',
-  dark70: '#6B6B6B',
-  green: '#19A287',
-  error: '#D0021B',
+  gray1: '#4F4F4F',
+  gray2: '#828282',
+  gray3: '#BDBDBD',
+  gray4: '#E0E0E0',
+  gray5: '#F2F2F2',
+
+  purple: '#302C70',
+  purpleLight: '#DCDAF1',
+  purpleDark: '#201E50',
+  purpleVibrant: '#524CB9',
+
+  red: '#E64C3C',
+  redLight: '#F2A097',
+  redDark: '#6A0000',
+
+  orange: '#DA7132',
+  orangeLight: '#FBE0B4',
+  orangeDark: '#7E4F00',
+
+  green: '#169882',
+  greenLight: '#E4FBF7',
+  greenDark: '#15502C',
+
+  yellow: '#EADA56',
+  blue: '#478DC0',
+  magenta: '#531E6B'
+};
+
+export const defaultTheme: QuartzTheme = {
+  primary: colors.purple,
+  secondary: colors.gray4,
+  danger: colors.red,
+  success: colors.green,
+  warning: colors.yellow,
+  info: colors.blue,
+
   gradient: {
     primary: {
-      start: '#FFE9E7',
-      end: '#FF1800',
-      text: 'white'
+      start: colors.purpleVibrant,
+      end: colors.purple,
+      text: colors.white
     },
     secondary: {
-      start: '#6D68C1',
-      end: '#302C70',
-      text: 'white'
-    },
-    light: {
-      start: '#FFFFFF',
-      end: '#D8D8D8',
-      text: '#6B6B6B'
-    },
-    dark: {
-      start: '',
-      end: '',
-      text: ''
+      start: colors.gray5,
+      end: colors.gray3,
+      text: colors.gray1
     },
     danger: {
-      start: '#FF6656',
-      end: '#D41400',
-      text: 'white'
+      start: colors.redLight,
+      end: colors.red,
+      text: colors.white
     }
   },
+
   alert: {
     success: {
-      cross: '#19A287',
-      text: '#086654',
-      background: '#C5E8E1'
+      background: colors.greenLight,
+      border: colors.green,
+      text: colors.greenDark
     },
     error: {
-      cross: '#F45B5B',
-      text: '#6A0000',
-      background: '#FBBDBD'
+      background: colors.redLight,
+      border: colors.red,
+      text: colors.redDark
     },
     warning: {
-      cross: '#F5A623',
-      text: '#7E4F00',
-      background: '#FCE1B4'
+      background: colors.orangeLight,
+      border: colors.orange,
+      text: colors.orangeDark
     }
-  }
+  },
+
+  ...colors
 };
 
 export const GlobalStyle = css`
-  @import url('https://fonts.googleapis.com/css?family=Hind:400,600,700&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Hind:400,500,600,700&display=swap');
 
   body,html {
     margin: 0 auto;
@@ -133,18 +173,12 @@ export const GlobalStyle = css`
     height: 100%;
   }
 
-  input, select, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; outline: none; }
-
-  :focus { /* https://stackoverflow.com/questions/935559/remove-safari-chrome-textinput-textarea-glow */
-    outline-color: transparent;
-    outline-style: none;
-  }
+  input, select, textarea, button { font-family: 'Hind', Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif; }
 
   a {
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
   }
-
 
   * {
     box-sizing: border-box;

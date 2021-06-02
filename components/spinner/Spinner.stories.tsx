@@ -8,7 +8,6 @@ import { SpiNNer } from './index';
 const stories = storiesOf('Spinner', module);
 stories.addDecorator(withInfo);
 stories.addDecorator(withKnobs);
-stories.addParameters({ info: { inline: true } });
 
 const Centered = styled.div`
     text-align: center;

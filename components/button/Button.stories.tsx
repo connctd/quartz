@@ -3,56 +3,103 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, number } from '@storybook/addon-knobs';
-import { Button, ButtonAppearance } from './index';
+
+import { Button } from './index';
 
 const stories = storiesOf('Button', module);
+
 stories.addDecorator(withKnobs);
 stories.addDecorator(withInfo);
-stories.addParameters({ info: { inline: true } });
-
-stories.add('Button', () => {
-  const btnText = text('Text', 'Action');
-  return <Button onClick={action('onClick')} text={btnText} />;
-});
 
 stories.add('Primary', () => {
-  const btnText = text('Text', 'Hello World');
-  return <Button appearance={ButtonAppearance.primary} onClick={action('onClick')} text={btnText} />;
+  const btnText = text('Text', 'Submit');
+
+  return (
+    <Button appearance="primary" onClick={action('onClick')}>
+      {btnText}
+    </Button>
+  );
 });
 
 stories.add('Secondary', () => {
   const btnText = text('Text', 'Cancel');
-  return <Button appearance={ButtonAppearance.secondary} onClick={action('onClick')} text={btnText} />;
+
+  return (
+    <Button appearance="secondary" onClick={action('onClick')}>
+      {btnText}
+    </Button>
+  );
+});
+
+stories.add('Danger', () => {
+  const btnText = text('Text', 'Delete');
+
+  return (
+    <Button appearance="danger" onClick={action('onClick')}>
+      {btnText}
+    </Button>
+  );
+});
+
+stories.add('Block (100% width)', () => {
+  const spacing = number('Spacing', 15);
+
+  return (
+    <div>
+      <Button appearance="primary" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
+        Submit
+      </Button>
+      <Button appearance="secondary" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
+        Cancel
+      </Button>
+      <Button appearance="danger" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
+        Delete
+      </Button>
+    </div>
+  );
 });
 
 stories.add('Anchor Link', () => {
-  const btnText = text('Text', 'Cancel');
+  const btnText = text('Text', 'Anchor');
   const link = text('Link', '#link');
   const spacing = number('Spacing', 15);
+
   return (
     <div>
-      <div style={{ height: 30 }}>
-        <Button style={{ marginRight: spacing }} href={link} onClick={action('onClick')} text={btnText} />
-        <Button appearance={ButtonAppearance.primary} style={{ marginRight: spacing }} href={link} onClick={action('onClick')} text={btnText} />
-        <Button appearance={ButtonAppearance.secondary} href={link} onClick={action('onClick')} text={btnText} />
-      </div>
-      <div>
-        <h2>Small:</h2>
-        <Button small style={{ marginRight: spacing }} href={link} onClick={action('onClick')} text={btnText} />
-        <Button small appearance={ButtonAppearance.primary} style={{ marginRight: spacing }} href={link} onClick={action('onClick')} text={btnText} />
-        <Button small appearance={ButtonAppearance.secondary} href={link} onClick={action('onClick')} text={btnText} />
-      </div>
+      <Button appearance="primary" style={{ marginRight: spacing }} href={link} onClick={action('onClick')}>
+        {btnText}
+      </Button>
+      <Button appearance="secondary" style={{ marginRight: spacing }} href={link} onClick={action('onClick')}>
+        {btnText}
+      </Button>
+      <Button appearance="danger" href={link} onClick={action('onClick')}>
+        {btnText}
+      </Button>
     </div>
 
   );
 });
 
-stories.add('Tabindex', () => (
-  <div>
-    <Button onClick={action('onClick')} tabIndex={0} text="One" />
-    <Button onClick={action('onClick')} tabIndex={0} text="Two" />
-    <Button onClick={action('onClick')} tabIndex={0} text="Three" />
-    <Button onClick={action('onClick')} tabIndex={-1} text="Five" />
-    <Button onClick={action('onClick')} tabIndex={0} text="Four" />
-  </div>
-));
+stories.add('Tabindex', () => {
+  const spacing = number('Spacing', 15);
+
+  return (
+    <div>
+      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
+        One
+      </Button>
+      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
+        Two
+      </Button>
+      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
+        Three
+      </Button>
+      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={-1}>
+        Five
+      </Button>
+      <Button onClick={action('onClick')} tabIndex={0}>
+        Four
+      </Button>
+    </div>
+  );
+});

@@ -1,6 +1,5 @@
 module.exports = {
   stories: ['../components/**/*.stories.tsx'],
-  addons: ['@storybook/addon-docs'],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -27,5 +26,4 @@ module.exports = {
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
   },
-  };
-
+};

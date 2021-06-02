@@ -5,7 +5,7 @@ import { defaultTheme, Themeable, QuartzTheme } from '../theme';
 const AlertContainer = styled.div<StyledAlertProps>`
   padding: 5px;
   background-color: ${(props) => props.theme.alert[props.appearance].background};
-  border: 1px solid ${(props) => props.theme.alert[props.appearance].cross};
+  border: 1px solid ${(props) => props.theme.alert[props.appearance].border};
   margin-bottom: 15px;
   border-radius: 3px;
   transition: all 0.2s linear;
@@ -13,13 +13,12 @@ const AlertContainer = styled.div<StyledAlertProps>`
 
 const AlertContent = styled.div<StyledAlertProps>`
   padding: 16px;
-
   color: ${(props) => props.theme.alert[props.appearance].text};
 `;
 
 const DissmissIndicator = styled.span<StyledAlertProps>`
   margin-left: 15px;
-  color: ${(props) => props.theme.alert[props.appearance].cross};
+  color: ${(props) => props.theme.alert[props.appearance].border};
   font-weight: bold;
   float: right;
   font-size: 22px;
@@ -28,11 +27,7 @@ const DissmissIndicator = styled.span<StyledAlertProps>`
   transition: 0.3s;
 `;
 
-export enum AlertAppearance {
-  success = 'success',
-  error = 'error',
-  warning = 'warning'
-}
+type AlertAppearance = 'success' | 'error' | 'warning';
 
 interface StyledAlertProps {
   appearance: AlertAppearance;
@@ -48,8 +43,8 @@ export interface AlertProps extends Themeable {
 export const Alert: React.FC<AlertProps> = ({
   theme = defaultTheme,
   children,
-  appearance = AlertAppearance.warning,
-  dissmissable
+  appearance = 'warning',
+  dissmissable = false
 
 }) => {
   const [dismissed, setDismissed] = useState(false);
@@ -84,10 +79,4 @@ export const Alert: React.FC<AlertProps> = ({
     );
   }
   return (null);
-};
-
-Alert.defaultProps = {
-  appearance: AlertAppearance.warning,
-  theme: defaultTheme,
-  dissmissable: false
 };
