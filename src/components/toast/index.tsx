@@ -14,12 +14,12 @@ import { defaultTheme, Themeable } from '../theme';
 import { breakpoint } from '../../utils/breakpoint';
 import { setAlpha } from '../../utils/color';
 
-type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
+export type ToastVariant = 'primary' | 'success' | 'danger' | 'warning' | 'info';
 
 export interface ToastAction {
   label: string;
   secondary?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 interface ToastProps extends Themeable {
@@ -28,8 +28,8 @@ interface ToastProps extends Themeable {
   noIcon?: boolean;
   icon?: MdiReactIconComponentType;
   width?: string;
-  title: string;
-  description?: string;
+  title: React.ReactNode;
+  description?: React.ReactNode;
   actions?: ToastAction[];
   onClose?: () => void;
 }
@@ -41,6 +41,7 @@ const ToastContainer = styled.div<Themeable & { width?: string }>`
   border: solid 1px ${({ theme }) => theme.gray3};
   border-radius: 4px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
 
   ${breakpoint('tablet')} {
     width: ${({ width }) => (width || '400px')};
