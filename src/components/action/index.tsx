@@ -54,13 +54,15 @@ export const Action: React.FC<ActionProps> = ({
   component = 'a',
   onClick,
   className,
+  style,
   theme = defaultTheme,
   extraProps
 }) => (
   <ActionContainer
+    onClick={onClick}
     theme={theme}
     className={className}
-    onClick={onClick}
+    style={style}
     as={component}
     {...extraProps}
   >
@@ -68,7 +70,3 @@ export const Action: React.FC<ActionProps> = ({
     <IconCircle theme={theme} type={type} />
   </ActionContainer>
 );
-
-Action.defaultProps = {
-  theme: defaultTheme
-};
