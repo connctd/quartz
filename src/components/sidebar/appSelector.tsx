@@ -4,17 +4,13 @@ import styled from '@emotion/styled';
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
 
 import { Themeable, defaultTheme } from '../theme';
+import { SidebarApp } from './index';
 import { Spinner } from '../spinner';
-
-interface AppSelectorApp {
-  name: string;
-  onClick: () => void;
-}
 
 export interface SidebarAppSelectorProps extends Themeable {
   loading?: boolean;
-  apps: AppSelectorApp[];
-  currentApp?: AppSelectorApp;
+  apps: SidebarApp[];
+  currentApp?: SidebarApp;
   linkComponent?: any;
   createAppProps: any;
   allAppsProps: any;
@@ -310,17 +306,19 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
   const closeAppSelector = () => {
     setOpen(false);
 
-    if (hideSidebar) hideSidebar();
+    hideSidebar?.();
   };
 
   const appLinks = appsWithoutCurrent.map((app) => {
     const handleClick = () => {
       setOpen(false);
+
       setTimeout(() => {
-        app.onClick();
+        app.onClick?.();
       }, 200);
+
       setTimeout(() => {
-        if (hideSidebar) hideSidebar();
+        hideSidebar?.();
       }, 400);
     };
 
