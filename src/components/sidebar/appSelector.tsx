@@ -306,7 +306,7 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
   const closeAppSelector = () => {
     setOpen(false);
 
-    if (hideSidebar) hideSidebar();
+    hideSidebar?.();
   };
 
   const appLinks = appsWithoutCurrent.map((app) => {
@@ -314,11 +314,11 @@ export const SidebarAppSelector: React.FC<SidebarAppSelectorProps> = ({
       setOpen(false);
 
       setTimeout(() => {
-        if (app.onClick) app.onClick();
+        app.onClick?.();
       }, 200);
 
       setTimeout(() => {
-        if (hideSidebar) hideSidebar();
+        hideSidebar?.();
       }, 400);
     };
 
