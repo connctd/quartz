@@ -17,6 +17,11 @@ import { SidebarSection, SidebarSectionProps } from './section';
 import { SidebarLink, SidebarLinkProps } from './link';
 import { SidebarFooter, SidebarFooterProps } from './footer';
 
+export interface SidebarApp {
+  name: string;
+  onClick?: () => void;
+}
+
 type SubComponentProps =
   SidebarHeadProps
   | SidebarAppSelectorProps
