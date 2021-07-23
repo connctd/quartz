@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://quartz.connctd.now.sh/"><img src="./.github/quartz.png" alt="quartz"/></a>
+    <a href="https://quartz.connctd.now.sh/"><img src="./.github/quartz.png" alt="quartz" /></a>
 </p>
 <p align="center">
 :nail_care: Component based design system to power our interfaces
 </p>
 <p align="center">
-    <a href="https://circleci.com/gh/connctd/workflows/quartz"><img src="https://circleci.com/gh/connctd/quartz.svg?style=svg&circle-token=634095e3b786634dd94eed4b9b6512b0a59cb12e" alt="Circle CI"/></a>
-    <a href="https://www.npmjs.com/package/@connctd/quartz"><img alt="npm (scoped)" src="https://img.shields.io/npm/v/@connctd/quartz?style=flat-square"></a>
+    <a href="https://circleci.com/gh/connctd/workflows/quartz"><img src="https://circleci.com/gh/connctd/quartz.svg?style=svg&circle-token=634095e3b786634dd94eed4b9b6512b0a59cb12e" alt="Circle CI" /></a>
+    <a href="https://www.npmjs.com/package/@connctd/quartz"><img alt="npm (scoped)" src="https://img.shields.io/npm/v/@connctd/quartz?style=flat-square" /></a>
 </p>
 
 ## Why?

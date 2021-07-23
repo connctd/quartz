@@ -1,0 +1,36 @@
+---
+name: Paper
+route: /paper
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Paper from '../../src/components/paper/index.tsx';
+
+# Paper
+
+Basic content container. Often used as whole page container. Also with warning & danger stylings.
+
+## Usage
+
+#### Basic
+
+<Playground>
+  <Paper>Content goes here ...</Paper>
+</Playground>
+
+#### Warning
+
+<Playground>
+  <Paper warning>Content goes here ...</Paper>
+</Playground>
+
+#### Danger
+
+<Playground>
+  <Paper danger>Content goes here ...</Paper>
+</Playground>
+
+#### Properties
+
+<Props of={Paper} />

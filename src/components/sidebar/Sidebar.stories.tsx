@@ -16,10 +16,10 @@ import SchoolOutlineIcon from 'mdi-react/SchoolOutlineIcon';
 import GraphOutlineIcon from 'mdi-react/GraphOutlineIcon';
 import FlaskOutlineIcon from 'mdi-react/FlaskOutlineIcon';
 
-import { AppShell } from '../appShell';
-import { Paper } from '../paper';
+import AppShell from '../appShell';
+import Paper from '../paper';
 
-import { Sidebar } from './index';
+import Sidebar from './index';
 
 const stories = storiesOf('Sidebar', module);
 

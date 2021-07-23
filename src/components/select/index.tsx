@@ -59,7 +59,7 @@ const StyledSelect = styled.select<Themeable & Pick<SelectProps, 'hasError'>>`
   }
 `;
 
-export const Select: React.FC<SelectProps & Themeable> & SelectSubcomponents = ({
+const Select: React.FC<SelectProps & Themeable> & SelectSubcomponents = ({
   placeholder = '',
   children,
   id,
@@ -139,3 +139,5 @@ Select.Option = ({ value, children, ...rest }) => (
     {children}
   </option>
 );
+
+export default Select;

@@ -48,11 +48,12 @@ const ActionContainer = styled.a<Themeable>`
   user-select: none;
 `;
 
-export const Action: React.FC<ActionProps> = ({
+const Action: React.FC<ActionProps> = ({
   label,
   type = 'add',
   component = 'a',
   onClick,
+  href,
   className,
   style,
   theme = defaultTheme,
@@ -60,6 +61,7 @@ export const Action: React.FC<ActionProps> = ({
 }) => (
   <ActionContainer
     onClick={onClick}
+    href={href}
     theme={theme}
     className={className}
     style={style}
@@ -70,3 +72,5 @@ export const Action: React.FC<ActionProps> = ({
     <IconCircle theme={theme} type={type} />
   </ActionContainer>
 );
+
+export default Action;

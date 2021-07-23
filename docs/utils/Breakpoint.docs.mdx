@@ -1,0 +1,25 @@
+---
+name: Breakpoint
+route: /breakpoint
+menu: Utils
+---
+
+import { Code } from 'gatsby-theme-docz/src/components/Code';
+
+# Breakpoint Utility
+
+This function helps you write responsive styling.
+
+## Usage
+
+<Code className="language-jsx">{`
+import styled from '@emotion/styled';
+import { Themeable, breakpoint } from '@connctd/quartz';
+\n
+const ResponsiveElement = styled.div<Themeable>\`
+  width: 300px;\n
+  \${breakpoint('tablet')} {
+    width: 600px;
+  }
+\`;
+`}</Code>

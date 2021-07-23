@@ -8,7 +8,7 @@ import {
 
 import { defaultTheme } from '../theme';
 
-import { Spinner } from './index';
+import Spinner from './index';
 
 const stories = storiesOf('Spinner', module);
 

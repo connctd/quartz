@@ -1,0 +1,56 @@
+---
+name: Spinner
+route: /spinner
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Spinner from '../../src/components/spinner/index.tsx';
+
+# Spinner
+
+Loading spinner to ease to wait for content. Is centerd and can be dynamically customized.
+
+## Usage
+
+#### Basic
+
+<Playground>
+  <Spinner />
+</Playground>
+
+#### Speed
+
+*Is set in seconds needed for one rotation*
+
+<Playground>
+  <Spinner speed={2} />
+</Playground>
+
+#### Size
+
+<Playground>
+  <Spinner size="70px" />
+</Playground>
+
+#### Stroke Size
+
+<Playground>
+  <Spinner strokeSize="10px" />
+</Playground>
+
+#### Color
+
+<Playground>
+  <Spinner color="#0099ff" />
+</Playground>
+
+#### Background Color
+
+<Playground>
+  <Spinner color="#fff" bgColor="#000" />
+</Playground>
+
+## Properties
+
+<Props of={Spinner} />

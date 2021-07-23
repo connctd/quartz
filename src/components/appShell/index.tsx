@@ -55,7 +55,7 @@ const StyledContentArea = styled.div<Themeable>`
   }
 `;
 
-export const AppShell: React.FC<AppShellProps> & AppShellSubComponents = ({ children }) => {
+const AppShell: React.FC<AppShellProps> & AppShellSubComponents = ({ children }) => {
   const navigationChild = children.find(({ type }) => type === AppShell.Navigation);
   const contentChild = children.find(({ type }) => type === AppShell.Content);
 
@@ -78,3 +78,5 @@ AppShell.Content = ({ children, theme = defaultTheme }) => (
     {children}
   </StyledContentArea>
 );
+
+export default AppShell;

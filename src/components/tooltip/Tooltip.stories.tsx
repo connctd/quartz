@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { Tooltip } from './index';
+import Tooltip from './index';
 
 const Container = styled.div`
   display: flex;

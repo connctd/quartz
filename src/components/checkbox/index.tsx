@@ -86,7 +86,7 @@ const Tick = styled.svg<Themeable & { disabled?: boolean }>`
   }
 `;
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   theme = defaultTheme,
   id,
   label,
@@ -187,3 +187,5 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   return checkboxElements;
 };
+
+export default Checkbox;

@@ -113,7 +113,7 @@ export const StyledAnchorButton = styled.a<StyledButtonProps>`
   }}
 `;
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   theme = defaultTheme,
   appearance = 'primary',
   type = 'button',
@@ -165,3 +165,5 @@ export const Button: React.FC<ButtonProps> = ({
     </StyledButton>
   );
 };
+
+export default Button;

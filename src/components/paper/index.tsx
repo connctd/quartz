@@ -23,7 +23,7 @@ const StyledPaper = styled.div<PaperProps>`
   ${({ danger, theme }) => (danger ? `border: dashed 8px ${theme.danger}` : '')}
 `;
 
-export const Paper: React.FC<PaperProps> = ({
+const Paper: React.FC<PaperProps> = ({
   theme = defaultTheme,
   warning,
   danger,

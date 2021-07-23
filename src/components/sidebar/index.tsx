@@ -131,7 +131,7 @@ const SidebarContainer = styled.div<Themeable & { showing: boolean }>`
   }
 `;
 
-export const Sidebar: React.FC<SidebarProps> & SidebarSubComponents = ({
+const Sidebar: React.FC<SidebarProps> & SidebarSubComponents = ({
   children, theme = defaultTheme
 }) => {
   const [showing, setShowing] = useState(false);
@@ -181,3 +181,5 @@ Sidebar.Account = SidebarAccount;
 Sidebar.Section = SidebarSection;
 Sidebar.Link = SidebarLink;
 Sidebar.Footer = SidebarFooter;
+
+export default Sidebar;

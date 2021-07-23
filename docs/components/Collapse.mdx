@@ -1,0 +1,37 @@
+---
+name: Collapse
+route: /collapse
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+
+import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon';
+
+import Collapse from '../../src/components/collapse/index.tsx';
+
+# Collapse
+
+This component can be used to show (expand) some information upon user interaction. It can show text or arbitrary React nodes.
+
+## Usage
+
+#### Text
+
+<Playground>
+  <Collapse heading="Collapse">
+    Now you see me
+  </Collapse>
+</Playground>
+
+#### React Node
+
+<Playground>
+  <Collapse heading="Collapse">
+    <EyeOutlineIcon size="50px" />
+  </Collapse>
+</Playground>
+
+## Properties
+
+<Props of={Collapse} />

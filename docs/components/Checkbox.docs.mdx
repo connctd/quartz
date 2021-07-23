@@ -1,0 +1,61 @@
+---
+name: Checkbox
+route: /checkbox
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Checkbox from '../../src/components/checkbox/index.tsx';
+
+# Checkbox
+
+Simple checkbox field with optional label & description, rendered in *Formfield* component.
+
+## Usage
+
+#### Default
+
+<Playground>
+  <Checkbox
+    id="some_check"
+    checked
+    onChange={(event) => { /* Do stuff */ }}
+  />
+</Playground>
+
+#### Label
+
+<Playground>
+  <Checkbox
+    id="some_check"
+    label="Checked?"
+    onChange={(event) => { /* Do stuff */ }}
+  />
+</Playground>
+
+#### Description
+
+<Playground>
+  <Checkbox
+    id="some_check"
+    label="Checked?"
+    description="Should this be checked?"
+    onChange={(event) => { /* Do stuff */ }}
+  />
+</Playground>
+
+#### Disabled
+
+<Playground>
+  <Checkbox
+    id="some_check"
+    label="Checked?"
+    disabled
+    onChange={(event) => { /* Do stuff */ }}
+  />
+</Playground>
+
+
+## Properties
+
+<Props of={Checkbox} />

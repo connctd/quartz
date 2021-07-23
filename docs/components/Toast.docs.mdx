@@ -1,0 +1,171 @@
+---
+name: Toast
+route: /toast
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import EmoticonCoolOutlineIcon from 'mdi-react/EmoticonCoolOutlineIcon';
+
+import Toast from '../../src/components/toast/index.tsx';
+
+# Toast
+
+Dynamic Toast Notification component to show action feedback or error messages to the user.
+
+## Usage
+
+#### Title
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+  />
+</Playground>
+
+#### Description
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+  />
+</Playground>
+
+#### No Icon
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    noIcon
+  />
+</Playground>
+
+#### Custom Icon
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    icon={EmoticonCoolOutlineIcon}
+  />
+</Playground>
+
+#### Closable
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    closable
+    onClose={() => { /* Do stuff... */ }}
+  />
+</Playground>
+
+#### Custom Width
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    width="80%"
+  />
+</Playground>
+
+#### Single Action
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    actions={[{label: 'Action', onClick: () => { /* Do stuff */ }}]}
+  />
+</Playground>
+
+#### Multiple Actions
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+#### Variant: ***primary***
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    variant="primary"
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+#### Variant: ***success***
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    variant="success"
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+#### Variant: ***danger***
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    variant="danger"
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+#### Variant: ***warning***
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    variant="warning"
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+#### Variant: ***info***
+
+<Playground>
+  <Toast
+    title="I'm a Toast Notification!"
+    description="And I have something important to say..."
+    variant="info"
+    actions={[
+      {label: 'Cancel', onClick() { /* Do stuff */ }, secondary: true},
+      {label: 'Confirm', onClick() { /* Do stuff */ }}
+    ]}
+  />
+</Playground>
+
+## Properties
+
+<Props of={Toast} />

@@ -1,0 +1,96 @@
+---
+name: Checkbox Group
+route: /checkbox-group
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import CheckboxGroup from '../../src/components/checkboxGroup/index.tsx';
+import Checkbox from '../../src/components/checkbox/index.tsx';
+
+# Checkbox Group
+
+Group checkboxes together for a specific form section. Requires a label and can have a description.
+
+## Usage
+
+#### Label
+
+<Playground>
+  <CheckboxGroup label="Your favourite philosopher">
+      <Checkbox
+        id="nietzsche"
+        checked={true}
+        onChange={() => {
+          // do stuff
+        }}
+      >
+        Friedrich Nietzsche
+      </Checkbox>
+      <Checkbox
+        id="confucius"
+        checked={true}
+        onChange={() => {
+          // do stuff
+        }}
+      >
+        Confucius
+      </Checkbox>
+      <Checkbox
+        id="socrates"
+        checked={true}
+        onChange={() => {
+          // do stuff
+        }}
+      >
+        Socrates
+      </Checkbox>
+      <Checkbox
+        id="plato"
+        checked={false}
+        onChange={() => {
+          // do stuff
+        }}
+      >
+        Plato
+      </Checkbox>
+    </CheckboxGroup>
+</Playground>
+
+#### Description
+
+<Playground>
+  <CheckboxGroup
+    label="Your favourite philosopher"
+    description="Choose wisely"
+  >
+      <Checkbox
+        id="nietzsche"
+        checked={false}
+      >
+        Friedrich Nietzsche
+      </Checkbox>
+      <Checkbox
+        id="confucius"
+        checked={true}
+      >
+        Confucius
+      </Checkbox>
+      <Checkbox
+        id="socrates"
+        checked={true}
+      >
+        Socrates
+      </Checkbox>
+      <Checkbox
+        id="plato"
+        checked={true}
+      >
+        Plato
+      </Checkbox>
+    </CheckboxGroup>
+</Playground>
+
+## Properties
+
+<Props of={CheckboxGroup} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Alert } from './index';
+import Alert from './index';
 
 const stories = storiesOf('Alert', module);
 stories.addDecorator(withInfo);

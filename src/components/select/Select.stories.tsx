@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { Select } from './index';
+import Select from './index';
 
 const stories = storiesOf('Select', module);
 

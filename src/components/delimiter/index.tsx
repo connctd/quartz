@@ -24,7 +24,7 @@ const DelimiterLine = styled.div<Themeable>`
   border-top: dashed 2px ${(props) => props.theme.gray3};
 `;
 
-export const Delimiter: React.FC<DelimiterProps> = ({ text, theme }) => {
+const Delimiter: React.FC<DelimiterProps> = ({ text, theme }) => {
   let textElement: React.ReactNode = null;
 
   if (text) {
@@ -42,3 +42,5 @@ export const Delimiter: React.FC<DelimiterProps> = ({ text, theme }) => {
 Delimiter.defaultProps = {
   theme: defaultTheme
 };
+
+export default Delimiter;

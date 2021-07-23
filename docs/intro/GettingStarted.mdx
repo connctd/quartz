@@ -1,0 +1,50 @@
+---
+name: Getting Started
+route: /
+---
+
+import { Code } from 'gatsby-theme-docz/src/components/Code';
+
+# Getting started
+
+Quartz is the react component design system made & used by IoT connctd.
+
+## Pre-requisites
+
+- Yarn
+- Node >= 10
+- React >= 16
+- MDI React >= 7.5
+
+## Installation
+
+<Code className="language-bash">yarn add @connctd/quartz</Code>
+
+/
+
+<Code className="language-bash">npm install @connctd/quartz</Code>
+
+You also need to immplement the `ThemeProvider` and global styles.
+
+<Code className="language-bash">yarn add @emotion/core emotion-theming</Code>
+
+<Code className="language-jsx">{`
+import { Global } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
+import { GlobalStyle, defaultTheme } from '@connctd/quartz';
+\n
+<Global styles={GlobalStyle} />
+<ThemeProvider theme={defaultTheme}>
+  { /* your app goes here */ }
+</ThemeProvider>
+`}</Code>
+
+## Imports
+
+All components & everything else is a named export from '@connctd/quartz'
+
+<Code className="language-typescript">
+  {`import { Button } from '@connctd/quartz';`}
+</Code>
+
+

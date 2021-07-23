@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 
-import {
-  Navbar, NavLink, NavGroup, MenuGroup, MenuArrow
+import Navbar, {
+  NavLink, NavGroup, MenuGroup, MenuArrow
 } from './index';
 
 const stories = storiesOf('Navbar', module);

@@ -27,7 +27,7 @@ const CheckboxContainer = styled.div`
   }
 `;
 
-export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   theme = defaultTheme,
   label,
   description,
@@ -57,3 +57,5 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     </FormFieldContainer>
   );
 };
+
+export default CheckboxGroup;

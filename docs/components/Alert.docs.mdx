@@ -1,0 +1,42 @@
+---
+name: Alert
+route: /alert
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Alert from '../../src/components/alert/index.tsx';
+
+# Alert
+
+Colorful container to show alert messages to the user. Close button can be enabled with the prop *dissmissable*.
+
+## Usage
+
+#### Appearance: ***success***
+
+<Playground>
+  <Alert appearance="success">Something happened!</Alert>
+</Playground>
+
+#### Appearance: ***error***
+
+<Playground>
+  <Alert appearance="error">Something happened!</Alert>
+</Playground>
+
+#### Appearance: ***warning***
+
+<Playground>
+  <Alert appearance="warning">Something happened!</Alert>
+</Playground>
+
+#### Dissmissable
+
+<Playground>
+  <Alert appearance="warning" dissmissable>Something happened!</Alert>
+</Playground>
+
+## Properties
+
+<Props of={Alert} />

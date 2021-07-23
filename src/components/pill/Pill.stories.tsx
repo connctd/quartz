@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { Pill } from './index';
+import Pill from './index';
 
 const stories = storiesOf('Pill', module);
 
