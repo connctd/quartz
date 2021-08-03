@@ -1,0 +1,57 @@
+---
+name: FormField
+route: /formfield
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+
+import FormField from '../../src/components/formfield/index.tsx';
+import Button from '../../src/components/button/index.tsx';
+
+# FormField
+
+Wrap everything you want inside this FormField to put it in a form. Label, description, error message & required indicator included.
+
+## Usage
+
+#### Label
+
+<Playground>
+  <FormField label="Change your profile picture">
+    <Button>Upload Image</Button>
+  </FormField>
+</Playground>
+
+#### Required
+
+<Playground>
+  <FormField label="Change your profile picture" required>
+    <Button>Upload Image</Button>
+  </FormField>
+</Playground>
+
+#### Description
+
+<Playground>
+  <FormField label="Change your profile picture" description="256x256 pixel is best">
+    <Button>Upload Image</Button>
+  </FormField>
+</Playground>
+
+#### Error
+
+<Playground>
+  <FormField
+    label="Change your profile picture"
+    description="256x256 pixel is best"
+    hasError={true}
+    error="Can't be a tiff. Please use jpg or png"
+  >
+    <Button>Upload Image</Button>
+  </FormField>
+</Playground>
+
+## Properties
+
+<Props of={FormField} />

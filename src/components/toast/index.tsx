@@ -73,6 +73,7 @@ const ToastTitle = styled.div<Themeable>`
 const ToastDescription = styled.div<Themeable>`
   margin-top: 8px;
   color: ${({ theme }) => theme.gray2};
+  font-size: 14px;
 `;
 
 const ToastClose = styled.button<Themeable>`
@@ -141,7 +142,7 @@ const ToastButtons = styled.div`
   }
 `;
 
-export const Toast: React.FC<ToastProps> = ({
+const Toast: React.FC<ToastProps> = ({
   variant = 'primary',
   closable,
   noIcon,
@@ -237,3 +238,5 @@ export const Toast: React.FC<ToastProps> = ({
     </ToastContainer>
   );
 };
+
+export default Toast;

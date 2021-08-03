@@ -40,7 +40,7 @@ export interface AlertProps extends Themeable {
   dissmissable?: boolean;
 }
 
-export const Alert: React.FC<AlertProps> = ({
+const Alert: React.FC<AlertProps> = ({
   theme = defaultTheme,
   children,
   appearance = 'warning',
@@ -80,3 +80,5 @@ export const Alert: React.FC<AlertProps> = ({
   }
   return (null);
 };
+
+export default Alert;

@@ -1,0 +1,40 @@
+---
+name: Table
+route: /table
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Table from '../../src/components/table/index.tsx';
+
+# Table
+
+Basic table component for showing a list of data. Supports all relevant html attributes as props.
+
+## Usage
+
+<Playground>
+  <Table>
+    <Table.Header>
+      <Table.HeaderCell>Header One</Table.HeaderCell>
+      <Table.HeaderCell>Header Two</Table.HeaderCell>
+      <Table.HeaderCell>Header Three</Table.HeaderCell>
+    </Table.Header>
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>Cell One</Table.Cell>
+        <Table.Cell>Cell Two</Table.Cell>
+        <Table.Cell>Cell Three</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>Cell Four</Table.Cell>
+        <Table.Cell>Cell Five</Table.Cell>
+        <Table.Cell>Cell Six</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</Playground>
+
+## Properties
+
+<Props of={Table} />

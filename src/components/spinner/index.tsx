@@ -31,7 +31,7 @@ const StyledSpinner = styled.div<SpinnerProps>`
   animation: ${rotate} infinite ${({ speed }) => speed}s linear 0s both;
 `;
 
-export const Spinner: React.FC<SpinnerProps> = ({
+const Spinner: React.FC<SpinnerProps> = ({
   size = '30px',
   strokeSize = '4px',
   color = defaultTheme.gray1,
@@ -50,3 +50,5 @@ export const Spinner: React.FC<SpinnerProps> = ({
     theme={theme}
   />
 );
+
+export default Spinner;

@@ -16,7 +16,7 @@ const StyledPill = styled.span<Themeable>`
   color: #302C70;
 `;
 
-export const Pill: React.FC<PillProps> = ({ theme = defaultTheme, children, ...rest }) => (
+const Pill: React.FC<PillProps> = ({ theme = defaultTheme, children, ...rest }) => (
   <StyledPill theme={theme} {...rest}>
     {children}
   </StyledPill>
@@ -25,3 +25,5 @@ export const Pill: React.FC<PillProps> = ({ theme = defaultTheme, children, ...r
 Pill.defaultProps = {
   theme: defaultTheme
 };
+
+export default Pill;

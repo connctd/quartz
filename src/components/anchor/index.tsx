@@ -19,9 +19,10 @@ const StyledAnchor = styled('a', {
   text-decoration: underline;
 `;
 
-export const Anchor: React.FC<AnchorProps> = React.memo(({
+const Anchor: React.FC<AnchorProps> = React.memo(({
   children,
   primary,
+  target,
   theme = defaultTheme,
   href,
   component = 'a',
@@ -29,8 +30,9 @@ export const Anchor: React.FC<AnchorProps> = React.memo(({
   extraProps
 }) => (
   <StyledAnchor
-    as={component}
     primary={primary}
+    target={target}
+    as={component}
     theme={theme}
     href={href}
     style={style}

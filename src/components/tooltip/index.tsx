@@ -103,7 +103,7 @@ const StyledTooltip = styled.div<Pick<TooltipProps, 'position'>>`
   }}
 `;
 
-export const Tooltip: React.FC<TooltipProps> = ({
+const Tooltip: React.FC<TooltipProps> = ({
   position = 'right',
   trigger = 'mouseenter',
   delay = 500,
@@ -131,3 +131,5 @@ export const Tooltip: React.FC<TooltipProps> = ({
     </TippyTooltip>
   );
 };
+
+export default Tooltip;

@@ -1,0 +1,42 @@
+---
+name: Anchor
+route: /anchor
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Anchor from './index.tsx';
+
+# Anchor
+
+Simple anchor link. Primary styling and default.
+
+## Usage
+
+#### Default
+
+<Playground>
+  <Anchor>Link</Anchor>
+</Playground>
+
+#### Primary
+
+<Playground>
+  <Anchor primary>Link</Anchor>
+</Playground>
+
+#### Linked
+
+<Playground>
+  <Anchor href="/anchor#linked">Link</Anchor>
+</Playground>
+
+#### Target
+
+<Playground>
+  <Anchor href="/anchor#linked" target="__blank">Link</Anchor>
+</Playground>
+
+## Properties
+
+<Props of={Anchor} />

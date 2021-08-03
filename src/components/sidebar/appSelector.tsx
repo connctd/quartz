@@ -5,7 +5,7 @@ import ChevronDownIcon from 'mdi-react/ChevronDownIcon';
 
 import { Themeable, defaultTheme } from '../theme';
 import { SidebarApp } from './index';
-import { Spinner } from '../spinner';
+import Spinner from '../spinner';
 
 export interface SidebarAppSelectorProps extends Themeable {
   loading?: boolean;

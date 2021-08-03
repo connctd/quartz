@@ -57,7 +57,7 @@ const LabelDescriptionContainer = styled.div`
   }
 `;
 
-export const Textarea: React.FC<TextareaProps> = ({
+const Textarea: React.FC<TextareaProps> = ({
   theme = defaultTheme,
   height,
   id,
@@ -132,3 +132,5 @@ export const Textarea: React.FC<TextareaProps> = ({
 
   return textAreaElements;
 };
+
+export default Textarea;

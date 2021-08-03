@@ -8,7 +8,7 @@ import {
 
 import SpaceInvadersIcon from 'mdi-react/SpaceInvadersIcon';
 
-import { Toast } from './index';
+import Toast from './index';
 
 const stories = storiesOf('Toast', module);
 

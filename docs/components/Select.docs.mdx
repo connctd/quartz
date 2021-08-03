@@ -1,0 +1,97 @@
+---
+name: Select
+route: /select
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Select from '../../src/components/select/index.tsx';
+
+# Select
+
+Select input element to use inside forms or standalone. Optional label, description & error. Rendered in *Formfield* component.
+
+## Usage
+
+#### Placeholder
+
+<Playground>
+  <Select
+      placeholder="Right hand, or left hand?"
+      onChange={(event) => {
+        // do stuff
+      }}
+    >
+      <Select.Option value="left">Left</Select.Option>
+      <Select.Option value="right">Right</Select.Option>
+    </Select>
+</Playground>
+
+#### Label
+
+<Playground>
+  <Select
+      label="Choose a side"
+      placeholder="Right hand, or left hand?"
+      onChange={(event) => {
+        // do stuff
+      }}
+    >
+      <Select.Option value="left">Left</Select.Option>
+      <Select.Option value="right">Right</Select.Option>
+    </Select>
+</Playground>
+
+#### Required
+
+<Playground>
+  <Select
+      label="Choose a side"
+      required
+      placeholder="Right hand, or left hand?"
+      onChange={(event) => {
+        // do stuff
+      }}
+    >
+      <Select.Option value="left">Left</Select.Option>
+      <Select.Option value="right">Right</Select.Option>
+    </Select>
+</Playground>
+
+#### Description
+
+<Playground>
+  <Select
+      label="Choose a side"
+      placeholder="Right hand, or left hand?"
+      description="Choose wiseley"
+      onChange={(event) => {
+        // do stuff
+      }}
+    >
+      <Select.Option value="left">Left</Select.Option>
+      <Select.Option value="right">Right</Select.Option>
+    </Select>
+</Playground>
+
+#### Error
+
+<Playground>
+  <Select
+      label="Choose a side"
+      placeholder="Right hand, or left hand?"
+      description="Choose wiseley"
+      hasError={true}
+      error="Oops. I dropped it out of my hand"
+      onChange={(event) => {
+        // do stuff
+      }}
+    >
+      <Select.Option value="left">Left</Select.Option>
+      <Select.Option value="right">Right</Select.Option>
+    </Select>
+</Playground>
+
+## Properties
+
+<Props of={Select} />

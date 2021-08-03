@@ -1,0 +1,115 @@
+---
+name: Input
+route: /input
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Input from '../../src/components/input/index.tsx';
+
+# Input
+
+Input element to use inside forms or standalone. Optional label, description, error & prefix. Rendered in *Formfield* component.
+
+## Usage
+
+#### Placeholder
+
+<Playground>
+  <Input
+      placeholder="What's your name?"
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Label
+
+<Playground>
+  <Input
+      label="Name"
+      placeholder="What's your name?"
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Required
+
+<Playground>
+  <Input
+      label="Name"
+      placeholder="What's your name?"
+      required
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Description
+
+<Playground>
+  <Input
+      label="Name"
+      placeholder="What's your name?"
+      description="That's what people call you ..."
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Error
+
+<Playground>
+  <Input
+      label="Name"
+      placeholder="What's your name?"
+      description="That's what people call you ..."
+      hasError={true}
+      error="Naah that's  not your name :P"
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Disabled
+
+<Playground>
+  <Input
+      label="Name"
+      placeholder="What's your name?"
+      disabled
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Read Only
+
+<Playground>
+  <Input
+      label="Name"
+      value="Hans Wurst"
+      readOnly
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Prefix
+
+<Playground>
+  <Input
+      label="Website URL"
+      prefix="https://"
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+#### Icon
+
+<Playground>
+  <Input
+      label="Website URL"
+      icon={<img width="100%" src="/public/copy.svg" alt="copy" />}
+      onCLickIcon={() => { /* do stuff */ }}
+      onChange={(event) => { /* do stuff */ }}
+    />
+</Playground>
+
+## Properties
+
+<Props of={Input} />

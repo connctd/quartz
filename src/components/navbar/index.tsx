@@ -139,7 +139,7 @@ interface NavbarProps extends Themeable {
   children?: React.ReactNode;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
+const Navbar: React.FC<NavbarProps> = ({
   theme,
   children,
   className
@@ -243,3 +243,5 @@ export const MenuArrow: React.FC<MenuArrowProps> = ({
 MenuArrow.defaultProps = {
   theme: defaultTheme
 };
+
+export default Navbar;

@@ -205,5 +205,6 @@ export const GlobalStyle = css`
 
   * {
     box-sizing: border-box;
+    -webkit-text-size-adjust: none;
   }
 `;

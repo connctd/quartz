@@ -23,7 +23,7 @@ export interface InputProps
 const StyledInput = styled.input<InputProps>`
   padding: 12px 16px 11px;
   width: 100%;
-  height: 45px;
+  /* height: 45px; */
   font-size: 14px;
   outline: none;
   border: 1px solid ${({ hasError, theme }) => (hasError ? theme.danger : theme.gray3)};
@@ -99,7 +99,7 @@ const IconButton = styled.button<Themeable & { onClick?: () => void }>`
   }}
 `;
 
-export const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   label,
   id,
   required = false,
@@ -189,3 +189,5 @@ export const Input: React.FC<InputProps> = ({
 
   return inputElements;
 };
+
+export default Input;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+
 import Paper from './index';
 
 const stories = storiesOf('Paper', module);

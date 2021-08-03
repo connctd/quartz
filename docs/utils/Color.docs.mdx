@@ -1,0 +1,28 @@
+---
+name: Color
+route: /color
+menu: Utils
+---
+
+import { Code } from 'gatsby-theme-docz/src/components/Code';
+
+# Color Utilities
+
+This set of functions helps you manipulate colors.
+
+## setAlpha
+
+Sets the alpha value of a given color.
+
+<Code className="language-jsx">{`
+import styled from '@emotion/styled';
+import { Themeable, setAlphe } from '@connctd/quartz';
+\n
+const TranslucentElement = styled.div<Themeable>\`
+  background-color: \${setAlpha('#0099ff', 0.2)};
+\`;
+`}</Code>
+
+
+
+

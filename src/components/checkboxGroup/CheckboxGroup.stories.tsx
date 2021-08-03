@@ -4,8 +4,8 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { CheckboxGroup } from './index';
-import { Checkbox } from '../checkbox';
+import CheckboxGroup from './index';
+import Checkbox from '../checkbox';
 
 const stories = storiesOf('CheckboxGroup', module);
 

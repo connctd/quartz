@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { Checkbox } from './index';
+import Checkbox from './index';
 
 const stories = storiesOf('Checkbox', module);
 

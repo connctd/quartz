@@ -1,0 +1,80 @@
+---
+name: Action
+route: /action
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Action from '../../src/components/action/index.tsx';
+
+# Action
+
+Plain text button with add & delete icon on the right side.
+Can also be used as icon-only button when no *label* prop is provided.
+
+## Usage
+
+#### Type: ***add***
+
+<Playground>
+  <Action
+    type="add"
+    label="Create App"
+  />
+</Playground>
+
+#### Type: ***delete***
+
+<Playground>
+  <Action
+    type="delete"
+    label="Delete App"
+  />
+</Playground>
+
+#### No Label
+
+<Playground>
+  <Action
+    type="add"
+  />
+  <br />
+  <Action
+    type="delete"
+  />
+</Playground>
+
+#### Link
+
+<Playground>
+  <Action
+    type="add"
+    label="Create App"
+    href="/action#link"
+  />
+</Playground>
+
+#### Custom Component
+
+<Playground>
+  <Action
+    type="add"
+    label="Create App"
+    component="span"
+    onClick={() => { /* Do stuff */ }}
+  />
+</Playground>
+
+#### Extra Props
+
+<Playground>
+  <Action
+    type="add"
+    label="Create App"
+    extraProps={{ dataTestId: 'test-button' }}
+  />
+</Playground>
+
+## Properties
+
+<Props of={Action} />

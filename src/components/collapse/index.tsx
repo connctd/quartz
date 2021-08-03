@@ -64,7 +64,7 @@ const CollapseBody = styled.div<Expandable>`
   `) : '')}
 `;
 
-export const Collapse: React.FC<CollapseProps & Themeable> = ({ heading, children, ...rest }) => {
+const Collapse: React.FC<CollapseProps & Themeable> = ({ heading, children, ...rest }) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggle = () => {
@@ -85,3 +85,5 @@ export const Collapse: React.FC<CollapseProps & Themeable> = ({ heading, childre
     </CollapseContainer>
   );
 };
+
+export default Collapse;

@@ -1,0 +1,54 @@
+---
+name: Button
+route: /button
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Button from '../../src/components/button/index.tsx';
+
+# Button
+
+Simple button with different appearances.
+
+## Usage
+
+#### Appearance: ***primary***
+
+<Playground>
+  <Button appearance="primary">Click me!</Button>
+</Playground>
+
+#### Appearance: ***secondary***
+
+<Playground>
+  <Button appearance="secondary">Click me!</Button>
+</Playground>
+
+#### Appearance: ***danger***
+
+<Playground>
+  <Button appearance="danger">Click me!</Button>
+</Playground>
+
+#### Block
+
+<Playground>
+  <Button appearance="primary" block>Click me!</Button>
+</Playground>
+
+#### Disabled
+
+<Playground>
+  <Button appearance="primary" disabled>Cant't click me!</Button>
+</Playground>
+
+#### On Click
+
+<Playground>
+  <Button appearance="primary" onClick={() => { /* Do stuff */ }}>Click me!</Button>
+</Playground>
+
+## Properties
+
+<Props of={Button} />

@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import { Textarea } from './index';
+import Textarea from './index';
 
 const stories = storiesOf('Textarea', module);
 
@@ -51,7 +51,7 @@ stories.add('Description', () => {
 
 stories.add('Error', () => {
   const label = text('Label', 'Readme');
-  const error = text('Error', 'Please provide a compehensive readme');
+  const error = text('Error', 'Please provide a comprehensive readme');
 
   return (
     <Textarea

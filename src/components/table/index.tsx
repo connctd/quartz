@@ -90,7 +90,7 @@ const assignThemeToChildren = (theme?: QuartzTheme) => (
   (child: React.ReactElement) => React.cloneElement(child, { theme })
 );
 
-export const Table: React.FC<TableProps> & TableSubComponents = ({ children, theme, ...rest }) => (
+const Table: React.FC<TableProps> & TableSubComponents = ({ children, theme, ...rest }) => (
   <StyledTable cellSpacing={0} {...rest}>
     {React.Children.toArray(children).map(assignThemeToChildren(theme))}
   </StyledTable>
@@ -131,3 +131,5 @@ Table.Cell = ({ children, ...rest }) => (
 Table.defaultProps = {
   theme: defaultTheme
 };
+
+export default Table;

@@ -1,0 +1,29 @@
+---
+name: Delimiter
+route: /delimiter
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Delimiter from '../../src/components/delimiter/index.tsx';
+
+# Delimiter
+
+A dashed line that can be used to divide sections and is often used to do so inside bigger forms. Can also include text.
+
+## Usage
+
+#### Basic
+
+<Playground>
+  <Delimiter />
+</Playground>
+
+#### With Text
+
+<Playground>
+  <Delimiter text="Section Two" />
+</Playground>
+
+## Properties
+<Props of={Delimiter} />

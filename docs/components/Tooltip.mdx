@@ -1,0 +1,72 @@
+---
+name: Tooltip
+route: /tooltip
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Tooltip from '../../src/components/tooltip/index.tsx';
+
+# Tooltip
+
+Simple tooltip component that shows on hover, click or focus.
+
+## Usage
+
+#### Default
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)">Hover me!</Tooltip>
+</Playground>
+
+#### Position: ***top***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" position="top">Hover me!</Tooltip>
+</Playground>
+
+#### Position: ***bottom***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" position="bottom">Hover me!</Tooltip>
+</Playground>
+
+#### Position: ***left***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" position="left">Hover me!</Tooltip>
+</Playground>
+
+#### Position: ***right***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" position="right">Hover me!</Tooltip>
+</Playground>
+
+#### Trigger: ***mouseenter***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" trigger="mouseenter">Hover me!</Tooltip>
+</Playground>
+
+#### Trigger: ***click***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" trigger="click">Click me!</Tooltip>
+</Playground>
+
+#### Trigger: ***focus***
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" trigger="focus"><span tabindex="-1">Focus me!</span></Tooltip>
+</Playground>
+
+#### Delay
+
+<Playground>
+  <Tooltip content="I'm a Tooltip :)" delay="1000">I'm slow!</Tooltip>
+</Playground>
+
+## Properties
+
+<Props of={Tooltip} />

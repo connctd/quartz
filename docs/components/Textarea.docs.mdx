@@ -1,0 +1,107 @@
+---
+name: Textarea
+route: /textarea
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Textarea from '../../src/components/textarea/index.tsx';
+
+# Textarea
+
+Simple Textarea to write down bigger text amounts. Utilizes Formfield for label, description and error.
+
+## Usage
+
+#### Plain
+
+<Playground>
+  <Textarea />
+</Playground>
+
+#### Placeholder
+
+<Playground>
+  <Textarea placeholder="How was your day?" />
+</Playground>
+
+#### Value
+
+<Playground>
+  <Textarea
+    value="My day was pretty awesome! :)"
+    onChange={(event) => { /* do stuff */ }}
+  />
+</Playground>
+
+#### Disabled
+
+<Playground>
+  <Textarea
+    value="My day was pretty awesome! :)"
+    onChange={(event) => { /* do stuff */ }}
+    disabled
+  />
+</Playground>
+
+#### Label
+
+<Playground>
+  <Textarea
+    label="Readme"
+  />
+</Playground>
+
+#### Required
+
+<Playground>
+  <Textarea
+    label="Readme"
+    required
+  />
+</Playground>
+
+#### Description
+
+<Playground>
+  <Textarea
+    label="Readme"
+    description="Text will be rendered as Github flavoured markup"
+  />
+</Playground>
+
+#### Error
+
+<Playground>
+  <Textarea
+    label="Readme"
+    description="Text will be rendered as Github flavoured markup"
+    hasError
+    error="This field is required"
+  />
+</Playground>
+
+#### Custom Height
+
+<Playground>
+  <Textarea
+    label="Readme"
+    description="Text will be rendered as Github flavoured markup"
+    height="400px"
+  />
+</Playground>
+
+#### Resize
+
+<Playground>
+  <Textarea
+    label="Readme"
+    description="Text will be rendered as Github flavoured markup"
+    height="400px"
+    resize
+  />
+</Playground>
+
+## Properties
+
+<Props of={Textarea} />

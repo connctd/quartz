@@ -31,7 +31,7 @@ const DialogBody = styled.div`
   overflow: hidden;
 `;
 
-export const Dialog: React.FC<DialogProps & Themeable> = ({ heading, children, ...rest }) => (
+const Dialog: React.FC<DialogProps & Themeable> = ({ heading, children, ...rest }) => (
   <DialogContainer {...rest}>
     <DialogHeader>
       {heading}
@@ -41,3 +41,5 @@ export const Dialog: React.FC<DialogProps & Themeable> = ({ heading, children, .
     </DialogBody>
   </DialogContainer>
 );
+
+export default Dialog;

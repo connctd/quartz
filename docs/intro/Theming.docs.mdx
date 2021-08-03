@@ -1,0 +1,108 @@
+---
+name: Theming
+route: /theming
+---
+
+import { Code } from 'gatsby-theme-docz/src/components/Code';
+
+# Theming
+
+Quartz provides a nice default theme. But of course you can adjust it how you please.
+
+#### Default Theme
+
+<Code className="language-typescript">{`
+const defaultTheme = {
+  primary: '#302C70',   // -> purple
+  secondary: '#828282',   // -> gray2
+  danger: '#E64C3C',   // -> red
+  success: '#169882',   // -> green
+  warning: '#EADA56',   // -> yellow
+  info: '#478DC0',\n   // -> blue
+  black: '#000000',
+  white: '#FFFFFF',\n
+  gray1: '#4F4F4F',
+  gray2: '#828282',
+  gray3: '#BDBDBD',
+  gray4: '#E0E0E0',
+  gray5: '#F2F2F2',\n
+  purple: '#302C70',
+  purpleLight: '#DCDAF1',
+  purpleDark: '#201E50',
+  purpleVibrant: '#524CB9',\n
+  red: '#E64C3C',
+  redLight: '#F2A097',
+  redDark: '#6A0000',\n
+  orange: '#DA7132',
+  orangeLight: '#FBE0B4',
+  orangeDark: '#7E4F00',\n
+  green: '#169882',
+  greenLight: '#E4FBF7',
+  greenDark: '#15502C',\n
+  yellow: '#EADA56',\n
+  blue: '#478DC0',\n
+  magenta: '#531E6B',\n
+  gradient: {
+    primary: {
+      start: '#524CB9',   // -> purpleVibrant
+      end: '#302C70',   // -> purple
+      text: '#FFFFFF'   // -> white
+    },
+    secondary: {
+      start: '#F2F2F2',   // -> gray5
+      end: '#BDBDBD',   // -> gray3
+      text: '#4F4F4F'   // -> gray1
+    },
+    danger: {
+      start: '#F2A097',   // -> redLight
+      end: '#E64C3C',   // -> red
+      text: '#FFFFFF'   // -> white
+    }
+  },\n
+  alert: {
+    success: {
+      background: '#E4FBF7',   // -> greenLight
+      border: '#169882',   // -> green
+      text: '#15502C'   // -> greenDark
+    },
+    error: {
+      background: '#F2A097',   // -> redLight
+      border: '#E64C3C',   // -> red
+      text: '#6A0000'   // -> redDark
+    },
+    warning: {
+      background: '#FBE0B4',   // -> orangeLight
+      border: '#DA7132',   // -> orange
+      text: '#7E4F00'   // -> orangeDark
+    },
+  },\n
+  screenSize: {
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '1800px'
+  }
+};
+`}</Code>
+
+#### Customize
+
+To customize the theme, you need to pass your theme to `ThemeProvider`. be careful to include all properties you can see in the `defaultTheme` above.
+The `ThemeProvider` needs to wrap all Quartz components, so ideally put it next to your apps root.
+
+<Code className="language-jsx">{`
+import { ThemeProvider } from 'emotion-theming';
+import { defaultTheme } from '@connctd/quartz';
+\n
+const myTheme = {
+  ...defaultTheme,
+  primary: '#0099ff'
+};
+\n
+<ThemeProvider theme={myTheme}>
+  { /* your app goes here */ }
+</ThemeProvider>
+`}</Code>

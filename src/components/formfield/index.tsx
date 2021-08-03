@@ -7,6 +7,9 @@ import { defaultTheme, Themeable } from '../theme';
 interface FormFieldProps extends Themeable {
   label: string;
   description?: React.ReactNode;
+  hasError?: boolean;
+  error?: string;
+  required?: boolean;
 }
 
 export interface LabelProps extends Themeable {
@@ -64,10 +67,17 @@ const FormFieldChildContainer = styled.div`
   height: 45px;
 `;
 
-export const FormField: React.FC<FormFieldProps> = ({
-  theme = defaultTheme, label, description, children
+const FormField: React.FC<FormFieldProps> = ({
+  theme = defaultTheme,
+  label,
+  description,
+  hasError,
+  error,
+  required,
+  children
 }) => {
   let descriptionElement;
+  let errorElement;
 
   if (description) {
     descriptionElement = (
@@ -77,17 +87,32 @@ export const FormField: React.FC<FormFieldProps> = ({
     );
   }
 
+  if (hasError) {
+    errorElement = (
+      <FormFieldError theme={theme}>
+        {error}
+      </FormFieldError>
+    );
+  }
+
   return (
     <FormFieldContainer>
-      <FormFieldLabel theme={theme}>
+      <FormFieldLabel
+        hasError={hasError}
+        required={required}
+        theme={theme}
+      >
         {label}
       </FormFieldLabel>
       <div>
         <FormFieldChildContainer>
           {children}
         </FormFieldChildContainer>
+        {errorElement}
         {descriptionElement}
       </div>
     </FormFieldContainer>
   );
 };
+
+export default FormField;
