@@ -1,17 +1,14 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Delimiter from './index';
 
-const stories = storiesOf('Delimiter', module);
+export default {
+  component: Delimiter,
+  title: 'Components/Delimiter'
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
+export const Default = (args) => <Delimiter {...args} />;
 
-stories.add('Delimiter', () => {
-  const textContent = text('Delimiter Text', 'Delimiter');
-
-  return <Delimiter text={textContent} />;
-});
+export const Text = (args) => <Delimiter {...args} />;
+Text.args = { text: 'Delimiter' };

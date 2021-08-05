@@ -1,90 +1,95 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import React, { useState } from 'react';
+import { Meta } from '@storybook/react';
 
 import Input from './index';
 
-const stories = storiesOf('Input', module);
+export default {
+  component: Input,
+  title: 'Components/Input',
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: { disable: true }
+    },
+    onClickIcon: {
+      action: 'onClickIcon',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Placeholder', () => {
-  const placeholder = text('Placeholder', 'Email');
-
-  return (
-    <Input
-      placeholder={placeholder}
-      onChange={action('onChange')}
-    />
-  );
-});
-
-stories.add('Label', () => {
-  const label = text('Label', 'Email');
-
-  return (
-    <Input
-      label={label}
-      onChange={action('onChange')}
-    />
-  );
-});
-
-stories.add('Description', () => {
-  const label = text('Label', 'Email');
-  const description = text('Description', 'Enter your private email address');
+const Template = (args) => {
+  const [value, setValue] = useState(args.value);
 
   return (
     <Input
-      label={label}
-      description={description}
-      onChange={action('onChange')}
+      {...args}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        args.onChange(e);
+      }}
     />
   );
-});
+};
+Template.args = {
+  value: '',
+  placeholder: '',
+  label: '',
+  description: '',
+  hasError: false,
+  error: '',
+  disabled: false,
+  readOnly: false,
+  prefix: '',
+  icon: undefined
+};
 
-stories.add('Error', () => {
-  const label = text('Label', 'Email');
-  const error = text('Error', 'Please enter a valid email');
+export const Placeholder = Template.bind({});
+Placeholder.args = { ...Template.args, placeholder: 'Email' };
 
-  return (
-    <Input
-      label={label}
-      hasError={!!error.length}
-      error={error}
-      onChange={action('onChange')}
-    />
-  );
-});
+export const Label = Template.bind({});
+Label.args = { ...Template.args, label: 'Email' };
 
-stories.add('Prefix', () => {
-  const label = text('Label', 'Homepage');
-  const prefix = text('Prefix', 'https://');
+export const Description = Template.bind({});
+Description.args = {
+  ...Template.args,
+  label: 'Email',
+  description: 'Enter your private email address'
+};
 
-  return (
-    <Input
-      label={label}
-      prefix={prefix}
-      onChange={action('onChange')}
-    />
-  );
-});
+export const Error = Template.bind({});
+Error.args = {
+  ...Template.args,
+  label: 'Email',
+  hasError: true,
+  error: 'Please enter a valid email'
+};
 
-stories.add('Icon', () => (
-  <Input
-    icon={<img width="100%" src="/copy.svg" alt="copy" />}
-    onClickIcon={action('onClickIcon')}
-    onChange={action('onChange')}
-  />
-));
+export const Prefix = Template.bind({});
+Prefix.args = {
+  ...Template.args,
+  label: 'Email',
+  prefix: 'https://'
+};
 
-stories.add('Disabled', () => (
-  <Input value="f06ccfd4-d5ba-4767-b69a-d3eec758e6d4" onChange={action('onChange')} disabled />
-));
+export const Icon = Template.bind({});
+Icon.args = {
+  ...Template.args,
+  label: 'Email',
+  icon: <img width="100%" src="/copy.svg" alt="copy" />
+};
 
-stories.add('Readonly', () => (
-  <Input value="readonly" onChange={action('onChange')} readOnly />
-));
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Template.args,
+  value: 'f06ccfd4-d5ba-4767-b69a-d3eec758e6d4',
+  disabled: true
+};
+
+export const ReadOnly = Template.bind({});
+ReadOnly.args = {
+  ...Template.args,
+  value: 'readonly',
+  readOnly: true
+};

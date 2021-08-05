@@ -1,91 +1,56 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import {
-  withKnobs, text, select, boolean
-} from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import SpaceInvadersIcon from 'mdi-react/SpaceInvadersIcon';
 
 import Toast from './index';
 
-const stories = storiesOf('Toast', module);
+export default {
+  component: Toast,
+  title: 'Components/Toast',
+  argTypes: {
+    variant: {
+      control: { type: 'radio' },
+      options: ['primary', 'success', 'danger', 'warning', 'info']
+    },
+    actionCount: {
+      control: { type: 'radio' },
+      options: [0, 1, 2]
+    },
+    onClose: {
+      action: 'onClose',
+      table: { disable: true }
+    },
+    onAction: {
+      action: 'onAction',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Default', () => {
-  const closable = boolean('Closable', true);
-  const noIcon = boolean('No Icon', false);
-  const title = text('Title', 'Toast Notification!');
-  const description = text('Description', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.');
-  const width = text('Width', '400px');
-  const variant = select('Variant', {
-    Primary: 'primary',
-    Success: 'success',
-    Danger: 'danger',
-    Warning: 'warning',
-    Info: 'info'
-  }, 'primary');
-  const actionCount = select('Actions', {
-    None: 0,
-    Confirm: 1,
-    'Cancel & Confirm': 2
-  }, 2);
-
+export const Default = (args) => {
   const actions = [
-    { label: 'Cancel', secondary: true, onClick: () => { action('Cancel'); } },
-    { label: 'Confirm', onClick: () => { action('Confirm'); } }
-  ].slice(2 - actionCount, 2);
+    { label: 'Cancel', secondary: true, onClick: () => { args.onAction('Cancel'); } },
+    { label: 'Confirm', onClick: () => { args.onAction('Confirm'); } }
+  ].slice(2 - args.actionCount, 2);
 
   return (
-    <Toast
-      closable={closable}
-      noIcon={noIcon}
-      variant={variant}
-      width={width}
-      title={title}
-      description={description}
-      actions={actions}
-    />
+    <Toast {...args} actions={actions} />
   );
-});
+};
+Default.args = {
+  closable: true,
+  noIcon: false,
+  title: 'Toast Notification!',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.',
+  width: '400px',
+  variant: 'primary',
+  actionCount: 2
+};
 
-stories.add('Custom Icon & Width', () => {
-  const closable = boolean('Closable', true);
-  const noIcon = boolean('No Icon', false);
-  const title = text('Title', 'Toast Notification!');
-  const description = text('Description', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet.');
-  const width = text('Width', '600px');
-  const variant = select('Variant', {
-    Primary: 'primary',
-    Success: 'success',
-    Danger: 'danger',
-    Warning: 'warning',
-    Info: 'info'
-  }, 'primary');
-  const actionCount = select('Actions', {
-    None: 0,
-    Confirm: 1,
-    'Cancel & Confirm': 2
-  }, 2);
-
-  const actions = [
-    { label: 'Cancel', secondary: true, onClick: () => { action('Cancel'); } },
-    { label: 'Confirm', onClick: () => { action('Confirm'); } }
-  ].slice(2 - actionCount, 2);
-
-  return (
-    <Toast
-      closable={closable}
-      noIcon={noIcon}
-      icon={SpaceInvadersIcon}
-      variant={variant}
-      width={width}
-      title={title}
-      description={description}
-      actions={actions}
-    />
-  );
-});
+export const CustomIconAndWidth = Default.bind({});
+CustomIconAndWidth.args = {
+  ...Default.args,
+  icon: SpaceInvadersIcon,
+  width: '600px'
+};

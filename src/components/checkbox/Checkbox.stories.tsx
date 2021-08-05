@@ -1,70 +1,54 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Checkbox from './index';
 
-const stories = storiesOf('Checkbox', module);
+export default {
+  component: Checkbox,
+  title: 'Components/Checkbox',
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Child Label', () => {
+const Template = (args) => {
   const [checked, check] = useState(false);
 
   return (
     <Checkbox
-      id="terms_of_service"
-      checked={checked}
-      onChange={() => { check(!checked); action('Checked')(checked); }}
-    >
-      I agree to the Terms of Service
-    </Checkbox>
-  );
-});
-
-stories.add('Label', () => {
-  const [checked, check] = useState(false);
-  const label = text('Label', 'Terms of Service');
-
-  return (
-    <Checkbox
-      id="terms_of_service"
-      label={label}
-      checked={checked}
-      onChange={() => { check(!checked); action('Checked')(checked); }}
+      {...args}
+      chacked={checked}
+      onChange={(event) => { check(!checked); args.onChange(event); }}
     />
   );
-});
+};
+Template.args = {
+  id: 'terms_of_service',
+  children: '',
+  label: '',
+  description: '',
+  disabled: false
+};
 
-stories.add('Description', () => {
-  const [checked, check] = useState(false);
-  const label = text('Label', 'Terms of Service');
-  const description = text('Description', 'By checking this box you agree to the terms of service');
+export const ChildLabel = Template.bind({});
+ChildLabel.args = { ...Template.args, children: 'I agree to the Terms of Service' };
 
-  return (
-    <Checkbox
-      id="terms_of_service"
-      label={label}
-      checked={checked}
-      description={description}
-      onChange={() => { check(!checked); action('Checked')(checked); }}
-    />
-  );
-});
+export const Label = Template.bind({});
+Label.args = { ...Template.args, label: 'Terms of Service' };
 
-stories.add('Disabled', () => {
-  const label = text('Label', 'Terms of Service');
+export const Description = Template.bind({});
+Description.args = {
+  ...Template.args,
+  label: 'Terms of Service',
+  description: 'By checking this box you agree to the terms of service'
+};
 
-  return (
-    <Checkbox
-      id="terms_of_service"
-      label={label}
-      checked
-      disabled
-      onChange={() => null}
-    />
-  );
-});
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Template.args,
+  label: 'Terms of Service',
+  disabled: true
+};

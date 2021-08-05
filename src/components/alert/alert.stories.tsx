@@ -1,23 +1,30 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
+
 import Alert from './index';
 
-const stories = storiesOf('Alert', module);
-stories.addDecorator(withInfo);
-stories.addDecorator(withKnobs);
+export default {
+  component: Alert,
+  title: 'Components/Alert',
+  argTypes: {
+    appearance: {
+      control: { type: 'radio' },
+      options: ['warning', 'success', 'error']
+    }
+  }
+} as Meta;
 
-stories.add('Default (Warning)', () => <Alert><span>Hallo Welt!</span></Alert>);
+const Template = (args) => <Alert {...args} />;
+Template.args = { appearance: 'warning', dissmissable: true, children: 'Hello World!' };
 
-stories.add('Success', () => (
-  <Alert appearance="success"><span>Hallo Welt!</span></Alert>
-));
+export const Warning = Template.bind({});
+Warning.args = { ...Template.args, appearance: 'warning' };
 
-stories.add('Error', () => (
-  <Alert appearance="error"><span>Hallo Welt!</span></Alert>
-));
+export const Success = Template.bind({});
+Success.args = { ...Template.args, appearance: 'success' };
 
-stories.add('Dissmissable', () => (
-  <Alert dissmissable><span>Diese Meldung kann geschlossen werden.</span></Alert>
-));
+export const Error = Template.bind({});
+Error.args = { ...Template.args, appearance: 'error' };
+
+export const Dissmissable = Template.bind({});
+Dissmissable.args = { ...Template.args, dissmissable: true };
