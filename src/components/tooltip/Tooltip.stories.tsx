@@ -1,84 +1,45 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Tooltip from './index';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 300px;
-`;
-
-const stories = storiesOf('Tooltip', module);
-
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Top', () => {
-  const content = text('Content', 'I am a Tooltip ...');
-  const position = 'top';
-
-  return (
-    <Container>
-      <Tooltip
-        position={position}
-        content={content}
+export default {
+  component: Tooltip,
+  title: 'Components/Tooltip',
+  argTypes: {
+    position: {
+      control: { type: 'radio' },
+      options: ['top', 'bottom', 'left', 'right']
+    }
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: 300
+        }}
       >
-        Hover me!
-      </Tooltip>
-    </Container>
-  );
-});
+        <Story />
+      </div>
+    )
+  ]
+} as Meta;
 
-stories.add('Right', () => {
-  const content = text('Content', 'I am a Tooltip ...');
-  const position = 'right';
+const Template = (args) => <Tooltip {...args} />;
+Template.args = { position: 'right', content: 'I am a Tooltip ...', children: 'Hover me!' };
 
-  return (
-    <Container>
-      <Tooltip
-        position={position}
-        content={content}
-      >
-        Hover me!
-      </Tooltip>
-    </Container>
-  );
-});
+export const Top = Template.bind({});
+Top.args = { ...Template.args, position: 'top' };
 
-stories.add('Bottom', () => {
-  const content = text('Content', 'I am a Tooltip ...');
-  const position = 'bottom';
+export const Bottom = Template.bind({});
+Bottom.args = { ...Template.args, position: 'bottom' };
 
-  return (
-    <Container>
-      <Tooltip
-        position={position}
-        content={content}
-      >
-        Hover me!
-      </Tooltip>
-    </Container>
-  );
-});
+export const Right = Template.bind({});
+Right.args = { ...Template.args, position: 'right' };
 
-stories.add('Left', () => {
-  const content = text('Content', 'I am a Tooltip ...');
-  const position = 'left';
-
-  return (
-    <Container>
-      <Tooltip
-        position={position}
-        content={content}
-      >
-        Hover me!
-      </Tooltip>
-    </Container>
-  );
-});
+export const Left = Template.bind({});
+Left.args = { ...Template.args, position: 'left' };

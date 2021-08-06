@@ -1,20 +1,18 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text, number } from '@storybook/addon-knobs';
-import { Anchor } from './index';
+import { Meta } from '@storybook/react';
 
-const stories = storiesOf('Anchors', module);
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
+import Anchor from './index';
 
-stories.add('Anchor Link', () => {
-  const anchorText = text('Text', 'Sign Up');
-  const spacing = number('Spacing', 15);
-  return (
-    <div>
-      <Anchor style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
-      <Anchor primary style={{ marginRight: spacing }} href="#">{anchorText}</Anchor>
-    </div>
-  );
-});
+export default {
+  component: Anchor,
+  title: 'Components/Anchor'
+} as Meta;
+
+const Template = (args) => <Anchor {...args} href="#" />;
+Template.args = { primary: false, children: 'Anchor' };
+
+export const Default = Template.bind({});
+Default.args = Template.args;
+
+export const Primary = Template.bind({});
+Primary.args = { ...Template.args, primary: true };

@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Select from './index';
 
-const stories = storiesOf('Select', module);
+export default {
+  component: Select,
+  title: 'Components/Select',
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Placeholder', () => {
+const Template = (args) => {
   const [value, setValue] = useState('');
-  const placeholder = text('Placeholder', 'Select your favourite philisopher');
 
   return (
     <Select
-      placeholder={placeholder}
+      {...args}
       value={value}
       onChange={(e) => {
         setValue(e.target.value);
-        action('onChange')(e);
+        args.onChange(e);
       }}
     >
       <Select.Option value="plato">Plato</Select.Option>
@@ -29,90 +31,40 @@ stories.add('Placeholder', () => {
       <Select.Option value="schopenhauer">Schopenhauer</Select.Option>
     </Select>
   );
-});
+};
+Template.args = {
+  placeholder: '',
+  label: '',
+  description: '',
+  hasError: false,
+  error: '',
+  disabled: false
+};
 
-stories.add('Label', () => {
-  const [value, setValue] = useState('');
-  const label = text('Label', 'Favourite philisopher');
+export const Placeholder = Template.bind({});
+Placeholder.args = { ...Template.args, placeholder: 'Select your favourite philisopher' };
 
-  return (
-    <Select
-      label={label}
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
-        action('onChange')(e);
-      }}
-    >
-      <Select.Option value="plato">Plato</Select.Option>
-      <Select.Option value="nietzsche">Nietzsche</Select.Option>
-      <Select.Option value="schopenhauer">Schopenhauer</Select.Option>
-    </Select>
-  );
-});
+export const Label = Template.bind({});
+Label.args = { ...Template.args, label: 'Favourite philisopher' };
 
-stories.add('Description', () => {
-  const [value, setValue] = useState('');
-  const label = text('Label', 'Favourite philisopher');
-  const description = text('Description', 'Please select your all-time favourite philisopher');
+export const Description = Template.bind({});
+Description.args = {
+  ...Template.args,
+  label: 'Favourite philisopher',
+  description: 'Please select your all-time favourite philisopher'
+};
 
-  return (
-    <Select
-      label={label}
-      value={value}
-      description={description}
-      onChange={(e) => {
-        setValue(e.target.value);
-        action('onChange')(e);
-      }}
-    >
-      <Select.Option value="plato">Plato</Select.Option>
-      <Select.Option value="nietzsche">Nietzsche</Select.Option>
-      <Select.Option value="schopenhauer">Schopenhauer</Select.Option>
-    </Select>
-  );
-});
+export const Error = Template.bind({});
+Error.args = {
+  ...Template.args,
+  label: 'Favourite philisopher',
+  hasError: true,
+  error: 'Field is required'
+};
 
-stories.add('Error', () => {
-  const [value, setValue] = useState('');
-  const label = text('Label', 'Favourite philisopher');
-  const error = text('Error', 'Field is required');
-
-  return (
-    <Select
-      label={label}
-      value={value}
-      hasError={!!error.length}
-      error={error}
-      onChange={(e) => {
-        setValue(e.target.value);
-        action('onChange')(e);
-      }}
-    >
-      <Select.Option value="plato">Plato</Select.Option>
-      <Select.Option value="nietzsche">Nietzsche</Select.Option>
-      <Select.Option value="schopenhauer">Schopenhauer</Select.Option>
-    </Select>
-  );
-});
-
-stories.add('Disabled', () => {
-  const [value, setValue] = useState('');
-  const label = text('Label', 'Favourite philisopher');
-
-  return (
-    <Select
-      label={label}
-      value={value}
-      disabled
-      onChange={(e) => {
-        setValue(e.target.value);
-        action('onChange')(e);
-      }}
-    >
-      <Select.Option value="plato">Plato</Select.Option>
-      <Select.Option value="nietzsche">Nietzsche</Select.Option>
-      <Select.Option value="schopenhauer">Schopenhauer</Select.Option>
-    </Select>
-  );
-});
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Template.args,
+  label: 'Favourite philisopher',
+  disabled: true
+};

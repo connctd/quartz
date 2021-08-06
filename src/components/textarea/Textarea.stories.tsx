@@ -1,78 +1,53 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Textarea from './index';
 
-const stories = storiesOf('Textarea', module);
+export default {
+  component: Textarea,
+  title: 'Components/Textarea',
+  argTypes: {
+    onChange: {
+      action: 'onChange',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
+const Template = (args) => <Textarea id="Readme" {...args} />;
+Template.args = {
+  placeholder: '',
+  label: '',
+  description: '',
+  hasError: false,
+  error: '',
+  disabled: false
+};
 
-stories.add('Placeholder', () => {
-  const placeholder = text('Placeholder', 'Readme');
+export const Placeholder = Template.bind({});
+Placeholder.args = { ...Template.args, placeholder: 'Readme' };
 
-  return (
-    <Textarea
-      id="Readme"
-      placeholder={placeholder}
-      onChange={action('onChange')}
-    />
-  );
-});
+export const Label = Template.bind({});
+Label.args = { ...Template.args, label: 'Readme' };
 
-stories.add('Label', () => {
-  const label = text('Label', 'Readme');
+export const Description = Template.bind({});
+Description.args = {
+  ...Template.args,
+  label: 'Readme',
+  description: 'Instructions for you package'
+};
 
-  return (
-    <Textarea
-      id="Readme"
-      label={label}
-      onChange={action('onChange')}
-    />
-  );
-});
+export const Error = Template.bind({});
+Error.args = {
+  ...Template.args,
+  label: 'Readme',
+  hasError: true,
+  error: 'Please provide a comprehensive readme'
+};
 
-stories.add('Description', () => {
-  const label = text('Label', 'Readme');
-  const description = text('Description', 'Instructions for you package');
-
-  return (
-    <Textarea
-      id="Readme"
-      label={label}
-      description={description}
-      onChange={action('onChange')}
-    />
-  );
-});
-
-stories.add('Error', () => {
-  const label = text('Label', 'Readme');
-  const error = text('Error', 'Please provide a comprehensive readme');
-
-  return (
-    <Textarea
-      id="Readme"
-      label={label}
-      hasError={!!error.length}
-      error={error}
-      onChange={action('onChange')}
-    />
-  );
-});
-
-stories.add('Disabled', () => {
-  const label = text('Label', 'Readme');
-
-  return (
-    <Textarea
-      id="Readme"
-      label={label}
-      disabled
-      onChange={action('onChange')}
-    />
-  );
-});
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Template.args,
+  label: 'Readme',
+  disabled: true
+};

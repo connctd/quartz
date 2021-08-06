@@ -1,105 +1,88 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text, number } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Button from './index';
 
-const stories = storiesOf('Button', module);
+export default {
+  component: Button,
+  title: 'Components/Button',
+  argTypes: {
+    appearance: {
+      control: { type: 'radio' },
+      options: ['primary', 'secondary', 'danger']
+    },
+    onClick: {
+      action: 'onClick',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
+const Template = (args) => <Button {...args} />;
+Template.args = { appearance: 'primary', block: false, children: 'Text' };
 
-stories.add('Primary', () => {
-  const btnText = text('Text', 'Submit');
+export const Primary = Template.bind({});
+Primary.args = { ...Template.args, appearance: 'primary', children: 'Submit' };
 
-  return (
-    <Button appearance="primary" onClick={action('onClick')}>
-      {btnText}
+export const Secondary = Template.bind({});
+Secondary.args = { ...Template.args, appearance: 'secondary', children: 'Cancel' };
+
+export const Danger = Template.bind({});
+Danger.args = { ...Template.args, appearance: 'danger', children: 'Delete' };
+
+export const Block = (args) => (
+  <>
+    <Button appearance="primary" style={{ marginBottom: 15 }} block {...args}>
+      Submit
     </Button>
-  );
-});
-
-stories.add('Secondary', () => {
-  const btnText = text('Text', 'Cancel');
-
-  return (
-    <Button appearance="secondary" onClick={action('onClick')}>
-      {btnText}
+    <Button appearance="secondary" style={{ marginBottom: 15 }} block {...args}>
+      Cancel
     </Button>
-  );
-});
-
-stories.add('Danger', () => {
-  const btnText = text('Text', 'Delete');
-
-  return (
-    <Button appearance="danger" onClick={action('onClick')}>
-      {btnText}
+    <Button appearance="danger" style={{ marginBottom: 15 }} block {...args}>
+      Delete
     </Button>
-  );
-});
+  </>
+);
+Block.argTypes = {
+  appearance: {
+    table: {
+      disable: true
+    }
+  }
+};
 
-stories.add('Block (100% width)', () => {
-  const spacing = number('Spacing', 15);
+export const Anchor = (args) => (
+  <>
+    <Button appearance="primary" style={{ marginRight: 15 }} href="#link" {...args}>
+      Anchor
+    </Button>
+    <Button appearance="secondary" style={{ marginRight: 15 }} href="#link" {...args}>
+      Anchor
+    </Button>
+    <Button appearance="danger" href="#link" {...args}>
+      Anchor
+    </Button>
+  </>
+);
+Anchor.argTypes = Block.argTypes;
 
-  return (
-    <div>
-      <Button appearance="primary" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
-        Submit
-      </Button>
-      <Button appearance="secondary" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
-        Cancel
-      </Button>
-      <Button appearance="danger" onClick={action('onClick')} style={{ marginBottom: spacing }} block>
-        Delete
-      </Button>
-    </div>
-  );
-});
-
-stories.add('Anchor Link', () => {
-  const btnText = text('Text', 'Anchor');
-  const link = text('Link', '#link');
-  const spacing = number('Spacing', 15);
-
-  return (
-    <div>
-      <Button appearance="primary" style={{ marginRight: spacing }} href={link} onClick={action('onClick')}>
-        {btnText}
-      </Button>
-      <Button appearance="secondary" style={{ marginRight: spacing }} href={link} onClick={action('onClick')}>
-        {btnText}
-      </Button>
-      <Button appearance="danger" href={link} onClick={action('onClick')}>
-        {btnText}
-      </Button>
-    </div>
-
-  );
-});
-
-stories.add('Tabindex', () => {
-  const spacing = number('Spacing', 15);
-
-  return (
-    <div>
-      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
-        One
-      </Button>
-      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
-        Two
-      </Button>
-      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={0}>
-        Three
-      </Button>
-      <Button style={{ marginRight: spacing }} onClick={action('onClick')} tabIndex={-1}>
-        Five
-      </Button>
-      <Button onClick={action('onClick')} tabIndex={0}>
-        Four
-      </Button>
-    </div>
-  );
-});
+export const Tabindex = (args) => (
+  <>
+    <Button style={{ marginRight: 15 }} tabIndex={0} {...args}>
+      One
+    </Button>
+    <Button style={{ marginRight: 15 }} tabIndex={0} {...args}>
+      Two
+    </Button>
+    <Button style={{ marginRight: 15 }} tabIndex={0} {...args}>
+      Three
+    </Button>
+    <Button style={{ marginRight: 15 }} tabIndex={-1} {...args}>
+      Five
+    </Button>
+    <Button tabIndex={0} {...args}>
+      Four
+    </Button>
+  </>
+);
+Tabindex.argTypes = Block.argTypes;

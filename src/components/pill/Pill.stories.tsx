@@ -1,17 +1,12 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Pill from './index';
 
-const stories = storiesOf('Pill', module);
+export default {
+  component: Pill,
+  title: 'Components/Pill'
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Pill', () => {
-  const content = text('Pill Content', 'Example Pill');
-
-  return <Pill>{content}</Pill>;
-});
+export const Default = (args) => <Pill {...args} />;
+Default.args = { children: 'Pill' };

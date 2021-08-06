@@ -1,25 +1,27 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { Meta } from '@storybook/react';
 
 import Action from './index';
 
-const stories = storiesOf('Action', module);
+export default {
+  component: Action,
+  title: 'Components/Action',
+  argTypes: {
+    type: {
+      control: { type: 'radio' },
+      options: ['add', 'delete']
+    },
+    onClick: {
+      action: 'onClick',
+      table: { disable: true }
+    }
+  }
+} as Meta;
 
-stories.addDecorator(withInfo);
-stories.addDecorator(withKnobs);
+const Template = (args) => <Action {...args} />;
 
-stories.add('Default', () => {
-  const label = text('Label', 'Create an App');
-  const type = select('Type', ['add', 'delete'], 'add');
+export const Add = Template.bind({});
+Add.args = { type: 'add', label: 'Create App' };
 
-  return (
-    <Action
-      type={type}
-      onClick={action('Clicked')}
-      label={label}
-    />
-  );
-});
+export const Delete = Template.bind({});
+Delete.args = { type: 'delete', label: 'Delete App' };

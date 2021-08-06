@@ -1,16 +1,14 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
+import { Meta } from '@storybook/react';
 
 import Table from './index';
 
-const stories = storiesOf('Table', module);
+export default {
+  component: Table,
+  title: 'Components/Table'
+} as Meta;
 
-stories.addDecorator(withKnobs);
-stories.addDecorator(withInfo);
-
-stories.add('Table', () => (
+export const Default = () => (
   <Table>
     <Table.Header>
       <Table.HeaderCell>Header One</Table.HeaderCell>
@@ -30,4 +28,4 @@ stories.add('Table', () => (
       </Table.Row>
     </Table.Body>
   </Table>
-));
+);
