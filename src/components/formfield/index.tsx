@@ -64,7 +64,7 @@ export const FormFieldError = styled.div<Themeable>`
 const FormFieldChildContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 45px;
+  min-height: 45px;
 `;
 
 const FormField: React.FC<FormFieldProps> = ({
