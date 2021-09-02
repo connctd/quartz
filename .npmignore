@@ -9,4 +9,10 @@ now.json
 .npmrc
 now.json
 tsconfig.json
+tsconfig.stories.json
 public
+docs
+.docz
+doczrc.js
+gatsby-browser.js
+gatsby-styles.css
