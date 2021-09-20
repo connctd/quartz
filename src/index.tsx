@@ -46,6 +46,9 @@ export { default as Paper } from './components/paper';
 export * from './components/pill';
 export { default as Pill } from './components/pill';
 
+export * from './components/searchField';
+export { default as SearchField } from './components/searchField';
+
 export * from './components/select';
 export { default as Select } from './components/select';
 
