@@ -1,0 +1,115 @@
+---
+name: SearchField
+route: /searchfield
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import SearchField from '../../src/components/SearchField/index.tsx';
+import MagnifyIcon from 'mdi-react/MagnifyIcon';
+
+# Action
+
+Search input field showing options for autocomplete, filtered by the input value.
+
+## Usage
+
+#### Placeholder
+
+Show a placeholder in the searchfield input.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        placeholder="Search for your favourite philosopher"
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+      />
+    );
+  }}
+</Playground>
+
+#### Init Expanded
+
+Set `initExpanded` to `true`, if you want to show the possible options when the input field is empty.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        placeholder="Search for your favourite philosopher"
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+        initExpanded
+      />
+    );
+  }}
+</Playground>
+
+#### Autofocus
+
+Set `autoFocus` to `true`, if you want to focus the search input field when the component is mounted.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        placeholder="Search for your favourite philosopher"
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+        autoFocus
+      />
+    );
+  }}
+</Playground>
+
+#### Prefix
+
+Set a `prefix` string, that will show in front of the search input field.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+        prefix="Fav Philosopher:"
+      />
+    );
+  }}
+</Playground>
+
+#### Icon
+
+Choose an icon from `mdi-react` to be shown as a button after the search input field.
+Set the `onClickIcon` prop to react to clicks on the icon button.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    const onClickIcon = () => alert('Icon clicked!');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        placeholder="Search for your favourite philosopher"
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+        icon={MagnifyIcon}
+        onClickIcon={onClickIcon}
+      />
+    );
+  }}
+</Playground>
+
+## Properties
+
+<Props of={SearchField} />
