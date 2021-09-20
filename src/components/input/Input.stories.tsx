@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 
+import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
+
 import Input from './index';
 
 export default {
@@ -77,7 +79,7 @@ export const Icon = Template.bind({});
 Icon.args = {
   ...Template.args,
   label: 'Email',
-  icon: <img width="100%" src="/copy.svg" alt="copy" />
+  icon: ContentCopyIcon
 };
 
 export const Disabled = Template.bind({});

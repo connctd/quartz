@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { MdiReactIconComponentType } from 'mdi-react';
 
 import { defaultTheme, QuartzTheme, Themeable } from '../theme';
 import {
@@ -15,7 +16,7 @@ export interface InputProps
   prefix?: string;
   hasError?: boolean;
   error?: string;
-  icon?: React.ReactNode;
+  icon?: MdiReactIconComponentType;
   onClickIcon?: () => void;
   theme?: QuartzTheme;
 }
@@ -23,7 +24,7 @@ export interface InputProps
 const StyledInput = styled.input<InputProps>`
   padding: 12px 16px 11px;
   width: 100%;
-  /* height: 45px; */
+  height: 45px;
   font-size: 14px;
   outline: none;
   border: 1px solid ${({ hasError, theme }) => (hasError ? theme.danger : theme.gray3)};
@@ -57,6 +58,7 @@ const StyledInputContainer = styled.div`
 `;
 
 const FieldPrefix = styled.div<Themeable>`
+  flex-shrink: 0;
   padding: 0 16px;
   margin-right: -1px;
   height: 45px;
@@ -70,11 +72,15 @@ const FieldPrefix = styled.div<Themeable>`
 
 const IconButton = styled.button<Themeable & { onClick?: () => void }>`
   appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px;
   margin-left: -1px;
   height: 45px;
   width: 45px;
   background-color: ${({ theme }) => theme.green};
+  font-size: 23px;
   border: solid 1px ${({ theme }) => theme.greenDark};
   border-radius: 0 3px 3px 0;
   outline: none;
@@ -90,7 +96,7 @@ const IconButton = styled.button<Themeable & { onClick?: () => void }>`
 
         :active {
           opacity: 1;
-          padding: 9px;
+          font-size: 21px;
         }
       `;
     }
@@ -99,7 +105,7 @@ const IconButton = styled.button<Themeable & { onClick?: () => void }>`
   }}
 `;
 
-const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = React.forwardRef(({
   label,
   id,
   required = false,
@@ -111,7 +117,7 @@ const Input: React.FC<InputProps> = ({
   icon,
   onClickIcon,
   ...rest
-}) => {
+}, ref) => {
   let errorElement;
   let descriptionElement;
   let prefixElement;
@@ -142,12 +148,17 @@ const Input: React.FC<InputProps> = ({
   }
 
   if (icon) {
+    const Icon = icon;
+
     iconElement = (
       <IconButton
         theme={theme}
         onClick={onClickIcon}
       >
-        {icon}
+        <Icon
+          size="1em"
+          color={defaultTheme.white}
+        />
       </IconButton>
     );
   }
@@ -161,6 +172,7 @@ const Input: React.FC<InputProps> = ({
           hasError={hasError}
           prefix={prefix}
           icon={icon}
+          ref={ref}
           theme={theme}
           {...rest}
         />
@@ -188,6 +200,6 @@ const Input: React.FC<InputProps> = ({
   }
 
   return inputElements;
-};
+});
 
 export default Input;
