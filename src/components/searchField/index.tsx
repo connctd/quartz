@@ -129,7 +129,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
   const resetFocusIndex = () => setFocusIndex(-1);
 
   const selectOption = (index?: number) => {
-    const selectedValue = filteredOptions[index || focusIndex];
+    const selectedValue = index === 0 ? filteredOptions[0] : filteredOptions[index || focusIndex];
 
     setValue(selectedValue);
     resetFocusIndex();
