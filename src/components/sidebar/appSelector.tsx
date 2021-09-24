@@ -207,10 +207,9 @@ const AppSelectorEmptyState = styled.div<Themeable>`
   right: 0;
   padding: 64px 32px;
   height: 296px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${({ theme }) => theme.purple};
   color: ${({ theme }) => theme.white};
   text-align: center;
-  backdrop-filter: blur(10px);
 `;
 
 const AppSelectorLoadingState = styled.div<Themeable>`
@@ -221,9 +220,8 @@ const AppSelectorLoadingState = styled.div<Themeable>`
   left: 0;
   right: 0;
   height: 296px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${({ theme }) => theme.purple};
   text-align: center;
-  backdrop-filter: blur(10px);
 `;
 
 const AppSelectorLoading = styled.div`
