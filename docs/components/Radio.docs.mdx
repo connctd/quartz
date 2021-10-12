@@ -1,0 +1,83 @@
+---
+name: Radio
+route: /radio
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Radio from '../../src/components/radio/index.tsx';
+
+# Radio
+
+Simple radio field with optional label & description, rendered in *Formfield* component.
+
+## Usage
+
+#### Default
+
+<Playground>
+  {() => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Radio
+        id="some_check"
+        checked={checked}
+        onChange={() => {setChecked(!checked)}}
+      />
+    );
+  }}
+</Playground>
+
+#### Label
+
+<Playground>
+  {() => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Radio
+        id="some_check"
+        checked={checked}
+        label="Checked?"
+        onChange={() => {setChecked(!checked)}}
+      />
+    );
+  }}
+</Playground>
+
+#### Description
+
+<Playground>
+  {() => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Radio
+        id="some_check"
+        checked={checked}
+        label="Checked?"
+        description="Should this be checked?"
+        onChange={() => {setChecked(!checked)}}
+      />
+    );
+  }}
+</Playground>
+
+#### Disabled
+
+<Playground>
+  {() => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Radio
+        id="some_check"
+        checked={checked}
+        label="Checked?"
+        disabled
+        onChange={() => {setChecked(!checked)}}
+      />
+    );
+  }}
+</Playground>
+
+## Properties
+
+<Props of={Radio} />

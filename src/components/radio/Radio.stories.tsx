@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 
-import Checkbox from './index';
+import Radio from './index';
 
 export default {
-  component: Checkbox,
-  title: 'Components/Checkbox',
+  component: Radio,
+  title: 'Components/Radio',
   argTypes: {
     onChange: {
       action: 'onChange',
@@ -18,7 +18,7 @@ const Template = (args) => {
   const [checked, check] = useState(false);
 
   return (
-    <Checkbox
+    <Radio
       {...args}
       checked={checked}
       onChange={(event) => { check(!checked); args.onChange(event); }}
