@@ -88,6 +88,25 @@ Set a `prefix` string, that will show in front of the search input field.
   }}
 </Playground>
 
+#### Error
+
+Set the `hasError` boolean and the `error` string to show a red error message underneath the searchfield and to highlight the border red.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    return (
+      <SearchField
+        value={value}
+        onChangeValue={setValue}
+        options={['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius']}
+        hasError={!value.length}
+        errorMessage="Field is required"
+      />
+    );
+  }}
+</Playground>
+
 #### Icon
 
 Choose an icon from `mdi-react` to be shown as a button after the search input field.

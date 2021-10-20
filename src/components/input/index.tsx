@@ -19,6 +19,7 @@ export interface InputProps
   icon?: MdiReactIconComponentType;
   onClickIcon?: () => void;
   theme?: QuartzTheme;
+  style?: React.CSSProperties;
 }
 
 const StyledInput = styled.input<InputProps>`
@@ -116,6 +117,7 @@ const Input: React.FC<InputProps> = React.forwardRef(({
   theme = defaultTheme,
   icon,
   onClickIcon,
+  style,
   ...rest
 }, ref) => {
   let errorElement;
@@ -173,6 +175,7 @@ const Input: React.FC<InputProps> = React.forwardRef(({
           prefix={prefix}
           icon={icon}
           ref={ref}
+          style={style}
           theme={theme}
           {...rest}
         />

@@ -44,6 +44,8 @@ Default.args = {
   options: ['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius'],
   initExpanded: false,
   autoFocus: false,
+  hasError: false,
+  error: '',
   prefix: '',
   maxHeight: 180
 };
@@ -65,6 +67,13 @@ Prefix.args = {
   ...Default.args,
   placeholder: '',
   prefix: 'Fav Philosopher:'
+};
+
+export const Error = Default.bind({});
+Error.args = {
+  ...Default.args,
+  hasError: true,
+  error: 'Field is required'
 };
 
 export const Icon = Default.bind({});

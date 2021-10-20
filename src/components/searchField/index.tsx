@@ -16,9 +16,17 @@ interface SearchFieldProps extends Themeable {
   prefix?: string;
   autoFocus?: boolean;
   maxHeight?: number;
+  hasError?: boolean;
+  error?: string;
   icon?: MdiReactIconComponentType;
   onClickIcon?: () => void;
   onChangeValue?: (value: string) => void;
+}
+
+interface OptionsListPosition {
+  top: number;
+  left: number;
+  width: number;
 }
 
 const Container = styled.div<{ maxHeight?: number }>`
@@ -28,13 +36,14 @@ const Container = styled.div<{ maxHeight?: number }>`
   ${({ maxHeight }) => (maxHeight ? `max-height: ${maxHeight}px` : '')}
 `;
 
-const InputContainer = styled.div`
-  z-index: 10;
-`;
-
-const OptionList = styled.div<Themeable>`
+const OptionList = styled.div<Themeable & OptionsListPosition>`
+  position: absolute;
   flex-shrink: 1;
   margin-top: -2px;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
+  width: ${({ width }) => width}px;
+  background-color: ${({ theme }) => theme.white};
   border: solid 1px ${({ theme }) => theme.gray3};
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -65,6 +74,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
   prefix,
   autoFocus,
   maxHeight,
+  hasError,
+  error,
   icon,
   onClickIcon,
   onChangeValue,
@@ -73,9 +84,38 @@ const SearchField: React.FC<SearchFieldProps> = ({
   const [value, setValue] = useState('');
   const [focusIndex, setFocusIndex] = useState(-1);
   const [hiddenOptions, setHiddenOptions] = useState(false);
+  const [optionsListPosition, setOptionsListPosition] = useState<OptionsListPosition>({
+    top: 0,
+    left: 0,
+    width: 0
+  });
 
+  const inputRef = useRef<HTMLInputElement>(null);
   const optionListRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<any>(null);
+  const optionItemsRef = useRef<HTMLDivElement[]>([]);
+
+  const updateOptionListPosition = (inputElement: HTMLInputElement | null) => {
+    if (inputElement) {
+      setOptionsListPosition({
+        top: inputElement.offsetTop + inputElement.offsetHeight,
+        left: inputElement.offsetLeft,
+        width: inputElement.offsetWidth
+      });
+    }
+  };
+
+  useEffect(() => {
+    updateOptionListPosition(inputRef.current);
+
+    window.addEventListener('resize', () => {
+      updateOptionListPosition(inputRef.current);
+    });
+  }, [inputRef]);
+
+  useEffect(() => {
+    const selectedOptionRef = optionItemsRef.current[focusIndex];
+    selectedOptionRef?.scrollIntoView(false);
+  }, [focusIndex]);
 
   const renderOption = (label: string, index: number) => (
     <div
@@ -107,18 +147,17 @@ const SearchField: React.FC<SearchFieldProps> = ({
     optionElements = filteredOptions.map(renderOption);
   }
 
-  const optionItemsRef = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    const selectedOptionRef = optionItemsRef.current[focusIndex];
-    selectedOptionRef?.scrollIntoView(false);
-  }, [focusIndex]);
-
   let optionListElement;
 
   if (!hiddenOptions) {
     optionListElement = (
-      <OptionList ref={optionListRef} theme={theme}>
+      <OptionList
+        ref={optionListRef}
+        theme={theme}
+        top={optionsListPosition.top}
+        left={optionsListPosition.left}
+        width={optionsListPosition.width}
+      >
         {optionElements}
       </OptionList>
     );
@@ -168,21 +207,22 @@ const SearchField: React.FC<SearchFieldProps> = ({
 
   return (
     <Container maxHeight={maxHeight}>
-      <InputContainer>
-        <Input
-          id="tobiInput"
-          ref={inputRef}
-          value={value}
-          placeholder={placeholder}
-          onChange={handleOnChange}
-          onKeyDown={handleKeyDown}
-          prefix={prefix}
-          autoFocus={autoFocus}
-          icon={icon}
-          onClickIcon={onClickIcon}
-          autoComplete="off"
-        />
-      </InputContainer>
+      <Input
+        id="tobiInput"
+        ref={inputRef}
+        value={value}
+        placeholder={placeholder}
+        onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
+        prefix={prefix}
+        autoFocus={autoFocus}
+        hasError={hasError}
+        error={error}
+        icon={icon}
+        onClickIcon={onClickIcon}
+        autoComplete="off"
+        style={{ zIndex: 10 }}
+      />
       {optionListElement}
     </Container>
   );
