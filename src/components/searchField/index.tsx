@@ -27,6 +27,7 @@ interface OptionsListPosition {
   top: number;
   left: number;
   width: number;
+  maxHeight: number;
 }
 
 const Container = styled.div<{ maxHeight?: number }>`
@@ -43,6 +44,7 @@ const OptionList = styled.div<Themeable & OptionsListPosition>`
   top: ${({ top }) => top}px;
   left: ${({ left }) => left}px;
   width: ${({ width }) => width}px;
+  max-height: ${({ maxHeight }) => maxHeight}px;
   background-color: ${({ theme }) => theme.white};
   border: solid 1px ${({ theme }) => theme.gray3};
   border-bottom-left-radius: 3px;
@@ -87,7 +89,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
   const [optionsListPosition, setOptionsListPosition] = useState<OptionsListPosition>({
     top: 0,
     left: 0,
-    width: 0
+    width: 0,
+    maxHeight: 0
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -99,7 +102,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
       setOptionsListPosition({
         top: inputElement.offsetTop + inputElement.offsetHeight,
         left: inputElement.offsetLeft,
-        width: inputElement.offsetWidth
+        width: inputElement.offsetWidth,
+        maxHeight: maxHeight || (window.innerHeight - (inputElement.offsetTop + inputElement.offsetHeight))
       });
     }
   };
@@ -157,6 +161,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
         top={optionsListPosition.top}
         left={optionsListPosition.left}
         width={optionsListPosition.width}
+        maxHeight={optionsListPosition.maxHeight}
       >
         {optionElements}
       </OptionList>
@@ -206,7 +211,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
   };
 
   return (
-    <Container maxHeight={maxHeight}>
+    <Container>
       <Input
         id="tobiInput"
         ref={inputRef}

@@ -41,19 +41,47 @@ export const Default = (args) => {
 };
 Default.args = {
   placeholder: 'Search for your favourite philosopher',
-  options: ['Nietzsche', 'Schopenhauer', 'Plato', 'Socrates', 'Confucius'],
+  options: [
+    'Nietzsche',
+    'Schopenhauer',
+    'Plato',
+    'Socrates',
+    'Confucius',
+    'Nietzsche',
+    'Schopenhauer',
+    'Plato',
+    'Socrates',
+    'Confucius',
+    'Nietzsche',
+    'Schopenhauer',
+    'Plato',
+    'Socrates',
+    'Confucius',
+    'Nietzsche',
+    'Schopenhauer',
+    'Plato',
+    'Socrates',
+    'Confucius'
+  ],
   initExpanded: false,
   autoFocus: false,
   hasError: false,
   error: '',
   prefix: '',
-  maxHeight: 180
+  maxHeight: undefined
 };
 
 export const InitExpanded = Default.bind({});
 InitExpanded.args = {
   ...Default.args,
   initExpanded: true
+};
+
+export const MaxHeight = Default.bind({});
+MaxHeight.args = {
+  ...Default.args,
+  initExpanded: true,
+  maxHeight: 200
 };
 
 export const Autofocus = Default.bind({});
