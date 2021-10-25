@@ -114,7 +114,8 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
   component = 'a',
   extraProps,
   style,
-  theme = defaultTheme
+  theme = defaultTheme,
+  ...rest
 }) => {
   let IconComponent;
   let iconElement;
@@ -155,6 +156,7 @@ export const SidebarButton: React.FC<SidebarButtonProps> = ({
       theme={theme}
       as={component}
       {...extraProps}
+      {...rest}
     >
       {iconElement}
       <ButtonText>
