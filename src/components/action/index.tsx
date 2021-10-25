@@ -57,7 +57,8 @@ const Action: React.FC<ActionProps> = ({
   className,
   style,
   theme = defaultTheme,
-  extraProps
+  extraProps,
+  ...rest
 }) => (
   <ActionContainer
     onClick={onClick}
@@ -67,6 +68,7 @@ const Action: React.FC<ActionProps> = ({
     style={style}
     as={component}
     {...extraProps}
+    {...rest}
   >
     {label && (<Label>{label}</Label>)}
     <IconCircle theme={theme} type={type} />
