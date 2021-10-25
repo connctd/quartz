@@ -81,7 +81,8 @@ const SearchField: React.FC<SearchFieldProps> = ({
   icon,
   onClickIcon,
   onChangeValue,
-  theme = defaultTheme
+  theme = defaultTheme,
+  ...rest
 }) => {
   const [value, setValue] = useState('');
   const [focusIndex, setFocusIndex] = useState(-1);
@@ -213,6 +214,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
   return (
     <Container>
       <Input
+        {...rest}
         id="tobiInput"
         ref={inputRef}
         value={value}
