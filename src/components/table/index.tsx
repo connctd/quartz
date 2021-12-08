@@ -49,41 +49,29 @@ interface TableSubComponents {
 
 const StyledTable = styled.table(`
   table-layout: fixed;
+  border-collapse: collapse;
   width: 100%;
 `);
 
 const StyledTableHeader = styled.thead(`
   background-color: #f2f2f2;
-  border-radius: 2px;
+  border: solid 1px #bdbdbd;
 `);
 
 const StyledTableHeaderCell = styled.th(`
   padding: 16px;
   text-align: left;
   font-weight: 400;
-  border-top: solid 1px #bdbdbd;
-  border-bottom: solid 1px #bdbdbd;
-
-  :first-of-type {
-    border-left: solid 1px #bdbdbd;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-  }
-
-  :last-of-type {
-    border-right: solid 1px #bdbdbd;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-  }
 `);
 
 const StyledTableBody = styled.tbody();
 
-const StyledTableRow = styled.tr();
+const StyledTableRow = styled.tr(`
+  border-bottom: solid 1px #c7c7c7;
+`);
 
 const StyledTableCell = styled.td<Themeable>(`
   padding: 16px;
-  border-bottom: solid 1px #c7c7c7;
 `);
 
 const assignThemeToChildren = (theme?: QuartzTheme) => (
